@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>SpinPulse — Демо-слоты, Краш-игры и Джекпоты</title>
+    <meta
+      name="description"
+      content="SpinPulse — лобби популярных слотов, краш-игр и джекпотов. Демо-режим с виртуальным балансом."
+    />
+    <meta name="theme-color" content="#451a03" />
+    <link rel="canonical" href="https://lelyaler.github.io/SpinPulse/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lelyaler.github.io/SpinPulse/" />
+    <meta property="og:title" content="SpinPulse — Демо-слоты и Джекпоты" />
+    <meta property="og:description" content="Игровое лобби слотов и краш-игр с виртуальным балансом." />
+    <meta property="og:image" content="./banners/banner-zeus-bright.webp" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=JetBrains+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-300 selection:text-amber-950">
+    <div id="root">
+      <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0f172a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif;">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <div style="font-size: 28px;">👑</div>
+          <div style="font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">Spin<span style="color: #fbbf24;">Pulse</span></div>
+          <div style="width: 36px; height: 36px; border: 3px solid rgba(251, 191, 36, 0.2); border-top-color: #fbbf24; border-radius: 50%; animation: spinpulse-spin 0.8s linear infinite;"></div>
+        </div>
+      </div>
+      <style>
+        @keyframes spinpulse-spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
