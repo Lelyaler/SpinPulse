@@ -15,7 +15,20 @@ export type GameProvider =
   | 'Hacksaw Gaming'
   | 'Play\'n GO'
   | 'NoLimit City'
-  | 'Spribe';
+  | 'Spribe'
+  | 'Push Gaming'
+  | '3 Oaks'
+  | 'BGaming'
+  | 'SmartSoft'
+  | 'Endorphina'
+  | 'Belatra'
+  | 'PG Soft'
+  | 'Yggdrasil'
+  | 'Evoplay'
+  | 'Spinomenal'
+  | 'Gamzix'
+  | 'Turbo Games'
+  | 'Amusnet';
 
 export interface GameItem {
   id: string;

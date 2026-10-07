@@ -69,6 +69,11 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in">
       <div className="w-full max-w-md bg-white rounded-3xl border border-amber-200 shadow-2xl p-6 text-center relative overflow-hidden flex flex-col items-center">
+        {/* Ambient background texture */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-[0.07] pointer-events-none"
+          style={{ backgroundImage: `url("${import.meta.env.BASE_URL}banners/jackpot-bg.webp")` }}
+        />
         {/* Close Button */}
         <button
           onClick={onClose}

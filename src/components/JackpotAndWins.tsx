@@ -63,7 +63,12 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
       {/* Left: Izzi Multi-Tier Jackpot Box (5 cols) */}
-      <div className="lg:col-span-5 rounded-3xl bg-linear-to-br from-amber-500 via-amber-600 to-amber-700 p-5 text-white shadow-lg relative overflow-hidden flex flex-col justify-between">
+      <div className="lg:col-span-5 rounded-3xl bg-linear-to-br from-amber-600 via-amber-700 to-amber-950 p-5 text-white shadow-lg relative overflow-hidden flex flex-col justify-between border border-amber-400/30">
+        {/* Background Texture from casino jackpot-bg */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-35 mix-blend-overlay pointer-events-none scale-105"
+          style={{ backgroundImage: `url("${import.meta.env.BASE_URL}banners/jackpot-bg.webp")` }}
+        />
         {/* Ambient glow */}
         <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl pointer-events-none" />
 

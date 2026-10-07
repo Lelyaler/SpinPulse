@@ -33,11 +33,11 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       tag: isRu ? 'ПРИВЕТСТВЕННЫЙ ПАКЕТ' : 'WELCOME PACKAGE',
       title: isRu ? '100% ДО $600 + 500 FS' : '100% UP TO $600 + 500 FS',
       desc: isRu 
-        ? 'Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых слотах Pragmatic Play!'
-        : 'Double your initial deposit and grab 500 free spins in legendary Pragmatic Play slots!',
+        ? 'Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых слотах Pragmatic Play & BGaming!'
+        : 'Double your initial deposit and grab 500 free spins in legendary Pragmatic Play & BGaming slots!',
       buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
       buttonAction: onClaimBonus,
-      bgImage: `${baseUrl}banners/vip-bonus-banner.jpg`,
+      bgImage: `${baseUrl}banners/hero-welcome.webp`,
       accentBadge: '🔥 500 FS',
     },
     {
@@ -49,7 +49,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
         : 'Compete for the $50,000 prize pool! 1st place wins $18,000 cash. 35 hours remaining!',
       buttonText: isRu ? 'УЧАСТВОВАТЬ' : 'JOIN TOURNAMENT',
       buttonAction: onOpenTournaments,
-      bgImage: `${baseUrl}banners/tournament-banner.jpg`,
+      bgImage: `${baseUrl}banners/hero-tournament.webp`,
       accentBadge: '🏆 $50,000',
     },
     {
@@ -61,8 +61,44 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
         : 'Zeus lightning multipliers up to 1,000x and 15,000x max win potential. Play demo mode now!',
       buttonText: isRu ? 'ИГРАТЬ В ДЕМО' : 'PLAY DEMO NOW',
       buttonAction: onQuickPlay,
-      bgImage: `${baseUrl}banners/casino-hero.jpg`,
+      bgImage: `${baseUrl}banners/hero-olympus.webp`,
       accentBadge: '⚡ 15,000x',
+    },
+    {
+      id: 'slide-crash',
+      tag: isRu ? 'КРАШ И FAST GAMES' : 'CRASH & INSTANT GAMES',
+      title: isRu ? 'ADRENALINE CRASH • МАКС 10,000x' : 'ADRENALINE CRASH • MAX 10,000x',
+      desc: isRu
+        ? 'Выводите до падения ракеты! Взрывной азарт, мгновенные раунды и сертифицированный Provably Fair.'
+        : 'Cash out before the rocket crashes! Pure adrenaline rush, instant rounds and provably fair RNG.',
+      buttonText: isRu ? 'ИГРАТЬ В КРАШ' : 'PLAY CRASH NOW',
+      buttonAction: onQuickPlay,
+      bgImage: `${baseUrl}banners/hero-crash.webp`,
+      accentBadge: '🚀 10,000x',
+    },
+    {
+      id: 'slide-live',
+      tag: isRu ? 'LIVE CASINO VIP' : 'LIVE CASINO VIP',
+      title: isRu ? 'ПРЯМАЯ ТРАНСЛЯЦИЯ В 4K' : 'LIVE DEALERS STREAM 4K',
+      desc: isRu
+        ? 'Европейская и американская рулетка, блэкджек и баккара с профессиональными крупье в режиме реального времени.'
+        : 'European and American roulette, blackjack and baccarat tables streamed in 4K with real croupiers.',
+      buttonText: isRu ? 'К СТОЛАМ' : 'VIEW TABLES',
+      buttonAction: onQuickPlay,
+      bgImage: `${baseUrl}banners/hero-live.webp`,
+      accentBadge: '🎲 REAL 4K',
+    },
+    {
+      id: 'slide-vip',
+      tag: isRu ? 'VIP ПРИВИЛЕГИИ' : 'VIP PRIVILEGES',
+      title: isRu ? 'КЭШБЭК ДО 20% КАЖДЫЙ ПОНЕДЕЛЬНИК' : 'UP TO 20% WEEKLY CASHBACK',
+      desc: isRu
+        ? 'Эксклюзивные персональные подарки, увеличенные лимиты и мгновенный кэшбэк без скрытых условий.'
+        : 'Exclusive personal perks, increased withdrawal limits and instant weekly cashback with zero hidden wager.',
+      buttonText: isRu ? 'УЗНАТЬ БОЛЬШЕ' : 'LEARN MORE',
+      buttonAction: onOpenTournaments,
+      bgImage: `${baseUrl}banners/hero-vip.webp`,
+      accentBadge: '👑 VIP 20%',
     },
   ];
 

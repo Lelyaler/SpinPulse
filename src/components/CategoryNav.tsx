@@ -21,12 +21,23 @@ interface CategoryNavProps {
 const providers: (GameProvider | 'All Providers')[] = [
   'All Providers',
   'Pragmatic Play',
-  'Evolution',
-  'NetEnt',
   'Hacksaw Gaming',
-  'Play\'n GO',
+  'Push Gaming',
   'NoLimit City',
-  'Spribe',
+  '3 Oaks',
+  'SmartSoft',
+  'BGaming',
+  'Belatra',
+  'Endorphina',
+  'Evoplay',
+  'Spinomenal',
+  'Gamzix',
+  'Turbo Games',
+  'Amusnet',
+  'Evolution',
+  'Yggdrasil',
+  'PG Soft',
+  'NetEnt',
 ];
 
 export const CategoryNav: React.FC<CategoryNavProps> = ({

@@ -207,8 +207,12 @@ export const SlotGameModal: React.FC<SlotGameModalProps> = ({
         {/* Slot Cabinet Topbar */}
         <div className="flex items-center justify-between px-6 py-4 bg-white/90 border-b border-amber-100">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-xl shadow-xs">
-              🎰
+            <div className="w-10 h-10 rounded-2xl overflow-hidden border border-amber-400/30 flex items-center justify-center bg-slate-900 shadow-xs shrink-0">
+              {game.coverImage ? (
+                <img src={game.coverImage} alt={game.title} className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-xl">🎰</span>
+              )}
             </div>
             <div>
               <div className="flex items-center gap-2">

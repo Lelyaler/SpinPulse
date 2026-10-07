@@ -20,7 +20,12 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
   };
 
   return (
-    <div className="rounded-3xl bg-white border border-amber-200/90 shadow-md p-5 sm:p-7 overflow-hidden">
+    <div className="rounded-3xl bg-white border border-amber-200/90 shadow-md p-5 sm:p-7 overflow-hidden relative">
+      {/* Background Graphic Watermark */}
+      <div 
+        className="absolute top-0 right-0 w-2/3 h-full bg-cover bg-right opacity-[0.06] pointer-events-none mix-blend-multiply"
+        style={{ backgroundImage: `url("${import.meta.env.BASE_URL}banners/hero-tournament.webp")` }}
+      />
       {/* Top Banner Row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-amber-100">
         <div className="flex items-center gap-3">

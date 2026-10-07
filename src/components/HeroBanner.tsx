@@ -38,7 +38,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
       {/* Background Graphic Image with luxurious overlays */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay scale-105 transition-transform duration-1000"
-        style={{ backgroundImage: `url("${baseUrl}banners/casino-hero.jpg")` }}
+        style={{ backgroundImage: `url("${baseUrl}banners/hero-welcome.webp")` }}
       />
       
       {/* Warm Golden Glow Gradients */}
