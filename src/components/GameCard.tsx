@@ -1,5 +1,6 @@
 import React from 'react';
 import { 
+  Play,
   Flame, 
   Sparkles, 
   Heart,
@@ -79,7 +80,15 @@ export const GameCard: React.FC<GameCardProps> = ({
           <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'text-white'}`} />
         </button>
 
-        <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" />
+        {/* Hover overlay with visual Play and DEMO badge (non-clickable) */}
+        <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center p-3 gap-2 pointer-events-none select-none">
+          <div className="w-12 h-12 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform">
+            <Play className="w-5 h-5 fill-slate-950 translate-x-0.5" />
+          </div>
+          <span className="px-3 py-1 rounded-lg bg-white/20 text-white font-bold text-[11px] tracking-wide">
+            {isRu ? 'ДЕМО' : 'DEMO'}
+          </span>
+        </div>
       </div>
 
       <div className="p-3.5 flex flex-col justify-between flex-1 bg-white">
@@ -99,21 +108,10 @@ export const GameCard: React.FC<GameCardProps> = ({
         </div>
 
         <div className="mt-3 pt-2">
-          <button
-            onClick={() => {
-              playButtonClick();
-              onToggleFavorite(game.id);
-            }}
-            aria-label={isFavorite ? (isRu ? 'Удалить из избранного' : 'Remove from favorites') : (isRu ? 'В избранное' : 'Add to favorites')}
-            className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[44px] ${
-              isFavorite
-                ? 'bg-rose-50 text-rose-600 hover:bg-rose-100'
-                : 'bg-slate-100 hover:bg-slate-900 text-slate-800 hover:text-white'
-            }`}
-          >
-            <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'text-current'}`} />
-            <span>{isFavorite ? (isRu ? 'В избранном' : 'Favorited') : (isRu ? 'В избранное' : 'Favorite')}</span>
-          </button>
+          <div className="w-full py-2.5 rounded-xl bg-slate-100 group-hover:bg-slate-900 text-slate-800 group-hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors select-none min-h-[44px]">
+            <Play className="w-3.5 h-3.5 fill-current" />
+            <span>{isRu ? 'Играть' : 'Play'}</span>
+          </div>
         </div>
       </div>
     </div>
