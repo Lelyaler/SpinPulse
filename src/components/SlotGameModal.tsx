@@ -25,6 +25,7 @@ interface SlotGameModalProps {
   balance: number;
   onUpdateBalance: (newBalance: number) => void;
   onRecordBet?: (bet: PlacedCasinoBet) => void;
+  isRu?: boolean;
 }
 
 const symbols: SlotSymbol[] = [
@@ -55,6 +56,7 @@ export const SlotGameModal: React.FC<SlotGameModalProps> = ({
   balance,
   onUpdateBalance,
   onRecordBet,
+  isRu = false,
 }) => {
   const [betAmount, setBetAmount] = useState<number>(25);
   const [reels, setReels] = useState<SlotSymbol[][]>([
@@ -84,7 +86,7 @@ export const SlotGameModal: React.FC<SlotGameModalProps> = ({
   const handleSpin = () => {
     if (isSpinning) return;
     if (balance < betAmount) {
-      alert('Insufficient demo balance! Please top up.');
+      alert(isRu ? 'Недостаточно демо-монет! Пополните баланс в шапке.' : 'Insufficient demo balance! Please top up.');
       return;
     }
 
@@ -353,7 +355,7 @@ export const SlotGameModal: React.FC<SlotGameModalProps> = ({
                 }`}
               >
                 <RotateCw className={`w-5 h-5 ${isSpinning ? 'animate-spin' : ''}`} />
-                <span>SPIN</span>
+                <span>{isRu ? 'СПИН' : 'SPIN'}</span>
               </button>
             </div>
           </div>

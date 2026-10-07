@@ -1,29 +1,42 @@
+import React from 'react';
 import { ShieldCheck, Zap, Crown, Radio } from 'lucide-react';
 
-export const CasinoPerks: React.FC = () => {
+interface CasinoPerksProps {
+  isRu?: boolean;
+}
+
+export const CasinoPerks: React.FC<CasinoPerksProps> = ({ isRu = false }) => {
   const perks = [
     {
       icon: ShieldCheck,
-      title: 'Provably Fair Gaming',
-      desc: 'Cryptographic SHA-256 random seeds verified on-chain for 100% fair outcomes.',
+      title: isRu ? 'Контроль честности RNG' : 'Provably Fair Gaming',
+      desc: isRu 
+        ? 'Криптографический алгоритм SHA-256 для 100% случайных и честных результатов.'
+        : 'Cryptographic SHA-256 random seeds verified on-chain for 100% fair outcomes.',
       badge: 'Certified RNG',
     },
     {
       icon: Zap,
-      title: 'Zero Latency Engine',
-      desc: 'Sub-millisecond spin response with high framerate CSS3 & WebGL rendering.',
+      title: isRu ? 'Движок нулевой задержки' : 'Zero Latency Engine',
+      desc: isRu
+        ? 'Мгновенный отклик барабанов и плавная анимация спинов 60 FPS на всех устройствах.'
+        : 'Sub-millisecond spin response with high framerate CSS3 & WebGL rendering.',
       badge: '60 FPS',
     },
     {
       icon: Radio,
-      title: 'Studio HD Streams',
-      desc: 'Multi-angle VIP tables powered by Evolution Gaming & Pragmatic Play Live.',
+      title: isRu ? 'Студии HD трансляций' : 'Studio HD Streams',
+      desc: isRu
+        ? 'Прямой эфир рулетки и блэкджека от Evolution Gaming и Pragmatic Play Live.'
+        : 'Multi-angle VIP tables powered by Evolution Gaming & Pragmatic Play Live.',
       badge: '4K Ultra-HD',
     },
     {
       icon: Crown,
-      title: 'Royal VIP Tiers',
-      desc: 'Level up your rank to unlock higher spin multipliers, daily drops, and exclusive events.',
+      title: isRu ? 'VIP Привилегии' : 'Royal VIP Tiers',
+      desc: isRu
+        ? 'Повышайте уровень лояльности для эксклюзивных бонусов, кэшбэка и подарков.'
+        : 'Level up your rank to unlock higher spin multipliers, daily drops, and exclusive events.',
       badge: 'Gold Tier Active',
     },
   ];
@@ -32,13 +45,18 @@ export const CasinoPerks: React.FC = () => {
     <div className="mt-14 mb-8">
       <div className="text-center max-w-xl mx-auto mb-8">
         <span className="text-xs font-black uppercase tracking-widest text-amber-600 bg-amber-100/70 px-3 py-1 rounded-full border border-amber-300/40">
-          Industry Gold Standard
+          {isRu ? 'ЗОЛОТОЙ СТАНДАРТ КАЧЕСТВА' : 'Industry Gold Standard'}
         </span>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
-          Why Players Choose <span className="bg-linear-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">SpinPulse VIP</span>
+          {isRu ? 'Преимущества' : 'Why Players Choose'}{' '}
+          <span className="bg-linear-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">
+            SpinPulse VIP
+          </span>
         </h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
-          Built for true iGaming enthusiasts who appreciate high-end visual design and fair gameplay.
+          {isRu 
+            ? 'Создано для ценителей премиального визуального оформления и честного демо-геймплея.'
+            : 'Built for true iGaming enthusiasts who appreciate high-end visual design and fair gameplay.'}
         </p>
       </div>
 
