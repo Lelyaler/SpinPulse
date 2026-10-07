@@ -9,14 +9,12 @@ import {
 import { playButtonClick } from '../utils/casinoAudio';
 
 interface HeroCarouselProps {
-  onQuickPlay: () => void;
   onClaimBonus: () => void;
   onOpenTournaments: () => void;
   isRu: boolean;
 }
 
 export const HeroCarousel: React.FC<HeroCarouselProps> = ({
-  onQuickPlay,
   onClaimBonus,
   onOpenTournaments,
   isRu,
@@ -35,8 +33,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       desc: isRu
         ? 'Молнии Зевса с множителями до 1,000x и эпический макс-вин 15,000x! Испытайте демо прямо сейчас.'
         : 'Zeus lightning multipliers up to 1,000x and epic 15,000x max win potential! Try demo now.',
-      buttonText: isRu ? 'ИГРАТЬ В СЛОТ' : 'PLAY ZEUS NOW',
-      buttonAction: onQuickPlay,
+      buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
+      buttonAction: onClaimBonus,
       bgImage: `${baseUrl}banners/banner-zeus-bright.webp`,
       accentBadge: '⚡ 15,000x',
     },
@@ -59,8 +57,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       desc: isRu
         ? 'Успейте забрать выигрыш до взрыва ракеты! Мгновенные раунды с сертифицированным RNG.'
         : 'Cash out before the rocket crashes! Pure adrenaline rush, instant rounds and provably fair RNG.',
-      buttonText: isRu ? 'ИГРАТЬ В КРАШ' : 'PLAY CRASH NOW',
-      buttonAction: onQuickPlay,
+      buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
+      buttonAction: onClaimBonus,
       bgImage: `${baseUrl}banners/banner-crash-bright.webp`,
       accentBadge: '🚀 10,000x',
     },

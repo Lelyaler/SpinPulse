@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, Suspense, lazy } from 'react';
 import { Gamepad2 } from 'lucide-react';
-import { GameCategory, GameItem, PlacedCasinoBet } from './types';
+import { GameCategory, PlacedCasinoBet } from './types';
 import { gamesCatalog } from './data/gamesCatalog';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
@@ -13,8 +13,6 @@ import { VipLoyaltyBar } from './components/VipLoyaltyBar';
 import { CasinoPerks } from './components/CasinoPerks';
 import { isSoundEnabled, playWinCoinsSound } from './utils/casinoAudio';
 
-// Defer non-critical modals and heavy subcomponents until opened to maximize mobile performance
-const SlotGameModal = lazy(() => import('./components/SlotGameModal').then((m) => ({ default: m.SlotGameModal })));
 const LuckyWheelModal = lazy(() => import('./components/LuckyWheelModal').then((m) => ({ default: m.LuckyWheelModal })));
 const BonusesModal = lazy(() => import('./components/BonusesModal').then((m) => ({ default: m.BonusesModal })));
 const SupportModal = lazy(() => import('./components/SupportModal').then((m) => ({ default: m.SupportModal })));
@@ -63,8 +61,6 @@ export const App: React.FC = () => {
     );
   };
 
-  // Modals state
-  const [activeModalGame, setActiveModalGame] = useState<GameItem | null>(null);
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
   const [isLuckyWheelOpen, setIsLuckyWheelOpen] = useState<boolean>(false);
   const [isBonusesOpen, setIsBonusesOpen] = useState<boolean>(false);
@@ -197,10 +193,6 @@ export const App: React.FC = () => {
 
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 sm:space-y-8 w-full">
           <HeroCarousel
-            onQuickPlay={() => {
-              const hotSlot = gamesCatalog.find((g) => g.id === 'slot-olympus') || gamesCatalog[0];
-              setActiveModalGame(hotSlot);
-            }}
             onClaimBonus={handleTopUp}
             onOpenTournaments={scrollToTournament}
             isRu={isRu}
@@ -272,7 +264,6 @@ export const App: React.FC = () => {
                     <GameCard
                       key={game.id}
                       game={game}
-                      onPlay={(selected) => setActiveModalGame(selected)}
                       isFavorite={favorites.includes(game.id)}
                       onToggleFavorite={handleToggleFavorite}
                       isRu={isRu}
@@ -391,17 +382,6 @@ export const App: React.FC = () => {
 
       {/* Lazy-Loaded Modals & Drawers wrapped in Suspense */}
       <Suspense fallback={null}>
-        {activeModalGame && (
-          <SlotGameModal
-            game={activeModalGame}
-            isOpen={true}
-            onClose={() => setActiveModalGame(null)}
-            isFavorite={favorites.includes(activeModalGame.id)}
-            onToggleFavorite={handleToggleFavorite}
-            isRu={isRu}
-          />
-        )}
-
         {isLuckyWheelOpen && (
           <LuckyWheelModal
             isOpen={true}

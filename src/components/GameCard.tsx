@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Play, 
   Flame, 
   Sparkles, 
   Heart,
@@ -13,7 +12,6 @@ import { playButtonClick } from '../utils/casinoAudio';
 
 interface GameCardProps {
   game: GameItem;
-  onPlay: (game: GameItem) => void;
   isFavorite: boolean;
   onToggleFavorite: (gameId: string) => void;
   isRu: boolean;
@@ -21,7 +19,6 @@ interface GameCardProps {
 
 export const GameCard: React.FC<GameCardProps> = ({ 
   game, 
-  onPlay, 
   isFavorite, 
   onToggleFavorite,
   isRu
@@ -82,22 +79,7 @@ export const GameCard: React.FC<GameCardProps> = ({
           <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'text-white'}`} />
         </button>
 
-        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center p-3 gap-2 z-20">
-          <button
-            onClick={() => {
-              playButtonClick();
-              onPlay(game);
-            }}
-            aria-label={`Запустить ${game.title}`}
-            className="w-12 h-12 rounded-full bg-amber-400 hover:bg-amber-300 hover:scale-110 active:scale-95 text-slate-950 flex items-center justify-center shadow-lg transition-transform cursor-pointer"
-          >
-            <Play className="w-5 h-5 fill-slate-950 translate-x-0.5" />
-          </button>
-          
-          <span className="px-3 py-1 rounded-lg bg-white/20 text-white font-bold text-[11px] tracking-wide">
-            {isRu ? 'ДЕМО' : 'DEMO'}
-          </span>
-        </div>
+        <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" />
       </div>
 
       <div className="p-3.5 flex flex-col justify-between flex-1 bg-white">
@@ -120,13 +102,17 @@ export const GameCard: React.FC<GameCardProps> = ({
           <button
             onClick={() => {
               playButtonClick();
-              onPlay(game);
+              onToggleFavorite(game.id);
             }}
-            aria-label={`Играть в слот ${game.title}`}
-            className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-900 text-slate-800 hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[44px]"
+            aria-label={isFavorite ? (isRu ? 'Удалить из избранного' : 'Remove from favorites') : (isRu ? 'В избранное' : 'Add to favorites')}
+            className={`w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[44px] ${
+              isFavorite
+                ? 'bg-rose-50 text-rose-600 hover:bg-rose-100'
+                : 'bg-slate-100 hover:bg-slate-900 text-slate-800 hover:text-white'
+            }`}
           >
-            <Play className="w-3 h-3 fill-current" />
-            <span>{isRu ? 'Играть' : 'Play'}</span>
+            <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'text-current'}`} />
+            <span>{isFavorite ? (isRu ? 'В избранном' : 'Favorited') : (isRu ? 'В избранное' : 'Favorite')}</span>
           </button>
         </div>
       </div>
