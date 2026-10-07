@@ -88,10 +88,6 @@ export const App: React.FC = () => {
     localStorage.setItem('spinpulse_history', JSON.stringify(history));
   }, [history]);
 
-  const handleUpdateBalance = (newBal: number) => {
-    setBalance(Math.max(0, Number(newBal.toFixed(2))));
-  };
-
   const handleTopUp = () => {
     setBalance((prev) => prev + 500);
   };
@@ -102,10 +98,6 @@ export const App: React.FC = () => {
       setHasClaimedDaily(true);
       playWinCoinsSound();
     }
-  };
-
-  const handleRecordBet = (bet: PlacedCasinoBet) => {
-    setHistory((prev) => [bet, ...prev.slice(0, 49)]);
   };
 
   const handleClearHistory = () => {
@@ -399,14 +391,13 @@ export const App: React.FC = () => {
 
       {/* Lazy-Loaded Modals & Drawers wrapped in Suspense */}
       <Suspense fallback={null}>
-        {Boolean(activeModalGame) && (
+        {activeModalGame && (
           <SlotGameModal
             game={activeModalGame}
             isOpen={true}
             onClose={() => setActiveModalGame(null)}
-            balance={balance}
-            onUpdateBalance={handleUpdateBalance}
-            onRecordBet={handleRecordBet}
+            isFavorite={favorites.includes(activeModalGame.id)}
+            onToggleFavorite={handleToggleFavorite}
             isRu={isRu}
           />
         )}
