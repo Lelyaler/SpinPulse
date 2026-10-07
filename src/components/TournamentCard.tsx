@@ -20,24 +20,22 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
   };
 
   return (
-    <div className="rounded-3xl bg-white border border-amber-200/90 shadow-md p-5 sm:p-7 overflow-hidden relative">
-      {/* Background Graphic Watermark */}
+    <div className="rounded-3xl bg-white border border-slate-100 shadow-xs p-5 sm:p-7 overflow-hidden relative">
       <div 
-        className="absolute top-0 right-0 w-2/3 h-full bg-cover bg-right opacity-[0.06] pointer-events-none mix-blend-multiply"
+        className="absolute top-0 right-0 w-2/3 h-full bg-cover bg-right opacity-[0.04] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: `url("${import.meta.env.BASE_URL}banners/hero-tournament.webp")` }}
       />
-      {/* Top Banner Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-amber-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-linear-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
-            <Trophy className="w-6 h-6 fill-white" />
+          <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center text-amber-400 shadow-xs">
+            <Trophy className="w-6 h-6 fill-amber-400 text-amber-400" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-emerald-100 text-emerald-800 border border-emerald-200">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">
                 {isRu ? 'АКТИВЕН' : 'ACTIVE'}
               </span>
-              <span className="text-xs font-bold text-slate-400">
+              <span className="text-xs font-semibold text-slate-400">
                 {currentTournament.subtitle}
               </span>
             </div>
@@ -47,13 +45,12 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
           </div>
         </div>
 
-        {/* Prize Pool & Timer */}
         <div className="flex items-center gap-4">
           <div className="text-right">
             <span className="text-[10px] uppercase font-bold text-slate-400 block">
               {isRu ? 'Призовой Фонд' : 'Prize Pool'}
             </span>
-            <span className="text-xl sm:text-2xl font-black text-amber-600 font-mono">
+            <span className="text-xl sm:text-2xl font-black text-slate-900 font-mono">
               {currentTournament.prizePool}
             </span>
           </div>
@@ -63,14 +60,13 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
               <Clock className="w-3 h-3 text-rose-500" />
               {isRu ? 'До конца' : 'Ends In'}
             </span>
-            <span className="text-sm sm:text-base font-extrabold text-slate-800 font-mono">
+            <span className="text-sm sm:text-base font-bold text-slate-800 font-mono">
               35h : 14m : 22s
             </span>
           </div>
         </div>
       </div>
 
-      {/* Leaderboard Table */}
       <div className="mt-5">
         <div className="flex items-center justify-between mb-3 px-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
           <span>{isRu ? 'Лидеры турнира' : 'Top Contenders'}</span>
@@ -86,12 +82,12 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
               key={item.rank}
               className={`p-3 rounded-2xl border transition-all flex items-center justify-between ${
                 item.rank === 1
-                  ? 'bg-linear-to-r from-amber-50 to-yellow-50/60 border-amber-300 shadow-xs'
-                  : 'bg-slate-50/60 hover:bg-amber-50/40 border-slate-100'
+                  ? 'bg-amber-50/50 border-amber-200/60 shadow-xs'
+                  : 'bg-slate-50/60 hover:bg-slate-100/70 border-slate-100'
               }`}
             >
               <div className="flex items-center gap-3">
-                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-black ${
+                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                   item.rank === 1 ? 'bg-amber-500 text-white' :
                   item.rank === 2 ? 'bg-slate-400 text-white' :
                   item.rank === 3 ? 'bg-amber-700 text-white' :
@@ -121,8 +117,7 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
         </div>
       </div>
 
-      {/* Join Action button */}
-      <div className="mt-5 pt-4 border-t border-amber-100 flex items-center justify-between">
+      <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
         <span className="text-xs text-slate-500 font-medium hidden sm:inline">
           {isRu 
             ? 'Делайте спины в турнирных слотах для набора очков' 
@@ -132,10 +127,10 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
         <button
           onClick={handleJoin}
           disabled={hasJoined}
-          className={`px-6 py-2.5 rounded-2xl text-xs font-black tracking-wide transition-all cursor-pointer ${
+          className={`px-6 py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer min-h-[40px] ${
             hasJoined
-              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 cursor-default'
-              : 'bg-linear-to-r from-amber-500 to-rose-500 hover:brightness-105 active:scale-95 text-white shadow-md shadow-amber-500/25'
+              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-default'
+              : 'bg-slate-900 hover:bg-slate-800 active:scale-95 text-white shadow-xs'
           }`}
         >
           {hasJoined ? (

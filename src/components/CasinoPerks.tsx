@@ -44,19 +44,19 @@ export const CasinoPerks: React.FC<CasinoPerksProps> = ({ isRu = false }) => {
   return (
     <div className="mt-14 mb-8">
       <div className="text-center max-w-xl mx-auto mb-8">
-        <span className="text-xs font-black uppercase tracking-widest text-amber-600 bg-amber-100/70 px-3 py-1 rounded-full border border-amber-300/40">
-          {isRu ? 'ЗОЛОТОЙ СТАНДАРТ КАЧЕСТВА' : 'Industry Gold Standard'}
+        <span className="text-xs font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+          {isRu ? 'СТАНДАРТ КАЧЕСТВА' : 'Industry Standard'}
         </span>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
           {isRu ? 'Преимущества' : 'Why Players Choose'}{' '}
-          <span className="bg-linear-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">
-            SpinPulse VIP
+          <span className="text-amber-500">
+            SpinPulse
           </span>
         </h2>
         <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
           {isRu 
-            ? 'Создано для ценителей премиального визуального оформления и честного демо-геймплея.'
-            : 'Built for true iGaming enthusiasts who appreciate high-end visual design and fair gameplay.'}
+            ? 'Создано для ценителей качественного визуального оформления и честного демо-геймплея.'
+            : 'Built for gaming enthusiasts who appreciate clean visual design and fair gameplay.'}
         </p>
       </div>
 
@@ -66,18 +66,18 @@ export const CasinoPerks: React.FC<CasinoPerksProps> = ({ isRu = false }) => {
           return (
             <div
               key={idx}
-              className="p-5 rounded-3xl bg-white border border-amber-200/70 shadow-xs hover:shadow-md hover:border-amber-300 transition-all flex flex-col justify-between"
+              className="p-5 rounded-3xl bg-white border border-slate-100 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-700">
+                  <div className="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-800">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200/60">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
                     {p.badge}
                   </span>
                 </div>
-                <h3 className="font-black text-slate-900 text-sm mb-1.5">{p.title}</h3>
+                <h3 className="font-bold text-slate-900 text-sm mb-1.5">{p.title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed font-medium">{p.desc}</p>
               </div>
             </div>

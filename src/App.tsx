@@ -171,8 +171,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50/50 via-white to-amber-50/30 text-slate-800 antialiased selection:bg-amber-300 selection:text-amber-950 flex flex-col font-sans">
-      {/* Izzi Collapsible Sidebar */}
+    <div className="min-h-screen bg-slate-50 text-slate-800 antialiased flex flex-col font-sans">
       <Sidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
@@ -188,9 +187,7 @@ export const App: React.FC = () => {
         favoritesCount={favorites.length}
       />
 
-      {/* Main Content Area (offset left on lg screens when sidebar is present) */}
       <div className="lg:pl-64 flex flex-col flex-1">
-        {/* Top Header */}
         <Header
           onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           balance={balance}
@@ -206,9 +203,7 @@ export const App: React.FC = () => {
           onOpenVip={scrollToVip}
         />
 
-        {/* Main Lobby Container */}
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 sm:space-y-8 w-full">
-          {/* Hero Carousel (Izzi Multi-Slide Promotions) */}
           <HeroCarousel
             onQuickPlay={() => {
               const hotSlot = gamesCatalog.find((g) => g.id === 'slot-olympus') || gamesCatalog[0];
@@ -219,10 +214,8 @@ export const App: React.FC = () => {
             isRu={isRu}
           />
 
-          {/* Izzi Progressive Jackpot & Now Winning Split Block */}
           <JackpotAndWins isRu={isRu} />
 
-          {/* Categories, Providers & Live Search navigation */}
           <CategoryNav
             activeCategory={activeCategory}
             onSelectCategory={setActiveCategory}
@@ -235,7 +228,6 @@ export const App: React.FC = () => {
             isRu={isRu}
           />
 
-          {/* Games Catalog Section */}
           <section className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -249,24 +241,23 @@ export const App: React.FC = () => {
                   {activeCategory === 'table' && (isRu ? 'Классические настольные' : 'Classic Table Games')}
                   {activeCategory === 'favorites' && (isRu ? 'Ваши избранные игры' : 'Your Favorites')}
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-800 border border-amber-300/60">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200/80 text-slate-700">
                   {filteredGames.length}
                 </span>
               </div>
 
-              <div className="text-xs font-bold text-slate-600 hidden sm:block">
+              <div className="text-xs font-semibold text-slate-500 hidden sm:block">
                 {isRu ? 'Сертифицированный RNG • Демо-кредиты' : 'Provably Fair • Instant Demo Currency'}
               </div>
             </div>
 
-            {/* Grid of Visual Game Cards */}
             {filteredGames.length === 0 ? (
-              <div className="py-20 text-center bg-white rounded-3xl border border-dashed border-amber-200 p-8">
-                <Gamepad2 className="w-12 h-12 text-amber-300 mx-auto mb-3" />
+              <div className="py-20 text-center bg-white rounded-3xl border border-slate-200/80 p-8">
+                <Gamepad2 className="w-12 h-12 text-slate-400 mx-auto mb-3" />
                 <h3 className="text-base font-black text-slate-700">
                   {isRu ? 'Игры не найдены' : 'No games found'}
                 </h3>
-                <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto font-medium">
+                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto font-medium">
                   {isRu 
                     ? 'По выбранным критериям ничего не найдено. Попробуйте сбросить фильтры или выбрать "Все игры".' 
                     : 'No titles matched your filter or search criteria. Try choosing "All Games" or clearing search.'}
@@ -277,7 +268,7 @@ export const App: React.FC = () => {
                     setSelectedProvider('All Providers');
                     setSearchQuery('');
                   }}
-                  className="mt-4 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs cursor-pointer min-h-[44px]"
+                  className="mt-4 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer min-h-[44px]"
                 >
                   {isRu ? 'Сбросить фильтры' : 'Reset Filters'}
                 </button>
@@ -297,7 +288,6 @@ export const App: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Show More Games Button (drastically keeps DOM lightweight) */}
                 {filteredGames.length > visibleCount && (
                   <div className="flex justify-center pt-5 pb-2">
                     <button
@@ -306,14 +296,14 @@ export const App: React.FC = () => {
                         setVisibleCount((prev) => prev + step);
                       }}
                       aria-label={isRu ? 'Показать еще игры' : 'Show more games'}
-                      className="px-8 py-3.5 rounded-2xl bg-white hover:bg-amber-50 active:scale-95 border-2 border-amber-300 font-black text-xs sm:text-sm text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
+                      className="px-8 py-3.5 rounded-2xl bg-white hover:bg-slate-50 active:scale-95 border border-slate-200 font-bold text-xs sm:text-sm text-slate-900 shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
                     >
                       <span>
                         {isRu 
                           ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24, filteredGames.length - visibleCount)})` 
                           : `SHOW MORE (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24, filteredGames.length - visibleCount)})`}
                       </span>
-                      <span className="text-amber-800 text-xs font-bold">
+                      <span className="text-slate-500 text-xs font-semibold">
                         ({visibleCount} / {filteredGames.length})
                       </span>
                     </button>
@@ -323,91 +313,84 @@ export const App: React.FC = () => {
             )}
           </section>
 
-          {/* Izzi Tournaments Leaderboard Block */}
           <div ref={tournamentSectionRef} className="pt-2">
             <TournamentCard isRu={isRu} />
           </div>
 
-          {/* Izzi VIP Club Loyalty Progress */}
           <div ref={vipSectionRef} className="pt-2">
             <VipLoyaltyBar isRu={isRu} />
           </div>
 
-          {/* Official Licensed Game Providers Marquee */}
-          <div className="p-5 sm:p-6 rounded-3xl bg-white border border-amber-200/70 shadow-xs">
+          <div className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-100 shadow-xs">
             <div className="text-center mb-4">
-              <span className="text-[11px] font-black uppercase tracking-widest text-slate-600">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
                 {isRu ? 'Официальные сертифицированные провайдеры софта' : 'Official Licensed Game Studios & Providers'}
               </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-75 hover:opacity-100 transition-opacity">
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 PRAGMATIC PLAY
               </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 EVOLUTION
               </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 HACKSAW GAMING
               </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 SPRIBE
               </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 NETENT
               </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 PLAY&apos;N GO
               </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
                 NOLIMIT CITY
               </span>
             </div>
           </div>
 
-          {/* Casino Features & Perks */}
           <CasinoPerks isRu={isRu} />
         </main>
 
-        {/* Footer in Izzi Style (Curacao Demo License, Payment Methods, Responsible Gaming) */}
-        <footer className="mt-auto border-t border-amber-200/80 bg-white/95 py-10 px-4 sm:px-6 lg:px-8">
+        <footer className="mt-auto border-t border-slate-200/80 bg-white py-10 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto space-y-6">
-            {/* Top Footer row: Payment Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-4 border-b border-slate-100 text-xs font-black text-slate-600">
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">VISA</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">MASTERCARD</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">BITCOIN</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">ETHEREUM</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">USDT TRC20</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">SKRILL</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">APPLE PAY</span>
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-4 border-b border-slate-100 text-xs font-semibold text-slate-500">
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">VISA</span>
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">MASTERCARD</span>
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">BITCOIN</span>
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">ETHEREUM</span>
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">USDT TRC20</span>
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">SKRILL</span>
+              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">APPLE PAY</span>
             </div>
 
-            {/* Bottom Footer Info */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-linear-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white text-sm font-black shadow-xs">
+                <div className="w-10 h-10 rounded-2xl bg-slate-900 flex items-center justify-center text-amber-400 text-sm font-black shadow-xs">
                   👑
                 </div>
                 <div>
                   <span className="text-base font-black text-slate-900">SpinPulse VIP Lounge</span>
-                  <p className="text-xs text-slate-600 font-medium">
+                  <p className="text-xs text-slate-500 font-medium">
                     {isRu 
-                      ? 'Премиальный демонстрационный симулятор онлайн-казино в стиле Izzi. React 19 & Tailwind CSS.'
-                      : 'High-end demo iGaming portal & casino simulator inspired by Izzi. React 19 & Tailwind CSS.'}
+                      ? 'Премиальный демонстрационный симулятор онлайн-казино. React 19 & Tailwind CSS.'
+                      : 'High-end demo iGaming portal & casino simulator. React 19 & Tailwind CSS.'}
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-slate-700">
-                <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
+              <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-slate-600">
+                <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
                   18+
                 </span>
                 <span>{isRu ? 'Демо-валюта' : 'Demo Currency Only'}</span>
                 <span>•</span>
                 <span>{isRu ? 'Сертифицированный RNG' : 'Certified Fair RNG'}</span>
                 <span>•</span>
-                <span>Curacao Demo #8048/JAZ</span>
+                <span>Demo License #8048/JAZ</span>
               </div>
             </div>
           </div>

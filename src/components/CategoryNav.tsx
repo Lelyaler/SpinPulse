@@ -92,21 +92,18 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
   };
 
   return (
-    <div className="space-y-3.5">
-      {/* Dedicated Full-Width Category Navigation Row - Never squashed by search */}
+    <div className="space-y-3">
       <div className="relative group/nav">
-        {/* Left Scroll Arrow (shown when scrolled right) */}
         {canScrollLeft && (
           <button
             onClick={() => handleScroll('left')}
             aria-label={isRu ? 'Прокрутить категории влево' : 'Scroll categories left'}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/95 shadow-md border border-amber-200 text-slate-800 hover:text-amber-600 hover:bg-amber-50 flex items-center justify-center transition-all cursor-pointer hidden sm:flex"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer hidden sm:flex"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
         )}
 
-        {/* Scrollable Categories List */}
         <div
           ref={scrollContainerRef}
           onScroll={checkScroll}
@@ -121,24 +118,24 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   playButtonClick();
                   onSelectCategory(cat.id);
                 }}
-                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all shrink-0 cursor-pointer min-h-[44px] ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer min-h-[44px] ${
                   isActive
-                    ? 'bg-linear-to-r from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/25 scale-[1.02]'
-                    : 'bg-white hover:bg-amber-50/90 text-slate-800 hover:text-amber-900 border border-slate-200 hover:border-amber-300'
+                    ? 'bg-slate-900 text-white shadow-sm scale-[1.02]'
+                    : 'bg-white hover:bg-slate-100/80 text-slate-700 hover:text-slate-900 shadow-2xs border border-slate-100'
                 }`}
               >
                 <span className="text-base select-none">{cat.icon}</span>
                 <span>{cat.label}</span>
                 {cat.badge && (
                   <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded-md ${
-                    isActive ? 'bg-white/25 text-white' : 'bg-rose-100 text-rose-800 font-black'
+                    isActive ? 'bg-white/20 text-white' : 'bg-rose-100 text-rose-700 font-bold'
                   }`}>
                     {cat.badge}
                   </span>
                 )}
                 {cat.id === 'favorites' && favoritesCount > 0 && (
                   <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full ${
-                    isActive ? 'bg-white text-slate-900' : 'bg-rose-600 text-white'
+                    isActive ? 'bg-white text-slate-950' : 'bg-rose-500 text-white'
                   }`}>
                     {favoritesCount}
                   </span>
@@ -148,30 +145,27 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
           })}
         </div>
 
-        {/* Right Scroll Arrow (shown when can scroll right) */}
         {canScrollRight && (
           <button
             onClick={() => handleScroll('right')}
             aria-label={isRu ? 'Прокрутить категории вправо' : 'Scroll categories right'}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/95 shadow-md border border-amber-200 text-slate-800 hover:text-amber-600 hover:bg-amber-50 flex items-center justify-center transition-all cursor-pointer hidden sm:flex"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center justify-center transition-all cursor-pointer hidden sm:flex"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         )}
       </div>
 
-      {/* Dedicated Search & Provider Toolbar Row */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 bg-white/60 p-2 sm:p-2.5 rounded-2xl border border-amber-200/60 backdrop-blur-xs">
-        {/* Search Bar with Accessible Label & Clear Button */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
         <div className="relative flex-1 min-w-0">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
           <input
             type="text"
             placeholder={isRu ? `Поиск среди ${totalGames} игр и слотов...` : `Search ${totalGames} games, slots...`}
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label={isRu ? 'Поиск игр' : 'Search games'}
-            className="w-full pl-10 pr-10 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/60 shadow-xs transition-all min-h-[44px]"
+            className="w-full pl-10 pr-10 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 focus:ring-2 focus:ring-slate-100 shadow-2xs transition-all min-h-[44px]"
           />
           {searchQuery && (
             <button
@@ -180,16 +174,15 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 onSearchChange('');
               }}
               aria-label={isRu ? 'Очистить строку поиска' : 'Clear search input'}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-100 font-bold cursor-pointer"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-slate-100 font-bold cursor-pointer"
             >
               ✕
             </button>
           )}
         </div>
 
-        {/* Provider Dropdown Selector */}
         <div className="relative flex items-center shrink-0">
-          <Filter className="w-3.5 h-3.5 absolute left-3 text-amber-600 pointer-events-none" />
+          <Filter className="w-3.5 h-3.5 absolute left-3 text-slate-500 pointer-events-none" />
           <select
             value={selectedProvider}
             onChange={(e) => {
@@ -197,7 +190,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
               onSelectProvider(e.target.value);
             }}
             aria-label={isRu ? 'Фильтр по провайдеру софта' : 'Filter by game provider'}
-            className="w-full sm:w-auto pl-8 pr-8 py-2.5 bg-white border border-slate-200 hover:border-amber-300 rounded-xl text-xs font-bold text-slate-800 shadow-xs focus:outline-none focus:ring-2 focus:ring-amber-200/60 cursor-pointer min-h-[44px] appearance-none"
+            className="w-full sm:w-auto pl-8 pr-8 py-2.5 bg-white border border-slate-200 hover:border-slate-300 rounded-xl text-xs font-bold text-slate-700 shadow-2xs focus:outline-none focus:ring-2 focus:ring-slate-100 cursor-pointer min-h-[44px] appearance-none"
           >
             {providers.map((prov) => (
               <option key={prov} value={prov}>
@@ -205,14 +198,13 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
               </option>
             ))}
           </select>
-          <div className="absolute right-3 pointer-events-none text-slate-500 text-[10px]">▼</div>
+          <div className="absolute right-3 pointer-events-none text-slate-400 text-[10px]">▼</div>
         </div>
       </div>
 
-      {/* Quick Top Provider Pills (Horizontal Scroll on Mobile/Desktop) */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
-        <span className="text-slate-700 font-black uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
-          {isRu ? 'Топ студии:' : 'Top Studios:'}
+        <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
+          {isRu ? 'Студии:' : 'Studios:'}
         </span>
         {providers.slice(0, 10).map((prov) => {
           const isSelected = selectedProvider === prov;
@@ -225,10 +217,10 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 onSelectProvider(prov);
               }}
               aria-label={`Выбрать провайдера: ${provLabel}`}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer min-h-[34px] ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer min-h-[34px] ${
                 isSelected
-                  ? 'bg-amber-100 text-amber-950 border border-amber-400 shadow-xs font-black'
-                  : 'bg-white hover:bg-amber-50 text-slate-700 border border-slate-200/90 hover:border-amber-200'
+                  ? 'bg-slate-900 text-white font-bold'
+                  : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200/70'
               }`}
             >
               {provLabel}

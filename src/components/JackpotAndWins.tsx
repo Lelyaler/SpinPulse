@@ -62,18 +62,15 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-      {/* Left: Izzi Multi-Tier Jackpot Box (5 cols) */}
-      <div className="lg:col-span-5 rounded-3xl bg-linear-to-br from-amber-600 via-amber-700 to-amber-950 p-5 text-white shadow-lg relative overflow-hidden flex flex-col justify-between border border-amber-400/30">
-        {/* Background Texture from casino jackpot-bg */}
+      <div className="lg:col-span-5 rounded-3xl bg-linear-to-br from-amber-600 via-amber-700 to-amber-950 p-6 text-white shadow-md relative overflow-hidden flex flex-col justify-between">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-35 mix-blend-overlay pointer-events-none scale-105"
+          className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none scale-105"
           style={{ backgroundImage: `url("${import.meta.env.BASE_URL}banners/jackpot-bg.webp")` }}
         />
-        {/* Ambient glow */}
-        <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/15 rounded-full blur-2xl pointer-events-none" />
 
         <div>
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center">
                 <Trophy className="w-4 h-4 text-white" />
@@ -82,34 +79,32 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
                 {isRu ? 'Прогрессивный Джекпот' : 'Progressive Jackpot'}
               </span>
             </div>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-white/25 tracking-widest animate-pulse">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-white/20 tracking-wider">
               LIVE
             </span>
           </div>
 
-          {/* Grand Jackpot */}
           <div className="mt-2 mb-4">
             <span className="text-[10px] uppercase font-bold tracking-widest text-amber-200 block">
               GRAND PRIZE
             </span>
             <div className="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-baseline gap-1">
               <span className="text-amber-200 text-lg">$</span>
-              <span className="tabular-nums font-mono drop-shadow-xs">
+              <span className="tabular-nums font-mono">
                 {grandJackpot.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Major & Mini Tiers */}
-        <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/20 text-xs">
-          <div className="p-2.5 rounded-xl bg-black/15 backdrop-blur-xs">
+        <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/15 text-xs">
+          <div className="p-2.5 rounded-xl bg-black/20 backdrop-blur-xs">
             <span className="text-[9px] uppercase font-bold text-amber-200 block">MAJOR POT</span>
             <span className="font-black text-sm text-white font-mono">
               ${majorJackpot.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           </div>
-          <div className="p-2.5 rounded-xl bg-black/15 backdrop-blur-xs">
+          <div className="p-2.5 rounded-xl bg-black/20 backdrop-blur-xs">
             <span className="text-[9px] uppercase font-bold text-amber-200 block">MINI POT</span>
             <span className="font-black text-sm text-white font-mono">
               ${miniJackpot.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -118,11 +113,10 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
         </div>
       </div>
 
-      {/* Right: "Now Winning" Real-Time Strip (7 cols) */}
-      <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/80 p-4 sm:p-5 shadow-xs flex flex-col justify-between">
+      <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-100 p-5 shadow-xs flex flex-col justify-between">
         <div className="flex items-center justify-between mb-3 px-1">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+            <div className="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
               <Zap className="w-4 h-4" />
             </div>
             <div>
@@ -131,21 +125,20 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
               </span>
             </div>
           </div>
-          <span className="text-[11px] font-semibold text-slate-600">
+          <span className="text-[11px] font-semibold text-slate-500">
             {isRu ? 'Прямой стрим побед' : 'Live casino feed'}
           </span>
         </div>
 
-        {/* Live winners carousel / cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
           {winners.slice(0, 3).map((win) => (
             <div
               key={win.id}
-              className="p-3 rounded-2xl bg-linear-to-b from-amber-50/50 to-white border border-amber-200/60 shadow-xs hover:border-amber-300 transition-all flex sm:flex-col items-center sm:items-stretch justify-between animate-in fade-in gap-2"
+              className="p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100/70 transition-all flex sm:flex-col items-center sm:items-stretch justify-between gap-2"
             >
               <div className="flex items-center justify-between sm:mb-1.5 w-auto sm:w-full gap-2">
                 <span className="text-base select-none">{win.avatar}</span>
-                <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 shrink-0">
+                <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-white text-slate-800 shadow-2xs shrink-0">
                   {win.multiplier}x
                 </span>
               </div>
@@ -153,7 +146,7 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
                 <span className="text-xs font-black text-slate-900 block truncate">
                   {win.user}
                 </span>
-                <span className="text-[11px] text-slate-600 block truncate font-medium">
+                <span className="text-[11px] text-slate-500 block truncate font-medium">
                   {win.gameTitle}
                 </span>
               </div>
