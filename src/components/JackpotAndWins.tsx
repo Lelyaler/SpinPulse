@@ -25,39 +25,51 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
   const [miniJackpot, setMiniJackpot] = useState<number>(14850.50);
   const [winners, setWinners] = useState<LiveWinner[]>(initialWinners);
 
-  // Progressive jackpot ticking increments
+  // Progressive jackpot ticking increments (deferred start to free initial main thread)
   useEffect(() => {
-    const timer = setInterval(() => {
-      setGrandJackpot((prev) => prev + (Math.random() * 2.5 + 0.5));
-      setMajorJackpot((prev) => prev + (Math.random() * 0.8 + 0.1));
-      setMiniJackpot((prev) => prev + (Math.random() * 0.2 + 0.05));
-    }, 1200);
-    return () => clearInterval(timer);
+    let timer: NodeJS.Timeout;
+    const initialDelay = setTimeout(() => {
+      timer = setInterval(() => {
+        setGrandJackpot((prev) => prev + (Math.random() * 2.5 + 0.5));
+        setMajorJackpot((prev) => prev + (Math.random() * 0.8 + 0.1));
+        setMiniJackpot((prev) => prev + (Math.random() * 0.2 + 0.05));
+      }, 1500);
+    }, 2500);
+    return () => {
+      clearTimeout(initialDelay);
+      if (timer) clearInterval(timer);
+    };
   }, []);
 
   // Periodic new live winner simulated
   useEffect(() => {
-    const interval = setInterval(() => {
-      const randomName = mockNames[Math.floor(Math.random() * mockNames.length)];
-      const randomGame = mockGames[Math.floor(Math.random() * mockGames.length)];
-      const randomAvatar = mockAvatars[Math.floor(Math.random() * mockAvatars.length)];
-      const randomMult = Number((Math.random() * 95 + 6.5).toFixed(1));
-      const randomAmount = Number((randomMult * (Math.random() * 25 + 10)).toFixed(2));
+    let interval: NodeJS.Timeout;
+    const initialDelay = setTimeout(() => {
+      interval = setInterval(() => {
+        const randomName = mockNames[Math.floor(Math.random() * mockNames.length)];
+        const randomGame = mockGames[Math.floor(Math.random() * mockGames.length)];
+        const randomAvatar = mockAvatars[Math.floor(Math.random() * mockAvatars.length)];
+        const randomMult = Number((Math.random() * 95 + 6.5).toFixed(1));
+        const randomAmount = Number((randomMult * (Math.random() * 25 + 10)).toFixed(2));
 
-      const newWinner: LiveWinner = {
-        id: `win-${Date.now()}`,
-        user: randomName,
-        gameTitle: randomGame,
-        amount: randomAmount,
-        multiplier: randomMult,
-        time: isRu ? 'Только что' : 'Just now',
-        avatar: randomAvatar,
-      };
+        const newWinner: LiveWinner = {
+          id: `win-${Date.now()}`,
+          user: randomName,
+          gameTitle: randomGame,
+          amount: randomAmount,
+          multiplier: randomMult,
+          time: isRu ? 'Только что' : 'Just now',
+          avatar: randomAvatar,
+        };
 
-      setWinners((prev) => [newWinner, ...prev.slice(0, 5)]);
-    }, 8000);
+        setWinners((prev) => [newWinner, ...prev.slice(0, 5)]);
+      }, 8000);
+    }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initialDelay);
+      if (interval) clearInterval(interval);
+    };
   }, [isRu]);
 
   return (

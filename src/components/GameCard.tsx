@@ -1,13 +1,4 @@
 import React from 'react';
-import { 
-  Play,
-  Flame, 
-  Sparkles, 
-  Heart,
-  Radio, 
-  Rocket,
-  Zap
-} from 'lucide-react';
 import { GameItem } from '../types';
 import { playButtonClick } from '../utils/casinoAudio';
 
@@ -39,31 +30,26 @@ export const GameCard: React.FC<GameCardProps> = ({
 
         <div className="absolute top-2 left-2 flex items-center gap-1 pointer-events-none z-10">
           {game.isHot ? (
-            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-500 text-white shadow-xs">
-              <Flame className="w-2.5 h-2.5 fill-white" />
-              HOT
+            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-500 text-white shadow-xs">
+              🔥 HOT
             </span>
           ) : game.isNew ? (
-            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950 shadow-xs">
-              <Sparkles className="w-2.5 h-2.5 fill-slate-950" />
-              NEW
+            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950 shadow-xs">
+              ✨ NEW
             </span>
           ) : game.category === 'crash' ? (
-            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-indigo-600 text-white shadow-xs">
-              <Rocket className="w-2.5 h-2.5" />
-              CRASH
+            <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-indigo-600 text-white shadow-xs">
+              🚀 CRASH
             </span>
           ) : game.category === 'live' ? (
-            <span className="flex items-center gap-1 px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-xs">
-              <Radio className="w-2.5 h-2.5 animate-pulse" />
-              LIVE
+            <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-xs">
+              🔴 LIVE
             </span>
           ) : null}
 
           {game.isBonusBuy && (
-            <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-purple-700 text-white shadow-xs">
-              <Zap className="w-2.5 h-2.5" />
-              BUY
+            <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-purple-700 text-white shadow-xs">
+              ⚡ BUY
             </span>
           )}
         </div>
@@ -77,11 +63,13 @@ export const GameCard: React.FC<GameCardProps> = ({
           aria-label={isFavorite ? `Удалить ${game.title} из избранного` : `Добавить ${game.title} в избранное`}
           className="absolute top-2 right-2 w-8 h-8 rounded-full bg-slate-950/60 hover:bg-white text-white hover:text-rose-500 flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer z-10"
         >
-          <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'text-white'}`} />
+          <svg className={`w-3.5 h-3.5 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'fill-none text-white'}`} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          </svg>
         </button>
 
-        {/* Hover overlay with interactive Play and DEMO buttons (hover effects without modal) */}
-        <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center p-3 gap-2 z-20">
+        {/* Hover overlay with interactive Play and DEMO buttons (hover effects without modal, sm+ only) */}
+        <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden sm:flex flex-col items-center justify-center p-3 gap-2 z-20">
           <button
             type="button"
             onClick={(e) => {
@@ -91,7 +79,9 @@ export const GameCard: React.FC<GameCardProps> = ({
             aria-label={`Play ${game.title}`}
             className="w-12 h-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all cursor-pointer"
           >
-            <Play className="w-5 h-5 fill-slate-950 translate-x-0.5" />
+            <svg className="w-5 h-5 fill-slate-950 translate-x-0.5" viewBox="0 0 24 24">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
           </button>
           <button
             type="button"
@@ -132,7 +122,9 @@ export const GameCard: React.FC<GameCardProps> = ({
             aria-label={`Play ${game.title}`}
             className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-900 text-slate-800 hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-98 min-h-[44px]"
           >
-            <Play className="w-3.5 h-3.5 fill-current" />
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
             <span>{isRu ? 'Играть' : 'Play'}</span>
           </button>
         </div>

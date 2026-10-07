@@ -8,11 +8,11 @@ import { HeroCarousel } from './components/HeroCarousel';
 import { JackpotAndWins } from './components/JackpotAndWins';
 import { CategoryNav } from './components/CategoryNav';
 import { GameCard } from './components/GameCard';
-import { TournamentCard } from './components/TournamentCard';
-import { VipLoyaltyBar } from './components/VipLoyaltyBar';
-import { CasinoPerks } from './components/CasinoPerks';
 import { isSoundEnabled, playWinCoinsSound } from './utils/casinoAudio';
 
+const TournamentCard = lazy(() => import('./components/TournamentCard').then((m) => ({ default: m.TournamentCard })));
+const VipLoyaltyBar = lazy(() => import('./components/VipLoyaltyBar').then((m) => ({ default: m.VipLoyaltyBar })));
+const CasinoPerks = lazy(() => import('./components/CasinoPerks').then((m) => ({ default: m.CasinoPerks })));
 const LuckyWheelModal = lazy(() => import('./components/LuckyWheelModal').then((m) => ({ default: m.LuckyWheelModal })));
 const BonusesModal = lazy(() => import('./components/BonusesModal').then((m) => ({ default: m.BonusesModal })));
 const SupportModal = lazy(() => import('./components/SupportModal').then((m) => ({ default: m.SupportModal })));
@@ -135,9 +135,9 @@ export const App: React.FC = () => {
   // Progressive game display to prevent excessive DOM size and maximize mobile performance
   const getInitialVisibleCount = () => {
     if (typeof window !== 'undefined' && window.innerWidth < 640) {
-      return 12;
+      return 8;
     }
-    return 24;
+    return 12;
   };
 
   const [visibleCount, setVisibleCount] = useState<number>(getInitialVisibleCount);
@@ -145,6 +145,19 @@ export const App: React.FC = () => {
   useEffect(() => {
     setVisibleCount(getInitialVisibleCount());
   }, [activeCategory, selectedProvider, searchQuery]);
+
+  // Defer below-the-fold content until initial critical paint finishes
+  const [showDeferred, setShowDeferred] = useState(false);
+
+  useEffect(() => {
+    if ('requestIdleCallback' in window) {
+      const handle = (window as any).requestIdleCallback(() => setShowDeferred(true), { timeout: 800 });
+      return () => (window as any).cancelIdleCallback(handle);
+    } else {
+      const timer = setTimeout(() => setShowDeferred(true), 150);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const displayedGames = useMemo(() => {
     return filteredGames.slice(0, visibleCount);
@@ -275,7 +288,7 @@ export const App: React.FC = () => {
                   <div className="flex justify-center pt-5 pb-2">
                     <button
                       onClick={() => {
-                        const step = typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24;
+                        const step = typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12;
                         setVisibleCount((prev) => prev + step);
                       }}
                       aria-label={isRu ? 'Показать еще игры' : 'Show more games'}
@@ -283,8 +296,8 @@ export const App: React.FC = () => {
                     >
                       <span>
                         {isRu 
-                          ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24, filteredGames.length - visibleCount)})` 
-                          : `SHOW MORE (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24, filteredGames.length - visibleCount)})`}
+                          ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12, filteredGames.length - visibleCount)})` 
+                          : `SHOW MORE (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12, filteredGames.length - visibleCount)})`}
                       </span>
                       <span className="text-slate-500 text-xs font-semibold">
                         ({visibleCount} / {filteredGames.length})
@@ -296,46 +309,50 @@ export const App: React.FC = () => {
             )}
           </section>
 
-          <div ref={tournamentSectionRef} className="pt-2">
-            <TournamentCard isRu={isRu} />
-          </div>
+          {showDeferred && (
+            <Suspense fallback={null}>
+              <div ref={tournamentSectionRef} className="pt-2">
+                <TournamentCard isRu={isRu} />
+              </div>
 
-          <div ref={vipSectionRef} className="pt-2">
-            <VipLoyaltyBar isRu={isRu} />
-          </div>
+              <div ref={vipSectionRef} className="pt-2">
+                <VipLoyaltyBar isRu={isRu} />
+              </div>
 
-          <div className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-100 shadow-xs">
-            <div className="text-center mb-4">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
-                {isRu ? 'Официальные сертифицированные провайдеры софта' : 'Official Licensed Game Studios & Providers'}
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-75 hover:opacity-100 transition-opacity">
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                PRAGMATIC PLAY
-              </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                EVOLUTION
-              </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                HACKSAW GAMING
-              </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                SPRIBE
-              </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                NETENT
-              </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                PLAY&apos;N GO
-              </span>
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                NOLIMIT CITY
-              </span>
-            </div>
-          </div>
+              <div className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-100 shadow-xs">
+                <div className="text-center mb-4">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                    {isRu ? 'Официальные сертифицированные провайдеры софта' : 'Official Licensed Game Studios & Providers'}
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-75 hover:opacity-100 transition-opacity">
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    PRAGMATIC PLAY
+                  </span>
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    EVOLUTION
+                  </span>
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    HACKSAW GAMING
+                  </span>
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    SPRIBE
+                  </span>
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    NETENT
+                  </span>
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    PLAY&apos;N GO
+                  </span>
+                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
+                    NOLIMIT CITY
+                  </span>
+                </div>
+              </div>
 
-          <CasinoPerks isRu={isRu} />
+              <CasinoPerks isRu={isRu} />
+            </Suspense>
+          )}
         </main>
 
         <footer className="mt-auto border-t border-slate-200/80 bg-white py-10 px-4 sm:px-6 lg:px-8">

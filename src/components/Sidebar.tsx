@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Crown, 
   Trophy, 
@@ -43,6 +43,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
   favoritesCount,
 }) => {
   const isRu = currentLanguage === 'RU';
+  const [isLg, setIsLg] = useState(() => typeof window !== 'undefined' && window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsLg(window.innerWidth >= 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (!isOpen && !isLg) {
+    return null;
+  }
 
   return (
     <>

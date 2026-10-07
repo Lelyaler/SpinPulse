@@ -77,10 +77,16 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
+    let timer: NodeJS.Timeout;
+    const initialDelay = setTimeout(() => {
+      timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      }, 7000);
+    }, 4000);
+    return () => {
+      clearTimeout(initialDelay);
+      if (timer) clearInterval(timer);
+    };
   }, [slides.length]);
 
   const slide = slides[currentSlide];
@@ -91,8 +97,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
         key={slide.id}
         src={slide.bgImage}
         alt={slide.title}
+        width={1376}
+        height={768}
         fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
-        decoding="async"
+        decoding={currentSlide === 0 ? 'sync' : 'async'}
         className="absolute inset-0 w-full h-full object-cover object-[center_top] sm:object-[right_top] md:object-[center_top] transition-all duration-700 select-none"
       />
 
