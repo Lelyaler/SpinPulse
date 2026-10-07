@@ -183,31 +183,56 @@ export function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
         {/* Spotlight Banner: Featured Live Event */}
         {featuredMatch && (
-          <div className="bg-linear-to-r from-emerald-600 via-teal-600 to-indigo-700 rounded-3xl p-5 sm:p-6 text-white shadow-lg shadow-emerald-950/10 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="space-y-2 relative z-10">
+          <div 
+            className="rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-slate-900/10 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-slate-200/50"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.82) 50%, rgba(15, 23, 42, 0.92) 100%), url(${featuredMatch.bannerImage || ''})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            <div className="space-y-3.5 relative z-10 max-w-xl">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 backdrop-blur-xs text-white uppercase tracking-wider">
-                  <Flame className="w-3 h-3 text-amber-300 fill-amber-300" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/25 border border-emerald-400/40 backdrop-blur-md text-emerald-300 uppercase tracking-wider">
+                  <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                   Featured Match of the Day
                 </span>
-                <span className="text-xs text-emerald-100 font-medium">
+                <span className="text-xs text-slate-300 font-semibold">
                   {featuredMatch.league}
                 </span>
               </div>
 
-              <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight">
-                {featuredMatch.homeTeam.name} vs {featuredMatch.awayTeam.name}
-              </h1>
+              {/* Matchup with Real Team Crests */}
+              <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+                <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15">
+                  {featuredMatch.homeTeam.logo && (
+                    <img src={featuredMatch.homeTeam.logo} alt="" className="w-7 h-7 object-contain" />
+                  )}
+                  <span className="font-extrabold text-sm sm:text-base">{featuredMatch.homeTeam.name}</span>
+                </div>
 
-              <div className="flex items-center gap-3 text-xs text-emerald-100 font-medium">
-                <span className="inline-flex items-center gap-1.5 font-bold text-white font-mono-nums">
-                  <span className="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
+                <div className="flex flex-col items-center px-1">
+                  <span className="text-[10px] font-extrabold text-amber-400 tracking-wider">VS</span>
+                  <span className="font-mono-nums text-base sm:text-lg font-black text-white">
+                    {featuredMatch.status === 'live' ? `${featuredMatch.homeScore} : ${featuredMatch.awayScore}` : '-'}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15">
+                  {featuredMatch.awayTeam.logo && (
+                    <img src={featuredMatch.awayTeam.logo} alt="" className="w-7 h-7 object-contain" />
+                  )}
+                  <span className="font-extrabold text-sm sm:text-base">{featuredMatch.awayTeam.name}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 text-xs text-slate-300 font-medium">
+                <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400 font-mono-nums">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                   LIVE {featuredMatch.minute ? `${featuredMatch.minute}'` : featuredMatch.period}
                 </span>
                 <span>•</span>
-                <span className="font-mono-nums text-base font-extrabold text-white">
-                  Score: {featuredMatch.homeScore} - {featuredMatch.awayScore}
-                </span>
+                <span>{featuredMatch.stats?.shotsOnTarget ? `Shots: ${featuredMatch.stats.shotsOnTarget[0]} - ${featuredMatch.stats.shotsOnTarget[1]}` : 'High Liquidity Match'}</span>
               </div>
             </div>
 

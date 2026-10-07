@@ -48,6 +48,7 @@ export interface Match {
   markets: Market[];
   stats?: MatchStats;
   isHot?: boolean;
+  bannerImage?: string;
 }
 
 export interface BetSelection {

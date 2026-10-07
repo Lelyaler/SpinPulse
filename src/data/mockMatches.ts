@@ -1,5 +1,9 @@
 import { Match } from '../types';
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
 export const initialMatches: Match[] = [
   // FOOTBALL
   {
@@ -12,13 +16,16 @@ export const initialMatches: Match[] = [
     homeScore: 2,
     awayScore: 1,
     isHot: true,
+    bannerImage: `${baseUrl}images/hero-football.jpg`,
     homeTeam: {
       name: 'Real Madrid',
       shortName: 'RMA',
+      logo: `${baseUrl}logos/real-madrid.svg`,
     },
     awayTeam: {
       name: 'Bayern Munich',
       shortName: 'BAY',
+      logo: `${baseUrl}logos/bayern-munich.svg`,
     },
     stats: {
       possession: [54, 46],
@@ -63,13 +70,16 @@ export const initialMatches: Match[] = [
     homeScore: 1,
     awayScore: 1,
     isHot: true,
+    bannerImage: `${baseUrl}images/hero-football.jpg`,
     homeTeam: {
       name: 'Arsenal FC',
       shortName: 'ARS',
+      logo: `${baseUrl}logos/arsenal.svg`,
     },
     awayTeam: {
       name: 'Manchester City',
       shortName: 'MCI',
+      logo: `${baseUrl}logos/man-city.svg`,
     },
     stats: {
       possession: [48, 52],
@@ -104,13 +114,16 @@ export const initialMatches: Match[] = [
     period: 'Today 21:45',
     homeScore: 0,
     awayScore: 0,
+    bannerImage: `${baseUrl}images/hero-football.jpg`,
     homeTeam: {
       name: 'Inter Milan',
       shortName: 'INT',
+      logo: `${baseUrl}logos/inter-milan.svg`,
     },
     awayTeam: {
       name: 'AC Milan',
       shortName: 'ACM',
+      logo: `${baseUrl}logos/ac-milan.svg`,
     },
     markets: [
       {
@@ -136,16 +149,19 @@ export const initialMatches: Match[] = [
     homeScore: 84,
     awayScore: 81,
     isHot: true,
+    bannerImage: `${baseUrl}images/hero-basketball.jpg`,
     homeTeam: {
       name: 'Boston Celtics',
       shortName: 'BOS',
+      logo: `${baseUrl}logos/celtics.svg`,
     },
     awayTeam: {
       name: 'Golden State Warriors',
       shortName: 'GSW',
+      logo: `${baseUrl}logos/warriors.svg`,
     },
     stats: {
-      shotsOnTarget: [42, 39], // FG%
+      shotsOnTarget: [42, 39],
     },
     markets: [
       {
@@ -182,13 +198,16 @@ export const initialMatches: Match[] = [
     period: 'Tonight 02:30',
     homeScore: 0,
     awayScore: 0,
+    bannerImage: `${baseUrl}images/hero-basketball.jpg`,
     homeTeam: {
       name: 'Los Angeles Lakers',
       shortName: 'LAL',
+      logo: `${baseUrl}logos/lakers.svg`,
     },
     awayTeam: {
       name: 'Denver Nuggets',
       shortName: 'DEN',
+      logo: `${baseUrl}logos/nuggets.svg`,
     },
     markets: [
       {
@@ -212,13 +231,16 @@ export const initialMatches: Match[] = [
     homeScore: 1,
     awayScore: 1,
     isHot: true,
+    bannerImage: `${baseUrl}images/hero-tennis.jpg`,
     homeTeam: {
       name: 'Carlos Alcaraz',
       shortName: 'ALC',
+      logo: `${baseUrl}logos/alcaraz.svg`,
     },
     awayTeam: {
       name: 'Jannik Sinner',
       shortName: 'SIN',
+      logo: `${baseUrl}logos/sinner.svg`,
     },
     markets: [
       {
@@ -250,13 +272,16 @@ export const initialMatches: Match[] = [
     homeScore: 1,
     awayScore: 0,
     isHot: true,
+    bannerImage: `${baseUrl}images/hero-esports.jpg`,
     homeTeam: {
       name: 'Natus Vincere',
       shortName: 'NAVI',
+      logo: `${baseUrl}logos/navi.svg`,
     },
     awayTeam: {
       name: 'FaZe Clan',
       shortName: 'FAZE',
+      logo: `${baseUrl}logos/faze.svg`,
     },
     stats: {
       currentMap: 'Inferno (10 : 8)',
@@ -279,14 +304,6 @@ export const initialMatches: Match[] = [
           { id: 'sel-m2-2', name: 'FaZe Map 2', value: 2.28, initialValue: 2.28, trend: 'steady' },
         ],
       },
-      {
-        id: 'm-rounds',
-        name: 'Total Rounds Map 2 (Over/Under 21.5)',
-        selections: [
-          { id: 'sel-ro', name: 'Over 21.5 Rounds', value: 1.88, initialValue: 1.88, trend: 'steady' },
-          { id: 'sel-ru', name: 'Under 21.5 Rounds', value: 1.92, initialValue: 1.92, trend: 'steady' },
-        ],
-      },
     ],
   },
   {
@@ -297,13 +314,16 @@ export const initialMatches: Match[] = [
     period: 'Today 19:00',
     homeScore: 0,
     awayScore: 0,
+    bannerImage: `${baseUrl}images/hero-esports.jpg`,
     homeTeam: {
       name: 'Team Vitality',
       shortName: 'VIT',
+      logo: `${baseUrl}logos/vitality.svg`,
     },
     awayTeam: {
       name: 'Team Spirit',
       shortName: 'TS',
+      logo: `${baseUrl}logos/team-spirit.svg`,
     },
     markets: [
       {
@@ -327,13 +347,16 @@ export const initialMatches: Match[] = [
     homeScore: 0,
     awayScore: 0,
     isHot: true,
+    bannerImage: `${baseUrl}images/hero-esports.jpg`,
     homeTeam: {
       name: 'Team Spirit',
       shortName: 'TS',
+      logo: `${baseUrl}logos/team-spirit.svg`,
     },
     awayTeam: {
       name: 'Team Liquid',
       shortName: 'TL',
+      logo: `${baseUrl}logos/team-liquid.svg`,
     },
     stats: {
       kills: [19, 14],
@@ -345,14 +368,6 @@ export const initialMatches: Match[] = [
         selections: [
           { id: 'sel-1', name: 'Team Spirit', value: 1.55, initialValue: 1.55, trend: 'steady' },
           { id: 'sel-2', name: 'Team Liquid', value: 2.45, initialValue: 2.45, trend: 'steady' },
-        ],
-      },
-      {
-        id: 'm-game1',
-        name: 'Game 1 Winner',
-        selections: [
-          { id: 'sel-g1-1', name: 'Team Spirit Game 1', value: 1.40, initialValue: 1.40, trend: 'steady' },
-          { id: 'sel-g1-2', name: 'Team Liquid Game 1', value: 2.90, initialValue: 2.90, trend: 'steady' },
         ],
       },
     ],
