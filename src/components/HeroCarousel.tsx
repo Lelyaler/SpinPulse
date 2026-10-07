@@ -89,15 +89,15 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
   const slide = slides[currentSlide];
 
   return (
-    <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-amber-300/40 bg-slate-950 text-white min-h-[340px] sm:min-h-[400px] flex items-center">
-      {/* Crisp, Vivid Full-Resolution Banner Artwork (No dark darkening tint) */}
+    <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-amber-300/40 bg-slate-950 text-white min-h-[440px] sm:min-h-[500px] lg:min-h-[550px] flex items-center">
+      {/* Crisp, Vivid Full-Resolution Banner Artwork anchored to top so head is never cropped */}
       <img
         key={slide.id}
         src={slide.bgImage}
         alt={slide.title}
         fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
         decoding="async"
-        className="absolute inset-0 w-full h-full object-cover object-right md:object-center brightness-105 contrast-105 transition-all duration-700 select-none animate-in fade-in"
+        className="absolute inset-0 w-full h-full object-cover object-[center_top] sm:object-[right_top] md:object-[center_top] brightness-105 contrast-105 transition-all duration-700 select-none animate-in fade-in"
       />
 
       {/* Subtle directional vignette only on the left side to keep text crisp, leaving 70% of artwork brilliant */}

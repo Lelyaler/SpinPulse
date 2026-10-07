@@ -28,8 +28,8 @@ export const GameCard: React.FC<GameCardProps> = ({
 }) => {
   return (
     <div className="group relative bg-white rounded-2xl border border-amber-200/80 shadow-xs hover:shadow-xl hover:border-amber-400 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden flex flex-col">
-      {/* Game Image Container - 1:1 Aspect Ratio, clean without darkening overlays */}
-      <div className="relative aspect-square w-full overflow-hidden bg-slate-900">
+      {/* Game Image Container - Slightly taller aspect ratio (+12px length) for optimal slot artwork framing */}
+      <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-slate-900">
         <img
           src={game.coverImage}
           alt={game.title}
@@ -103,31 +103,31 @@ export const GameCard: React.FC<GameCardProps> = ({
       </div>
 
       {/* Card Info Footer: Title & Provider completely outside image */}
-      <div className="p-3 flex flex-col justify-between flex-1 bg-white">
+      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 bg-white">
         <div>
           <h3 
-            className="font-black text-slate-900 text-xs sm:text-sm leading-tight group-hover:text-amber-700 transition-colors truncate"
+            className="font-black text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-amber-700 transition-colors truncate"
             title={game.title}
           >
             {game.title}
           </h3>
-          <div className="flex items-center justify-between gap-1 mt-1 text-[11px] text-slate-500 font-medium">
+          <div className="flex items-center justify-between gap-1 mt-1.5 text-[11px] text-slate-500 font-medium">
             <span className="truncate">{game.provider}</span>
-            <span className="px-1.5 py-0.2 rounded font-extrabold text-[10px] bg-amber-100 text-amber-900 shrink-0">
+            <span className="px-1.5 py-0.5 rounded font-extrabold text-[10px] bg-amber-100 text-amber-900 shrink-0">
               {game.maxWin}
             </span>
           </div>
         </div>
 
         {/* Quick Launch Button */}
-        <div className="mt-2.5 pt-2 border-t border-slate-100">
+        <div className="mt-3 pt-2.5 border-t border-slate-100">
           <button
             onClick={() => {
               playButtonClick();
               onPlay(game);
             }}
             aria-label={`Играть в слот ${game.title}`}
-            className="w-full py-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200/90 hover:border-amber-300 text-amber-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+            className="w-full py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200/90 hover:border-amber-300 text-amber-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
           >
             <Play className="w-3 h-3 fill-amber-900 text-amber-900" />
             <span>{isRu ? 'ИГРАТЬ' : 'PLAY'}</span>
