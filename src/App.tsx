@@ -1,377 +1,265 @@
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Gamepad2 } from 'lucide-react';
+import { GameCategory, GameItem, PlacedCasinoBet } from './types';
+import { gamesCatalog } from './data/gamesCatalog';
 import { Header } from './components/Header';
-import { SportTabs } from './components/SportTabs';
-import { MatchCard } from './components/MatchCard';
-import { BettingSlip } from './components/BettingSlip';
-import { MyBetsDrawer } from './components/MyBetsDrawer';
-import { useOddsEngine } from './hooks/useOddsEngine';
-import { SportId, BetSelection, PlacedBet } from './types';
-import { isSoundEnabled } from './utils/soundEffects';
-import { 
-  Flame, 
-  Sparkles, 
-  ShieldCheck, 
-  Info
-} from 'lucide-react';
+import { HeroBanner } from './components/HeroBanner';
+import { LiveWinnersTicker } from './components/LiveWinnersTicker';
+import { CategoryNav } from './components/CategoryNav';
+import { GameCard } from './components/GameCard';
+import { SlotGameModal } from './components/SlotGameModal';
+import { RecentPlaysDrawer } from './components/RecentPlaysDrawer';
+import { CasinoPerks } from './components/CasinoPerks';
+import { isSoundEnabled, playWinCoinsSound } from './utils/casinoAudio';
 
-export function App() {
-  // Wallet Balance (LocalStorage with fallback $1,000.00)
+export const App: React.FC = () => {
+  // Demo Balance with localStorage persistence
   const [balance, setBalance] = useState<number>(() => {
-    try {
-      const saved = localStorage.getItem('matchpulse_balance');
-      return saved ? parseFloat(saved) : 1000;
-    } catch {
-      return 1000;
-    }
+    const saved = localStorage.getItem('spinpulse_balance');
+    return saved ? Number(saved) : 2500;
   });
 
-  // Betting Slip Selections
-  const [selectedBets, setSelectedBets] = useState<BetSelection[]>([]);
-
-  // Placed Bets History
-  const [placedBets, setPlacedBets] = useState<PlacedBet[]>(() => {
-    try {
-      const saved = localStorage.getItem('matchpulse_bets');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
+  const [soundActive, setSoundActive] = useState<boolean>(() => isSoundEnabled());
+  const [activeCategory, setActiveCategory] = useState<GameCategory>('all');
+  const [selectedProvider, setSelectedProvider] = useState<string>('All Providers');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [activeModalGame, setActiveModalGame] = useState<GameItem | null>(null);
+  const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
+  const [history, setHistory] = useState<PlacedCasinoBet[]>(() => {
+    const saved = localStorage.getItem('spinpulse_history');
+    return saved ? JSON.parse(saved) : [];
   });
+  const [hasClaimedDaily, setHasClaimedDaily] = useState<boolean>(false);
 
-  // Filters & State
-  const [activeSport, setActiveSport] = useState<SportId>('all');
-  const [statusFilter, setStatusFilter] = useState<'all' | 'live' | 'upcoming'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isMyBetsOpen, setIsMyBetsOpen] = useState(false);
-  const [isMobileSlipOpen, setIsMobileSlipOpen] = useState(false);
-  const [soundActive, setSoundActive] = useState(isSoundEnabled());
-  const [notification, setNotification] = useState<string | null>(null);
-
-  // Dynamic Odds Engine
-  const { matches, isSimulating, toggleSimulation, triggerInstantEvent } = useOddsEngine();
-
-  // Persist balance
   useEffect(() => {
-    try {
-      localStorage.setItem('matchpulse_balance', balance.toString());
-    } catch {}
+    localStorage.setItem('spinpulse_balance', balance.toString());
   }, [balance]);
 
-  // Persist placed bets
   useEffect(() => {
-    try {
-      localStorage.setItem('matchpulse_bets', JSON.stringify(placedBets));
-    } catch {}
-  }, [placedBets]);
+    localStorage.setItem('spinpulse_history', JSON.stringify(history));
+  }, [history]);
 
-  // Show temporary toast notification
-  const showToast = (msg: string) => {
-    setNotification(msg);
-    setTimeout(() => setNotification(null), 3000);
+  const handleUpdateBalance = (newBal: number) => {
+    setBalance(Math.max(0, Number(newBal.toFixed(2))));
   };
 
   const handleTopUp = () => {
     setBalance((prev) => prev + 500);
-    showToast('+$500.00 demo credits added to your wallet!');
   };
 
-  // Toggle selection in Betting Slip
-  const handleToggleSelection = (bet: BetSelection) => {
-    setSelectedBets((prev) => {
-      const exists = prev.some((b) => b.matchId === bet.matchId && b.selectionId === bet.selectionId);
-      if (exists) {
-        return prev.filter((b) => !(b.matchId === bet.matchId && b.selectionId === bet.selectionId));
-      } else {
-        // Replace previous selection from same match or append
-        const filteredSameMatch = prev.filter((b) => b.matchId !== bet.matchId);
-        return [...filteredSameMatch, bet];
+  const handleClaimDailyBonus = () => {
+    if (!hasClaimedDaily) {
+      setBalance((prev) => prev + 250);
+      setHasClaimedDaily(true);
+      playWinCoinsSound();
+    }
+  };
+
+  const handleRecordBet = (bet: PlacedCasinoBet) => {
+    setHistory((prev) => [bet, ...prev.slice(0, 49)]);
+  };
+
+  const handleClearHistory = () => {
+    setHistory([]);
+  };
+
+  // Filter games based on category, provider, and search query
+  const filteredGames = useMemo(() => {
+    return gamesCatalog.filter((game) => {
+      // Category filter
+      if (activeCategory === 'jackpot') {
+        if (!game.isHot && game.volatility !== 'Very High') return false;
+      } else if (activeCategory !== 'all' && game.category !== activeCategory) {
+        return false;
       }
-    });
-  };
 
-  const handleRemoveSelection = (selectionId: string) => {
-    setSelectedBets((prev) => prev.filter((b) => b.selectionId !== selectionId));
-  };
+      // Provider filter
+      if (selectedProvider !== 'All Providers' && game.provider !== selectedProvider) {
+        return false;
+      }
 
-  const handleClearAllSelections = () => {
-    setSelectedBets([]);
-  };
-
-  const handlePlaceBet = (newBet: PlacedBet): boolean => {
-    if (newBet.stake > balance) return false;
-
-    setBalance((prev) => prev - newBet.stake);
-    setPlacedBets((prev) => [newBet, ...prev]);
-    setSelectedBets([]);
-    showToast(`Bet placed! Ticket #${newBet.id.slice(-6)} active.`);
-    return true;
-  };
-
-  const handleSettleBet = (betId: string, status: 'won' | 'lost') => {
-    setPlacedBets((prev) =>
-      prev.map((bet) => {
-        if (bet.id !== betId) return bet;
-        if (status === 'won') {
-          setBalance((b) => b + bet.potentialPayout);
-          showToast(`Won $${bet.potentialPayout.toFixed(2)} from ticket #${bet.id.slice(-6)}!`);
-        } else {
-          showToast(`Ticket #${bet.id.slice(-6)} resolved as Lost.`);
-        }
-        return { ...bet, status };
-      })
-    );
-  };
-
-  // Filtered Matches
-  const filteredMatches = useMemo(() => {
-    return matches.filter((m) => {
-      if (activeSport !== 'all' && m.sport !== activeSport) return false;
-      if (statusFilter === 'live' && m.status !== 'live') return false;
-      if (statusFilter === 'upcoming' && m.status !== 'upcoming') return false;
+      // Search query
       if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const matchesName = 
-          m.homeTeam.name.toLowerCase().includes(q) ||
-          m.awayTeam.name.toLowerCase().includes(q) ||
-          m.league.toLowerCase().includes(q);
-        if (!matchesName) return false;
+        const query = searchQuery.toLowerCase();
+        const matchesTitle = game.title.toLowerCase().includes(query);
+        const matchesProvider = game.provider.toLowerCase().includes(query);
+        const matchesCategory = game.category.toLowerCase().includes(query);
+        if (!matchesTitle && !matchesProvider && !matchesCategory) return false;
       }
+
       return true;
     });
-  }, [matches, activeSport, statusFilter, searchQuery]);
-
-  const liveMatchesCount = useMemo(() => {
-    return matches.filter((m) => m.status === 'live').length;
-  }, [matches]);
-
-  const activeBetsCount = useMemo(() => {
-    return placedBets.filter((b) => b.status === 'pending').length;
-  }, [placedBets]);
-
-  // Featured Hot Match for Hero Spotlight
-  const featuredMatch = matches.find((m) => m.isHot && m.status === 'live') || matches[0];
+  }, [activeCategory, selectedProvider, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      {/* Toast Notification */}
-      {notification && (
-        <div className="fixed top-20 right-4 z-50 bg-slate-900 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700 animate-in fade-in slide-in-from-top-2 duration-200">
-          <Sparkles className="w-4 h-4 text-emerald-400" />
-          <span>{notification}</span>
-        </div>
-      )}
-
-      {/* Main App Navigation Header */}
+    <div className="min-h-screen bg-linear-to-b from-amber-50/50 via-white to-amber-50/30 text-slate-800 antialiased selection:bg-amber-300 selection:text-amber-950 flex flex-col font-sans">
+      {/* Luxury Casino Header */}
       <Header
         balance={balance}
         onTopUp={handleTopUp}
-        activeBetsCount={activeBetsCount}
-        onOpenMyBets={() => setIsMyBetsOpen(true)}
-        isSimulating={isSimulating}
-        onToggleSimulating={toggleSimulation}
-        onTriggerEvent={() => {
-          triggerInstantEvent();
-          showToast('Triggered dynamic goal / odds fluctuation event!');
-        }}
+        onOpenHistory={() => setIsHistoryOpen(true)}
         soundActive={soundActive}
         onToggleSound={setSoundActive}
-        slipItemsCount={selectedBets.length}
-        onOpenMobileSlip={() => setIsMobileSlipOpen(true)}
+        onClaimDailyBonus={handleClaimDailyBonus}
+        hasClaimedDaily={hasClaimedDaily}
       />
 
-      {/* Page Body Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
-        {/* Spotlight Banner: Featured Live Event */}
-        {featuredMatch && (
-          <div 
-            className="rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-slate-900/10 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-slate-200/50"
-            style={{
-              backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.82) 50%, rgba(15, 23, 42, 0.92) 100%), url(${featuredMatch.bannerImage || ''})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="space-y-3.5 relative z-10 max-w-xl">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/25 border border-emerald-400/40 backdrop-blur-md text-emerald-300 uppercase tracking-wider">
-                  <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                  Featured Match of the Day
-                </span>
-                <span className="text-xs text-slate-300 font-semibold">
-                  {featuredMatch.league}
-                </span>
-              </div>
-
-              {/* Matchup with Real Team Crests */}
-              <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-                <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15">
-                  {featuredMatch.homeTeam.logo && (
-                    <img src={featuredMatch.homeTeam.logo} alt="" className="w-7 h-7 object-contain" />
-                  )}
-                  <span className="font-extrabold text-sm sm:text-base">{featuredMatch.homeTeam.name}</span>
-                </div>
-
-                <div className="flex flex-col items-center px-1">
-                  <span className="text-[10px] font-extrabold text-amber-400 tracking-wider">VS</span>
-                  <span className="font-mono-nums text-base sm:text-lg font-black text-white">
-                    {featuredMatch.status === 'live' ? `${featuredMatch.homeScore} : ${featuredMatch.awayScore}` : '-'}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15">
-                  {featuredMatch.awayTeam.logo && (
-                    <img src={featuredMatch.awayTeam.logo} alt="" className="w-7 h-7 object-contain" />
-                  )}
-                  <span className="font-extrabold text-sm sm:text-base">{featuredMatch.awayTeam.name}</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 text-xs text-slate-300 font-medium">
-                <span className="inline-flex items-center gap-1.5 font-bold text-emerald-400 font-mono-nums">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                  LIVE {featuredMatch.minute ? `${featuredMatch.minute}'` : featuredMatch.period}
-                </span>
-                <span>•</span>
-                <span>{featuredMatch.stats?.shotsOnTarget ? `Shots: ${featuredMatch.stats.shotsOnTarget[0]} - ${featuredMatch.stats.shotsOnTarget[1]}` : 'High Liquidity Match'}</span>
-              </div>
-            </div>
-
-            {/* Quick 1X2 market buttons in banner */}
-            <div className="w-full md:w-auto relative z-10 flex flex-wrap items-center gap-2">
-              {featuredMatch.markets[0]?.selections.map((sel) => {
-                const isSel = selectedBets.some(
-                  (b) => b.matchId === featuredMatch.id && b.selectionId === sel.id
-                );
-                return (
-                  <button
-                    key={sel.id}
-                    type="button"
-                    onClick={() => handleToggleSelection({
-                      matchId: featuredMatch.id,
-                      matchTitle: `${featuredMatch.homeTeam.name} vs ${featuredMatch.awayTeam.name}`,
-                      sport: featuredMatch.sport,
-                      marketName: featuredMatch.markets[0].name,
-                      selectionId: sel.id,
-                      selectionName: sel.name,
-                      odds: sel.value,
-                    })}
-                    className={`flex-1 md:flex-initial px-4 py-2.5 rounded-xl text-xs font-bold transition-all border ${
-                      isSel
-                        ? 'bg-white text-emerald-800 border-white shadow-md'
-                        : 'bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-xs'
-                    }`}
-                  >
-                    <span className="opacity-80 mr-1.5">{sel.name}:</span>
-                    <span className="font-mono-nums text-sm">{sel.value.toFixed(2)}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Decorative background glow */}
-            <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-radial from-white/10 to-transparent pointer-events-none"></div>
-          </div>
-        )}
-
-        {/* Categories, Search & Filter Bar */}
-        <SportTabs
-          activeSport={activeSport}
-          onSelectSport={setActiveSport}
-          statusFilter={statusFilter}
-          onSelectStatusFilter={setStatusFilter}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          liveMatchesCount={liveMatchesCount}
+      {/* Main Lobby Container */}
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 sm:space-y-8 w-full">
+        {/* Hero Banner with Progressive Jackpot */}
+        <HeroBanner
+          onQuickPlay={() => {
+            const hotSlot = gamesCatalog.find((g) => g.id === 'slot-olympus') || gamesCatalog[0];
+            setActiveModalGame(hotSlot);
+          }}
+          onClaimBonus={handleTopUp}
         />
 
-        {/* 2-Column Main Layout: Events Grid + Sticky Betslip */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Left Column: Matches List */}
-          <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center justify-between text-xs text-slate-500 font-semibold px-1">
-              <span>Showing {filteredMatches.length} events</span>
-              <span className="flex items-center gap-1 text-emerald-700">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                Realtime Odds Verified
+        {/* Live Winners Real-Time Ticker */}
+        <LiveWinnersTicker />
+
+        {/* Categories, Providers & Search navigation */}
+        <CategoryNav
+          activeCategory={activeCategory}
+          onSelectCategory={setActiveCategory}
+          selectedProvider={selectedProvider}
+          onSelectProvider={setSelectedProvider}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          totalGames={filteredGames.length}
+        />
+
+        {/* Games Catalog Section */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                {activeCategory === 'all' && 'All Lobby Titles'}
+                {activeCategory === 'slots' && 'Premium Video Slots'}
+                {activeCategory === 'live' && 'Evolution & Pragmatic Live Tables'}
+                {activeCategory === 'crash' && 'Next-Gen Multiplier Crash Games'}
+                {activeCategory === 'table' && 'Classic Table & Card Games'}
+                {activeCategory === 'jackpot' && 'High Volatility Jackpots'}
+              </h2>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-800 border border-amber-300/60">
+                {filteredGames.length}
               </span>
             </div>
 
-            {filteredMatches.length === 0 ? (
-              <div className="bg-white rounded-3xl border border-slate-200/90 p-12 text-center text-slate-400 space-y-2">
-                <Info className="w-10 h-10 mx-auto text-slate-300" />
-                <h3 className="text-base font-bold text-slate-700">No events found</h3>
-                <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                  Try adjusting your search query or switching to another sport category.
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 gap-3.5">
-                {filteredMatches.map((match) => (
-                  <MatchCard
-                    key={match.id}
-                    match={match}
-                    selectedBets={selectedBets}
-                    onToggleSelection={handleToggleSelection}
-                  />
-                ))}
-              </div>
-            )}
+            <div className="text-xs font-bold text-slate-400 hidden sm:block">
+              Provably Fair • Instant Demo Currency
+            </div>
           </div>
 
-          {/* Right Column: Desktop Sticky Betting Slip */}
-          <div className="hidden lg:block lg:col-span-4 sticky top-24">
-            <BettingSlip
-              selections={selectedBets}
-              onRemoveSelection={handleRemoveSelection}
-              onClearAll={handleClearAllSelections}
-              balance={balance}
-              onPlaceBet={handlePlaceBet}
-            />
+          {/* Grid of Visual Game Cards */}
+          {filteredGames.length === 0 ? (
+            <div className="py-20 text-center bg-white rounded-3xl border border-dashed border-amber-200 p-8">
+              <Gamepad2 className="w-12 h-12 text-amber-300 mx-auto mb-3" />
+              <h3 className="text-base font-black text-slate-700">No games found</h3>
+              <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+                No titles matched your filter or search criteria. Try choosing &quot;All Games&quot; or clearing your search.
+              </p>
+              <button
+                onClick={() => {
+                  setActiveCategory('all');
+                  setSelectedProvider('All Providers');
+                  setSearchQuery('');
+                }}
+                className="mt-4 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs"
+              >
+                Reset Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
+              {filteredGames.map((game) => (
+                <GameCard
+                  key={game.id}
+                  game={game}
+                  onPlay={(selected) => setActiveModalGame(selected)}
+                />
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Studio Partners & Providers Marquee */}
+        <div className="p-5 sm:p-6 rounded-3xl bg-white border border-amber-200/70 shadow-xs">
+          <div className="text-center mb-4">
+            <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">
+              Official Licensed Game Studios & Providers
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-70 hover:opacity-95 transition-opacity">
+            <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              PRAGMATIC PLAY
+            </span>
+            <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              EVOLUTION
+            </span>
+            <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              NETENT
+            </span>
+            <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              HACKSAW GAMING
+            </span>
+            <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              PLAY&apos;N GO
+            </span>
+            <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-amber-600 transition-colors cursor-default">
+              NOLIMIT CITY
+            </span>
           </div>
         </div>
+
+        {/* Casino Features & Perks */}
+        <CasinoPerks />
       </main>
 
+      {/* Slot Machine Gameplay Modal */}
+      <SlotGameModal
+        game={activeModalGame}
+        isOpen={Boolean(activeModalGame)}
+        onClose={() => setActiveModalGame(null)}
+        balance={balance}
+        onUpdateBalance={handleUpdateBalance}
+        onRecordBet={handleRecordBet}
+      />
+
+      {/* Session Spin History Drawer */}
+      <RecentPlaysDrawer
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        history={history}
+        onClearHistory={handleClearHistory}
+      />
+
       {/* Footer */}
-      <footer className="mt-12 border-t border-slate-200/80 bg-white py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <footer className="mt-auto border-t border-amber-200/80 bg-white/90 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px]">
-              MP
+            <div className="w-8 h-8 rounded-xl bg-linear-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white text-xs font-black shadow-xs">
+              👑
             </div>
-            <span className="font-bold text-slate-700">MatchPulse</span>
-            <span>— High-Performance Sports Odds Engine</span>
+            <div>
+              <span className="text-base font-black text-slate-900">SpinPulse VIP Lounge</span>
+              <p className="text-xs text-slate-400 font-medium">
+                High-end demo iGaming portal & simulator. Built with React 19 & Tailwind CSS.
+              </p>
+            </div>
           </div>
-          <div className="text-slate-400">
-            Portfolio Project • React 19 • TypeScript • Web Audio API • Tailwind CSS
+
+          <div className="flex items-center gap-4 text-xs font-bold text-slate-500">
+            <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+              18+ Demo Only
+            </span>
+            <span>No Real Money Gambling</span>
+            <span>Certified Fair RNG</span>
           </div>
         </div>
       </footer>
-
-      {/* My Bets Drawer Modal */}
-      <MyBetsDrawer
-        isOpen={isMyBetsOpen}
-        onClose={() => setIsMyBetsOpen(false)}
-        bets={placedBets}
-        onSettleBet={handleSettleBet}
-      />
-
-      {/* Mobile Betting Slip Modal Drawer */}
-      {isMobileSlipOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-end">
-          <div className="w-full max-h-[85vh] bg-white rounded-t-3xl overflow-hidden p-4 shadow-2xl flex flex-col">
-            <BettingSlip
-              selections={selectedBets}
-              onRemoveSelection={handleRemoveSelection}
-              onClearAll={handleClearAllSelections}
-              balance={balance}
-              onPlaceBet={handlePlaceBet}
-              onCloseMobile={() => setIsMobileSlipOpen(false)}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
-}
+};
 
 export default App;

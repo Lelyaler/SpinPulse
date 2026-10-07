@@ -1,75 +1,51 @@
-export type SportId = 'all' | 'football' | 'basketball' | 'tennis' | 'cs2' | 'dota2';
+export type GameCategory = 'all' | 'slots' | 'live' | 'crash' | 'table' | 'jackpot';
 
-export type MatchStatus = 'live' | 'upcoming';
+export type GameProvider = 
+  | 'Pragmatic Play'
+  | 'Evolution'
+  | 'NetEnt'
+  | 'Hacksaw Gaming'
+  | 'Play\'n GO'
+  | 'NoLimit City';
 
-export type OddTrend = 'up' | 'down' | 'steady';
-
-export interface OddSelection {
+export interface GameItem {
   id: string;
-  name: string;
-  value: number;
-  initialValue: number;
-  trend: OddTrend;
-}
-
-export interface Market {
-  id: string;
-  name: string;
-  selections: OddSelection[];
-}
-
-export interface MatchStats {
-  possession?: [number, number];
-  shotsOnTarget?: [number, number];
-  corners?: [number, number];
-  kills?: [number, number];
-  currentMap?: string;
-}
-
-export interface Match {
-  id: string;
-  sport: SportId;
-  league: string;
-  homeTeam: {
-    name: string;
-    shortName: string;
-    logo?: string;
-  };
-  awayTeam: {
-    name: string;
-    shortName: string;
-    logo?: string;
-  };
-  status: MatchStatus;
-  minute?: number;
-  period?: string;
-  homeScore: number;
-  awayScore: number;
-  markets: Market[];
-  stats?: MatchStats;
+  title: string;
+  category: GameCategory;
+  provider: GameProvider;
+  coverImage: string;
+  rtp: number;
+  volatility: 'Very High' | 'High' | 'Medium' | 'Low';
+  maxWin: string;
   isHot?: boolean;
-  bannerImage?: string;
+  isNew?: boolean;
+  type: 'slot' | 'crash' | 'live' | 'table';
+  rating: number;
 }
 
-export interface BetSelection {
-  matchId: string;
-  matchTitle: string;
-  sport: SportId;
-  marketName: string;
-  selectionId: string;
-  selectionName: string;
-  odds: number;
-}
-
-export type BetType = 'single' | 'parlay';
-
-export interface PlacedBet {
+export interface LiveWinner {
   id: string;
-  type: BetType;
-  items: BetSelection[];
-  totalOdds: number;
-  stake: number;
-  potentialPayout: number;
-  status: 'pending' | 'won' | 'lost';
-  placedAt: string;
+  user: string;
+  gameTitle: string;
+  amount: number;
+  multiplier: number;
+  time: string;
+  avatar: string;
+}
+
+export interface SlotSymbol {
+  id: string;
+  name: string;
+  multiplier: number;
+  icon: string; // emoji or SVG key
+  color: string;
+}
+
+export interface PlacedCasinoBet {
+  id: string;
+  gameTitle: string;
+  betAmount: number;
+  winAmount: number;
+  timestamp: string;
+  status: 'won' | 'lost';
 }

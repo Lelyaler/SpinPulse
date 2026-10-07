@@ -1,65 +1,86 @@
-# MatchPulse — Live Sports & Esports Betting Dashboard
+# SpinPulse VIP — Luxury iGaming & Casino Lobby Simulator
 
-A high-performance real-time sports and esports betting dashboard with dynamic odds simulation, interactive multi-selection betting slip, wallet balance management, and Web Audio API micro-effects.
+A visually rich, high-performance iGaming casino lobby simulator built with **React 19**, **TypeScript**, **Tailwind CSS v4**, and native **Web Audio API** sound synthesis. Featuring authentic game cover artwork, a live ticking progressive jackpot, real-time live winners feed, and a fully functional 5-reel demo slot machine modal.
 
-Live Demo: [https://Lelyaler.github.io/MatchPulse/](https://Lelyaler.github.io/MatchPulse/)
+Live Demo: [https://Lelyaler.github.io/SpinPulse/](https://Lelyaler.github.io/SpinPulse/)
 
 ---
 
-## ⚡ Key Highlights & Features
+## 🎰 Key Features & Highlights
 
-* **Ice White & Emerald Fintech Design System:**
-  * Clean, ultra-crisp light theme inspired by top modern fintech applications.
-  * Micro-animations for live odds movement (green flash on odds increase, coral flash on odds drop).
-  * Fully responsive 2-column desktop layout with sticky betting slip and mobile slide-over drawer.
+* **Warm Champagne & Amber Gold Luxury Aesthetic:**
+  * Clean, bright palette crafted with warm amber accents (`#d97706` / `#f59e0b`), royal ruby badges, and glassmorphism cards.
+  * Completely avoids generic dark themes, delivering an exclusive VIP casino lounge experience.
+  * Rich, high-definition cover artwork across all game titles (Slots, Live Roulette, VIP Blackjack, Space Crash, Mega Wheel, Baccarat).
 
-* **Dynamic Real-Time Odds Engine:**
-  * Autonomous live odds ticker simulating live match fluctuations.
-  * Interactive controls to pause/resume the live stream or trigger instant scoring events.
-  * Dynamic match timers and score adjustments.
+* **Interactive 5-Reel Demo Slot Machine (`SlotGameModal`):**
+  * Staggered mechanical reel stops with realistic deceleration delays.
+  * Real-time payline evaluation across 3 rows and 5 reels.
+  * Dynamic sound synthesis via native Web Audio API (reel spins, mechanical thuds, coin cascade wins, jackpot fanfares).
+  * Canvas Confetti particle explosions on big wins (15x+ multipliers).
+  * Customizable bet sizes ($10, $25, $50, $100) and automated bankroll tracking.
 
-* **Comprehensive Betting Slip (Single & Parlay/Express):**
-  * One-click outcome selection and seamless match outcome replacement.
-  * Single bets with individualized stakes and Parlay/Express bets with automated odds compounding.
-  * Combo Boost bonus (+5% extra payout on accumulators with 3+ selections).
-  * Quick stake chips ($10, $25, $50, $100, Max) and wallet balance validation.
+* **Live Progressive Jackpot Engine:**
+  * Real-time ticking global progressive jackpot counter with micro-increments simulating high-stakes network play.
+  * Studio partner integration showcasing Pragmatic Play, Evolution, NetEnt, Hacksaw Gaming, Play'n GO, and NoLimit City.
 
-* **Interactive Bet Settlement Simulator:**
-  * History drawer tracking active (In-Play) and settled (Won/Lost) tickets.
-  * "Simulate Match Outcome" button to resolve tickets and automatically credit winnings to the balance.
+* **Real-Time Live Drops & Winners Ticker:**
+  * Live feed with dynamic streaming drops every few seconds showing player avatars, winning game titles, and payout multipliers.
 
-* **Synthesized Web Audio Effects:**
-  * Pure browser Web Audio API audio synthesis for UI interactions, bet placements, and win celebrations without heavy external media assets.
-  * Toggleable audio mute controls.
+* **Lobby Filtering & Search:**
+  * Instant category navigation: All Games, Video Slots, Live Casino, Crash Games, Table Games, Jackpots.
+  * Filter by certified game provider or search by game title in real time.
+
+* **Demo Bankroll & Session History:**
+  * Initial $2,500 demo coins with localStorage persistence.
+  * Instant +$500 reload button and daily +$250 lucky claim bonus.
+  * Slide-over session history drawer tracking wagered sums, payouts, net PnL, and timestamps.
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Core:** React 19, TypeScript 5, Vite 6
+* **Frontend:** React 19, TypeScript, Vite 6
 * **Styling:** Tailwind CSS v4, Plus Jakarta Sans, JetBrains Mono
 * **Icons:** Lucide React
-* **Audio:** Native Web Audio API
-* **State & Storage:** React Hooks + LocalStorage Persistence
+* **Visual FX:** canvas-confetti
+* **Audio:** Browser Web Audio API (synthesizer oscillators, noise generators, envelope shaping)
+* **Storage:** LocalStorage Persistence
+* **Deployment:** GitHub Pages (`gh-pages`)
 
 ---
 
 ## 🚀 Getting Started
 
+### Prerequisites
+
+* Node.js 18+
+* npm or pnpm
+
 ### Installation
 
 ```bash
+git clone https://github.com/Lelyaler/SpinPulse.git
+cd SpinPulse
 npm install
 ```
 
-### Development Server
+### Local Development
 
 ```bash
 npm run dev
 ```
+
+Open [http://localhost:5173/](http://localhost:5173/) in your browser.
 
 ### Production Build
 
 ```bash
 npm run build
 ```
+
+---
+
+## 📄 License
+
+MIT License. Designed and engineered for demo and portfolio purposes.
