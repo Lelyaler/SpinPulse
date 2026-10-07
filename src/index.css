@@ -68,3 +68,31 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Luxury VIP Amber & Gold Scrollbar for Sidebar */
+.sidebar-luxury-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d97706 #f8fafc;
+}
+
+.sidebar-luxury-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-luxury-scroll::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 9999px;
+  margin: 8px 0;
+}
+
+.sidebar-luxury-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 60%, #b45309 100%);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 1px 4px rgba(217, 119, 6, 0.35);
+}
+
+.sidebar-luxury-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}

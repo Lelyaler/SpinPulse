@@ -188,7 +188,7 @@ export const App: React.FC = () => {
         favoritesCount={favorites.length}
       />
 
-      <div className="lg:pl-64 flex flex-col flex-1">
+      <div className="lg:pl-80 flex flex-col flex-1">
         <Header
           onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           balance={balance}
