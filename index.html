@@ -47,7 +47,50 @@
     </noscript>
   </head>
   <body class="bg-amber-50/40 text-slate-800 antialiased selection:bg-amber-300 selection:text-amber-950">
-    <div id="root"></div>
+    <div id="root">
+      <div style="min-height:100vh;background:linear-gradient(to bottom,rgba(254,243,199,0.5),#fff,rgba(254,243,199,0.3));color:#1e293b;font-family:'Plus Jakarta Sans',sans-serif;">
+        <!-- Header shell -->
+        <header style="height:72px;background:rgba(255,255,255,0.95);border-bottom:1px solid rgba(253,230,138,0.8);display:flex;align-items:center;padding:0 16px;justify-content:space-between;position:sticky;top:0;z-index:30;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#f59e0b,#e11d48);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;">👑</div>
+            <div>
+              <div style="font-size:18px;font-weight:900;letter-spacing:-0.5px;color:#0f172a;">Spin<span style="color:#d97706;">Pulse</span> <span style="font-size:9px;font-weight:900;background:#ffe4e6;color:#be123c;padding:2px 6px;border-radius:4px;border:1px solid #fecdd3;">IZZI</span></div>
+              <div style="font-size:9px;font-weight:800;color:#d97706;letter-spacing:1px;text-transform:uppercase;">VIP CASINO LOBBY</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;background:linear-gradient(to right,#fef3c7,#fde68a);border:1px solid rgba(252,211,77,0.8);border-radius:16px;padding:6px 14px;color:#78350f;font-weight:900;font-size:14px;">
+            <span>$2,500.00</span>
+          </div>
+        </header>
+
+        <!-- Main lobby shell with Critical LCP Hero Banner -->
+        <main style="max-width:1280px;margin:0 auto;padding:24px 16px;width:100%;">
+          <div style="position:relative;border-radius:24px;overflow:hidden;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);border:1px solid rgba(252,211,77,0.4);background:#020617;color:#fff;min-height:400px;display:flex;align-items:center;">
+            <img
+              src="./banners/banner-zeus-bright.webp"
+              alt="GATES OF OLYMPUS 1000"
+              fetchpriority="high"
+              decoding="async"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(1.05) contrast(1.05);"
+            />
+            <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(2,6,23,0.75),rgba(2,6,23,0.3),transparent);pointer-events:none;"></div>
+            <div style="position:relative;z-index:10;margin:16px;max-width:576px;padding:20px;border-radius:20px;background:rgba(2,6,23,0.5);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);">
+              <div style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:9999px;background:linear-gradient(to right,rgba(245,158,11,0.4),rgba(244,63,94,0.4));border:1px solid rgba(252,211,77,0.5);font-size:11px;font-weight:900;letter-spacing:1px;color:#fde68a;text-transform:uppercase;margin-bottom:10px;">
+                <span>🔥 ГОРЯЧИЙ ХИТ НЕДЕЛИ</span>
+                <span style="padding:2px 8px;border-radius:9999px;background:#fbbf24;color:#020617;font-size:10px;font-weight:900;">⚡ 15,000x</span>
+              </div>
+              <h2 style="font-size:26px;font-weight:900;letter-spacing:-0.5px;color:#fff;margin:0 0 8px 0;line-height:1.2;">GATES OF OLYMPUS 1000</h2>
+              <p style="font-size:13px;color:#fef3c7;font-weight:500;line-height:1.5;margin:0 0 18px 0;">Молнии Зевса с множителями до 1,000x и эпический макс-вин 15,000x! Испытайте демо прямо сейчас.</p>
+              <div style="display:flex;gap:10px;">
+                <div style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:16px;background:linear-gradient(to right,#fbbf24,#f59e0b);color:#020617;font-weight:900;font-size:13px;letter-spacing:0.5px;">
+                  ▶ ИГРАТЬ В СЛОТ
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

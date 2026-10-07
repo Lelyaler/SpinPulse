@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, Suspense, lazy } from 'react';
 import { Gamepad2 } from 'lucide-react';
 import { GameCategory, GameItem, PlacedCasinoBet } from './types';
 import { gamesCatalog } from './data/gamesCatalog';
@@ -10,13 +10,15 @@ import { CategoryNav } from './components/CategoryNav';
 import { GameCard } from './components/GameCard';
 import { TournamentCard } from './components/TournamentCard';
 import { VipLoyaltyBar } from './components/VipLoyaltyBar';
-import { SlotGameModal } from './components/SlotGameModal';
-import { RecentPlaysDrawer } from './components/RecentPlaysDrawer';
-import { LuckyWheelModal } from './components/LuckyWheelModal';
-import { BonusesModal } from './components/BonusesModal';
-import { SupportModal } from './components/SupportModal';
 import { CasinoPerks } from './components/CasinoPerks';
 import { isSoundEnabled, playWinCoinsSound } from './utils/casinoAudio';
+
+// Defer non-critical modals and heavy subcomponents until opened to maximize mobile performance
+const SlotGameModal = lazy(() => import('./components/SlotGameModal').then((m) => ({ default: m.SlotGameModal })));
+const LuckyWheelModal = lazy(() => import('./components/LuckyWheelModal').then((m) => ({ default: m.LuckyWheelModal })));
+const BonusesModal = lazy(() => import('./components/BonusesModal').then((m) => ({ default: m.BonusesModal })));
+const SupportModal = lazy(() => import('./components/SupportModal').then((m) => ({ default: m.SupportModal })));
+const RecentPlaysDrawer = lazy(() => import('./components/RecentPlaysDrawer').then((m) => ({ default: m.RecentPlaysDrawer })));
 
 export const App: React.FC = () => {
   // Language State ('RU' default as requested by user, toggleable to 'EN')
@@ -412,48 +414,56 @@ export const App: React.FC = () => {
         </footer>
       </div>
 
-      {/* Interactive 5-Reel Slot Machine Modal */}
-      <SlotGameModal
-        game={activeModalGame}
-        isOpen={Boolean(activeModalGame)}
-        onClose={() => setActiveModalGame(null)}
-        balance={balance}
-        onUpdateBalance={handleUpdateBalance}
-        onRecordBet={handleRecordBet}
-        isRu={isRu}
-      />
+      {/* Lazy-Loaded Modals & Drawers wrapped in Suspense */}
+      <Suspense fallback={null}>
+        {Boolean(activeModalGame) && (
+          <SlotGameModal
+            game={activeModalGame}
+            isOpen={true}
+            onClose={() => setActiveModalGame(null)}
+            balance={balance}
+            onUpdateBalance={handleUpdateBalance}
+            onRecordBet={handleRecordBet}
+            isRu={isRu}
+          />
+        )}
 
-      {/* Lucky Wheel Gamification Modal */}
-      <LuckyWheelModal
-        isOpen={isLuckyWheelOpen}
-        onClose={() => setIsLuckyWheelOpen(false)}
-        onAddBalance={handleTopUp}
-        isRu={isRu}
-      />
+        {isLuckyWheelOpen && (
+          <LuckyWheelModal
+            isOpen={true}
+            onClose={() => setIsLuckyWheelOpen(false)}
+            onAddBalance={handleTopUp}
+            isRu={isRu}
+          />
+        )}
 
-      {/* Bonuses & Promo Codes Modal */}
-      <BonusesModal
-        isOpen={isBonusesOpen}
-        onClose={() => setIsBonusesOpen(false)}
-        onActivateBonus={(amt) => setBalance((prev) => prev + amt)}
-        isRu={isRu}
-      />
+        {isBonusesOpen && (
+          <BonusesModal
+            isOpen={true}
+            onClose={() => setIsBonusesOpen(false)}
+            onActivateBonus={(amt) => setBalance((prev) => prev + amt)}
+            isRu={isRu}
+          />
+        )}
 
-      {/* 24/7 VIP Concierge Support Chat Modal */}
-      <SupportModal
-        isOpen={isSupportOpen}
-        onClose={() => setIsSupportOpen(false)}
-        isRu={isRu}
-      />
+        {isSupportOpen && (
+          <SupportModal
+            isOpen={true}
+            onClose={() => setIsSupportOpen(false)}
+            isRu={isRu}
+          />
+        )}
 
-      {/* Session Spin History Drawer */}
-      <RecentPlaysDrawer
-        isOpen={isHistoryOpen}
-        onClose={() => setIsHistoryOpen(false)}
-        history={history}
-        onClearHistory={handleClearHistory}
-        isRu={isRu}
-      />
+        {isHistoryOpen && (
+          <RecentPlaysDrawer
+            isOpen={true}
+            onClose={() => setIsHistoryOpen(false)}
+            history={history}
+            onClearHistory={handleClearHistory}
+            isRu={isRu}
+          />
+        )}
+      </Suspense>
     </div>
   );
 };
