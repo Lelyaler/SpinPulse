@@ -119,44 +119,46 @@ export const JackpotAndWins: React.FC<JackpotAndWinsProps> = ({ isRu }) => {
       </div>
 
       {/* Right: "Now Winning" Real-Time Strip (7 cols) */}
-      <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/80 p-4 shadow-xs flex flex-col justify-between">
+      <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/80 p-4 sm:p-5 shadow-xs flex flex-col justify-between">
         <div className="flex items-center justify-between mb-3 px-1">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
               <Zap className="w-4 h-4" />
             </div>
             <div>
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-900">
                 {isRu ? 'Сейчас выигрывают' : 'Now Winning Live'}
               </span>
             </div>
           </div>
-          <span className="text-[11px] font-semibold text-slate-400">
+          <span className="text-[11px] font-semibold text-slate-600">
             {isRu ? 'Прямой стрим побед' : 'Live casino feed'}
           </span>
         </div>
 
         {/* Live winners carousel / cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
           {winners.slice(0, 3).map((win) => (
             <div
               key={win.id}
-              className="p-3 rounded-2xl bg-linear-to-b from-amber-50/50 to-white border border-amber-200/60 shadow-xs hover:border-amber-300 transition-all flex flex-col justify-between animate-in fade-in"
+              className="p-3 rounded-2xl bg-linear-to-b from-amber-50/50 to-white border border-amber-200/60 shadow-xs hover:border-amber-300 transition-all flex sm:flex-col items-center sm:items-stretch justify-between animate-in fade-in gap-2"
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm">{win.avatar}</span>
-                <span className="text-[10px] font-black px-1.5 py-0.2 rounded bg-amber-100 text-amber-800">
+              <div className="flex items-center justify-between sm:mb-1.5 w-auto sm:w-full gap-2">
+                <span className="text-base select-none">{win.avatar}</span>
+                <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 shrink-0">
                   {win.multiplier}x
                 </span>
               </div>
-              <div>
+              <div className="flex-1 min-w-0 text-left sm:text-left">
                 <span className="text-xs font-black text-slate-900 block truncate">
                   {win.user}
                 </span>
-                <span className="text-[10px] text-slate-400 block truncate">
+                <span className="text-[11px] text-slate-600 block truncate font-medium">
                   {win.gameTitle}
                 </span>
-                <span className="text-xs font-black text-emerald-600 block mt-1">
+              </div>
+              <div className="sm:mt-1 shrink-0 text-right sm:text-left">
+                <span className="text-xs sm:text-sm font-black text-emerald-600 block">
                   +${win.amount.toFixed(2)}
                 </span>
               </div>

@@ -95,7 +95,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex-1 overflow-y-auto px-3.5 py-4 space-y-6 scrollbar-thin scrollbar-thumb-amber-200">
           {/* Section: Games */}
           <div>
-            <span className="px-3 text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">
+            <span className="px-3 text-[10px] font-black uppercase tracking-widest text-slate-600 block mb-2">
               {isRu ? 'Игры и Лобби' : 'Games & Lobby'}
             </span>
             <div className="space-y-1">
@@ -105,10 +105,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onSelectCategory('all');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
                   activeCategory === 'all'
                     ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-700 hover:bg-amber-50 hover:text-amber-900'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -123,10 +123,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onSelectCategory('slots');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
                   activeCategory === 'slots'
                     ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-700 hover:bg-amber-50 hover:text-amber-900'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -144,17 +144,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onSelectCategory('live');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
                   activeCategory === 'live'
                     ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-700 hover:bg-amber-50 hover:text-amber-900'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   <span className="text-base">🎲</span>
                   <span>{isRu ? 'Live Казино' : 'Live Casino'}</span>
                 </div>
-                <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
+                <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-900 font-black">
                   HD
                 </span>
               </button>
@@ -165,17 +165,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onSelectCategory('crash');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
                   activeCategory === 'crash'
                     ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-700 hover:bg-amber-50 hover:text-amber-900'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   <span className="text-base">🚀</span>
                   <span>{isRu ? 'Краш / Instant' : 'Instant Games'}</span>
                 </div>
-                <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-800">
+                <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-900 font-black">
                   NEW
                 </span>
               </button>
@@ -186,10 +186,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onSelectCategory('bonusbuy');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
                   activeCategory === 'bonusbuy'
                     ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-700 hover:bg-amber-50 hover:text-amber-900'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -204,10 +204,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onSelectCategory('jackpot');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
                   activeCategory === 'jackpot'
                     ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-700 hover:bg-amber-50 hover:text-amber-900'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -219,21 +219,39 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <button
                 onClick={() => {
                   playButtonClick();
-                  onSelectCategory('favorites');
+                  onSelectCategory('table');
                   onClose();
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer ${
-                  activeCategory === 'favorites'
-                    ? 'bg-rose-500 text-white shadow-md shadow-rose-500/20'
-                    : 'text-slate-700 hover:bg-rose-50 hover:text-rose-900'
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
+                  activeCategory === 'table'
+                    ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
+                    : 'text-slate-800 hover:bg-amber-50 hover:text-amber-950'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Heart className={`w-4 h-4 ${favoritesCount > 0 ? 'fill-rose-500 text-rose-500' : 'text-slate-400'}`} />
+                  <span className="text-base">🃏</span>
+                  <span>{isRu ? 'Настольные' : 'Table Games'}</span>
+                </div>
+              </button>
+
+              <button
+                onClick={() => {
+                  playButtonClick();
+                  onSelectCategory('favorites');
+                  onClose();
+                }}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs transition-all cursor-pointer min-h-[44px] ${
+                  activeCategory === 'favorites'
+                    ? 'bg-rose-500 text-white shadow-md shadow-rose-500/20'
+                    : 'text-slate-800 hover:bg-rose-50 hover:text-rose-950'
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <Heart className={`w-4 h-4 ${favoritesCount > 0 ? 'fill-rose-500 text-rose-500' : 'text-slate-500'}`} />
                   <span>{isRu ? 'Избранное' : 'Favorites'}</span>
                 </div>
                 {favoritesCount > 0 && (
-                  <span className="text-[10px] font-black px-1.5 py-0.2 rounded-full bg-rose-100 text-rose-700">
+                  <span className="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-800">
                     {favoritesCount}
                   </span>
                 )}
@@ -243,7 +261,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Section: Events & Promo */}
           <div>
-            <span className="px-3 text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">
+            <span className="px-3 text-[10px] font-black uppercase tracking-widest text-slate-600 block mb-2">
               {isRu ? 'События и Промо' : 'Events & Promos'}
             </span>
             <div className="space-y-1">
@@ -253,7 +271,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onOpenTournaments();
                   onClose();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-amber-50 hover:text-amber-900 transition-all cursor-pointer"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-800 hover:bg-amber-50 hover:text-amber-950 transition-all cursor-pointer min-h-[44px]"
               >
                 <div className="flex items-center gap-2.5">
                   <Trophy className="w-4 h-4 text-amber-500" />
@@ -270,7 +288,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onOpenBonuses();
                   onClose();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-amber-50 hover:text-amber-900 transition-all cursor-pointer"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-800 hover:bg-amber-50 hover:text-amber-950 transition-all cursor-pointer min-h-[44px]"
               >
                 <div className="flex items-center gap-2.5">
                   <Gift className="w-4 h-4 text-rose-500" />
@@ -287,7 +305,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onOpenVip();
                   onClose();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-amber-50 hover:text-amber-900 transition-all cursor-pointer"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-800 hover:bg-amber-50 hover:text-amber-950 transition-all cursor-pointer min-h-[44px]"
               >
                 <div className="flex items-center gap-2.5">
                   <Crown className="w-4 h-4 text-amber-600" />
@@ -304,7 +322,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onOpenLuckyWheel();
                   onClose();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-amber-50 hover:text-amber-900 transition-all cursor-pointer group"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-800 hover:bg-amber-50 hover:text-amber-950 transition-all cursor-pointer group min-h-[44px]"
               >
                 <div className="flex items-center gap-2.5">
                   <Sparkles className="w-4 h-4 text-amber-500 group-hover:rotate-45 transition-transform" />
@@ -319,7 +337,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Section: Support & Info */}
           <div>
-            <span className="px-3 text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">
+            <span className="px-3 text-[10px] font-black uppercase tracking-widest text-slate-600 block mb-2">
               {isRu ? 'Сервис и Помощь' : 'Service & Support'}
             </span>
             <div className="space-y-1">
@@ -329,10 +347,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onOpenSupport();
                   onClose();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-amber-50 hover:text-amber-900 transition-all cursor-pointer"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl font-bold text-xs text-slate-800 hover:bg-amber-50 hover:text-amber-950 transition-all cursor-pointer min-h-[44px]"
               >
                 <div className="flex items-center gap-2.5">
-                  <MessageSquare className="w-4 h-4 text-slate-500" />
+                  <MessageSquare className="w-4 h-4 text-slate-600" />
                   <span>{isRu ? 'Поддержка 24/7' : '24/7 Support'}</span>
                 </div>
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
@@ -343,7 +361,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <Smartphone className="w-3.5 h-3.5 text-amber-600" />
                   <span>{isRu ? 'Мобильное приложение' : 'Mobile Web App'}</span>
                 </div>
-                <p className="text-[10px] text-amber-700/80">
+                <p className="text-[10px] text-amber-800">
                   {isRu ? 'Установите PWA на iPhone и Android в один клик' : 'Install PWA app on iPhone & Android with zero download'}
                 </p>
               </div>
@@ -358,13 +376,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
               playButtonClick();
               onToggleLanguage();
             }}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold bg-white border border-amber-200 text-slate-700 hover:text-amber-800 transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold bg-white border border-amber-200 text-slate-800 hover:text-amber-900 transition-colors cursor-pointer min-h-[40px]"
           >
             <Globe className="w-3.5 h-3.5 text-amber-600" />
             <span>{currentLanguage === 'RU' ? 'Русский (RU)' : 'English (EN)'}</span>
           </button>
 
-          <span className="text-[10px] font-extrabold text-slate-400">
+          <span className="text-[10px] font-extrabold text-slate-600">
             v2.4 VIP
           </span>
         </div>

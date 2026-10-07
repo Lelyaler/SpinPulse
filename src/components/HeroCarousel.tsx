@@ -89,7 +89,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
   const slide = slides[currentSlide];
 
   return (
-    <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-amber-300/40 bg-slate-950 text-white min-h-[440px] sm:min-h-[500px] lg:min-h-[550px] flex items-center">
+    <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-amber-300/40 bg-slate-950 text-white min-h-[400px] sm:min-h-[500px] lg:min-h-[550px] flex items-center">
       {/* Crisp, Vivid Full-Resolution Banner Artwork anchored to top so head is never cropped */}
       <img
         key={slide.id}
@@ -104,9 +104,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/30 to-transparent pointer-events-none" />
 
       {/* Main Slide Content Card */}
-      <div className="relative z-10 m-4 sm:m-8 lg:m-10 max-w-xl p-5 sm:p-7 rounded-3xl bg-slate-950/50 backdrop-blur-md border border-white/20 shadow-2xl">
+      <div className="relative z-10 m-3 sm:m-8 lg:m-10 max-w-xl p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-slate-950/50 backdrop-blur-md border border-white/20 shadow-2xl">
         {/* Tag Pill */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-amber-500/40 to-rose-500/40 border border-amber-300/50 backdrop-blur-md mb-2.5 text-xs font-black tracking-wider text-amber-200 uppercase">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-amber-500/40 to-rose-500/40 border border-amber-300/50 backdrop-blur-md mb-2 sm:mb-2.5 text-xs font-black tracking-wider text-amber-200 uppercase">
           <Flame className="w-3.5 h-3.5 text-amber-300 fill-amber-300 animate-pulse" />
           <span>{slide.tag}</span>
           <span className="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black">
@@ -120,7 +120,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
         </h2>
 
         {/* Description */}
-        <p className="text-xs sm:text-sm text-amber-100 font-medium leading-relaxed mb-5 max-w-md">
+        <p className="text-xs sm:text-sm text-amber-100 font-medium leading-relaxed mb-4 sm:mb-5 max-w-md">
           {slide.desc}
         </p>
 
@@ -132,7 +132,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
               slide.buttonAction();
             }}
             aria-label={slide.buttonText}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-linear-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-amber-400/40 active:scale-95 transition-all cursor-pointer group"
+            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-linear-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-amber-400/40 active:scale-95 transition-all cursor-pointer group min-h-[44px]"
           >
             <Play className="w-4 h-4 fill-slate-950 group-hover:scale-110 transition-transform" />
             <span>{slide.buttonText}</span>
@@ -144,23 +144,23 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
               onClaimBonus();
             }}
             aria-label={isRu ? 'Демо пополнение баланса на 500 долларов' : 'Top up balance by $500'}
-            className="inline-flex items-center gap-1.5 px-4 py-3 rounded-2xl bg-white/15 hover:bg-white/25 active:scale-95 text-white font-bold text-xs sm:text-sm border border-amber-300/40 backdrop-blur-md transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl bg-white/15 hover:bg-white/25 active:scale-95 text-white font-bold text-xs sm:text-sm border border-amber-300/40 backdrop-blur-md transition-all cursor-pointer min-h-[44px]"
           >
             <Coins className="w-4 h-4 text-amber-300" />
-            <span>{isRu ? 'Демо баланс (+$500)' : 'Top Up (+$500)'}</span>
+            <span>{isRu ? 'Демо (+$500)' : 'Top Up (+$500)'}</span>
           </button>
         </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="absolute right-4 bottom-4 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-20 flex sm:flex-col gap-2">
+      {/* Navigation Arrows with Accessible 44px Touch Targets */}
+      <div className="absolute right-3 sm:right-4 bottom-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 z-20 flex sm:flex-col gap-2">
         <button
           onClick={() => {
             playButtonClick();
             setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
           }}
           aria-label={isRu ? 'Предыдущий баннер' : 'Previous slide'}
-          className="w-10 h-10 rounded-full bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
+          className="w-11 h-11 rounded-full bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -170,14 +170,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
             setCurrentSlide((prev) => (prev + 1) % slides.length);
           }}
           aria-label={isRu ? 'Следующий баннер' : 'Next slide'}
-          className="w-10 h-10 rounded-full bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
+          className="w-11 h-11 rounded-full bg-slate-900/80 hover:bg-amber-400 hover:text-slate-950 text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-6 sm:left-12 z-20 flex items-center gap-2">
+      {/* Dots Indicator with Accessible 36px+ Touch Target Areas */}
+      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-10 z-20 flex items-center gap-1">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -186,10 +186,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
               setCurrentSlide(idx);
             }}
             aria-label={isRu ? `Перейти к слайду ${idx + 1}` : `Go to slide ${idx + 1}`}
-            className={`h-2.5 rounded-full transition-all cursor-pointer ${
-              currentSlide === idx ? 'w-8 bg-amber-400' : 'w-2.5 bg-white/40 hover:bg-white/80'
-            }`}
-          />
+            className="min-w-[36px] min-h-[36px] flex items-center justify-center cursor-pointer p-1"
+          >
+            <span
+              className={`h-2.5 rounded-full transition-all block ${
+                currentSlide === idx ? 'w-8 bg-amber-400' : 'w-2.5 bg-white/50 hover:bg-white/90'
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>

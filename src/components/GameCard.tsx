@@ -33,6 +33,8 @@ export const GameCard: React.FC<GameCardProps> = ({
         <img
           src={game.coverImage}
           alt={game.title}
+          width={216}
+          height={233}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-out select-none"
           loading="lazy"
           decoding="async"
@@ -78,7 +80,7 @@ export const GameCard: React.FC<GameCardProps> = ({
             onToggleFavorite(game.id);
           }}
           aria-label={isFavorite ? `Удалить ${game.title} из избранного` : `Добавить ${game.title} в избранное`}
-          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-slate-950/70 hover:bg-white text-white hover:text-rose-500 flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer z-10"
+          className="absolute top-1.5 right-1.5 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-white text-white hover:text-rose-500 flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer z-10"
         >
           <Heart className={`w-4 h-4 ${isFavorite ? 'fill-rose-500 text-rose-500' : 'text-white'}`} />
         </button>
@@ -103,7 +105,7 @@ export const GameCard: React.FC<GameCardProps> = ({
       </div>
 
       {/* Card Info Footer: Title & Provider completely outside image */}
-      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 bg-white">
+      <div className="p-3 sm:p-3.5 flex flex-col justify-between flex-1 bg-white">
         <div>
           <h3 
             className="font-black text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-amber-700 transition-colors truncate"
@@ -111,25 +113,25 @@ export const GameCard: React.FC<GameCardProps> = ({
           >
             {game.title}
           </h3>
-          <div className="flex items-center justify-between gap-1 mt-1.5 text-[11px] text-slate-500 font-medium">
+          <div className="flex items-center justify-between gap-1 mt-1 text-[11px] text-slate-600 font-semibold">
             <span className="truncate">{game.provider}</span>
-            <span className="px-1.5 py-0.5 rounded font-extrabold text-[10px] bg-amber-100 text-amber-900 shrink-0">
+            <span className="px-1.5 py-0.5 rounded font-extrabold text-[10px] bg-amber-100 text-amber-950 shrink-0">
               {game.maxWin}
             </span>
           </div>
         </div>
 
         {/* Quick Launch Button */}
-        <div className="mt-3 pt-2.5 border-t border-slate-100">
+        <div className="mt-2.5 pt-2 border-t border-slate-100">
           <button
             onClick={() => {
               playButtonClick();
               onPlay(game);
             }}
             aria-label={`Играть в слот ${game.title}`}
-            className="w-full py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200/90 hover:border-amber-300 text-amber-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+            className="w-full py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200/90 hover:border-amber-300 text-amber-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[44px]"
           >
-            <Play className="w-3 h-3 fill-amber-900 text-amber-900" />
+            <Play className="w-3.5 h-3.5 fill-amber-900 text-amber-900" />
             <span>{isRu ? 'ИГРАТЬ' : 'PLAY'}</span>
           </button>
         </div>

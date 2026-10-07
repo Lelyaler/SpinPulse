@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { 
   Search,
-  Filter
+  Filter,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { GameCategory, GameProvider } from '../types';
 import { playButtonClick } from '../utils/casinoAudio';
@@ -51,6 +53,10 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
   favoritesCount,
   isRu,
 }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
   const categories: { id: GameCategory; label: string; icon: string; badge?: string }[] = [
     { id: 'all', label: isRu ? 'Все игры' : 'All Games', icon: '🌟' },
     { id: 'slots', label: isRu ? 'Слоты' : 'Slots', icon: '🎰', badge: 'HOT' },
@@ -62,12 +68,50 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
     { id: 'favorites', label: isRu ? 'Избранное' : 'Favorites', icon: '❤️' },
   ];
 
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === 'left' ? -260 : 260;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      playButtonClick();
+      setTimeout(checkScroll, 300);
+    }
+  };
+
   return (
-    <div className="space-y-4">
-      {/* Category Pills & Search Row */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-        {/* Category horizontal scrolling bar */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+    <div className="space-y-3.5">
+      {/* Dedicated Full-Width Category Navigation Row - Never squashed by search */}
+      <div className="relative group/nav">
+        {/* Left Scroll Arrow (shown when scrolled right) */}
+        {canScrollLeft && (
+          <button
+            onClick={() => handleScroll('left')}
+            aria-label={isRu ? 'Прокрутить категории влево' : 'Scroll categories left'}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/95 shadow-md border border-amber-200 text-slate-800 hover:text-amber-600 hover:bg-amber-50 flex items-center justify-center transition-all cursor-pointer hidden sm:flex"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+        )}
+
+        {/* Scrollable Categories List */}
+        <div
+          ref={scrollContainerRef}
+          onScroll={checkScroll}
+          className="flex items-center gap-2 overflow-x-auto pb-1 pt-0.5 scrollbar-none scroll-smooth w-full px-0.5"
+        >
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -77,24 +121,24 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   playButtonClick();
                   onSelectCategory(cat.id);
                 }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all shrink-0 cursor-pointer ${
+                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all shrink-0 cursor-pointer min-h-[44px] ${
                   isActive
                     ? 'bg-linear-to-r from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/25 scale-[1.02]'
-                    : 'bg-white hover:bg-amber-50/80 text-slate-700 hover:text-amber-800 border border-slate-200/80 hover:border-amber-300'
+                    : 'bg-white hover:bg-amber-50/90 text-slate-800 hover:text-amber-900 border border-slate-200 hover:border-amber-300'
                 }`}
               >
-                <span className="text-base">{cat.icon}</span>
+                <span className="text-base select-none">{cat.icon}</span>
                 <span>{cat.label}</span>
                 {cat.badge && (
-                  <span className={`text-[9px] font-extrabold px-1.5 py-0.2 rounded-md ${
-                    isActive ? 'bg-white/25 text-white' : 'bg-rose-100 text-rose-700'
+                  <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded-md ${
+                    isActive ? 'bg-white/25 text-white' : 'bg-rose-100 text-rose-800 font-black'
                   }`}>
                     {cat.badge}
                   </span>
                 )}
                 {cat.id === 'favorites' && favoritesCount > 0 && (
-                  <span className={`text-[9px] font-black px-1.5 py-0.2 rounded-full ${
-                    isActive ? 'bg-white text-slate-900' : 'bg-rose-500 text-white'
+                  <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full ${
+                    isActive ? 'bg-white text-slate-900' : 'bg-rose-600 text-white'
                   }`}>
                     {favoritesCount}
                   </span>
@@ -104,37 +148,75 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
           })}
         </div>
 
-        {/* Search Bar */}
-        <div className="relative min-w-[240px]">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+        {/* Right Scroll Arrow (shown when can scroll right) */}
+        {canScrollRight && (
+          <button
+            onClick={() => handleScroll('right')}
+            aria-label={isRu ? 'Прокрутить категории вправо' : 'Scroll categories right'}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/95 shadow-md border border-amber-200 text-slate-800 hover:text-amber-600 hover:bg-amber-50 flex items-center justify-center transition-all cursor-pointer hidden sm:flex"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        )}
+      </div>
+
+      {/* Dedicated Search & Provider Toolbar Row */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 bg-white/60 p-2 sm:p-2.5 rounded-2xl border border-amber-200/60 backdrop-blur-xs">
+        {/* Search Bar with Accessible Label & Clear Button */}
+        <div className="relative flex-1 min-w-0">
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
           <input
             type="text"
-            placeholder={isRu ? `Поиск среди ${totalGames} игр...` : `Search ${totalGames} games, slots...`}
+            placeholder={isRu ? `Поиск среди ${totalGames} игр и слотов...` : `Search ${totalGames} games, slots...`}
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm font-semibold rounded-2xl bg-white border border-slate-200 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/60 shadow-xs transition-all"
+            aria-label={isRu ? 'Поиск игр' : 'Search games'}
+            className="w-full pl-10 pr-10 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/60 shadow-xs transition-all min-h-[44px]"
           />
           {searchQuery && (
             <button
-              onClick={() => onSearchChange('')}
+              onClick={() => {
+                playButtonClick();
+                onSearchChange('');
+              }}
               aria-label={isRu ? 'Очистить строку поиска' : 'Clear search input'}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-100 font-bold cursor-pointer"
             >
               ✕
             </button>
           )}
         </div>
+
+        {/* Provider Dropdown Selector */}
+        <div className="relative flex items-center shrink-0">
+          <Filter className="w-3.5 h-3.5 absolute left-3 text-amber-600 pointer-events-none" />
+          <select
+            value={selectedProvider}
+            onChange={(e) => {
+              playButtonClick();
+              onSelectProvider(e.target.value);
+            }}
+            aria-label={isRu ? 'Фильтр по провайдеру софта' : 'Filter by game provider'}
+            className="w-full sm:w-auto pl-8 pr-8 py-2.5 bg-white border border-slate-200 hover:border-amber-300 rounded-xl text-xs font-bold text-slate-800 shadow-xs focus:outline-none focus:ring-2 focus:ring-amber-200/60 cursor-pointer min-h-[44px] appearance-none"
+          >
+            {providers.map((prov) => (
+              <option key={prov} value={prov}>
+                {prov === 'All Providers' && isRu ? 'Все провайдеры (20)' : prov}
+              </option>
+            ))}
+          </select>
+          <div className="absolute right-3 pointer-events-none text-slate-500 text-[10px]">▼</div>
+        </div>
       </div>
 
-      {/* Provider Filter bar */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-        <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
-          <Filter className="w-3 h-3 text-amber-500" />
-          {isRu ? 'Провайдер:' : 'Provider:'}
+      {/* Quick Top Provider Pills (Horizontal Scroll on Mobile/Desktop) */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
+        <span className="text-slate-700 font-black uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
+          {isRu ? 'Топ студии:' : 'Top Studios:'}
         </span>
-        {providers.map((prov) => {
+        {providers.slice(0, 10).map((prov) => {
           const isSelected = selectedProvider === prov;
-          const provLabel = prov === 'All Providers' && isRu ? 'Все провайдеры' : prov;
+          const provLabel = prov === 'All Providers' && isRu ? 'Все' : prov;
           return (
             <button
               key={prov}
@@ -143,10 +225,10 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 onSelectProvider(prov);
               }}
               aria-label={`Выбрать провайдера: ${provLabel}`}
-              className={`px-3 py-1.5 rounded-xl font-bold transition-all shrink-0 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer min-h-[34px] ${
                 isSelected
-                  ? 'bg-amber-100 text-amber-950 border border-amber-300 shadow-xs'
-                  : 'bg-white hover:bg-amber-50 text-slate-700 border border-slate-200 hover:border-amber-200'
+                  ? 'bg-amber-100 text-amber-950 border border-amber-400 shadow-xs font-black'
+                  : 'bg-white hover:bg-amber-50 text-slate-700 border border-slate-200/90 hover:border-amber-200'
               }`}
             >
               {provLabel}

@@ -143,10 +143,17 @@ export const App: React.FC = () => {
   }, [activeCategory, selectedProvider, searchQuery, favorites]);
 
   // Progressive game display to prevent excessive DOM size and maximize mobile performance
-  const [visibleCount, setVisibleCount] = useState<number>(24);
+  const getInitialVisibleCount = () => {
+    if (typeof window !== 'undefined' && window.innerWidth < 640) {
+      return 12;
+    }
+    return 24;
+  };
+
+  const [visibleCount, setVisibleCount] = useState<number>(getInitialVisibleCount);
 
   useEffect(() => {
-    setVisibleCount(24);
+    setVisibleCount(getInitialVisibleCount());
   }, [activeCategory, selectedProvider, searchQuery]);
 
   const displayedGames = useMemo(() => {
@@ -245,7 +252,7 @@ export const App: React.FC = () => {
                 </span>
               </div>
 
-              <div className="text-xs font-bold text-slate-400 hidden sm:block">
+              <div className="text-xs font-bold text-slate-600 hidden sm:block">
                 {isRu ? 'Сертифицированный RNG • Демо-кредиты' : 'Provably Fair • Instant Demo Currency'}
               </div>
             </div>
@@ -257,7 +264,7 @@ export const App: React.FC = () => {
                 <h3 className="text-base font-black text-slate-700">
                   {isRu ? 'Игры не найдены' : 'No games found'}
                 </h3>
-                <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+                <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto font-medium">
                   {isRu 
                     ? 'По выбранным критериям ничего не найдено. Попробуйте сбросить фильтры или выбрать "Все игры".' 
                     : 'No titles matched your filter or search criteria. Try choosing "All Games" or clearing search.'}
@@ -268,7 +275,7 @@ export const App: React.FC = () => {
                     setSelectedProvider('All Providers');
                     setSearchQuery('');
                   }}
-                  className="mt-4 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs cursor-pointer"
+                  className="mt-4 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs cursor-pointer min-h-[44px]"
                 >
                   {isRu ? 'Сбросить фильтры' : 'Reset Filters'}
                 </button>
@@ -292,14 +299,17 @@ export const App: React.FC = () => {
                 {filteredGames.length > visibleCount && (
                   <div className="flex justify-center pt-5 pb-2">
                     <button
-                      onClick={() => setVisibleCount((prev) => prev + 24)}
+                      onClick={() => {
+                        const step = typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24;
+                        setVisibleCount((prev) => prev + step);
+                      }}
                       aria-label={isRu ? 'Показать еще игры' : 'Show more games'}
-                      className="px-8 py-3.5 rounded-2xl bg-white hover:bg-amber-50 active:scale-95 border-2 border-amber-300 font-black text-xs sm:text-sm text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-2"
+                      className="px-8 py-3.5 rounded-2xl bg-white hover:bg-amber-50 active:scale-95 border-2 border-amber-300 font-black text-xs sm:text-sm text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
                     >
                       <span>
                         {isRu 
-                          ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(24, filteredGames.length - visibleCount)})` 
-                          : `SHOW MORE (+${Math.min(24, filteredGames.length - visibleCount)})`}
+                          ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24, filteredGames.length - visibleCount)})` 
+                          : `SHOW MORE (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 12 : 24, filteredGames.length - visibleCount)})`}
                       </span>
                       <span className="text-amber-800 text-xs font-bold">
                         ({visibleCount} / {filteredGames.length})
@@ -324,7 +334,7 @@ export const App: React.FC = () => {
           {/* Official Licensed Game Providers Marquee */}
           <div className="p-5 sm:p-6 rounded-3xl bg-white border border-amber-200/70 shadow-xs">
             <div className="text-center mb-4">
-              <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">
+              <span className="text-[11px] font-black uppercase tracking-widest text-slate-600">
                 {isRu ? 'Официальные сертифицированные провайдеры софта' : 'Official Licensed Game Studios & Providers'}
               </span>
             </div>
@@ -361,7 +371,7 @@ export const App: React.FC = () => {
         <footer className="mt-auto border-t border-amber-200/80 bg-white/95 py-10 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto space-y-6">
             {/* Top Footer row: Payment Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-4 border-b border-slate-100 text-xs font-black text-slate-400">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-4 border-b border-slate-100 text-xs font-black text-slate-600">
               <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">VISA</span>
               <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">MASTERCARD</span>
               <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-200">BITCOIN</span>
@@ -379,7 +389,7 @@ export const App: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-base font-black text-slate-900">SpinPulse VIP Lounge</span>
-                  <p className="text-xs text-slate-400 font-medium">
+                  <p className="text-xs text-slate-600 font-medium">
                     {isRu 
                       ? 'Премиальный демонстрационный симулятор онлайн-казино в стиле Izzi. React 19 & Tailwind CSS.'
                       : 'High-end demo iGaming portal & casino simulator inspired by Izzi. React 19 & Tailwind CSS.'}
@@ -387,8 +397,8 @@ export const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-slate-500">
-                <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+              <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-slate-700">
+                <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
                   18+
                 </span>
                 <span>{isRu ? 'Демо-валюта' : 'Demo Currency Only'}</span>

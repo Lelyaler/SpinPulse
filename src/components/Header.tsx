@@ -148,11 +148,11 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => setShowNotifications(!showNotifications)}
               aria-label={isRu ? 'Уведомления' : 'Notifications'}
-              className="p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-600 transition-colors relative cursor-pointer"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-700 transition-colors relative cursor-pointer flex items-center justify-center"
               title="Notifications"
             >
-              <Bell className="w-4 h-4 text-slate-600" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white animate-pulse" />
+              <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700" />
+              <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white animate-pulse" />
             </button>
 
             {showNotifications && (
@@ -161,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <span className="text-xs font-black text-slate-900">
                     {isRu ? 'Уведомления' : 'Notifications'}
                   </span>
-                  <span className="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
                     3 New
                   </span>
                 </div>
@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {notifications.map((n) => (
                     <div key={n.id} className="p-2 rounded-xl bg-slate-50 hover:bg-amber-50/60 transition-colors text-xs">
                       <div className="font-bold text-slate-800">{n.title}</div>
-                      <span className="text-[10px] text-slate-400">{n.time}</span>
+                      <span className="text-[10px] text-slate-600 font-medium">{n.time}</span>
                     </div>
                   ))}
                 </div>
@@ -182,9 +182,9 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={toggleSound}
             aria-label={soundActive ? (isRu ? 'Выключить звук' : 'Mute sound') : (isRu ? 'Включить звук' : 'Unmute sound')}
             title={soundActive ? 'Mute' : 'Unmute'}
-            className="p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-600 transition-colors cursor-pointer"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-700 transition-colors cursor-pointer flex items-center justify-center"
           >
-            {soundActive ? <Volume2 className="w-4 h-4 text-amber-600" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
+            {soundActive ? <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" /> : <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />}
           </button>
 
           {/* Spin History Drawer button */}
@@ -195,9 +195,9 @@ export const Header: React.FC<HeaderProps> = ({
             }}
             aria-label={isRu ? 'История вращений' : 'Recent spins history'}
             title="Recent Spins"
-            className="p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-600 transition-colors cursor-pointer"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-700 transition-colors cursor-pointer flex items-center justify-center"
           >
-            <History className="w-4 h-4" />
+            <History className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           {/* VIP Level Badge */}
