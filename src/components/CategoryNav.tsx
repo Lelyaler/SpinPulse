@@ -117,6 +117,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
           {searchQuery && (
             <button
               onClick={() => onSearchChange('')}
+              aria-label={isRu ? 'Очистить строку поиска' : 'Clear search input'}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
             >
               ✕
@@ -127,12 +128,13 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
 
       {/* Provider Filter bar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-        <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
+        <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
           <Filter className="w-3 h-3 text-amber-500" />
           {isRu ? 'Провайдер:' : 'Provider:'}
         </span>
         {providers.map((prov) => {
           const isSelected = selectedProvider === prov;
+          const provLabel = prov === 'All Providers' && isRu ? 'Все провайдеры' : prov;
           return (
             <button
               key={prov}
@@ -140,13 +142,14 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 playButtonClick();
                 onSelectProvider(prov);
               }}
+              aria-label={`Выбрать провайдера: ${provLabel}`}
               className={`px-3 py-1.5 rounded-xl font-bold transition-all shrink-0 cursor-pointer ${
                 isSelected
-                  ? 'bg-amber-100 text-amber-900 border border-amber-300 shadow-xs'
-                  : 'bg-white/80 hover:bg-amber-50 text-slate-600 border border-slate-200/70 hover:border-amber-200'
+                  ? 'bg-amber-100 text-amber-950 border border-amber-300 shadow-xs'
+                  : 'bg-white hover:bg-amber-50 text-slate-700 border border-slate-200 hover:border-amber-200'
               }`}
             >
-              {prov === 'All Providers' && isRu ? 'Все провайдеры' : prov}
+              {provLabel}
             </button>
           );
         })}

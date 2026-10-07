@@ -142,6 +142,17 @@ export const App: React.FC = () => {
     });
   }, [activeCategory, selectedProvider, searchQuery, favorites]);
 
+  // Progressive game display to prevent excessive DOM size and maximize mobile performance
+  const [visibleCount, setVisibleCount] = useState<number>(24);
+
+  useEffect(() => {
+    setVisibleCount(24);
+  }, [activeCategory, selectedProvider, searchQuery]);
+
+  const displayedGames = useMemo(() => {
+    return filteredGames.slice(0, visibleCount);
+  }, [filteredGames, visibleCount]);
+
   const scrollToTournament = () => {
     tournamentSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
@@ -263,18 +274,40 @@ export const App: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-3.5 sm:gap-4">
-                {filteredGames.map((game) => (
-                  <GameCard
-                    key={game.id}
-                    game={game}
-                    onPlay={(selected) => setActiveModalGame(selected)}
-                    isFavorite={favorites.includes(game.id)}
-                    onToggleFavorite={handleToggleFavorite}
-                    isRu={isRu}
-                  />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-3.5 sm:gap-4">
+                  {displayedGames.map((game) => (
+                    <GameCard
+                      key={game.id}
+                      game={game}
+                      onPlay={(selected) => setActiveModalGame(selected)}
+                      isFavorite={favorites.includes(game.id)}
+                      onToggleFavorite={handleToggleFavorite}
+                      isRu={isRu}
+                    />
+                  ))}
+                </div>
+
+                {/* Show More Games Button (drastically keeps DOM lightweight) */}
+                {filteredGames.length > visibleCount && (
+                  <div className="flex justify-center pt-5 pb-2">
+                    <button
+                      onClick={() => setVisibleCount((prev) => prev + 24)}
+                      aria-label={isRu ? 'Показать еще игры' : 'Show more games'}
+                      className="px-8 py-3.5 rounded-2xl bg-white hover:bg-amber-50 active:scale-95 border-2 border-amber-300 font-black text-xs sm:text-sm text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center gap-2"
+                    >
+                      <span>
+                        {isRu 
+                          ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(24, filteredGames.length - visibleCount)})` 
+                          : `SHOW MORE (+${Math.min(24, filteredGames.length - visibleCount)})`}
+                      </span>
+                      <span className="text-amber-800 text-xs font-bold">
+                        ({visibleCount} / {filteredGames.length})
+                      </span>
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </section>
 

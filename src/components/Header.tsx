@@ -67,6 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
               playButtonClick();
               onToggleSidebar();
             }}
+            aria-label={isRu ? 'Открыть меню навигации' : 'Toggle navigation menu'}
             className="p-2 sm:p-2.5 rounded-2xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-700 transition-colors cursor-pointer"
             title="Toggle Menu"
           >
@@ -133,6 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
                 playWinCoinsSound();
                 onTopUp();
               }}
+              aria-label={isRu ? 'Пополнить демо баланс на 500 долларов' : 'Deposit $500 demo coins'}
               title="Add $500 Demo Coins"
               className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-xl bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 active:scale-95 text-white font-extrabold text-xs shadow-xs transition-transform cursor-pointer"
             >
@@ -145,6 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
+              aria-label={isRu ? 'Уведомления' : 'Notifications'}
               className="p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-600 transition-colors relative cursor-pointer"
               title="Notifications"
             >
@@ -177,6 +180,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Sound Toggle */}
           <button
             onClick={toggleSound}
+            aria-label={soundActive ? (isRu ? 'Выключить звук' : 'Mute sound') : (isRu ? 'Включить звук' : 'Unmute sound')}
             title={soundActive ? 'Mute' : 'Unmute'}
             className="p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-600 transition-colors cursor-pointer"
           >
@@ -189,6 +193,7 @@ export const Header: React.FC<HeaderProps> = ({
               playButtonClick();
               onOpenHistory();
             }}
+            aria-label={isRu ? 'История вращений' : 'Recent spins history'}
             title="Recent Spins"
             className="p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-amber-300 bg-white hover:bg-amber-50 text-slate-600 transition-colors cursor-pointer"
           >
@@ -201,6 +206,7 @@ export const Header: React.FC<HeaderProps> = ({
               playButtonClick();
               onOpenVip();
             }}
+            aria-label={isRu ? 'Открыть статус VIP программы' : 'Open VIP status'}
             className="hidden lg:flex items-center gap-2 pl-3 border-l border-slate-200 hover:opacity-90 transition-opacity cursor-pointer"
           >
             <div className="w-8 h-8 rounded-full bg-linear-to-tr from-amber-400 to-yellow-300 flex items-center justify-center text-amber-950 text-xs font-black shadow-xs">
