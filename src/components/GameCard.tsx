@@ -28,8 +28,8 @@ export const GameCard: React.FC<GameCardProps> = ({
 }) => {
   return (
     <div className="group relative bg-white rounded-2xl border border-amber-200/80 shadow-xs hover:shadow-xl hover:border-amber-400 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden flex flex-col">
-      {/* Game Image Container - Slightly taller aspect ratio (+12px length) for optimal slot artwork framing */}
-      <div className="relative aspect-[1/1.08] w-full overflow-hidden bg-slate-900">
+      {/* Game Image Container - Exact 216x233 aspect ratio specified for slot artworks */}
+      <div className="relative aspect-[216/233] w-full overflow-hidden bg-slate-900">
         <img
           src={game.coverImage}
           alt={game.title}

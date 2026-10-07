@@ -73,7 +73,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
         : 'Double your initial deposit and grab 500 free spins in legendary video slots!',
       buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
       buttonAction: onClaimBonus,
-      bgImage: `${baseUrl}banners/hero-welcome.webp`,
+      bgImage: `${baseUrl}banners/banner-welcome-bright.webp`,
       accentBadge: '🔥 500 FS',
     },
   ];
