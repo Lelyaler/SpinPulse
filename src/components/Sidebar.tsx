@@ -70,21 +70,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
         }`}
       >
         {/* Header Branding */}
-        <div className="h-18 sm:h-20 px-6 flex items-center justify-between border-b border-orange-600/30 bg-linear-to-r from-amber-500 via-orange-500 to-amber-600 text-white shadow-xs">
+        <div className="h-18 sm:h-20 px-6 flex items-center justify-between border-b border-orange-800/60 bg-linear-to-r from-orange-950 via-orange-900 to-amber-950 text-white shadow-xs">
           <a href="#" className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-slate-950/85 border border-amber-300/40 flex items-center justify-center text-amber-400 shadow-sm">
+            <div className="w-11 h-11 rounded-2xl bg-slate-950/90 border border-amber-400/40 flex items-center justify-center text-amber-400 shadow-sm">
               <Crown className="w-6 h-6 fill-amber-400 text-amber-400" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-black tracking-tight text-white drop-shadow-xs">
-                  Spin<span className="text-amber-200">Pulse</span>
+                  Spin<span className="text-amber-400">Pulse</span>
                 </span>
-                <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-slate-950/60 text-amber-300 border border-amber-300/30 tracking-wider">
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-slate-950/70 text-amber-300 border border-amber-300/30 tracking-wider">
                   VIP
                 </span>
               </div>
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-amber-100 block leading-none mt-0.5">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-orange-200/80 block leading-none mt-0.5">
                 CASINO LOBBY
               </span>
             </div>
@@ -93,7 +93,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             onClick={onClose}
             aria-label={isRu ? 'Закрыть меню' : 'Close menu'}
-            className="p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/20 lg:hidden cursor-pointer active:scale-95 transition-all"
+            className="p-2 rounded-xl text-orange-200/80 hover:text-white hover:bg-white/15 lg:hidden cursor-pointer active:scale-95 transition-all"
           >
             <X className="w-5 h-5" />
           </button>

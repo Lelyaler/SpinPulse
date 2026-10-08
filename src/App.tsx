@@ -354,15 +354,15 @@ export const App: React.FC = () => {
           )}
         </main>
 
-        <footer className="mt-auto border-t-2 border-amber-400/50 bg-linear-to-br from-amber-500 via-orange-500 to-amber-600 text-white py-12 px-4 sm:px-6 lg:px-8 shadow-inner relative overflow-hidden">
+        <footer className="mt-auto border-t-2 border-orange-800/60 bg-linear-to-br from-orange-950 via-orange-900 to-amber-950 text-white py-12 px-4 sm:px-6 lg:px-8 shadow-inner relative overflow-hidden">
           {/* Subtle warm ambient gaming glow */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-300/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-10 w-80 h-80 bg-orange-700/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-10 w-80 h-80 bg-orange-950/40 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto space-y-8 relative z-10">
             {/* Payment methods badges - high contrast white pills */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 py-3 border-b border-white/20 text-xs font-black">
-              <span className="text-amber-100 text-xs uppercase tracking-wider font-extrabold mr-2 select-none">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 py-3 border-b border-orange-800/40 text-xs font-black">
+              <span className="text-orange-200 text-xs uppercase tracking-wider font-extrabold mr-2 select-none">
                 {isRu ? 'Мгновенные методы:' : 'Instant Payouts:'}
               </span>
               <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">VISA</span>
@@ -377,7 +377,7 @@ export const App: React.FC = () => {
             {/* Brand & info bar */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
               <div className="flex items-center gap-3.5">
-                <div className="w-12 h-12 rounded-2xl bg-slate-950/90 border border-amber-300/40 flex items-center justify-center text-amber-400 text-lg font-black shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-slate-950/90 border border-amber-400/40 flex items-center justify-center text-amber-400 text-lg font-black shadow-md">
                   👑
                 </div>
                 <div>
@@ -387,7 +387,7 @@ export const App: React.FC = () => {
                       OFFICIAL
                     </span>
                   </div>
-                  <p className="text-xs text-amber-100 font-medium mt-0.5 max-w-md">
+                  <p className="text-xs text-orange-100/90 font-medium mt-0.5 max-w-md">
                     {isRu 
                       ? 'Премиальный демонстрационный симулятор онлайн-казино. Сертифицированный генератор чисел, моментальные спины и честная игра.'
                       : 'High-end demo iGaming portal & casino simulator. Provably fair RNG, instant spins, and entertainment demo credits.'}
@@ -399,20 +399,20 @@ export const App: React.FC = () => {
                 <span className="px-3 py-1.5 rounded-xl bg-rose-600 text-white font-black shadow-xs">
                   18+
                 </span>
-                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-300/30 text-amber-200">
+                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-400/30 text-amber-200">
                   {isRu ? 'Демо-валюта' : 'Demo Currency'}
                 </span>
-                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-300/30 text-amber-200">
+                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-400/30 text-amber-200">
                   {isRu ? 'Сертифицированный RNG' : 'Certified Fair RNG'}
                 </span>
-                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-300/30 text-amber-200">
+                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-400/30 text-amber-200">
                   Demo License #8048/JAZ
                 </span>
               </div>
             </div>
 
             {/* Responsible gaming notice */}
-            <div className="pt-4 border-t border-white/20 text-center text-[11px] text-amber-100/90 font-medium">
+            <div className="pt-4 border-t border-orange-800/40 text-center text-[11px] text-orange-200/80 font-medium">
               {isRu
                 ? '© 2026 SpinPulse Casino. Играйте ответственно. Все слоты и игры предназначены исключительно для ознакомительных и развлекательных целей с виртуальными очками.'
                 : '© 2026 SpinPulse Casino. Play responsibly. All titles and simulations are strictly intended for entertainment purposes using virtual demo coins.'}
