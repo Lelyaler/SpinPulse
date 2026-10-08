@@ -118,7 +118,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   playButtonClick();
                   onSelectCategory(cat.id);
                 }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer min-h-[44px] ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm sm:text-[15px] font-bold transition-all shrink-0 cursor-pointer min-h-[44px] ${
                   isActive
                     ? 'bg-linear-to-r from-orange-500 via-amber-500 to-amber-600 text-white shadow-md shadow-orange-500/25 scale-[1.03] border border-amber-300'
                     : 'bg-white hover:bg-amber-50/70 text-slate-800 hover:text-orange-600 shadow-2xs border border-amber-200/60 hover:border-amber-300'
@@ -127,14 +127,14 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 <span className="text-base select-none">{cat.icon}</span>
                 <span>{cat.label}</span>
                 {cat.badge && (
-                  <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded-md ${
+                  <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-md ${
                     isActive ? 'bg-white/20 text-white' : 'bg-linear-to-r from-rose-500 to-orange-500 text-white font-black shadow-2xs'
                   }`}>
                     {cat.badge}
                   </span>
                 )}
                 {cat.id === 'favorites' && favoritesCount > 0 && (
-                  <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full ${
+                  <span className={`text-[10px] font-black px-1.5 py-0.5 rounded-full ${
                     isActive ? 'bg-white text-slate-950' : 'bg-rose-500 text-white'
                   }`}>
                     {favoritesCount}
@@ -165,7 +165,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label={isRu ? 'Поиск игр' : 'Search games'}
-            className="w-full pl-10 pr-10 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white border border-amber-200/80 hover:border-amber-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/50 shadow-2xs transition-all min-h-[44px]"
+            className="w-full pl-10 pr-10 py-2.5 text-sm font-semibold rounded-xl bg-white border border-amber-200/80 hover:border-amber-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200/50 shadow-2xs transition-all min-h-[44px]"
           />
           {searchQuery && (
             <button
@@ -190,7 +190,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
               onSelectProvider(e.target.value);
             }}
             aria-label={isRu ? 'Фильтр по провайдеру софта' : 'Filter by game provider'}
-            className="w-full sm:w-auto pl-8 pr-8 py-2.5 bg-white border border-amber-200/80 hover:border-amber-300 rounded-xl text-xs font-bold text-slate-800 shadow-2xs focus:outline-none focus:ring-2 focus:ring-amber-200/50 cursor-pointer min-h-[44px] appearance-none"
+            className="w-full sm:w-auto pl-8 pr-8 py-2.5 bg-white border border-amber-200/80 hover:border-amber-300 rounded-xl text-xs sm:text-sm font-bold text-slate-800 shadow-2xs focus:outline-none focus:ring-2 focus:ring-amber-200/50 cursor-pointer min-h-[44px] appearance-none"
           >
             {providers.map((prov) => (
               <option key={prov} value={prov}>
@@ -203,7 +203,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
       </div>
 
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
-        <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1 mr-1">
+        <span className="text-slate-500 font-bold uppercase tracking-wider text-[11px] shrink-0 flex items-center gap-1 mr-1">
           {isRu ? 'Студии:' : 'Studios:'}
         </span>
         {providers.slice(0, 10).map((prov) => {
@@ -217,7 +217,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 onSelectProvider(prov);
               }}
               aria-label={`Выбрать провайдера: ${provLabel}`}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer min-h-[34px] ${
+              className={`px-3 py-1.5 rounded-xl text-xs sm:text-[13px] font-semibold transition-all shrink-0 cursor-pointer min-h-[34px] ${
                 isSelected
                   ? 'bg-slate-900 text-white font-bold'
                   : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200/70'

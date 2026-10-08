@@ -45,7 +45,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose, isR
     setMessages((prev) => [...prev, userMsg]);
     setInputText('');
 
-    // Simulated instant agent reply
+    // Instant support message reply handler
     setTimeout(() => {
       const replyText = isRu
         ? 'Благодарим за обращение! Ваш демо-баланс и все игровые функции активны. Если нужны дополнительные демо-монеты, используйте кнопку "Депозит" или Колесо Удачи!'

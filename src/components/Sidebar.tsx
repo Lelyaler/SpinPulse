@@ -8,7 +8,8 @@ import {
   Smartphone, 
   Globe, 
   X,
-  Heart
+  Heart,
+  HelpCircle
 } from 'lucide-react';
 import { GameCategory } from '../types';
 import { playButtonClick } from '../utils/casinoAudio';
@@ -369,6 +370,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </div>
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-xs" />
               </button>
+
+              <a
+                href="#faq-section"
+                onClick={() => {
+                  playButtonClick();
+                  onClose();
+                }}
+                className="w-full flex items-center justify-between px-3.5 py-3 rounded-2xl font-bold text-sm sm:text-[15px] text-slate-700 hover:bg-amber-50 hover:text-orange-950 transition-colors cursor-pointer min-h-[48px]"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="w-5 h-5 text-amber-500" />
+                  <span>{isRu ? 'Вопросы и ответы (FAQ)' : 'FAQ & Help'}</span>
+                </div>
+                <span className="text-xs font-black px-2 py-0.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-200/60">
+                  FAQ
+                </span>
+              </a>
 
               <div className="p-4 rounded-2xl bg-slate-50/90 border border-slate-100 text-slate-700">
                 <div className="flex items-center gap-2.5 font-bold mb-1 text-slate-900 text-sm">

@@ -36,6 +36,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
       buttonAction: onClaimBonus,
       bgImage: `${baseUrl}banners/banner-zeus-bright.webp`,
+      mobileBgImage: `${baseUrl}banners/banner-zeus-mobile.webp`,
       accentBadge: '⚡ 15,000x',
     },
     {
@@ -48,6 +49,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       buttonText: isRu ? 'В ТУРНИР' : 'JOIN TOURNAMENT',
       buttonAction: onOpenTournaments,
       bgImage: `${baseUrl}banners/banner-tournament-bright.webp`,
+      mobileBgImage: `${baseUrl}banners/banner-tournament-mobile.webp`,
       accentBadge: '🏆 $50,000',
     },
     {
@@ -60,6 +62,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
       buttonAction: onClaimBonus,
       bgImage: `${baseUrl}banners/banner-crash-bright.webp`,
+      mobileBgImage: `${baseUrl}banners/banner-crash-mobile.webp`,
       accentBadge: '🚀 10,000x',
     },
     {
@@ -72,6 +75,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
       buttonText: isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS',
       buttonAction: onClaimBonus,
       bgImage: `${baseUrl}banners/banner-welcome-bright.webp`,
+      mobileBgImage: `${baseUrl}banners/banner-welcome-mobile.webp`,
       accentBadge: '🔥 500 FS',
     },
   ];
@@ -93,16 +97,19 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
 
   return (
     <div className="relative rounded-3xl overflow-hidden shadow-xl bg-slate-950 text-white min-h-[400px] sm:min-h-[500px] lg:min-h-[550px] flex items-center">
-      <img
-        key={slide.id}
-        src={slide.bgImage}
-        alt={slide.title}
-        width={1376}
-        height={768}
-        fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
-        decoding={currentSlide === 0 ? 'sync' : 'async'}
-        className="absolute inset-0 w-full h-full object-cover object-[center_top] sm:object-[right_top] md:object-[center_top] transition-all duration-700 select-none"
-      />
+      <picture className="absolute inset-0 w-full h-full">
+        <source media="(max-width: 640px)" srcSet={slide.mobileBgImage} type="image/webp" />
+        <img
+          key={slide.id}
+          src={slide.bgImage}
+          alt={slide.title}
+          width={1376}
+          height={768}
+          fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
+          decoding={currentSlide === 0 ? 'sync' : 'async'}
+          className="w-full h-full object-cover object-[center_top] sm:object-[right_top] md:object-[center_top] transition-all duration-700 select-none"
+        />
+      </picture>
 
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/30 to-transparent pointer-events-none" />
 

@@ -10,6 +10,7 @@ import { CategoryNav } from './components/CategoryNav';
 import { GameCard } from './components/GameCard';
 import { isSoundEnabled, playWinCoinsSound } from './utils/casinoAudio';
 
+const FaqSection = lazy(() => import('./components/FaqSection').then((m) => ({ default: m.FaqSection })));
 const TournamentCard = lazy(() => import('./components/TournamentCard').then((m) => ({ default: m.TournamentCard })));
 const VipLoyaltyBar = lazy(() => import('./components/VipLoyaltyBar').then((m) => ({ default: m.VipLoyaltyBar })));
 const CasinoPerks = lazy(() => import('./components/CasinoPerks').then((m) => ({ default: m.CasinoPerks })));
@@ -19,7 +20,6 @@ const SupportModal = lazy(() => import('./components/SupportModal').then((m) => 
 const RecentPlaysDrawer = lazy(() => import('./components/RecentPlaysDrawer').then((m) => ({ default: m.RecentPlaysDrawer })));
 
 export const App: React.FC = () => {
-  // Language State ('RU' default as requested by user, toggleable to 'EN')
   const [currentLanguage, setCurrentLanguage] = useState<'RU' | 'EN'>(() => {
     const saved = localStorage.getItem('spinpulse_lang');
     return saved === 'EN' ? 'EN' : 'RU';
@@ -228,8 +228,8 @@ export const App: React.FC = () => {
           <section className="space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <span className="text-xl sm:text-2xl select-none">🔥</span>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                <span className="text-2xl sm:text-3xl select-none">🔥</span>
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                   {activeCategory === 'all' && (isRu ? 'Все игры лобби' : 'All Lobby Titles')}
                   {activeCategory === 'slots' && (isRu ? 'Популярные видеослоты' : 'Premium Video Slots')}
                   {activeCategory === 'live' && (isRu ? 'Live Столы с дилерами' : 'Evolution Live Dealers')}
@@ -239,7 +239,7 @@ export const App: React.FC = () => {
                   {activeCategory === 'table' && (isRu ? 'Классические настольные' : 'Classic Table Games')}
                   {activeCategory === 'favorites' && (isRu ? 'Ваши избранные игры' : 'Your Favorites')}
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300/80 shadow-2xs">
+                <span className="px-3 py-0.5 rounded-full text-xs sm:text-sm font-black bg-amber-100 text-amber-900 border border-amber-300/80 shadow-2xs">
                   {filteredGames.length}
                 </span>
               </div>
@@ -304,14 +304,14 @@ export const App: React.FC = () => {
                         setVisibleCount((prev) => prev + step);
                       }}
                       aria-label={isRu ? 'Показать еще игры' : 'Show more games'}
-                      className="px-8 py-3.5 rounded-2xl bg-linear-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 active:scale-95 text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-orange-500/20 transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
+                      className="px-8 py-3.5 rounded-2xl bg-linear-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 active:scale-95 text-slate-950 font-black text-sm sm:text-base shadow-md shadow-orange-500/20 transition-all cursor-pointer flex items-center gap-2.5 min-h-[48px]"
                     >
                       <span>
                         {isRu 
                           ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12, filteredGames.length - visibleCount)})` 
                           : `SHOW MORE (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12, filteredGames.length - visibleCount)})`}
                       </span>
-                      <span className="text-slate-800 text-xs font-bold">
+                      <span className="text-slate-800 text-xs sm:text-sm font-black">
                         ({visibleCount} / {filteredGames.length})
                       </span>
                     </button>
@@ -350,6 +350,8 @@ export const App: React.FC = () => {
               </div>
 
               <CasinoPerks isRu={isRu} />
+
+              <FaqSection isRu={isRu} />
             </Suspense>
           )}
         </main>
@@ -396,6 +398,12 @@ export const App: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs font-bold text-white">
+                <a
+                  href="#faq-section"
+                  className="px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black shadow-xs transition-colors cursor-pointer"
+                >
+                  {isRu ? 'Вопросы и ответы (FAQ)' : 'FAQ & Guide'}
+                </a>
                 <span className="px-3 py-1.5 rounded-xl bg-rose-600 text-white font-black shadow-xs">
                   18+
                 </span>

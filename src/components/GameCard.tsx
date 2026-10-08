@@ -30,25 +30,25 @@ export const GameCard: React.FC<GameCardProps> = ({
 
         <div className="absolute top-2 left-2 flex items-center gap-1 pointer-events-none z-10">
           {game.isHot ? (
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-rose-500 text-white shadow-xs">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-black uppercase tracking-wider bg-rose-500 text-white shadow-xs">
               🔥 HOT
             </span>
           ) : game.isNew ? (
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-linear-to-r from-amber-400 to-orange-400 text-slate-950 shadow-xs">
+            <span className="px-2 py-0.5 rounded-md text-[11px] font-black uppercase tracking-wider bg-linear-to-r from-amber-400 to-orange-400 text-slate-950 shadow-xs">
               ✨ NEW
             </span>
           ) : game.category === 'crash' ? (
-            <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-indigo-600 text-white shadow-xs">
+            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white shadow-xs">
               🚀 CRASH
             </span>
           ) : game.category === 'live' ? (
-            <span className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-xs">
+            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-xs">
               🔴 LIVE
             </span>
           ) : null}
 
           {game.isBonusBuy && (
-            <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-purple-700 text-white shadow-xs">
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-purple-700 text-white shadow-xs">
               ⚡ BUY
             </span>
           )}
@@ -89,7 +89,7 @@ export const GameCard: React.FC<GameCardProps> = ({
               e.stopPropagation();
               playButtonClick();
             }}
-            className="px-3.5 py-1 rounded-lg bg-white/20 hover:bg-white/30 text-white font-bold text-[11px] tracking-wide transition-all cursor-pointer active:scale-95"
+            className="px-4 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white font-black text-xs tracking-wide transition-all cursor-pointer active:scale-95"
           >
             {isRu ? 'ДЕМО' : 'DEMO'}
           </button>
@@ -99,14 +99,14 @@ export const GameCard: React.FC<GameCardProps> = ({
       <div className="p-3.5 flex flex-col justify-between flex-1 bg-white">
         <div>
           <h3 
-            className="font-black text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-orange-600 transition-colors truncate"
+            className="font-black text-slate-900 text-sm sm:text-[15px] leading-snug group-hover:text-orange-600 transition-colors truncate"
             title={game.title}
           >
             {game.title}
           </h3>
-          <div className="flex items-center justify-between gap-1 mt-1 text-[11px] text-slate-500 font-medium">
-            <span className="truncate font-semibold text-slate-600">{game.provider}</span>
-            <span className="px-1.5 py-0.5 rounded-md font-black text-[10px] bg-amber-50 text-amber-900 border border-amber-200/80 shrink-0">
+          <div className="flex items-center justify-between gap-1.5 mt-1.5 text-xs text-slate-500 font-medium">
+            <span className="truncate font-bold text-slate-600 text-xs sm:text-[13px]">{game.provider}</span>
+            <span className="px-1.5 py-0.5 rounded-md font-black text-[11px] bg-amber-50 text-amber-900 border border-amber-200/80 shrink-0">
               {game.maxWin}
             </span>
           </div>
@@ -120,7 +120,7 @@ export const GameCard: React.FC<GameCardProps> = ({
               playButtonClick();
             }}
             aria-label={`Play ${game.title}`}
-            className="w-full py-2.5 rounded-xl bg-amber-50/90 hover:bg-linear-to-r hover:from-amber-400 hover:to-orange-500 text-slate-900 hover:text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 border border-amber-200/80 hover:border-transparent transition-all cursor-pointer active:scale-98 shadow-2xs hover:shadow-xs min-h-[44px]"
+            className="w-full py-2.5 rounded-xl bg-amber-50/90 hover:bg-linear-to-r hover:from-amber-400 hover:to-orange-500 text-slate-900 hover:text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 border border-amber-200/80 hover:border-transparent transition-all cursor-pointer active:scale-98 shadow-2xs hover:shadow-xs min-h-[44px]"
           >
             <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
               <polygon points="5 3 19 12 5 21 5 3" />
