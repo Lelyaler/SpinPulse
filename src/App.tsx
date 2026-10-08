@@ -135,7 +135,7 @@ export const App: React.FC = () => {
   // Progressive game display to prevent excessive DOM size and maximize mobile performance
   const getInitialVisibleCount = () => {
     if (typeof window !== 'undefined' && window.innerWidth < 640) {
-      return 8;
+      return 6;
     }
     return 12;
   };
