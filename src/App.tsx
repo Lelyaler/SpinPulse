@@ -204,7 +204,7 @@ export const App: React.FC = () => {
           onOpenVip={scrollToVip}
         />
 
-        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 sm:space-y-8 w-full">
+        <main className="flex-1 w-full max-w-7xl 2xl:max-w-[1536px] px-4 sm:px-6 lg:px-8 py-6 space-y-6 sm:space-y-8">
           <HeroCarousel
             onClaimBonus={handleTopUp}
             onOpenTournaments={scrollToTournament}
@@ -359,7 +359,7 @@ export const App: React.FC = () => {
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-10 w-80 h-80 bg-orange-950/40 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="max-w-7xl mx-auto space-y-8 relative z-10">
+          <div className="w-full max-w-7xl 2xl:max-w-[1536px] px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
             {/* Payment methods badges - high contrast white pills */}
             <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 py-3 border-b border-orange-800/40 text-xs font-black">
               <span className="text-orange-200 text-xs uppercase tracking-wider font-extrabold mr-2 select-none">

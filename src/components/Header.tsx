@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-30 bg-linear-to-r from-orange-950 via-orange-900 to-amber-950 border-b border-orange-800/60 shadow-lg shadow-orange-950/30">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-2.5 sm:gap-4">
+      <div className="w-full px-3 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-2.5 sm:gap-4">
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => {
