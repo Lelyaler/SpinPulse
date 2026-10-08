@@ -66,19 +66,19 @@ export const CasinoPerks: React.FC<CasinoPerksProps> = ({ isRu = false }) => {
           return (
             <div
               key={idx}
-              className="p-5 rounded-3xl bg-white border border-slate-100 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              className="p-5 rounded-3xl bg-white hover:bg-linear-to-b hover:from-white hover:to-amber-50/40 border border-amber-200/70 hover:border-amber-400 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-800">
+                  <div className="w-10 h-10 rounded-2xl bg-linear-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                  <span className="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-200/80">
                     {p.badge}
                   </span>
                 </div>
-                <h3 className="font-bold text-slate-900 text-sm mb-1.5">{p.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed font-medium">{p.desc}</p>
+                <h3 className="font-black text-slate-900 text-sm mb-1.5 group-hover:text-orange-600 transition-colors">{p.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-medium">{p.desc}</p>
               </div>
             </div>
           );

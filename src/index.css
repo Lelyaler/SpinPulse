@@ -8,9 +8,14 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #f8fafc;
+  background-color: #faf8f5;
   color: #1e293b;
   min-height: 100vh;
+}
+
+::selection {
+  background-color: #f97316;
+  color: #ffffff;
 }
 
 .font-mono-nums {

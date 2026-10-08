@@ -16,7 +16,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   isRu
 }) => {
   return (
-    <div className="group relative bg-white rounded-2xl shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col border border-slate-100">
+    <div className="group relative bg-white rounded-2xl shadow-xs hover:shadow-xl hover:shadow-orange-500/15 hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col border border-amber-200/70 hover:border-amber-400">
       <div className="relative aspect-[216/233] w-full overflow-hidden bg-slate-100">
         <img
           src={game.coverImage}
@@ -30,11 +30,11 @@ export const GameCard: React.FC<GameCardProps> = ({
 
         <div className="absolute top-2 left-2 flex items-center gap-1 pointer-events-none z-10">
           {game.isHot ? (
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-500 text-white shadow-xs">
+            <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-rose-500 text-white shadow-xs">
               🔥 HOT
             </span>
           ) : game.isNew ? (
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950 shadow-xs">
+            <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-linear-to-r from-amber-400 to-orange-400 text-slate-950 shadow-xs">
               ✨ NEW
             </span>
           ) : game.category === 'crash' ? (
@@ -68,7 +68,7 @@ export const GameCard: React.FC<GameCardProps> = ({
           </svg>
         </button>
 
-        {/* Hover overlay with interactive Play and DEMO buttons (hover effects without modal, sm+ only) */}
+        {/* Hover overlay with interactive Play and DEMO buttons */}
         <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden sm:flex flex-col items-center justify-center p-3 gap-2 z-20">
           <button
             type="button"
@@ -77,7 +77,7 @@ export const GameCard: React.FC<GameCardProps> = ({
               playButtonClick();
             }}
             aria-label={`Play ${game.title}`}
-            className="w-12 h-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all cursor-pointer"
+            className="w-12 h-12 rounded-full bg-linear-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 flex items-center justify-center shadow-lg shadow-orange-500/40 transform hover:scale-110 active:scale-95 transition-all cursor-pointer"
           >
             <svg className="w-5 h-5 fill-slate-950 translate-x-0.5" viewBox="0 0 24 24">
               <polygon points="5 3 19 12 5 21 5 3" />
@@ -99,14 +99,14 @@ export const GameCard: React.FC<GameCardProps> = ({
       <div className="p-3.5 flex flex-col justify-between flex-1 bg-white">
         <div>
           <h3 
-            className="font-bold text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-amber-600 transition-colors truncate"
+            className="font-black text-slate-900 text-xs sm:text-sm leading-snug group-hover:text-orange-600 transition-colors truncate"
             title={game.title}
           >
             {game.title}
           </h3>
           <div className="flex items-center justify-between gap-1 mt-1 text-[11px] text-slate-500 font-medium">
-            <span className="truncate">{game.provider}</span>
-            <span className="px-1.5 py-0.5 rounded font-bold text-[10px] bg-slate-100 text-slate-700 shrink-0">
+            <span className="truncate font-semibold text-slate-600">{game.provider}</span>
+            <span className="px-1.5 py-0.5 rounded-md font-black text-[10px] bg-amber-50 text-amber-900 border border-amber-200/80 shrink-0">
               {game.maxWin}
             </span>
           </div>
@@ -120,7 +120,7 @@ export const GameCard: React.FC<GameCardProps> = ({
               playButtonClick();
             }}
             aria-label={`Play ${game.title}`}
-            className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-900 text-slate-800 hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-98 min-h-[44px]"
+            className="w-full py-2.5 rounded-xl bg-amber-50/90 hover:bg-linear-to-r hover:from-amber-400 hover:to-orange-500 text-slate-900 hover:text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 border border-amber-200/80 hover:border-transparent transition-all cursor-pointer active:scale-98 shadow-2xs hover:shadow-xs min-h-[44px]"
           >
             <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
               <polygon points="5 3 19 12 5 21 5 3" />

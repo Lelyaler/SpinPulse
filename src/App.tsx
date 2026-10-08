@@ -172,7 +172,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 antialiased flex flex-col font-sans">
+    <div className="min-h-screen bg-linear-to-b from-amber-50/60 via-orange-50/25 to-slate-100/70 text-slate-800 antialiased flex flex-col font-sans relative selection:bg-orange-500 selection:text-white">
       <Sidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
@@ -226,8 +226,9 @@ export const App: React.FC = () => {
           />
 
           <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xl sm:text-2xl select-none">🔥</span>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                   {activeCategory === 'all' && (isRu ? 'Все игры лобби' : 'All Lobby Titles')}
                   {activeCategory === 'slots' && (isRu ? 'Популярные видеослоты' : 'Premium Video Slots')}
@@ -238,13 +239,24 @@ export const App: React.FC = () => {
                   {activeCategory === 'table' && (isRu ? 'Классические настольные' : 'Classic Table Games')}
                   {activeCategory === 'favorites' && (isRu ? 'Ваши избранные игры' : 'Your Favorites')}
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200/80 text-slate-700">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300/80 shadow-2xs">
                   {filteredGames.length}
                 </span>
               </div>
 
-              <div className="text-xs font-semibold text-slate-500 hidden sm:block">
-                {isRu ? 'Сертифицированный RNG • Демо-кредиты' : 'Provably Fair • Instant Demo Currency'}
+              <div className="flex items-center gap-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-bold shadow-2xs">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span>{isRu ? '1,842 онлайн' : '1,842 Online'}</span>
+                  <span className="text-emerald-400">•</span>
+                  <span>{isRu ? 'RTP 98.4%' : 'RTP 98.4%'}</span>
+                </div>
+                <div className="text-xs font-semibold text-slate-500 hidden sm:block">
+                  {isRu ? 'Сертифицированный RNG' : 'Provably Fair RNG'}
+                </div>
               </div>
             </div>
 
@@ -292,14 +304,14 @@ export const App: React.FC = () => {
                         setVisibleCount((prev) => prev + step);
                       }}
                       aria-label={isRu ? 'Показать еще игры' : 'Show more games'}
-                      className="px-8 py-3.5 rounded-2xl bg-white hover:bg-slate-50 active:scale-95 border border-slate-200 font-bold text-xs sm:text-sm text-slate-900 shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
+                      className="px-8 py-3.5 rounded-2xl bg-linear-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 active:scale-95 text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-orange-500/20 transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
                     >
                       <span>
                         {isRu 
                           ? `ПОКАЗАТЬ ЕЩЁ (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12, filteredGames.length - visibleCount)})` 
                           : `SHOW MORE (+${Math.min(typeof window !== 'undefined' && window.innerWidth < 640 ? 8 : 12, filteredGames.length - visibleCount)})`}
                       </span>
-                      <span className="text-slate-500 text-xs font-semibold">
+                      <span className="text-slate-800 text-xs font-bold">
                         ({visibleCount} / {filteredGames.length})
                       </span>
                     </button>
@@ -319,34 +331,21 @@ export const App: React.FC = () => {
                 <VipLoyaltyBar isRu={isRu} />
               </div>
 
-              <div className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-100 shadow-xs">
+              <div className="p-6 sm:p-7 rounded-3xl bg-linear-to-r from-amber-50/80 via-white to-orange-50/80 border border-amber-200/80 shadow-xs">
                 <div className="text-center mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
-                    {isRu ? 'Официальные сертифицированные провайдеры софта' : 'Official Licensed Game Studios & Providers'}
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100/90 border border-amber-200 text-amber-900 text-[11px] font-black uppercase tracking-wider">
+                    ⚡ {isRu ? 'Официальные сертифицированные провайдеры софта' : 'Official Licensed Game Studios & Providers'}
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-75 hover:opacity-100 transition-opacity">
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    PRAGMATIC PLAY
-                  </span>
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    EVOLUTION
-                  </span>
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    HACKSAW GAMING
-                  </span>
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    SPRIBE
-                  </span>
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    NETENT
-                  </span>
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    PLAY&apos;N GO
-                  </span>
-                  <span className="text-sm sm:text-base font-black tracking-tight text-slate-700 hover:text-slate-900 transition-colors cursor-default">
-                    NOLIMIT CITY
-                  </span>
+                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4">
+                  {['PRAGMATIC PLAY', 'EVOLUTION', 'HACKSAW GAMING', 'SPRIBE', 'NETENT', 'PLAY\'N GO', 'NOLIMIT CITY'].map((studio) => (
+                    <span 
+                      key={studio}
+                      className="px-3.5 py-1.5 rounded-xl bg-white border border-amber-200/80 text-xs sm:text-sm font-black tracking-tight text-slate-800 hover:text-orange-600 hover:border-amber-400 hover:shadow-xs transition-all cursor-default shadow-2xs select-none"
+                    >
+                      {studio}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -355,43 +354,68 @@ export const App: React.FC = () => {
           )}
         </main>
 
-        <footer className="mt-auto border-t border-slate-200/80 bg-white py-10 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto space-y-6">
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-4 border-b border-slate-100 text-xs font-semibold text-slate-500">
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">VISA</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">MASTERCARD</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">BITCOIN</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">ETHEREUM</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">USDT TRC20</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">SKRILL</span>
-              <span className="px-3 py-1 rounded-xl bg-slate-50 border border-slate-100">APPLE PAY</span>
+        <footer className="mt-auto border-t-2 border-amber-400/50 bg-linear-to-br from-amber-500 via-orange-500 to-amber-600 text-white py-12 px-4 sm:px-6 lg:px-8 shadow-inner relative overflow-hidden">
+          {/* Subtle warm ambient gaming glow */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-300/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-10 w-80 h-80 bg-orange-700/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto space-y-8 relative z-10">
+            {/* Payment methods badges - high contrast white pills */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 py-3 border-b border-white/20 text-xs font-black">
+              <span className="text-amber-100 text-xs uppercase tracking-wider font-extrabold mr-2 select-none">
+                {isRu ? 'Мгновенные методы:' : 'Instant Payouts:'}
+              </span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">VISA</span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">MASTERCARD</span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">BITCOIN</span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">ETHEREUM</span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">USDT TRC20</span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">SKRILL</span>
+              <span className="px-3.5 py-1.5 rounded-xl bg-white/95 text-slate-900 shadow-xs border border-white hover:scale-105 transition-transform cursor-default">APPLE PAY</span>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-slate-900 flex items-center justify-center text-amber-400 text-sm font-black shadow-xs">
+            {/* Brand & info bar */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-2xl bg-slate-950/90 border border-amber-300/40 flex items-center justify-center text-amber-400 text-lg font-black shadow-md">
                   👑
                 </div>
                 <div>
-                  <span className="text-base font-black text-slate-900">SpinPulse VIP Lounge</span>
-                  <p className="text-xs text-slate-500 font-medium">
+                  <div className="flex items-center gap-2 justify-center md:justify-start">
+                    <span className="text-lg font-black text-white tracking-tight">SpinPulse VIP Lounge</span>
+                    <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-slate-950/70 text-amber-300 border border-amber-300/30">
+                      OFFICIAL
+                    </span>
+                  </div>
+                  <p className="text-xs text-amber-100 font-medium mt-0.5 max-w-md">
                     {isRu 
-                      ? 'Премиальный демонстрационный симулятор онлайн-казино. React 19 & Tailwind CSS.'
-                      : 'High-end demo iGaming portal & casino simulator. React 19 & Tailwind CSS.'}
+                      ? 'Премиальный демонстрационный симулятор онлайн-казино. Сертифицированный генератор чисел, моментальные спины и честная игра.'
+                      : 'High-end demo iGaming portal & casino simulator. Provably fair RNG, instant spins, and entertainment demo credits.'}
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-slate-600">
-                <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs font-bold text-white">
+                <span className="px-3 py-1.5 rounded-xl bg-rose-600 text-white font-black shadow-xs">
                   18+
                 </span>
-                <span>{isRu ? 'Демо-валюта' : 'Demo Currency Only'}</span>
-                <span>•</span>
-                <span>{isRu ? 'Сертифицированный RNG' : 'Certified Fair RNG'}</span>
-                <span>•</span>
-                <span>Demo License #8048/JAZ</span>
+                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-300/30 text-amber-200">
+                  {isRu ? 'Демо-валюта' : 'Demo Currency'}
+                </span>
+                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-300/30 text-amber-200">
+                  {isRu ? 'Сертифицированный RNG' : 'Certified Fair RNG'}
+                </span>
+                <span className="px-3 py-1.5 rounded-xl bg-slate-950/70 border border-amber-300/30 text-amber-200">
+                  Demo License #8048/JAZ
+                </span>
               </div>
+            </div>
+
+            {/* Responsible gaming notice */}
+            <div className="pt-4 border-t border-white/20 text-center text-[11px] text-amber-100/90 font-medium">
+              {isRu
+                ? '© 2026 SpinPulse Casino. Играйте ответственно. Все слоты и игры предназначены исключительно для ознакомительных и развлекательных целей с виртуальными очками.'
+                : '© 2026 SpinPulse Casino. Play responsibly. All titles and simulations are strictly intended for entertainment purposes using virtual demo coins.'}
             </div>
           </div>
         </footer>

@@ -20,15 +20,15 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
   };
 
   return (
-    <div className="rounded-3xl bg-white border border-slate-100 shadow-xs p-5 sm:p-7 overflow-hidden relative">
+    <div className="rounded-3xl bg-white border border-amber-200/80 shadow-xs p-5 sm:p-7 overflow-hidden relative">
       <div 
         className="absolute top-0 right-0 w-2/3 h-full bg-cover bg-right opacity-[0.04] pointer-events-none mix-blend-multiply"
         style={{ backgroundImage: `url("${import.meta.env.BASE_URL}banners/hero-tournament.webp")` }}
       />
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-amber-100">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center text-amber-400 shadow-xs">
-            <Trophy className="w-6 h-6 fill-amber-400 text-amber-400" />
+          <div className="w-12 h-12 rounded-2xl bg-linear-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-md">
+            <Trophy className="w-6 h-6 fill-white text-white" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -127,10 +127,10 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ isRu }) => {
         <button
           onClick={handleJoin}
           disabled={hasJoined}
-          className={`px-6 py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer min-h-[40px] ${
+          className={`px-6 py-2.5 rounded-xl text-xs font-black tracking-wide transition-all cursor-pointer min-h-[40px] ${
             hasJoined
               ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-default'
-              : 'bg-slate-900 hover:bg-slate-800 active:scale-95 text-white shadow-xs'
+              : 'bg-linear-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 active:scale-95 text-slate-950 shadow-md shadow-orange-500/20'
           }`}
         >
           {hasJoined ? (
