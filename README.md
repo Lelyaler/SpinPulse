@@ -25,15 +25,3 @@
 - Lucide React
 - Canvas Confetti
 
-## Установка и запуск
-
-```bash
-# Установка зависимостей
-npm install
-
-# Запуск dev-сервера
-npm run dev
-
-# Сборка проекта
-npm run build
-```
