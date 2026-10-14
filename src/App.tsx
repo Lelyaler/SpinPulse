@@ -141,7 +141,8 @@ export const App: React.FC = () => {
         favoritesCount={favorites.length}
       />
 
-      <Header
+      <div className="lg:pl-80 flex flex-col flex-1 min-w-0 transition-all duration-300">
+        <Header
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
         balance={balance}
         onTopUp={() => topUp(500)}
@@ -337,6 +338,7 @@ export const App: React.FC = () => {
           </div>
         </div>
       </footer>
+      </div>
 
       {/* Modals & Dialogs */}
       <Suspense fallback={null}>
