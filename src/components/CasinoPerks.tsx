@@ -9,18 +9,18 @@ export const CasinoPerks: React.FC<CasinoPerksProps> = ({ isRu = false }) => {
   const perks = [
     {
       icon: ShieldCheck,
-      title: isRu ? 'Контроль честности RNG' : 'Provably Fair Gaming',
+      title: isRu ? 'Контроль честности RNG' : 'Fair Gameplay RNG',
       desc: isRu 
-        ? 'Криптографический алгоритм SHA-256 для 100% случайных и честных результатов.'
-        : 'Cryptographic SHA-256 random seeds verified on-chain for 100% fair outcomes.',
+        ? 'Математическая модель расчёта выигрышей с независимыми исходами каждого раунда.'
+        : 'Mathematically sound random outcome distribution with independent spin rounds.',
       badge: 'Certified RNG',
     },
     {
       icon: Zap,
-      title: isRu ? 'Движок нулевой задержки' : 'Zero Latency Engine',
+      title: isRu ? 'Плавная анимация 60 FPS' : 'Smooth 60 FPS Engine',
       desc: isRu
-        ? 'Мгновенный отклик барабанов и плавная анимация спинов 60 FPS на всех устройствах.'
-        : 'Sub-millisecond spin response with high framerate CSS3 & WebGL rendering.',
+        ? 'Мгновенный отклик интерфейса и аппаратное GPU-ускорение анимаций на всех экранах.'
+        : 'Zero-lag reel spin response with hardware-accelerated CSS keyframe rendering.',
       badge: '60 FPS',
     },
     {

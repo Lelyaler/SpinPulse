@@ -25,8 +25,8 @@ const FAQ_ITEMS: FaqItem[] = [
     icon: <ShieldCheck className="w-5 h-5 text-emerald-500 shrink-0" />,
     questionRu: 'Гарантируется ли честность игровых раундов (RNG / RTP)?',
     questionEn: 'Is game outcome fairness guaranteed (RNG & RTP)?',
-    answerRu: 'Да. Все представленные игры используют сертифицированные математические модели генерации случайных чисел (Provably Fair SHA-256 RNG) с официальным средним возвратом игроку (RTP) от 96.5% до 98.4%. Результаты каждого спина генерируются криптографически независимо от предыдущих раундов.',
-    answerEn: 'Yes. All titles utilize certified Provably Fair SHA-256 RNG algorithms matching verified industry math models with an average RTP between 96.5% and 98.4%. Each round is calculated cryptographically without bias or external manipulation.',
+    answerRu: 'Да. Все представленные игры работают на основе взвешенной модели распределения случайных чисел со средним возвратом игроку (RTP) от 96.5% до 98.4%. Результаты каждого спина рассчитываются независимо от предыдущих раундов.',
+    answerEn: 'Yes. All titles utilize weighted random distribution matching verified industry math models with an average RTP between 96.5% and 98.4%. Each round outcome is calculated independently without bias.',
   },
   {
     id: 'no-registration',
