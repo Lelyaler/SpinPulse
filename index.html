@@ -31,8 +31,8 @@
     <!-- Preload Critical Mobile Hero Assets for Fast LCP -->
     <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
-    <script type="module" crossorigin src="./assets/index-BMXGpTVr.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Dlfim6Ap.css">
+    <script type="module" crossorigin src="./assets/index-D8Dz-KkM.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B2P25Wab.css">
   </head>
   <body>
     <div class="app-container">
@@ -138,10 +138,16 @@
         </div>
 
         <div class="sidebar-footer">
-          <button type="button" id="lang-switch-btn" class="lang-switch-btn">
-            <span>🌐</span>
-            <span id="lang-label">RU / EN</span>
-          </button>
+          <div class="sidebar-lang-selector" id="sidebar-lang-switch">
+            <button type="button" id="lang-switch-btn" class="sidebar-lang-btn active" data-lang="RU">
+              <span class="lang-flag">🇷🇺</span>
+              <span>Русский</span>
+            </button>
+            <button type="button" class="sidebar-lang-btn" data-lang="EN">
+              <span class="lang-flag">🇬🇧</span>
+              <span>English</span>
+            </button>
+          </div>
           <span class="sidebar-version-tag">v2.0 • 60 FPS</span>
         </div>
       </aside>
@@ -219,10 +225,10 @@
               </div>
 
               <!-- Language Switcher in Header -->
-              <button id="header-lang-btn" class="icon-action-btn lang-toggle-btn" type="button" aria-label="Switch Language" title="Switch Language">
-                <span class="lang-globe-icon">🌐</span>
-                <span id="header-lang-code" class="header-lang-code">RU</span>
-              </button>
+              <div class="lang-segmented-switch" id="header-lang-switch" role="group" aria-label="Language Switcher">
+                <button type="button" id="header-lang-btn" class="lang-segment-btn active" data-lang="RU" title="Русский">RU</button>
+                <button type="button" class="lang-segment-btn" data-lang="EN" title="English">EN</button>
+              </div>
 
               <!-- Sound Toggle -->
               <button id="sound-toggle-btn" class="icon-action-btn" type="button" aria-label="Toggle Sound" title="Sound Mute/Unmute">
@@ -712,6 +718,12 @@
             <p class="footer-disclaimer" data-i18n="footerDisclaimer">
               SpinPulse является демонстрационной обучающей веб-платформой для ознакомления с визуальными механиками игровых слотов. Игра ведётся исключительно на виртуальные внутриигровые монеты без возможности ввода реальных денежных средств. Играйте ответственно.
             </p>
+
+            <div class="footer-lang-row">
+              <span class="footer-lang-label" data-i18n="selectLanguage">Язык интерфейса:</span>
+              <button type="button" class="footer-lang-chip active" data-lang="RU">🇷🇺 Русский</button>
+              <button type="button" class="footer-lang-chip" data-lang="EN">🇬🇧 English</button>
+            </div>
 
             <div class="footer-bottom">
               <span class="footer-copyright">© 2026 SpinPulse Casino Entertainment. All Rights Reserved.</span>
