@@ -1,0 +1,7 @@
+@import './styles/base.css';
+@import './styles/header.css';
+@import './styles/sidebar.css';
+@import './styles/hero.css';
+@import './styles/ticker.css';
+@import './styles/games.css';
+@import './styles/bem.css';
