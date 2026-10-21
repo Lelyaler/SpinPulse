@@ -31,10 +31,19 @@
     <!-- Preload Critical Mobile Hero Assets for Fast LCP -->
     <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
-    <script type="module" crossorigin src="./assets/index-_Yot32gv.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BTVl36-I.css">
+    <script type="module" crossorigin src="./assets/index-WPTdffrw.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DU7b2tMd.css">
   </head>
   <body>
+    <div id="file-protocol-alert" class="file-protocol-warning" style="display: none;">
+      ⚠️ Вы открыли страницу через локальный файл (file://). Браузеры блокируют JavaScript-модули и интерактивные функции в этом режиме. Запустите <code>npm run dev</code> или откройте проект онлайн: <a href="https://lelyaler.github.io/SpinPulse/" target="_blank" rel="noopener">https://lelyaler.github.io/SpinPulse/</a>
+    </div>
+    <script>
+      if (window.location.protocol === 'file:') {
+        var alertEl = document.getElementById('file-protocol-alert');
+        if (alertEl) alertEl.style.display = 'block';
+      }
+    </script>
     <div class="app-container">
       <!-- Mobile Sidebar Backdrop -->
       <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
@@ -58,6 +67,18 @@
             </div>
           </div>
           <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close Sidebar">✕</button>
+        </div>
+
+        <!-- Sidebar Top Language Switcher -->
+        <div class="sidebar-top-lang-wrap">
+          <div class="lang-segmented-switch full-width-switch" role="group" aria-label="Sidebar Language Switcher">
+            <button type="button" class="lang-segment-btn active" data-lang="RU">
+              <span class="lang-flag-mini">🇷🇺</span> Русский
+            </button>
+            <button type="button" class="lang-segment-btn" data-lang="EN">
+              <span class="lang-flag-mini">🇬🇧</span> English
+            </button>
+          </div>
         </div>
 
         <div class="sidebar-body">
@@ -208,6 +229,16 @@
                 </button>
               </div>
 
+              <!-- Language Switcher in Header (Prominent) -->
+              <div class="lang-segmented-switch" id="header-lang-switch" role="group" aria-label="Language Switcher">
+                <button type="button" id="header-lang-btn" class="lang-segment-btn active" data-lang="RU" title="Русский">
+                  <span class="lang-flag-mini">🇷🇺</span> RU
+                </button>
+                <button type="button" class="lang-segment-btn" data-lang="EN" title="English">
+                  <span class="lang-flag-mini">🇬🇧</span> EN
+                </button>
+              </div>
+
               <!-- Notifications Bell -->
               <div class="notif-wrapper">
                 <button id="notif-btn" class="icon-action-btn" type="button" aria-label="Notifications" title="Notifications">
@@ -232,16 +263,6 @@
                     <div class="notification-time" data-i18n="notif3Time">3ч назад</div>
                   </div>
                 </div>
-              </div>
-
-              <!-- Language Switcher in Header -->
-              <div class="lang-segmented-switch" id="header-lang-switch" role="group" aria-label="Language Switcher">
-                <button type="button" id="header-lang-btn" class="lang-segment-btn active" data-lang="RU" title="Русский">
-                  <span class="lang-flag-mini">🇷🇺</span> RU
-                </button>
-                <button type="button" class="lang-segment-btn" data-lang="EN" title="English">
-                  <span class="lang-flag-mini">🇬🇧</span> EN
-                </button>
               </div>
 
               <!-- Sound Toggle -->
