@@ -31,8 +31,8 @@
     <!-- Preload Critical Mobile Hero Assets for Fast LCP -->
     <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
-    <script type="module" crossorigin src="./assets/index-Dy2WFpCU.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-YekLHQos.css">
+    <script type="module" crossorigin src="./assets/index-BMXGpTVr.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dlfim6Ap.css">
   </head>
   <body>
     <div class="app-container">
@@ -171,6 +171,7 @@
                   data-i18n-placeholder="headerSearchPlaceholder"
                   aria-label="Search games"
                 />
+                <button type="button" id="header-search-clear" class="header-search-clear" style="display: none;" aria-label="Clear search">✕</button>
               </div>
             </div>
 
@@ -247,7 +248,7 @@
 
         <!-- Main Body Container -->
         <main class="content-container">
-          <!-- 1. Hero Carousel Section -->
+          <!-- Hero Carousel -->
           <section class="hero-carousel-section" aria-label="Промо-акции и горячие игры">
             <div id="hero-slides-wrap" class="hero-slides-container"></div>
             <button id="hero-prev-btn" class="hero-nav-arrow hero-nav-prev" type="button" aria-label="Предыдущий слайд" title="Предыдущий">
@@ -259,7 +260,7 @@
             <div id="hero-dots" class="hero-dots-row"></div>
           </section>
 
-          <!-- 2. Jackpot & Live Wins Section -->
+          <!-- Jackpots & Live Wins -->
           <section id="jackpot-section" class="jackpot-wins-grid">
             <div class="jackpot-card">
               <div class="jackpot-card-bg"></div>
@@ -358,7 +359,7 @@
             </div>
           </section>
 
-          <!-- 3. Category Navigation & Filters -->
+          <!-- Category Navigation & Filters -->
           <section id="games-section" class="category-nav-section">
             <div class="category-pills-row">
               <button id="cat-scroll-left" class="cat-nav-btn cat-nav-left" aria-label="Scroll left">‹</button>
@@ -431,7 +432,7 @@
             </div>
           </section>
 
-          <!-- 4. Games Grid Section -->
+          <!-- Games Grid -->
           <section>
             <div id="games-grid" class="games-grid"></div>
             <div class="load-more-wrap">
@@ -439,7 +440,7 @@
             </div>
           </section>
 
-          <!-- 5. Tournament Grand Prix Section -->
+          <!-- Tournaments -->
           <section class="tournament-box">
             <div class="tournament-top-row">
               <div class="tournament-brand-group">
@@ -513,7 +514,7 @@
             </div>
           </section>
 
-          <!-- 6. VIP Loyalty Section -->
+          <!-- VIP Rewards -->
           <section class="vip-loyalty-section">
             <div class="vip-content-col">
               <span class="vip-program-badge" data-i18n="vipBadge">
@@ -553,7 +554,7 @@
             </div>
           </section>
 
-          <!-- 7. Casino Perks Section -->
+          <!-- Highlights -->
           <section class="perks-grid">
             <div class="perk-card">
               <div class="perk-top-row">
@@ -600,7 +601,7 @@
             </div>
           </section>
 
-          <!-- 8. FAQ Accordion Section -->
+          <!-- FAQ -->
           <section class="faq-section">
             <div class="faq-header-row">
               <h2 class="faq-section-title" data-i18n="faqTitle">Часто задаваемые вопросы (FAQ)</h2>
@@ -723,7 +724,7 @@
 
     <!-- Modals -->
 
-    <!-- 1. Lucky Wheel Modal -->
+    <!-- Lucky Wheel Modal -->
     <div id="lucky-wheel-modal" class="modal-backdrop">
       <div class="modal-card wheel-modal-card">
         <button id="close-wheel-btn" class="modal-close-btn" aria-label="Close">✕</button>
@@ -746,7 +747,7 @@
       </div>
     </div>
 
-    <!-- 2. Bonuses Modal -->
+    <!-- Bonuses Modal -->
     <div id="bonuses-modal" class="modal-backdrop">
       <div class="modal-card bonuses-modal-card">
         <button id="close-bonuses-btn" class="modal-close-btn" aria-label="Close">✕</button>
@@ -788,7 +789,7 @@
       </div>
     </div>
 
-    <!-- 3. Support Chat Modal -->
+    <!-- Support Chat Modal -->
     <div id="support-modal" class="modal-backdrop">
       <div class="modal-card support-modal-card">
         <div class="support-header">
@@ -828,7 +829,7 @@
       </div>
     </div>
 
-    <!-- 4. Recent Plays Drawer -->
+    <!-- Recent Plays Drawer -->
     <div id="history-drawer" class="drawer-backdrop">
       <div class="drawer-card">
         <div class="drawer-header">
@@ -842,20 +843,20 @@
           <div class="history-summary-box">
             <div>
               <span class="history-stat-label" data-i18n="historyTotalBets">Сумма ставок</span>
-              <div class="history-stat-val">$140.00</div>
+              <div id="history-total-bets" class="history-stat-val">$0.00</div>
             </div>
             <div>
               <span class="history-stat-label" data-i18n="historySessionResult">Результат сессии</span>
-              <div class="history-stat-val val-profit">+$285.50</div>
+              <div id="history-session-result" class="history-stat-val val-profit">+$0.00</div>
             </div>
           </div>
-          <div class="history-empty-note" data-i18n="historyEmptyNote">
+          <div id="history-rounds-list" class="history-rounds-list"></div>
+          <div id="history-empty-note" class="history-empty-note" data-i18n="historyEmptyNote">
             Демо-сессия активна. Ставки логируются автоматически.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Vanilla JS Application Entry Point -->
   </body>
 </html>
