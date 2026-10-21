@@ -27,8 +27,12 @@
       rel="stylesheet"
     />
 
-    <script type="module" crossorigin src="./assets/index-BTvUQN5G.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DiGuR97O.css">
+
+    <!-- Preload Critical Mobile Hero Assets for Fast LCP -->
+    <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
+    <script type="module" crossorigin src="./assets/index-Dy2WFpCU.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-YekLHQos.css">
   </head>
   <body>
     <div class="app-container">
@@ -41,11 +45,11 @@
           <div class="sidebar-logo-group">
             <div class="brand-crown-icon">👑</div>
             <div>
-              <div style="display: flex; align-items: center; gap: 6px;">
+              <div class="sidebar-title-row">
                 <span class="brand-text">Spin<span class="brand-highlight">Pulse</span></span>
-                <span style="font-size: 9px; font-weight: 900; background: rgba(15, 23, 42, 0.7); color: #fde68a; padding: 1px 5px; border-radius: 4px;">VIP</span>
+                <span class="sidebar-vip-badge">VIP</span>
               </div>
-              <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; color: #fed7aa; letter-spacing: 0.5px; display: block;">CASINO LOBBY</span>
+              <span class="sidebar-lobby-tag">CASINO LOBBY</span>
             </div>
           </div>
           <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close Sidebar">✕</button>
@@ -56,52 +60,52 @@
             <li class="sidebar-nav-item active">
               <button type="button" class="sidebar-cat-btn" data-cat="all">
                 <span class="nav-item-icon">🌟</span>
-                <span>Все игры</span>
+                <span data-i18n="allGames">Все игры</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="slots">
                 <span class="nav-item-icon">🎰</span>
-                <span>Слоты</span>
+                <span data-i18n="slots">Слоты</span>
                 <span class="nav-badge nav-badge-hot">HOT</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="live">
                 <span class="nav-item-icon">🎲</span>
-                <span>Live Казино</span>
+                <span data-i18n="liveCasino">Live Казино</span>
                 <span class="nav-badge nav-badge-new">HD</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="crash">
                 <span class="nav-item-icon">🚀</span>
-                <span>Краш игры</span>
+                <span data-i18n="crashGames">Краш игры</span>
                 <span class="nav-badge nav-badge-new">NEW</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="bonusbuy">
                 <span class="nav-item-icon">⚡</span>
-                <span>Bonus Buy</span>
+                <span data-i18n="bonusBuy">Bonus Buy</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="jackpot">
                 <span class="nav-item-icon">💰</span>
-                <span>Джекпоты</span>
+                <span data-i18n="jackpots">Джекпоты</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="table">
                 <span class="nav-item-icon">🃏</span>
-                <span>Настольные</span>
+                <span data-i18n="tableGames">Настольные</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="favorites">
                 <span class="nav-item-icon">❤️</span>
-                <span>Избранное</span>
+                <span data-i18n="favorites">Избранное</span>
                 <span id="sidebar-fav-count" class="nav-badge nav-badge-count">0</span>
               </button>
             </li>
@@ -110,24 +114,24 @@
           <!-- Sidebar VIP Box -->
           <div id="trigger-wheel-btn-sidebar" class="sidebar-vip-box">
             <div class="vip-box-top">
-              <span class="vip-box-badge">🎡 БОНУС ДНЯ</span>
-              <span style="font-size: 13px;">➔</span>
+              <span class="vip-box-badge" data-i18n="sidebarVipBadge">🎡 БОНУС ДНЯ</span>
+              <span class="vip-box-arrow">➔</span>
             </div>
-            <div class="vip-box-title">Колесо Фортуны</div>
-            <p style="font-size: 0.72rem; color: #94a3b8;">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
+            <div class="vip-box-title" data-i18n="sidebarVipTitle">Колесо Фортуны</div>
+            <p class="vip-box-desc" data-i18n="sidebarVipDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
           </div>
 
-          <ul class="sidebar-nav-list" style="margin-top: auto;">
+          <ul class="sidebar-nav-list sidebar-nav-secondary">
             <li class="sidebar-nav-item">
               <button type="button" id="trigger-bonuses-btn">
                 <span class="nav-item-icon">🎁</span>
-                <span>Бонусы и промокоды</span>
+                <span data-i18n="bonusesAndPromos">Бонусы и промокоды</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
               <button type="button" id="trigger-support-btn">
                 <span class="nav-item-icon">💬</span>
-                <span>Онлайн Поддержка</span>
+                <span data-i18n="liveSupport">Онлайн Поддержка</span>
               </button>
             </li>
           </ul>
@@ -138,7 +142,7 @@
             <span>🌐</span>
             <span id="lang-label">RU / EN</span>
           </button>
-          <span style="font-size: 11px; font-weight: 700; color: #94a3b8;">v2.0 • 60 FPS</span>
+          <span class="sidebar-version-tag">v2.0 • 60 FPS</span>
         </div>
       </aside>
 
@@ -164,6 +168,7 @@
                   id="header-search" 
                   class="header-search-input" 
                   placeholder="Поиск игр и слотов..." 
+                  data-i18n-placeholder="headerSearchPlaceholder"
                   aria-label="Search games"
                 />
               </div>
@@ -172,45 +177,51 @@
             <div class="header-right">
               <button id="header-daily-btn" class="daily-bonus-btn" type="button">
                 <span>🎁</span>
-                <span>Бонус +$250</span>
+                <span data-i18n="headerDailyBtn">Бонус +$250</span>
               </button>
 
               <div class="wallet-badge">
                 <div class="wallet-info">
-                  <span class="wallet-label">Демо Баланс</span>
+                  <span class="wallet-label" data-i18n="demoBalance">Демо Баланс</span>
                   <span id="header-balance" class="wallet-balance">$2,500.00</span>
                 </div>
                 <button id="topup-btn" class="topup-btn" type="button" title="Top Up +$500">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                  <span>Депозит</span>
+                  <span data-i18n="deposit">Депозит</span>
                 </button>
               </div>
 
               <!-- Notifications Bell -->
-              <div style="position: relative;">
+              <div class="notif-wrapper">
                 <button id="notif-btn" class="icon-action-btn" type="button" aria-label="Notifications" title="Notifications">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                   <span class="notification-dot"></span>
                 </button>
                 <div id="notif-dropdown" class="header-dropdown">
                   <div class="dropdown-header">
-                    <span>Уведомления</span>
-                    <span style="font-size: 10px; font-weight: 800; background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 99px;">3 Новых</span>
+                    <span data-i18n="notificationsTitle">Уведомления</span>
+                    <span class="dropdown-badge-new" data-i18n="notificationsBadge">3 Новых</span>
                   </div>
                   <div class="notification-item">
-                    <div class="notification-title">Турнир Grand Prix стартовал!</div>
-                    <div class="notification-time">5м назад</div>
+                    <div class="notification-title" data-i18n="notif1Title">Турнир Grand Prix стартовал!</div>
+                    <div class="notification-time" data-i18n="notif1Time">5м назад</div>
                   </div>
                   <div class="notification-item">
-                    <div class="notification-title">Еженедельный кэшбэк начислен: +$125</div>
-                    <div class="notification-time">1ч назад</div>
+                    <div class="notification-title" data-i18n="notif2Title">Еженедельный кэшбэк начислен: +$125</div>
+                    <div class="notification-time" data-i18n="notif2Time">1ч назад</div>
                   </div>
                   <div class="notification-item">
-                    <div class="notification-title">Новинка каталога: Sugar Rush 1000</div>
-                    <div class="notification-time">3ч назад</div>
+                    <div class="notification-title" data-i18n="notif3Title">Новинка каталога: Sugar Rush 1000</div>
+                    <div class="notification-time" data-i18n="notif3Time">3ч назад</div>
                   </div>
                 </div>
               </div>
+
+              <!-- Language Switcher in Header -->
+              <button id="header-lang-btn" class="icon-action-btn lang-toggle-btn" type="button" aria-label="Switch Language" title="Switch Language">
+                <span class="lang-globe-icon">🌐</span>
+                <span id="header-lang-code" class="header-lang-code">RU</span>
+              </button>
 
               <!-- Sound Toggle -->
               <button id="sound-toggle-btn" class="icon-action-btn" type="button" aria-label="Toggle Sound" title="Sound Mute/Unmute">
@@ -227,7 +238,7 @@
                 <div class="vip-avatar-circle">👑</div>
                 <div class="vip-pill-info">
                   <span class="vip-rank-title">Gold VIP</span>
-                  <span class="vip-rank-sub">Колесо Удачи</span>
+                  <span class="vip-rank-sub" data-i18n="vipRankSub">Колесо Удачи</span>
                 </div>
               </button>
             </div>
@@ -237,46 +248,111 @@
         <!-- Main Body Container -->
         <main class="content-container">
           <!-- 1. Hero Carousel Section -->
-          <section class="hero-carousel-section">
-            <div id="hero-slides-wrap" style="width: 100%; height: 100%;"></div>
-            <button id="hero-prev-btn" class="hero-nav-arrow hero-nav-prev" aria-label="Previous Slide">‹</button>
-            <button id="hero-next-btn" class="hero-nav-arrow hero-nav-next" aria-label="Next Slide">›</button>
+          <section class="hero-carousel-section" aria-label="Промо-акции и горячие игры">
+            <div id="hero-slides-wrap" class="hero-slides-container"></div>
+            <button id="hero-prev-btn" class="hero-nav-arrow hero-nav-prev" type="button" aria-label="Предыдущий слайд" title="Предыдущий">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button id="hero-next-btn" class="hero-nav-arrow hero-nav-next" type="button" aria-label="Следующий слайд" title="Следующий">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
             <div id="hero-dots" class="hero-dots-row"></div>
           </section>
 
           <!-- 2. Jackpot & Live Wins Section -->
-          <section class="jackpot-wins-grid">
+          <section id="jackpot-section" class="jackpot-wins-grid">
             <div class="jackpot-card">
+              <div class="jackpot-card-bg"></div>
+              <div class="jackpot-card-glow"></div>
+
               <div class="jackpot-header-row">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-size: 20px;">🏆</span>
-                  <span style="font-size: 0.8rem; font-weight: 900; text-transform: uppercase; color: #fde68a;">Прогрессивный Джекпот</span>
+                <div class="jackpot-title-wrap">
+                  <div class="jackpot-trophy-badge" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                      <path d="M4 22h16"/>
+                      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                    </svg>
+                  </div>
+                  <div class="jackpot-title-texts">
+                    <span class="jackpot-title-label" data-i18n="progJackpotTitle">Прогрессивный Джекпот</span>
+                    <span class="jackpot-title-sub" data-i18n="progJackpotSub">Накопительный фонд SpinPulse</span>
+                  </div>
                 </div>
-                <span class="jackpot-badge-live">● LIVE</span>
+                <div class="jackpot-badge-live">
+                  <span class="live-pulse-dot"></span>
+                  <span>LIVE</span>
+                </div>
               </div>
-              <div>
-                <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #fef3c7;">GRAND PRIZE</span>
-                <div id="jackpot-grand-val" class="jackpot-main-amount">$4,821,590.84</div>
+
+              <div class="jackpot-grand-block">
+                <div class="jackpot-grand-header">
+                  <span class="jackpot-grand-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    GRAND PRIZE
+                  </span>
+                  <span class="jackpot-growth-rate">+0.05%/сек</span>
+                </div>
+                <div class="jackpot-amount-display">
+                  <span class="jackpot-currency-sign">$</span>
+                  <span id="jackpot-grand-val" class="jackpot-main-amount">4,821,590.84</span>
+                </div>
+                <div class="jackpot-progress-track">
+                  <div class="jackpot-progress-bar" style="width: 82%;"></div>
+                </div>
               </div>
+
               <div class="jackpot-sub-grid">
                 <div class="sub-jackpot-item">
-                  <span class="sub-jackpot-label">MAJOR JACKPOT</span>
-                  <span id="jackpot-major-val" class="sub-jackpot-val">$248,190.15</span>
+                  <div class="sub-jackpot-header">
+                    <span class="sub-pot-indicator major-indicator"></span>
+                    <span class="sub-jackpot-label">MAJOR JACKPOT</span>
+                  </div>
+                  <div class="sub-jackpot-amount-row">
+                    <span class="sub-currency">$</span>
+                    <span id="jackpot-major-val" class="sub-jackpot-val">248,190.15</span>
+                  </div>
                 </div>
+
                 <div class="sub-jackpot-item">
-                  <span class="sub-jackpot-label">MINI JACKPOT</span>
-                  <span id="jackpot-mini-val" class="sub-jackpot-val">$14,850.50</span>
+                  <div class="sub-jackpot-header">
+                    <span class="sub-pot-indicator mini-indicator"></span>
+                    <span class="sub-jackpot-label">MINI JACKPOT</span>
+                  </div>
+                  <div class="sub-jackpot-amount-row">
+                    <span class="sub-currency">$</span>
+                    <span id="jackpot-mini-val" class="sub-jackpot-val">14,850.50</span>
+                  </div>
                 </div>
               </div>
+
+              <button type="button" id="jackpot-filter-btn" class="jackpot-action-btn">
+                <span data-i18n="jackpotActionBtn">Играть в слоты с джекпотом</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+              </button>
             </div>
 
             <div class="live-wins-card">
               <div class="live-wins-header">
                 <h3 class="live-wins-title">
-                  <span>⚡</span>
-                  <span>Недавние крупные выигрыши</span>
+                  <span class="live-wins-icon-wrap" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                  </span>
+                  <span data-i18n="liveWinsTitle">Недавние крупные выигрыши</span>
                 </h3>
-                <span style="font-size: 11px; font-weight: 800; color: #10b981;">● В реальном времени</span>
+                <span class="live-stream-badge">
+                  <span class="stream-pulse-dot"></span>
+                  <span data-i18n="realTimeBadge">В реальном времени</span>
+                </span>
               </div>
               <div id="live-wins-list" class="live-wins-feed"></div>
             </div>
@@ -285,54 +361,54 @@
           <!-- 3. Category Navigation & Filters -->
           <section id="games-section" class="category-nav-section">
             <div class="category-pills-row">
-              <button id="cat-scroll-left" class="menu-toggle-btn" style="width: 32px; height: 32px; background: #fff; box-shadow: var(--shadow-sm); color: #0f172a; margin-right: 6px; display: none;" aria-label="Scroll left">‹</button>
+              <button id="cat-scroll-left" class="cat-nav-btn cat-nav-left" aria-label="Scroll left">‹</button>
               
               <div id="cat-scroll-container" class="category-scroll-container">
                 <button type="button" class="cat-pill-btn active" data-cat="all">
                   <span>🌟</span>
-                  <span>Все игры</span>
+                  <span data-i18n="catAll">Все игры</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="slots">
                   <span>🎰</span>
-                  <span>Слоты</span>
+                  <span data-i18n="catSlots">Слоты</span>
                   <span class="cat-pill-badge">HOT</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="live">
                   <span>🎲</span>
-                  <span>Live Казино</span>
+                  <span data-i18n="catLive">Live Казино</span>
                   <span class="cat-pill-badge">HD</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="crash">
                   <span>🚀</span>
-                  <span>Краш</span>
+                  <span data-i18n="catCrash">Краш</span>
                   <span class="cat-pill-badge">NEW</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="bonusbuy">
                   <span>⚡</span>
-                  <span>Bonus Buy</span>
+                  <span data-i18n="catBonusBuy">Bonus Buy</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="jackpot">
                   <span>💰</span>
-                  <span>Джекпоты</span>
+                  <span data-i18n="catJackpot">Джекпоты</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="table">
                   <span>🃏</span>
-                  <span>Настольные</span>
+                  <span data-i18n="catTable">Настольные</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="favorites">
                   <span>❤️</span>
-                  <span>Избранное</span>
-                  <span id="cat-fav-count" class="cat-pill-badge" style="background: #fee2e2; color: #dc2626;">0</span>
+                  <span data-i18n="catFavorites">Избранное</span>
+                  <span id="cat-fav-count" class="cat-pill-badge cat-fav-badge">0</span>
                 </button>
               </div>
 
-              <button id="cat-scroll-right" class="menu-toggle-btn" style="width: 32px; height: 32px; background: #fff; box-shadow: var(--shadow-sm); color: #0f172a; margin-left: 6px; display: none;" aria-label="Scroll right">›</button>
+              <button id="cat-scroll-right" class="cat-nav-btn cat-nav-right" aria-label="Scroll right">›</button>
             </div>
 
             <div class="filter-controls-row">
               <div class="provider-select-wrap">
                 <select id="provider-select" aria-label="Filter by Game Provider">
-                  <option value="All Providers">Все провайдеры (18)</option>
+                  <option value="All Providers" data-i18n="allProvidersOption">Все провайдеры (18)</option>
                   <option value="Pragmatic Play">Pragmatic Play</option>
                   <option value="Hacksaw Gaming">Hacksaw Gaming</option>
                   <option value="Push Gaming">Push Gaming</option>
@@ -359,7 +435,7 @@
           <section>
             <div id="games-grid" class="games-grid"></div>
             <div class="load-more-wrap">
-              <button id="load-more-btn" class="btn-load-more" type="button">Показать ещё</button>
+              <button id="load-more-btn" class="btn-load-more" type="button" data-i18n="loadMoreBtn">Показать ещё</button>
             </div>
           </section>
 
@@ -369,68 +445,68 @@
               <div class="tournament-brand-group">
                 <div class="tournament-trophy-icon">🏆</div>
                 <div>
-                  <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 10px; font-weight: 800; background: #d1fae5; color: #065f46; padding: 2px 6px; border-radius: 99px;">АКТИВЕН</span>
-                    <span style="font-size: 11px; font-weight: 700; color: #64748b;">Pragmatic Play, Hacksaw & NoLimit City Battle</span>
+                  <div class="tournament-status-row">
+                    <span class="tournament-live-badge" data-i18n="tournamentActive">АКТИВЕН</span>
+                    <span class="tournament-providers-sub">Pragmatic Play, Hacksaw & NoLimit City Battle</span>
                   </div>
-                  <h3 style="font-size: 1.25rem; font-weight: 900; color: #0f172a; margin-top: 2px;">Weekly Grand Prix • $50,000</h3>
+                  <h3 class="tournament-heading">Weekly Grand Prix • $50,000</h3>
                 </div>
               </div>
 
               <div class="tournament-meta-group">
                 <div class="tournament-stat-box">
-                  <span class="tournament-stat-label">Призовой Фонд</span>
+                  <span class="tournament-stat-label" data-i18n="tournamentPrizePool">Призовой Фонд</span>
                   <span class="tournament-stat-val">$50,000</span>
                 </div>
                 <div class="tournament-stat-box">
-                  <span class="tournament-stat-label">До конца раунда</span>
-                  <span style="font-family: var(--font-mono); font-size: 1rem; font-weight: 800; color: #0f172a;">34ч : 18м : 45с</span>
+                  <span class="tournament-stat-label" data-i18n="tournamentTimerLabel">До конца раунда</span>
+                  <span class="tournament-timer">34ч : 18м : 45с</span>
                 </div>
-                <button type="button" id="btn-join-tournament" class="hero-cta-btn" style="padding: 10px 20px; font-size: 0.8rem;">
+                <button type="button" id="btn-join-tournament" class="hero-cta-btn tournament-cta-btn" data-i18n="joinTournamentBtn">
                   Вступить в турнир
                 </button>
               </div>
             </div>
 
             <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase;">
-                <span>Лидеры турнира</span>
+              <div class="leaderboard-header">
+                <span data-i18n="leaderboardTitle">Лидеры турнира</span>
                 <span id="tournament-participants-count">1,482 игроков</span>
               </div>
               <div class="tournament-leaderboard">
                 <div class="leaderboard-row rank-1">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="leaderboard-user-group">
                     <span class="leader-rank-badge">1</span>
-                    <span style="font-size: 18px;">👑</span>
-                    <span style="font-weight: 800; font-size: 0.85rem; color: #0f172a;">CyberKing_99</span>
+                    <span class="leader-trophy-icon">👑</span>
+                    <span class="leaderboard-name">CyberKing_99</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 16px;">
-                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748b;">184,200 очков</span>
-                    <span style="font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: #d97706;">$18,000</span>
+                  <div class="leaderboard-stats-group">
+                    <span class="leaderboard-points" data-pts="184200">184,200 очков</span>
+                    <span class="leaderboard-prize prize-gold">$18,000</span>
                   </div>
                 </div>
 
                 <div class="leaderboard-row">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="leaderboard-user-group">
                     <span class="leader-rank-badge">2</span>
-                    <span style="font-size: 18px;">⚡</span>
-                    <span style="font-weight: 800; font-size: 0.85rem; color: #0f172a;">LuckyValkyrie</span>
+                    <span class="leader-trophy-icon">⚡</span>
+                    <span class="leaderboard-name">LuckyValkyrie</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 16px;">
-                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748b;">142,500 очков</span>
-                    <span style="font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: #334155;">$11,000</span>
+                  <div class="leaderboard-stats-group">
+                    <span class="leaderboard-points" data-pts="142500">142,500 очков</span>
+                    <span class="leaderboard-prize prize-silver">$11,000</span>
                   </div>
                 </div>
 
                 <div class="leaderboard-row">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="leaderboard-user-group">
                     <span class="leader-rank-badge">3</span>
-                    <span style="font-size: 18px;">💎</span>
-                    <span style="font-weight: 800; font-size: 0.85rem; color: #0f172a;">MaxMultiplier</span>
+                    <span class="leader-trophy-icon">💎</span>
+                    <span class="leaderboard-name">MaxMultiplier</span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 16px;">
-                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748b;">98,400 очков</span>
-                    <span style="font-family: var(--font-mono); font-weight: 900; font-size: 0.9rem; color: #b45309;">$6,500</span>
+                  <div class="leaderboard-stats-group">
+                    <span class="leaderboard-points" data-pts="98400">98,400 очков</span>
+                    <span class="leaderboard-prize prize-bronze">$6,500</span>
                   </div>
                 </div>
               </div>
@@ -440,39 +516,39 @@
           <!-- 6. VIP Loyalty Section -->
           <section class="vip-loyalty-section">
             <div class="vip-content-col">
-              <span style="display: inline-block; font-size: 10px; font-weight: 900; text-transform: uppercase; color: #fbbf24; background: rgba(251, 191, 36, 0.15); padding: 2px 8px; border-radius: 99px; margin-bottom: 6px;">
+              <span class="vip-program-badge" data-i18n="vipBadge">
                 👑 ПРОГРАММА ЛОЯЛЬНОСТИ
               </span>
-              <h3 style="font-size: 1.4rem; font-weight: 900; color: #ffffff; line-height: 1.2;">Ваш статус: Gold VIP (Уровень 3)</h3>
-              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 6px;">
+              <h3 class="vip-title" data-i18n="vipTitle">Ваш статус: Gold VIP (Уровень 3)</h3>
+              <p class="vip-desc" data-i18n="vipDesc">
                 Накапливайте баллы за каждую ставку, чтобы открыть Platinum статус и повышенный кэшбэк 15%!
               </p>
-              <div style="margin-top: 14px;">
-                <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: #cbd5e1; margin-bottom: 4px;">
+              <div class="vip-progress-wrap">
+                <div class="vip-progress-header">
                   <span>2,850 / 5,000 pts</span>
-                  <span style="color: #fbbf24;">57% до Platinum</span>
+                  <span class="vip-target-label" data-i18n="vipProgressTarget">57% до Platinum</span>
                 </div>
-                <div style="height: 6px; border-radius: 99px; background: #334155; overflow: hidden;">
-                  <div style="width: 57%; height: 100%; background: #fbbf24;"></div>
+                <div class="vip-progress-track">
+                  <div class="vip-progress-fill" style="width: 57%;"></div>
                 </div>
               </div>
             </div>
 
             <div class="vip-perks-row">
               <div class="vip-perk-item">
-                <span style="font-size: 24px; display: block; margin-bottom: 4px;">💸</span>
-                <span style="font-size: 0.9rem; font-weight: 900; color: #ffffff; display: block;">10%</span>
-                <span style="font-size: 10px; font-weight: 600; color: #94a3b8;">Еженедельный кэшбэк</span>
+                <span class="vip-perk-icon">💸</span>
+                <span class="vip-perk-val">10%</span>
+                <span class="vip-perk-label" data-i18n="vipCashbackLabel">Еженедельный кэшбэк</span>
               </div>
               <div class="vip-perk-item">
-                <span style="font-size: 24px; display: block; margin-bottom: 4px;">⚡</span>
-                <span style="font-size: 0.9rem; font-weight: 900; color: #ffffff; display: block;">Instant</span>
-                <span style="font-size: 10px; font-weight: 600; color: #94a3b8;">Быстрые выплаты</span>
+                <span class="vip-perk-icon">⚡</span>
+                <span class="vip-perk-val" data-i18n="vipPayoutsVal">Instant</span>
+                <span class="vip-perk-label" data-i18n="vipPayoutsLabel">Быстрые выплаты</span>
               </div>
               <div class="vip-perk-item">
-                <span style="font-size: 24px; display: block; margin-bottom: 4px;">🎁</span>
-                <span style="font-size: 0.9rem; font-weight: 900; color: #ffffff; display: block;">$500</span>
-                <span style="font-size: 10px; font-weight: 600; color: #94a3b8;">Подарок на др</span>
+                <span class="vip-perk-icon">🎁</span>
+                <span class="vip-perk-val">$500</span>
+                <span class="vip-perk-label" data-i18n="vipBirthdayLabel">Подарок на др</span>
               </div>
             </div>
           </section>
@@ -482,130 +558,130 @@
             <div class="perk-card">
               <div class="perk-top-row">
                 <div class="perk-icon-box">🛡️</div>
-                <span style="font-size: 10px; font-weight: 900; background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 99px;">Certified RNG</span>
+                <span class="perk-badge">Certified RNG</span>
               </div>
               <div>
-                <h4 style="font-size: 0.92rem; font-weight: 900; color: #0f172a; margin-bottom: 4px;">Контроль честности RNG</h4>
-                <p style="font-size: 0.78rem; color: #64748b; line-height: 1.5;">Математическая модель расчёта выигрышей с независимыми исходами каждого раунда.</p>
+                <h4 class="perk-title" data-i18n="perk1Title">Контроль честности RNG</h4>
+                <p class="perk-desc" data-i18n="perk1Desc">Математическая модель расчёта выигрышей с независимыми исходами каждого раунда.</p>
               </div>
             </div>
 
             <div class="perk-card">
               <div class="perk-top-row">
                 <div class="perk-icon-box">⚡</div>
-                <span style="font-size: 10px; font-weight: 900; background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 99px;">60 FPS</span>
+                <span class="perk-badge">60 FPS</span>
               </div>
               <div>
-                <h4 style="font-size: 0.92rem; font-weight: 900; color: #0f172a; margin-bottom: 4px;">Плавная анимация 60 FPS</h4>
-                <p style="font-size: 0.78rem; color: #64748b; line-height: 1.5;">Мгновенный отклик интерфейса и аппаратное GPU-ускорение анимаций на всех экранах.</p>
+                <h4 class="perk-title" data-i18n="perk2Title">Плавная анимация 60 FPS</h4>
+                <p class="perk-desc" data-i18n="perk2Desc">Мгновенный отклик интерфейса и аппаратное GPU-ускорение анимаций на всех экранах.</p>
               </div>
             </div>
 
             <div class="perk-card">
               <div class="perk-top-row">
                 <div class="perk-icon-box">📡</div>
-                <span style="font-size: 10px; font-weight: 900; background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 99px;">4K Ultra-HD</span>
+                <span class="perk-badge">4K Ultra-HD</span>
               </div>
               <div>
-                <h4 style="font-size: 0.92rem; font-weight: 900; color: #0f172a; margin-bottom: 4px;">Студии HD трансляций</h4>
-                <p style="font-size: 0.78rem; color: #64748b; line-height: 1.5;">Прямой эфир рулетки и блэкджека от Evolution Gaming и Pragmatic Play Live.</p>
+                <h4 class="perk-title" data-i18n="perk3Title">Студии HD трансляций</h4>
+                <p class="perk-desc" data-i18n="perk3Desc">Прямой эфир рулетки и блэкджека от Evolution Gaming и Pragmatic Play Live.</p>
               </div>
             </div>
 
             <div class="perk-card">
               <div class="perk-top-row">
                 <div class="perk-icon-box">👑</div>
-                <span style="font-size: 10px; font-weight: 900; background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 99px;">Gold Tier</span>
+                <span class="perk-badge">Gold Tier</span>
               </div>
               <div>
-                <h4 style="font-size: 0.92rem; font-weight: 900; color: #0f172a; margin-bottom: 4px;">VIP Привилегии</h4>
-                <p style="font-size: 0.78rem; color: #64748b; line-height: 1.5;">Повышайте уровень лояльности для эксклюзивных бонусов, кэшбэка и подарков.</p>
+                <h4 class="perk-title" data-i18n="perk4Title">VIP Привилегии</h4>
+                <p class="perk-desc" data-i18n="perk4Desc">Повышайте уровень лояльности для эксклюзивных бонусов, кэшбэка и подарков.</p>
               </div>
             </div>
           </section>
 
           <!-- 8. FAQ Accordion Section -->
           <section class="faq-section">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <h2 style="font-size: 1.4rem; font-weight: 900; color: #0f172a;">Часто задаваемые вопросы (FAQ)</h2>
-              <span style="font-size: 11px; font-weight: 800; color: #64748b; background: #ffffff; padding: 4px 10px; border-radius: 99px; box-shadow: var(--shadow-sm);">6 ответов</span>
+            <div class="faq-header-row">
+              <h2 class="faq-section-title" data-i18n="faqTitle">Часто задаваемые вопросы (FAQ)</h2>
+              <span class="faq-count-badge" data-i18n="faqCount">6 ответов</span>
             </div>
 
             <div class="faq-list">
               <div class="faq-card open">
                 <button type="button" class="faq-trigger">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="faq-question-wrap">
                     <span>🪙</span>
-                    <span>Как работает виртуальный демо-баланс и как его пополнить?</span>
+                    <span data-i18n="faqQ1">Как работает виртуальный демо-баланс и как его пополнить?</span>
                   </div>
                   <span class="faq-chevron">▼</span>
                 </button>
-                <div class="faq-content">
+                <div class="faq-content" data-i18n="faqA1">
                   При первом входе вам автоматически начисляется стартовый демо-баланс в размере $2,500. Вы можете свободно делать ставки в любых слотах и играх лобби. Если баланс закончился, нажмите кнопку «Депозит» в шапке сайта для мгновенного бесплатного пополнения на +$500, забирайте ежедневный бонус +$250 или крутите Колесо Удачи.
                 </div>
               </div>
 
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="faq-question-wrap">
                     <span>🛡️</span>
-                    <span>Гарантируется ли честность игровых раундов (RNG / RTP)?</span>
+                    <span data-i18n="faqQ2">Гарантируется ли честность игровых раундов (RNG / RTP)?</span>
                   </div>
                   <span class="faq-chevron">▼</span>
                 </button>
-                <div class="faq-content">
+                <div class="faq-content" data-i18n="faqA2">
                   Да. Все представленные игры работают на основе взвешенной модели распределения случайных чисел со средним возвратом игроку (RTP) от 96.5% до 98.4%. Результаты каждого спина рассчитываются независимо от предыдущих раундов.
                 </div>
               </div>
 
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="faq-question-wrap">
                     <span>⚡</span>
-                    <span>Нужна ли регистрация или верификация (KYC) для игры?</span>
+                    <span data-i18n="faqQ3">Нужна ли регистрация или верификация (KYC) для игры?</span>
                   </div>
                   <span class="faq-chevron">▼</span>
                 </button>
-                <div class="faq-content">
+                <div class="faq-content" data-i18n="faqA3">
                   Регистрация и подтверждение документов не требуются. SpinPulse — это современное интерактивное игровое лобби, где весь функционал доступен моментально прямо в браузере. Ваши настройки, история ставок, избранные слоты и демо-баланс надёжно сохраняются локально в вашем браузере.
                 </div>
               </div>
 
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="faq-question-wrap">
                     <span>🎮</span>
-                    <span>Какие провайдеры софта и слоты представлены в лобби?</span>
+                    <span data-i18n="faqQ4">Какие провайдеры софта и слоты представлены в лобби?</span>
                   </div>
                   <span class="faq-chevron">▼</span>
                 </button>
-                <div class="faq-content">
+                <div class="faq-content" data-i18n="faqA4">
                   В каталоге собраны хиты ведущих мировых провайдеров: Pragmatic Play, Evolution, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe, 3 Oaks, SmartSoft, Belatra, Endorphina и других. Доступны классические слоты, видеослоты с механикой Megaways и Bonus Buy, моментальные краш-игры (Aviator, JetX, Cappadocia) и live-столы.
                 </div>
               </div>
 
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="faq-question-wrap">
                     <span>🏆</span>
-                    <span>Как участвовать в турнирах и повышать VIP-уровень?</span>
+                    <span data-i18n="faqQ5">Как участвовать в турнирах и повышать VIP-уровень?</span>
                   </div>
                   <span class="faq-chevron">▼</span>
                 </button>
-                <div class="faq-content">
+                <div class="faq-content" data-i18n="faqA5">
                   Участие в турнирах автоматическое — просто делайте спины в турнирных слотах. За каждый выигрышный множитель вам начисляются турнирные очки в таблице лидеров. Активная игра также накапливает XP для повышения статуса в VIP-клубе, открывая повышенные множители кэшбэка и секретные подарки.
                 </div>
               </div>
 
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
-                  <div style="display: flex; align-items: center; gap: 10px;">
+                  <div class="faq-question-wrap">
                     <span>📱</span>
-                    <span>Можно ли играть со смартфона или установить приложение?</span>
+                    <span data-i18n="faqQ6">Можно ли играть со смартфона или установить приложение?</span>
                   </div>
                   <span class="faq-chevron">▼</span>
                 </button>
-                <div class="faq-content">
+                <div class="faq-content" data-i18n="faqA6">
                   Платформа полностью оптимизирована для мобильных устройств iOS и Android. Поддерживаются сенсорные жесты, вертикальный режим и адаптивная графика. Вы можете добавить сайт на главный экран телефона как PWA-приложение для быстрого запуска без браузерных рамок.
                 </div>
               </div>
@@ -617,28 +693,28 @@
         <footer class="site-footer">
           <div class="footer-inner">
             <div class="footer-top">
-              <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="footer-brand-wrap">
                 <div class="brand-crown-icon">👑</div>
                 <div>
                   <div class="brand-text">Spin<span class="brand-highlight">Pulse</span></div>
-                  <span style="font-size: 11px; color: #64748b;">Лицензионный Демо Симулятор Казино</span>
+                  <span class="footer-subtext" data-i18n="footerSubtext">Лицензионный Демо Симулятор Казино</span>
                 </div>
               </div>
 
-              <div style="display: flex; gap: 12px; align-items: center;">
-                <span style="font-size: 11px; font-weight: 800; color: #e2e8f0; background: #1e293b; padding: 4px 10px; border-radius: 6px;">18+ ONLY</span>
-                <span style="font-size: 11px; font-weight: 800; color: #10b981; background: #1e293b; padding: 4px 10px; border-radius: 6px;">SSL ENCRYPTED</span>
-                <span style="font-size: 11px; font-weight: 800; color: #fbbf24; background: #1e293b; padding: 4px 10px; border-radius: 6px;">PROVABLY FAIR</span>
+              <div class="footer-badges">
+                <span class="footer-badge badge-18">18+ ONLY</span>
+                <span class="footer-badge badge-ssl">SSL ENCRYPTED</span>
+                <span class="footer-badge badge-fair">PROVABLY FAIR</span>
               </div>
             </div>
 
-            <p style="font-size: 0.78rem; line-height: 1.6; color: #64748b;">
+            <p class="footer-disclaimer" data-i18n="footerDisclaimer">
               SpinPulse является демонстрационной обучающей веб-платформой для ознакомления с визуальными механиками игровых слотов. Игра ведётся исключительно на виртуальные внутриигровые монеты без возможности ввода реальных денежных средств. Играйте ответственно.
             </p>
 
             <div class="footer-bottom">
-              <span>© 2026 SpinPulse Casino Entertainment. All Rights Reserved.</span>
-              <span style="color: #64748b;">Designed & Built with Pure CSS & Vanilla JS for Ultra Mobile Speed</span>
+              <span class="footer-copyright">© 2026 SpinPulse Casino Entertainment. All Rights Reserved.</span>
+              <span class="footer-credits" data-i18n="footerCredits">Designed & Built with Pure CSS & Vanilla JS for Ultra Mobile Speed</span>
             </div>
           </div>
         </footer>
@@ -649,22 +725,22 @@
 
     <!-- 1. Lucky Wheel Modal -->
     <div id="lucky-wheel-modal" class="modal-backdrop">
-      <div class="modal-card" style="padding: 28px; text-align: center;">
+      <div class="modal-card wheel-modal-card">
         <button id="close-wheel-btn" class="modal-close-btn" aria-label="Close">✕</button>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px;">
-          <span style="font-size: 22px;">🎡</span>
-          <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a;">Колесо Удачи</h3>
+        <div class="wheel-header-row">
+          <span class="wheel-title-icon">🎡</span>
+          <h3 class="wheel-modal-title" data-i18n="wheelTitle">Колесо Удачи</h3>
         </div>
-        <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 12px;">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
+        <p class="wheel-modal-desc" data-i18n="wheelDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
 
         <div class="wheel-container">
           <div class="wheel-pointer"></div>
           <canvas id="wheel-canvas" class="wheel-canvas"></canvas>
         </div>
 
-        <div id="wheel-won-text" style="display: none; font-size: 0.95rem; font-weight: 900; color: #10b981; margin: 10px 0;"></div>
+        <div id="wheel-won-text" class="wheel-result-text"></div>
 
-        <button id="spin-wheel-btn" class="btn-spin-wheel" type="button">
+        <button id="spin-wheel-btn" class="btn-spin-wheel" type="button" data-i18n="spinWheelBtn">
           КРУТИТЬ КОЛЕСО
         </button>
       </div>
@@ -672,40 +748,40 @@
 
     <!-- 2. Bonuses Modal -->
     <div id="bonuses-modal" class="modal-backdrop">
-      <div class="modal-card" style="max-width: 540px; padding: 24px;">
+      <div class="modal-card bonuses-modal-card">
         <button id="close-bonuses-btn" class="modal-close-btn" aria-label="Close">✕</button>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-          <span style="font-size: 24px;">🎁</span>
+        <div class="bonuses-modal-header">
+          <span class="bonuses-header-icon">🎁</span>
           <div>
-            <h3 style="font-size: 1.15rem; font-weight: 900; color: #0f172a;">Бонусы и промокоды</h3>
-            <span style="font-size: 0.75rem; color: #64748b;">Активируйте эксклюзивные бонусные коды</span>
+            <h3 class="bonuses-modal-title" data-i18n="bonusesModalTitle">Бонусы и промокоды</h3>
+            <span class="bonuses-modal-sub" data-i18n="bonusesModalSub">Активируйте эксклюзивные бонусные коды</span>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px; max-height: 60vh; overflow-y: auto;">
-          <div style="padding: 14px; border-radius: 12px; background: #fffbeb; display: flex; flex-direction: column; gap: 6px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 10px; font-weight: 900; background: #fee2e2; color: #dc2626; padding: 2px 6px; border-radius: 4px;">WELCOME PACK</span>
-              <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 900; color: #10b981;">+$600 Demo Coins</span>
+        <div class="bonuses-list-scroll">
+          <div class="bonus-card-item welcome-bonus">
+            <div class="bonus-card-top">
+              <span class="bonus-tag tag-welcome">WELCOME PACK</span>
+              <span class="bonus-amount-badge">+$600 Demo Coins</span>
             </div>
-            <h4 style="font-size: 0.9rem; font-weight: 900; color: #0f172a;">100% First Deposit + 500 Free Spins</h4>
-            <p style="font-size: 0.75rem; color: #64748b;">Увеличьте демо-баланс для игры во все слоты Pragmatic & Evolution.</p>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
-              <button class="copy-code-btn" data-code="IZZIPULSE100" style="padding: 4px 10px; border-radius: 6px; background: #f1f5f9; font-family: var(--font-mono); font-size: 11px; font-weight: 700;">IZZIPULSE100 📋</button>
-              <button class="activate-bonus-btn hero-cta-btn" data-amount="600" style="padding: 6px 14px; font-size: 11px;">Активировать</button>
+            <h4 class="bonus-card-title">100% First Deposit + 500 Free Spins</h4>
+            <p class="bonus-card-desc" data-i18n="bonus1Desc">Увеличьте демо-баланс для игры во все слоты Pragmatic & Evolution.</p>
+            <div class="bonus-card-actions">
+              <button class="copy-code-btn" data-code="IZZIPULSE100">IZZIPULSE100 📋</button>
+              <button class="activate-bonus-btn hero-cta-btn" data-amount="600" data-i18n="activateBtn">Активировать</button>
             </div>
           </div>
 
-          <div style="padding: 14px; border-radius: 12px; background: #f8fafc; display: flex; flex-direction: column; gap: 6px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 10px; font-weight: 900; background: #fef3c7; color: #b45309; padding: 2px 6px; border-radius: 4px;">WEEKLY RELOAD</span>
-              <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 900; color: #10b981;">+$300 Demo Coins</span>
+          <div class="bonus-card-item reload-bonus">
+            <div class="bonus-card-top">
+              <span class="bonus-tag tag-reload">WEEKLY RELOAD</span>
+              <span class="bonus-amount-badge">+$300 Demo Coins</span>
             </div>
-            <h4 style="font-size: 0.9rem; font-weight: 900; color: #0f172a;">Friday Reload 50% Match</h4>
-            <p style="font-size: 0.75rem; color: #64748b;">Пятничный буст баланса для активных игроков.</p>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
-              <button class="copy-code-btn" data-code="FRIDAY50" style="padding: 4px 10px; border-radius: 6px; background: #f1f5f9; font-family: var(--font-mono); font-size: 11px; font-weight: 700;">FRIDAY50 📋</button>
-              <button class="activate-bonus-btn hero-cta-btn" data-amount="300" style="padding: 6px 14px; font-size: 11px;">Активировать</button>
+            <h4 class="bonus-card-title">Friday Reload 50% Match</h4>
+            <p class="bonus-card-desc" data-i18n="bonus2Desc">Пятничный буст баланса для активных игроков.</p>
+            <div class="bonus-card-actions">
+              <button class="copy-code-btn" data-code="FRIDAY50">FRIDAY50 📋</button>
+              <button class="activate-bonus-btn hero-cta-btn" data-amount="300" data-i18n="activateBtn">Активировать</button>
             </div>
           </div>
         </div>
@@ -714,39 +790,40 @@
 
     <!-- 3. Support Chat Modal -->
     <div id="support-modal" class="modal-backdrop">
-      <div class="modal-card" style="max-width: 480px; height: 540px; display: flex; flex-direction: column;">
-        <div style="padding: 16px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 20px;">💬</span>
+      <div class="modal-card support-modal-card">
+        <div class="support-header">
+          <div class="support-title-group">
+            <span class="support-header-icon">💬</span>
             <div>
-              <h3 style="font-size: 0.95rem; font-weight: 900; color: #0f172a;">Служба поддержки SpinPulse</h3>
-              <span style="font-size: 10px; font-weight: 700; color: #10b981;">● Оператор на связи</span>
+              <h3 class="support-title" data-i18n="supportTitle">Служба поддержки SpinPulse</h3>
+              <span class="support-online-status" data-i18n="supportOnlineStatus">● Оператор на связи</span>
             </div>
           </div>
-          <button id="close-support-btn" class="modal-close-btn" style="position: static;" aria-label="Close">✕</button>
+          <button id="close-support-btn" class="modal-close-btn modal-close-static" aria-label="Close">✕</button>
         </div>
 
-        <div id="support-messages-wrap" style="flex: 1; overflow-y: auto; padding: 16px;">
-          <div style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 8px;">
-            <div style="padding: 10px 14px; border-radius: 12px; font-size: 0.78rem; max-width: 85%; background: #f1f5f9; color: #334155; font-weight: 600;">
+        <div id="support-messages-wrap" class="support-messages-body">
+          <div class="support-messages-stack">
+            <div id="support-greeting-bubble" class="support-bubble-received" data-i18n="supportGreeting">
               Здравствуйте! Служба поддержки SpinPulse приветствует вас. Чем можем помочь?
             </div>
           </div>
         </div>
 
-        <div style="padding: 8px 16px; display: flex; gap: 6px; overflow-x: auto; border-top: 1px solid #f1f5f9;">
-          <button type="button" class="quick-prompt-chip" style="white-space: nowrap; font-size: 11px; font-weight: 700; background: #f8fafc; padding: 4px 10px; border-radius: 99px; border: 1px solid #e2e8f0;">Как пополнить баланс?</button>
-          <button type="button" class="quick-prompt-chip" style="white-space: nowrap; font-size: 11px; font-weight: 700; background: #f8fafc; padding: 4px 10px; border-radius: 99px; border: 1px solid #e2e8f0;">Где Колесо Удачи?</button>
+        <div class="quick-prompts-bar">
+          <button type="button" class="quick-prompt-chip" data-i18n="promptHowToTopup">Как пополнить баланс?</button>
+          <button type="button" class="quick-prompt-chip" data-i18n="promptWhereWheel">Где Колесо Удачи?</button>
         </div>
 
-        <form id="support-chat-form" style="padding: 12px 16px; border-top: 1px solid #e2e8f0; display: flex; gap: 8px;">
+        <form id="support-chat-form" class="support-form">
           <input 
             type="text" 
             id="support-chat-input" 
+            class="support-input"
             placeholder="Введите сообщение..." 
-            style="flex: 1; padding: 8px 14px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.8rem; outline: none;" 
+            data-i18n-placeholder="supportInputPlaceholder"
           />
-          <button type="submit" class="hero-cta-btn" style="padding: 8px 16px; font-size: 0.8rem;">Отправить</button>
+          <button type="submit" class="hero-cta-btn support-send-btn" data-i18n="supportSendBtn">Отправить</button>
         </form>
       </div>
     </div>
@@ -755,24 +832,24 @@
     <div id="history-drawer" class="drawer-backdrop">
       <div class="drawer-card">
         <div class="drawer-header">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 20px;">📜</span>
-            <h3 style="font-size: 1.05rem; font-weight: 900; color: #0f172a;">История спинов сессии</h3>
+          <div class="drawer-title-group">
+            <span class="drawer-icon">📜</span>
+            <h3 class="drawer-title" data-i18n="historyTitle">История спинов сессии</h3>
           </div>
-          <button id="close-history-btn" class="modal-close-btn" style="position: static;" aria-label="Close">✕</button>
+          <button id="close-history-btn" class="modal-close-btn modal-close-static" aria-label="Close">✕</button>
         </div>
         <div class="drawer-body">
-          <div style="padding: 14px; border-radius: 12px; background: #f8fafc; display: flex; justify-content: space-between;">
+          <div class="history-summary-box">
             <div>
-              <span style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase;">Сумма ставок</span>
-              <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 900; color: #0f172a;">$140.00</div>
+              <span class="history-stat-label" data-i18n="historyTotalBets">Сумма ставок</span>
+              <div class="history-stat-val">$140.00</div>
             </div>
             <div>
-              <span style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase;">Результат сессии</span>
-              <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 900; color: #10b981;">+$285.50</div>
+              <span class="history-stat-label" data-i18n="historySessionResult">Результат сессии</span>
+              <div class="history-stat-val val-profit">+$285.50</div>
             </div>
           </div>
-          <div style="text-align: center; padding: 32px 16px; color: #94a3b8; font-size: 0.85rem;">
+          <div class="history-empty-note" data-i18n="historyEmptyNote">
             Демо-сессия активна. Ставки логируются автоматически.
           </div>
         </div>
