@@ -23,6 +23,8 @@
     <meta property="og:image" content="./banners/banner-zeus-bright.webp" />
 
     <!-- Google Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,9 +33,12 @@
     />
 
 
-    <!-- Preload Critical Mobile Hero Assets for Fast LCP -->
+    <!-- Preload Critical Hero Banner Assets for Smooth Sliding & Fast LCP -->
     <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="./banners/banner-tournament-bright.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./banners/banner-crash-bright.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./banners/banner-welcome-bright.webp" type="image/webp" />
     <script type="module" crossorigin src="./assets/index.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index.css">
   </head>
@@ -73,6 +78,8 @@
         </div>
 
         <div class="sidebar-body">
+          <!-- Game Categories Section -->
+          <div class="sidebar-section-title" data-i18n="sidebarLobby">Разделы игр</div>
           <ul class="sidebar-nav-list">
             <li class="sidebar-nav-item active">
               <button type="button" class="sidebar-cat-btn" data-cat="all">
@@ -84,21 +91,7 @@
               <button type="button" class="sidebar-cat-btn" data-cat="slots">
                 <span class="nav-item-icon">🎰</span>
                 <span data-i18n="slots">Слоты</span>
-                <span class="nav-badge nav-badge-hot">HOT</span>
-              </button>
-            </li>
-            <li class="sidebar-nav-item">
-              <button type="button" class="sidebar-cat-btn" data-cat="live">
-                <span class="nav-item-icon">🎲</span>
-                <span data-i18n="liveCasino">Live Казино</span>
-                <span class="nav-badge nav-badge-new">HD</span>
-              </button>
-            </li>
-            <li class="sidebar-nav-item">
-              <button type="button" class="sidebar-cat-btn" data-cat="crash">
-                <span class="nav-item-icon">🚀</span>
-                <span data-i18n="crashGames">Краш игры</span>
-                <span class="nav-badge nav-badge-new">NEW</span>
+                <span class="nav-badge nav-badge-hot">LIVE</span>
               </button>
             </li>
             <li class="sidebar-nav-item">
@@ -114,12 +107,6 @@
               </button>
             </li>
             <li class="sidebar-nav-item">
-              <button type="button" class="sidebar-cat-btn" data-cat="table">
-                <span class="nav-item-icon">🃏</span>
-                <span data-i18n="tableGames">Настольные</span>
-              </button>
-            </li>
-            <li class="sidebar-nav-item">
               <button type="button" class="sidebar-cat-btn" data-cat="favorites">
                 <span class="nav-item-icon">❤️</span>
                 <span data-i18n="favorites">Избранное</span>
@@ -128,8 +115,44 @@
             </li>
           </ul>
 
-          <!-- Sidebar VIP Box -->
-          <div id="trigger-wheel-btn-sidebar" class="sidebar-vip-box">
+          <!-- Tournaments & Events Section -->
+          <div class="sidebar-section-title" data-i18n="sidebarTournaments">Турниры и события</div>
+          <div id="sidebar-tournament-widget" class="sidebar-tournament-card" title="Открыть турнир">
+            <div class="sidebar-tournament-header">
+              <span class="sidebar-tournament-live">
+                <span class="live-dot-pulse"></span> LIVE
+              </span>
+              <span class="sidebar-tournament-prize">$50,000</span>
+            </div>
+            <div class="sidebar-tournament-name">Weekly Grand Prix</div>
+            <div class="sidebar-tournament-meta">
+              <span>⏱ 34ч осталось</span>
+              <span>•</span>
+              <span id="sidebar-tournament-players">1,482 чел.</span>
+            </div>
+            <div class="sidebar-tournament-leader">
+              <span class="st-leader-avatar">👑</span>
+              <span class="st-leader-name">CyberKing_99</span>
+              <span class="st-leader-pts">184,200 pts</span>
+            </div>
+          </div>
+
+          <div id="sidebar-mini-tournament-widget" class="sidebar-mini-tournament" title="Daily Drop & Wins">
+            <div class="smt-left">
+              <span class="smt-icon">⚡</span>
+              <div>
+                <div class="smt-title">Daily Drop & Wins</div>
+                <div class="smt-sub">$10,000 Ежедневно</div>
+              </div>
+            </div>
+            <span class="smt-badge">HOT</span>
+          </div>
+
+          <!-- Promos & Rewards Section -->
+          <div class="sidebar-section-title" data-i18n="sidebarPromos">Бонусы и VIP</div>
+
+          <!-- Sidebar VIP Box (Lucky Wheel) -->
+          <div id="trigger-wheel-btn-sidebar" class="sidebar-vip-box" title="Крутить Колесо Фортуны">
             <div class="vip-box-top">
               <span class="vip-box-badge" data-i18n="sidebarVipBadge">🎡 БОНУС ДНЯ</span>
               <span class="vip-box-arrow">➔</span>
@@ -138,7 +161,28 @@
             <p class="vip-box-desc" data-i18n="sidebarVipDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
           </div>
 
+          <!-- Sidebar Loyalty Status Card -->
+          <div id="sidebar-vip-loyalty-widget" class="sidebar-loyalty-card" title="VIP Программа лояльности">
+            <div class="slc-top">
+              <span class="slc-tier">👑 Gold VIP · Lvl 3</span>
+              <span class="slc-cashback">5% Cashback</span>
+            </div>
+            <div class="slc-bar-wrap">
+              <div class="slc-bar-fill" style="width: 72%;"></div>
+            </div>
+            <div class="slc-bottom">
+              <span>7,200 / 10,000 XP</span>
+              <span class="slc-next">До Platinum: 28%</span>
+            </div>
+          </div>
+
           <ul class="sidebar-nav-list sidebar-nav-secondary">
+            <li class="sidebar-nav-item">
+              <button type="button" id="trigger-history-btn-sidebar">
+                <span class="nav-item-icon">📜</span>
+                <span data-i18n="sidebarHistory">История ставок</span>
+              </button>
+            </li>
             <li class="sidebar-nav-item">
               <button type="button" id="trigger-bonuses-btn">
                 <span class="nav-item-icon">🎁</span>
@@ -394,17 +438,7 @@
                 <button type="button" class="cat-pill-btn" data-cat="slots">
                   <span>🎰</span>
                   <span data-i18n="catSlots">Слоты</span>
-                  <span class="cat-pill-badge">HOT</span>
-                </button>
-                <button type="button" class="cat-pill-btn" data-cat="live">
-                  <span>🎲</span>
-                  <span data-i18n="catLive">Live Казино</span>
-                  <span class="cat-pill-badge">HD</span>
-                </button>
-                <button type="button" class="cat-pill-btn" data-cat="crash">
-                  <span>🚀</span>
-                  <span data-i18n="catCrash">Краш</span>
-                  <span class="cat-pill-badge">NEW</span>
+                  <span class="cat-pill-badge" style="background:#10b981;color:#fff;">LIVE</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="bonusbuy">
                   <span>⚡</span>
@@ -413,10 +447,6 @@
                 <button type="button" class="cat-pill-btn" data-cat="jackpot">
                   <span>💰</span>
                   <span data-i18n="catJackpot">Джекпоты</span>
-                </button>
-                <button type="button" class="cat-pill-btn" data-cat="table">
-                  <span>🃏</span>
-                  <span data-i18n="catTable">Настольные</span>
                 </button>
                 <button type="button" class="cat-pill-btn" data-cat="favorites">
                   <span>❤️</span>
@@ -431,22 +461,11 @@
             <div class="filter-controls-row">
               <div class="provider-select-wrap">
                 <select id="provider-select" aria-label="Filter by Game Provider">
-                  <option value="All Providers" data-i18n="allProvidersOption">Все провайдеры (18)</option>
-                  <option value="Pragmatic Play">Pragmatic Play</option>
-                  <option value="Hacksaw Gaming">Hacksaw Gaming</option>
-                  <option value="Push Gaming">Push Gaming</option>
-                  <option value="NoLimit City">NoLimit City</option>
-                  <option value="3 Oaks">3 Oaks</option>
-                  <option value="SmartSoft">SmartSoft</option>
-                  <option value="BGaming">BGaming</option>
-                  <option value="Belatra">Belatra</option>
-                  <option value="Endorphina">Endorphina</option>
-                  <option value="Evoplay">Evoplay</option>
-                  <option value="Spinomenal">Spinomenal</option>
-                  <option value="Gamzix">Gamzix</option>
-                  <option value="Turbo Games">Turbo Games</option>
-                  <option value="Evolution">Evolution</option>
-                  <option value="NetEnt">NetEnt</option>
+                  <option value="All Providers" data-i18n="allProvidersOption">Все провайдеры (4)</option>
+                  <option value="Pragmatic Play">Pragmatic Play (30)</option>
+                  <option value="Hacksaw Gaming">Hacksaw Gaming (17)</option>
+                  <option value="Endorphina">Endorphina (8)</option>
+                  <option value="Amatic">Amatic (5)</option>
                 </select>
               </div>
 
@@ -462,8 +481,45 @@
             </div>
           </section>
 
+          <!-- Special Bonus Promo Showcase -->
+          <section id="promo-bonus-section" class="promo-bonus-section">
+            <div class="promo-bonus-card">
+              <div class="promo-bonus-content">
+                <span class="promo-tag" data-i18n="promoBonusBadge">Специальное предложение</span>
+                
+                <h3 class="promo-bonus-title" data-i18n="promoBonusTitle">
+                  Забирайте до <span class="promo-gold-text">$1,500</span> Демо Монет и 100 Free Spins
+                </h3>
+                
+                <p class="promo-bonus-desc" data-i18n="promoBonusDesc">
+                  Крутите ежедневный секретный кейс и получайте моментальный буст игрового баланса для всех слотов каталога. Без ограничений и вейджеров.
+                </p>
+
+                <div class="promo-actions-row">
+                  <button type="button" id="promo-claim-btn" class="promo-cta-btn" data-i18n="promoClaimBtn">
+                    Открыть бонус-бокс
+                  </button>
+                  <button type="button" id="promo-wheel-trigger-btn" class="promo-secondary-btn" data-i18n="promoWheelBtn">
+                    Колесо Удачи
+                  </button>
+                </div>
+              </div>
+
+              <div class="promo-bonus-visual">
+                <img 
+                  src="./banners/obj-04.webp" 
+                  alt="Bonus Promo" 
+                  class="promo-character-img"
+                  loading="lazy"
+                  width="810"
+                  height="580"
+                />
+              </div>
+            </div>
+          </section>
+
           <!-- Tournaments -->
-          <section class="tournament-box">
+          <section id="tournaments-section" class="tournament-box">
             <div class="tournament-top-row">
               <div class="tournament-brand-group">
                 <div class="tournament-trophy-icon">🏆</div>
@@ -500,7 +556,6 @@
                 <div class="leaderboard-row rank-1">
                   <div class="leaderboard-user-group">
                     <span class="leader-rank-badge">1</span>
-                    <span class="leader-trophy-icon">👑</span>
                     <span class="leaderboard-name">CyberKing_99</span>
                   </div>
                   <div class="leaderboard-stats-group">
@@ -512,7 +567,6 @@
                 <div class="leaderboard-row">
                   <div class="leaderboard-user-group">
                     <span class="leader-rank-badge">2</span>
-                    <span class="leader-trophy-icon">⚡</span>
                     <span class="leaderboard-name">LuckyValkyrie</span>
                   </div>
                   <div class="leaderboard-stats-group">
@@ -524,7 +578,6 @@
                 <div class="leaderboard-row">
                   <div class="leaderboard-user-group">
                     <span class="leader-rank-badge">3</span>
-                    <span class="leader-trophy-icon">💎</span>
                     <span class="leaderboard-name">MaxMultiplier</span>
                   </div>
                   <div class="leaderboard-stats-group">
@@ -537,7 +590,7 @@
           </section>
 
           <!-- VIP Rewards -->
-          <section class="vip-loyalty-section">
+          <section id="vip-loyalty-section" class="vip-loyalty-section">
             <div class="vip-content-col">
               <span class="vip-program-badge" data-i18n="vipBadge">
                 👑 ПРОГРАММА ЛОЯЛЬНОСТИ
@@ -559,19 +612,25 @@
 
             <div class="vip-perks-row">
               <div class="vip-perk-item">
-                <span class="vip-perk-icon">💸</span>
+                <span class="vip-perk-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
                 <span class="vip-perk-val">10%</span>
                 <span class="vip-perk-label" data-i18n="vipCashbackLabel">Еженедельный кэшбэк</span>
               </div>
               <div class="vip-perk-item">
-                <span class="vip-perk-icon">⚡</span>
+                <span class="vip-perk-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </span>
                 <span class="vip-perk-val" data-i18n="vipPayoutsVal">Instant</span>
                 <span class="vip-perk-label" data-i18n="vipPayoutsLabel">Быстрые выплаты</span>
               </div>
               <div class="vip-perk-item">
-                <span class="vip-perk-icon">🎁</span>
+                <span class="vip-perk-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                </span>
                 <span class="vip-perk-val">$500</span>
-                <span class="vip-perk-label" data-i18n="vipBirthdayLabel">Подарок на др</span>
+                <span class="vip-perk-label" data-i18n="vipBirthdayLabel">Подарок на день рождения</span>
               </div>
             </div>
           </section>
@@ -580,45 +639,53 @@
           <section class="perks-grid">
             <div class="perk-card">
               <div class="perk-top-row">
-                <div class="perk-icon-box">🛡️</div>
-                <span class="perk-badge">Certified RNG</span>
+                <div class="perk-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <span class="perk-badge" data-i18n="perk1Badge">Verified RTP</span>
               </div>
               <div>
-                <h4 class="perk-title" data-i18n="perk1Title">Контроль честности RNG</h4>
-                <p class="perk-desc" data-i18n="perk1Desc">Математическая модель расчёта выигрышей с независимыми исходами каждого раунда.</p>
+                <h4 class="perk-title" data-i18n="perk1Title">Официальные серверы провайдеров</h4>
+                <p class="perk-desc" data-i18n="perk1Desc">Оригинальные математические алгоритмы и отдача слотов напрямую от серверов Pragmatic, Hacksaw и Endorphina.</p>
               </div>
             </div>
 
             <div class="perk-card">
               <div class="perk-top-row">
-                <div class="perk-icon-box">⚡</div>
-                <span class="perk-badge">60 FPS</span>
+                <div class="perk-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <span class="perk-badge" data-i18n="perk2Badge">Zero Latency</span>
               </div>
               <div>
-                <h4 class="perk-title" data-i18n="perk2Title">Плавная анимация 60 FPS</h4>
-                <p class="perk-desc" data-i18n="perk2Desc">Мгновенный отклик интерфейса и аппаратное GPU-ускорение анимаций на всех экранах.</p>
+                <h4 class="perk-title" data-i18n="perk2Title">Мгновенный баланс и пополнение</h4>
+                <p class="perk-desc" data-i18n="perk2Desc">Автоматическое зачисление выигрышей на баланс сессии, ежедневные релоады и быстрый демо-депозит.</p>
               </div>
             </div>
 
             <div class="perk-card">
               <div class="perk-top-row">
-                <div class="perk-icon-box">📡</div>
-                <span class="perk-badge">4K Ultra-HD</span>
+                <div class="perk-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5"/></svg>
+                </div>
+                <span class="perk-badge" data-i18n="perk3Badge">eCOGRA Standard</span>
               </div>
               <div>
-                <h4 class="perk-title" data-i18n="perk3Title">Студии HD трансляций</h4>
-                <p class="perk-desc" data-i18n="perk3Desc">Прямой эфир рулетки и блэкджека от Evolution Gaming и Pragmatic Play Live.</p>
+                <h4 class="perk-title" data-i18n="perk3Title">Сертифицированный генератор чисел</h4>
+                <p class="perk-desc" data-i18n="perk3Desc">Криптографическая независимость исходов раундов с честным математическим распределением.</p>
               </div>
             </div>
 
             <div class="perk-card">
               <div class="perk-top-row">
-                <div class="perk-icon-box">👑</div>
-                <span class="perk-badge">Gold Tier</span>
+                <div class="perk-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                </div>
+                <span class="perk-badge" data-i18n="perk4Badge">24/7 Priority</span>
               </div>
               <div>
-                <h4 class="perk-title" data-i18n="perk4Title">VIP Привилегии</h4>
-                <p class="perk-desc" data-i18n="perk4Desc">Повышайте уровень лояльности для эксклюзивных бонусов, кэшбэка и подарков.</p>
+                <h4 class="perk-title" data-i18n="perk4Title">Круглосуточный VIP-консьерж</h4>
+                <p class="perk-desc" data-i18n="perk4Desc">Оперативное решение любых вопросов по механике игр, правилам турниров и активации бонусов в реальном времени.</p>
               </div>
             </div>
           </section>
@@ -634,10 +701,10 @@
               <div class="faq-card open">
                 <button type="button" class="faq-trigger">
                   <div class="faq-question-wrap">
-                    <span>🪙</span>
+                    <span class="faq-q-index">01</span>
                     <span data-i18n="faqQ1">Как работает виртуальный демо-баланс и как его пополнить?</span>
                   </div>
-                  <span class="faq-chevron">▼</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-content" data-i18n="faqA1">
                   При первом входе вам автоматически начисляется стартовый демо-баланс в размере $2,500. Вы можете свободно делать ставки в любых слотах и играх лобби. Если баланс закончился, нажмите кнопку «Депозит» в шапке сайта для мгновенного бесплатного пополнения на +$500, забирайте ежедневный бонус +$250 или крутите Колесо Удачи.
@@ -647,10 +714,10 @@
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
                   <div class="faq-question-wrap">
-                    <span>🛡️</span>
+                    <span class="faq-q-index">02</span>
                     <span data-i18n="faqQ2">Гарантируется ли честность игровых раундов (RNG / RTP)?</span>
                   </div>
-                  <span class="faq-chevron">▼</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-content" data-i18n="faqA2">
                   Да. Все представленные игры работают на основе взвешенной модели распределения случайных чисел со средним возвратом игроку (RTP) от 96.5% до 98.4%. Результаты каждого спина рассчитываются независимо от предыдущих раундов.
@@ -660,10 +727,10 @@
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
                   <div class="faq-question-wrap">
-                    <span>⚡</span>
+                    <span class="faq-q-index">03</span>
                     <span data-i18n="faqQ3">Нужна ли регистрация или верификация (KYC) для игры?</span>
                   </div>
-                  <span class="faq-chevron">▼</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-content" data-i18n="faqA3">
                   Регистрация и подтверждение документов не требуются. SpinPulse — это современное интерактивное игровое лобби, где весь функционал доступен моментально прямо в браузере. Ваши настройки, история ставок, избранные слоты и демо-баланс надёжно сохраняются локально в вашем браузере.
@@ -673,10 +740,10 @@
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
                   <div class="faq-question-wrap">
-                    <span>🎮</span>
+                    <span class="faq-q-index">04</span>
                     <span data-i18n="faqQ4">Какие провайдеры софта и слоты представлены в лобби?</span>
                   </div>
-                  <span class="faq-chevron">▼</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-content" data-i18n="faqA4">
                   В каталоге собраны хиты ведущих мировых провайдеров: Pragmatic Play, Evolution, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe, 3 Oaks, SmartSoft, Belatra, Endorphina и других. Доступны классические слоты, видеослоты с механикой Megaways и Bonus Buy, моментальные краш-игры (Aviator, JetX, Cappadocia) и live-столы.
@@ -686,10 +753,10 @@
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
                   <div class="faq-question-wrap">
-                    <span>🏆</span>
+                    <span class="faq-q-index">05</span>
                     <span data-i18n="faqQ5">Как участвовать в турнирах и повышать VIP-уровень?</span>
                   </div>
-                  <span class="faq-chevron">▼</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-content" data-i18n="faqA5">
                   Участие в турнирах автоматическое — просто делайте спины в турнирных слотах. За каждый выигрышный множитель вам начисляются турнирные очки в таблице лидеров. Активная игра также накапливает XP для повышения статуса в VIP-клубе, открывая повышенные множители кэшбэка и секретные подарки.
@@ -699,10 +766,10 @@
               <div class="faq-card">
                 <button type="button" class="faq-trigger">
                   <div class="faq-question-wrap">
-                    <span>📱</span>
+                    <span class="faq-q-index">06</span>
                     <span data-i18n="faqQ6">Можно ли играть со смартфона или установить приложение?</span>
                   </div>
-                  <span class="faq-chevron">▼</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-content" data-i18n="faqA6">
                   Платформа полностью оптимизирована для мобильных устройств iOS и Android. Поддерживаются сенсорные жесты, вертикальный режим и адаптивная графика. Вы можете добавить сайт на главный экран телефона как PWA-приложение для быстрого запуска без браузерных рамок.
@@ -740,15 +807,8 @@
               SpinPulse является демонстрационной обучающей веб-платформой для ознакомления с визуальными механиками игровых слотов. Игра ведётся исключительно на виртуальные внутриигровые монеты без возможности ввода реальных денежных средств. Играйте ответственно.
             </p>
 
-            <div class="footer-lang-row">
-              <span class="footer-lang-label" data-i18n="selectLanguage">Язык интерфейса:</span>
-              <button type="button" class="footer-lang-chip active" data-lang="RU">🇷🇺 Русский</button>
-              <button type="button" class="footer-lang-chip" data-lang="EN">🇬🇧 English</button>
-            </div>
-
             <div class="footer-bottom">
               <span class="footer-copyright">© 2026 SpinPulse Casino Entertainment. All Rights Reserved.</span>
-              <span class="footer-credits" data-i18n="footerCredits">Designed & Built with Pure CSS & Vanilla JS for Ultra Mobile Speed</span>
             </div>
           </div>
         </footer>
@@ -845,8 +905,9 @@
         </div>
 
         <div class="quick-prompts-bar">
-          <button type="button" class="quick-prompt-chip" data-i18n="promptHowToTopup">Как пополнить баланс?</button>
-          <button type="button" class="quick-prompt-chip" data-i18n="promptWhereWheel">Где Колесо Удачи?</button>
+          <button type="button" class="quick-prompt-chip" data-i18n="promptHowToTopup">Пополнение баланса</button>
+          <button type="button" class="quick-prompt-chip" data-i18n="promptWhereWheel">Колесо Удачи и фриспины</button>
+          <button type="button" class="quick-prompt-chip" data-i18n="promptTournaments">Турниры и таблица лидеров</button>
         </div>
 
         <form id="support-chat-form" class="support-form">
@@ -884,9 +945,86 @@
             </div>
           </div>
           <div id="history-rounds-list" class="history-rounds-list"></div>
-          <div id="history-empty-note" class="history-empty-note" data-i18n="historyEmptyNote">
-            Демо-сессия активна. Ставки логируются автоматически.
+          <div id="history-empty-note" class="history-empty-note" style="display: none;">
+            <div class="history-empty-icon">🎰</div>
+            <h4 class="history-empty-title">Нет ставок в текущей сессии</h4>
+            <p class="history-empty-desc">Запускайте любые демо-слоты из каталога — каждый раунд и выигрыш сразу фиксируются здесь.</p>
+            <button type="button" id="history-spin-now-btn" class="history-spin-btn">Перейти к играм</button>
           </div>
+        </div>
+        <div class="drawer-footer">
+          <div class="drawer-footer-stats">
+            <span class="footer-stat-item">Раундов: <strong id="history-total-count">0</strong></span>
+            <span class="footer-stat-item">Макс: <strong id="history-max-win" class="val-profit">$0.00</strong></span>
+          </div>
+          <button id="clear-history-btn" type="button" class="btn-clear-history" title="Очистить историю ставок">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+            </svg>
+            <span>Очистить</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Playable Slot Game Modal -->
+    <div id="game-modal" class="modal-backdrop game-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="game-modal-card">
+        <div class="game-modal-header">
+          <div class="gm-info">
+            <div class="gm-badge-row">
+              <span class="gm-live-badge">
+                <span class="gm-pulse-dot"></span>
+                <span data-i18n="gmPlayLive">LIVE DEMO</span>
+              </span>
+            </div>
+            <h3 id="gm-title" class="gm-title">Gates of Olympus 1000</h3>
+          </div>
+          <div class="gm-actions">
+            <button id="gm-fullscreen-btn" class="gm-btn gm-btn-icon" type="button" title="Fullscreen" aria-label="Fullscreen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+              </svg>
+            </button>
+            <a id="gm-external-btn" class="gm-btn gm-btn-icon" href="#" target="_blank" rel="noopener noreferrer" title="Open in new window" aria-label="Open in new window">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+            <button id="gm-close-btn" class="gm-btn gm-btn-close" type="button" title="Close Game" aria-label="Close">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <div class="game-modal-frame-wrapper" id="gm-frame-wrapper">
+          <div id="gm-loader" class="gm-loader">
+            <div class="gm-spinner"></div>
+            <span class="gm-loader-text" data-i18n="gmConnecting">Запуск слота...</span>
+            <span class="gm-loader-sub" data-i18n="gmLoadingEngine">Подключение официального демо-сервера...</span>
+          </div>
+          <iframe 
+            id="gm-iframe" 
+            class="gm-iframe" 
+            src="about:blank" 
+            allow="autoplay; fullscreen; screen-wake-lock; encrypted-media"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Slot Game Player"
+          ></iframe>
+        </div>
+
+        <div class="game-modal-footer">
+          <div class="gm-footer-tip">
+            <span class="gm-tip-icon">💡</span>
+            <span data-i18n="gmDemoDisclaimer">Бесплатный демо-режим слота от официального сервера провайдера. Ставки виртуальные.</span>
+          </div>
+          <button type="button" class="gm-footer-action-btn" id="gm-reload-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            <span data-i18n="gmReload">Перезагрузить</span>
+          </button>
         </div>
       </div>
     </div>
