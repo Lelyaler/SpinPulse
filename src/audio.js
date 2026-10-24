@@ -8,6 +8,7 @@ try {
     soundEnabled = saved === 'true';
   }
 } catch {
+  // localStorage unavailable
 }
 
 const baseUrl = (import.meta.env.BASE_URL || './').replace(/\/$/, '') + '/';
@@ -34,6 +35,7 @@ function getAudioFromPool(name) {
   try {
     available.currentTime = 0;
   } catch {
+    // Ignore seek errors
   }
 
   return available;
@@ -44,6 +46,7 @@ export function setSoundEnabled(enabled) {
   try {
     localStorage.setItem(SOUND_ENABLED_KEY, String(enabled));
   } catch {
+    // localStorage unavailable
   }
 }
 

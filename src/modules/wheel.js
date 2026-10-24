@@ -45,6 +45,7 @@ export function drawWheel(canvas) {
     ctx.strokeStyle = '#ffffff';
     ctx.stroke();
 
+    // Segment label
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(startAngle + anglePerSegment / 2);
@@ -55,6 +56,7 @@ export function drawWheel(canvas) {
     ctx.restore();
   });
 
+  // Center hub & crown
   ctx.beginPath();
   ctx.arc(cx, cy, 22, 0, 2 * Math.PI);
   ctx.fillStyle = '#0f172a';
@@ -63,10 +65,10 @@ export function drawWheel(canvas) {
   ctx.strokeStyle = '#fbbf24';
   ctx.stroke();
 
-  ctx.font = 'bold 12px sans-serif';
+  ctx.font = 'bold 14px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillStyle = '#fbbf24';
-  ctx.fillText('SP', cx, cy + 4);
+  ctx.fillText('👑', cx, cy + 5);
 }
 
 export function spinWheel({ canvas, spinBtn, wonText, state, saveState, onBalanceUpdate }) {
@@ -90,20 +92,6 @@ export function spinWheel({ canvas, spinBtn, wonText, state, saveState, onBalanc
     isWheelSpinning = false;
     const prize = wheelPrizes[targetIdx];
     state.balance = Math.round((state.balance + prize.val) * 100) / 100;
-
-    if (prize.val > 0 && Array.isArray(state.winners)) {
-      state.winners.unshift({
-        id: `win-${Date.now()}`,
-        user: state.lang === 'RU' ? 'Вы (Игрок)' : 'You (Player)',
-        gameTitle: 'Lucky Wheel',
-        amount: prize.val,
-        multiplier: Math.max(1, Math.round(prize.val / 25)),
-        time: state.lang === 'RU' ? 'Только что' : 'Just now',
-        avatar: 'ME',
-      });
-      if (state.winners.length > 8) state.winners.pop();
-    }
-
     if (saveState) saveState();
     if (onBalanceUpdate) onBalanceUpdate();
     playWinCoinsSound();
@@ -115,8 +103,8 @@ export function spinWheel({ canvas, spinBtn, wonText, state, saveState, onBalanc
 
     if (wonText) {
       wonText.textContent = state.lang === 'RU' 
-        ? `Вы выиграли: ${prize.label} Demo монет!` 
-        : `You won: ${prize.label} Demo coins!`;
+        ? `🎉 Вы выиграли: ${prize.label} Demo монет!` 
+        : `🎉 You won: ${prize.label} Demo coins!`;
       wonText.style.display = 'block';
     }
 
