@@ -4,6 +4,7 @@ const baseUrl = (import.meta.env.BASE_URL || "./").endsWith("/") ? (import.meta.
 
 
 export const gamesCatalog = [
+  // Pragmatic Play slots with live demo
   {
     id: "slot-olympus",
     title: "Gates of Olympus 1000",
@@ -256,6 +257,7 @@ export const gamesCatalog = [
     rating: 4.8,
   },
 
+  // Endorphina and Amatic slots with live demo
   {
     id: "slot-book-of-santa",
     title: "Book of Santa",
@@ -285,6 +287,7 @@ export const gamesCatalog = [
     rating: 4.8,
   },
 
+  // More Pragmatic Play hits
   {
     id: "slot-starlight-princess",
     title: "Starlight Princess 1000",
@@ -475,6 +478,7 @@ export const gamesCatalog = [
     rating: 4.8,
   },
 
+  // Additional Endorphina hits
   {
     id: "slot-crown-coins",
     title: "Crown Coins",
@@ -571,6 +575,7 @@ export const gamesCatalog = [
     rating: 4.8,
   },
 
+  // Additional Amatic hits
   {
     id: "slot-book-of-aztec",
     title: "Book of Aztec",
@@ -625,6 +630,7 @@ export const gamesCatalog = [
     type: "slot",
     rating: 4.7,
   },
+  // Hacksaw Gaming slots with live demo
   {
     id: "slot-rip-city",
     title: "Rip City",
@@ -889,8 +895,8 @@ export const initialWinners = [
     gameTitle: 'Gates of Olympus 1000',
     amount: 1485.50,
     multiplier: 148.5,
-    time: '2m ago',
-    avatar: 'MK',
+    time: 'Just now',
+    avatar: '👑',
   },
   {
     id: 'win-2',
@@ -898,8 +904,8 @@ export const initialWinners = [
     gameTitle: 'Sugar Rush 1000',
     amount: 1840.00,
     multiplier: 184.0,
-    time: '5m ago',
-    avatar: 'SV',
+    time: '12s ago',
+    avatar: '🍭',
   },
   {
     id: 'win-3',
@@ -907,8 +913,8 @@ export const initialWinners = [
     gameTitle: 'Sweet Bonanza',
     amount: 3250.00,
     multiplier: 650.0,
-    time: '11m ago',
-    avatar: 'CS',
+    time: '34s ago',
+    avatar: '💎',
   },
   {
     id: 'win-4',
@@ -916,8 +922,8 @@ export const initialWinners = [
     gameTitle: 'The Dog House: Muttley Crew',
     amount: 980.20,
     multiplier: 98.0,
-    time: '18m ago',
-    avatar: 'D9',
+    time: '1m ago',
+    avatar: '⚡',
   },
   {
     id: 'win-5',
@@ -925,8 +931,8 @@ export const initialWinners = [
     gameTitle: 'Wild Shark',
     amount: 1720.00,
     multiplier: 172.0,
-    time: '24m ago',
-    avatar: 'EL',
+    time: '2m ago',
+    avatar: '🎯',
   },
   {
     id: 'win-6',
@@ -934,8 +940,8 @@ export const initialWinners = [
     gameTitle: 'Valley of the Gods',
     amount: 2450.00,
     multiplier: 245.0,
-    time: '31m ago',
-    avatar: 'AP',
+    time: '2m ago',
+    avatar: '🔥',
   },
 ];
 
