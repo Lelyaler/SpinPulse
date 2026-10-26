@@ -14,15 +14,11 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <link rel="canonical" href="https://lelyaler.github.io/SpinPulse/" />
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lelyaler.github.io/SpinPulse/" />
     <meta property="og:title" content="SpinPulse — Демо-слоты и Джекпоты" />
     <meta property="og:description" content="Игровое лобби слотов и краш-игр с виртуальным балансом." />
     <meta property="og:image" content="./banners/banner-zeus-bright.webp" />
-
-    <!-- Google Fonts -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,8 +41,6 @@
       />
     </noscript>
 
-
-    <!-- Preload Critical Hero Banner Asset for Fast LCP -->
     <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
     <script type="module" crossorigin src="./assets/index.js"></script>
@@ -63,10 +57,7 @@
       }
     </script>
     <div class="app app-container">
-      <!-- Mobile Sidebar Backdrop -->
       <div id="sidebar-backdrop" class="app__sidebar-backdrop sidebar-backdrop"></div>
-
-      <!-- Left Sidebar Navigation -->
       <aside id="site-sidebar" class="site-sidebar">
         <div class="sidebar-header">
           <div class="sidebar-logo-group">
@@ -88,7 +79,6 @@
         </div>
 
         <div class="sidebar-body">
-          <!-- Game Categories Section -->
           <div class="sidebar-section-title" data-i18n="sidebarLobby">Разделы игр</div>
           <ul class="sidebar-nav-list">
             <li class="sidebar-nav-item active">
@@ -134,8 +124,6 @@
               </button>
             </li>
           </ul>
-
-          <!-- Tournaments & Events Section -->
           <div class="sidebar-section-title" data-i18n="sidebarTournaments">Турниры и события</div>
           <div id="sidebar-tournament-widget" class="sidebar-tournament-card" title="Открыть турнир">
             <div class="sidebar-tournament-header">
@@ -171,11 +159,7 @@
             </div>
             <span class="smt-badge">HOT</span>
           </div>
-
-          <!-- Promos & Rewards Section -->
           <div class="sidebar-section-title" data-i18n="sidebarPromos">Бонусы и VIP</div>
-
-          <!-- Sidebar VIP Box (Lucky Wheel) -->
           <div id="trigger-wheel-btn-sidebar" class="sidebar-vip-box" title="Крутить Колесо Фортуны">
             <div class="vip-box-top">
               <span class="vip-box-badge">
@@ -187,8 +171,6 @@
             <div class="vip-box-title" data-i18n="sidebarVipTitle">Колесо Фортуны</div>
             <p class="vip-box-desc" data-i18n="sidebarVipDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
           </div>
-
-          <!-- Sidebar Loyalty Status Card -->
           <div id="sidebar-vip-loyalty-widget" class="sidebar-loyalty-card" title="VIP Программа лояльности">
             <div class="slc-top">
               <span class="slc-tier">
@@ -238,10 +220,7 @@
           <span class="sidebar-version-tag">SpinPulse v2.4</span>
         </div>
       </aside>
-
-      <!-- Main Layout Content -->
       <div class="app__main main-content">
-        <!-- Site Header -->
         <header class="site-header app__header">
           <div class="site-header__inner header-inner">
             <div class="site-header__left header-left">
@@ -293,8 +272,6 @@
                   <span data-i18n="deposit">Депозит</span>
                 </button>
               </div>
-
-              <!-- Language Switcher in Header (Prominent) -->
               <div class="site-header__lang-switch lang-segmented-switch" id="header-lang-switch" role="group" aria-label="Language Switcher">
                 <button type="button" id="header-lang-btn" class="lang-segmented-switch__btn lang-segment-btn active" data-lang="RU" title="Русский">
                   <span class="lang-segmented-switch__flag lang-flag-mini">🇷🇺</span> RU
@@ -303,8 +280,6 @@
                   <span class="lang-segmented-switch__flag lang-flag-mini">🇬🇧</span> EN
                 </button>
               </div>
-
-              <!-- Notifications Bell -->
               <div class="site-header__notif notif-wrapper">
                 <button id="notif-btn" class="notif-wrapper__btn icon-action-btn" type="button" aria-label="Notifications" title="Notifications">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
@@ -329,18 +304,12 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Sound Toggle -->
               <button id="sound-toggle-btn" class="site-header__sound-btn icon-action-btn" type="button" aria-label="Toggle Sound" title="Sound Mute/Unmute">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
               </button>
-
-              <!-- Recent Spins History -->
               <button id="trigger-history-btn" class="site-header__history-btn icon-action-btn" type="button" aria-label="Recent Spins History" title="Recent History">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </button>
-
-              <!-- VIP Profile Pill -->
               <button type="button" id="trigger-wheel-btn" class="site-header__vip-pill vip-pill-btn" aria-label="Wheel of Fortune">
                 <div class="vip-pill-btn__avatar vip-avatar-circle">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
@@ -353,13 +322,9 @@
             </div>
           </div>
         </header>
-
-        <!-- Main Body Container -->
         <main class="app__content content-container">
-          <!-- Hero Carousel -->
           <section class="hero-carousel hero-carousel-section" aria-label="Промо-акции и горячие игры">
             <div id="hero-slides-wrap" class="hero-carousel__slides hero-slides-container">
-              <!-- Slide 0 (Clone of Slide 3) -->
               <div class="hero-carousel__slide hero-slide" data-track-idx="0" data-orig-idx="3">
                 <picture class="hero-carousel__bg-picture hero-bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-welcome-mobile.webp" />
@@ -391,8 +356,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Slide 1 (Flagship: Zeus - LCP Element) -->
               <div class="hero-carousel__slide hero-slide hero-carousel__slide--active active" data-track-idx="1" data-orig-idx="0">
                 <picture class="hero-carousel__bg-picture hero-bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-zeus-mobile.webp" />
@@ -424,8 +387,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Slide 2 (Tournament) -->
               <div class="hero-carousel__slide hero-slide" data-track-idx="2" data-orig-idx="1">
                 <picture class="hero-carousel__bg-picture hero-bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-tournament-mobile.webp" />
@@ -457,8 +418,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Slide 3 (Crash) -->
               <div class="hero-carousel__slide hero-slide" data-track-idx="3" data-orig-idx="2">
                 <picture class="hero-carousel__bg-picture hero-bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-crash-mobile.webp" />
@@ -490,8 +449,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Slide 4 (Welcome) -->
               <div class="hero-carousel__slide hero-slide" data-track-idx="4" data-orig-idx="3">
                 <picture class="hero-carousel__bg-picture hero-bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-welcome-mobile.webp" />
@@ -523,8 +480,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Slide 5 (Clone of Slide 0) -->
               <div class="hero-carousel__slide hero-slide" data-track-idx="5" data-orig-idx="0">
                 <picture class="hero-carousel__bg-picture hero-bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-zeus-mobile.webp" />
@@ -570,8 +525,6 @@
               <button type="button" class="hero-carousel__dot hero-dot" data-slide="3" aria-label="Слайд 4"></button>
             </div>
           </section>
-
-          <!-- Jackpots & Live Wins -->
           <section id="jackpot-section" class="jackpot-section jackpot-wins-grid">
             <div class="jackpot-card jackpot-section__jackpot">
               <div class="jackpot-card__bg jackpot-card-bg"></div>
@@ -669,8 +622,6 @@
               <div id="live-wins-list" class="live-wins-card__feed live-wins-feed"></div>
             </div>
           </section>
-
-          <!-- Category Navigation & Filters -->
           <section id="games-section" class="category-nav category-nav-section">
             <div class="category-nav__pills-row category-pills-row">
               <button id="cat-scroll-left" class="category-nav__scroll-btn category-nav__scroll-btn--left cat-nav-btn cat-nav-left" aria-label="Scroll left">‹</button>
@@ -727,16 +678,12 @@
               <span id="games-count-label" class="category-nav__meta-count filter-meta-count">Игры загружаются...</span>
             </div>
           </section>
-
-          <!-- Games Grid -->
           <section class="games-section">
             <div id="games-grid" class="games-grid"></div>
             <div class="games-section__load-more load-more-wrap">
               <button id="load-more-btn" class="games-section__load-more-btn btn-load-more" type="button" data-i18n="loadMoreBtn">Показать ещё</button>
             </div>
           </section>
-
-          <!-- Special Bonus Promo Showcase -->
           <section id="promo-bonus-section" class="promo-bonus-section">
             <div class="promo-bonus-section__card promo-bonus-card">
               <div class="promo-bonus-section__content promo-bonus-content">
@@ -772,8 +719,6 @@
               </div>
             </div>
           </section>
-
-          <!-- Tournaments -->
           <section id="tournaments-section" class="tournament-box">
             <div class="tournament-box__top-row tournament-top-row">
               <div class="tournament-box__brand-group tournament-brand-group">
@@ -845,8 +790,6 @@
               </div>
             </div>
           </section>
-
-          <!-- VIP Rewards -->
           <section id="vip-loyalty-section" class="vip-loyalty-section">
             <div class="vip-loyalty-section__content vip-content-col">
               <span class="vip-loyalty-section__badge vip-program-badge">
@@ -892,8 +835,6 @@
               </div>
             </div>
           </section>
-
-          <!-- Highlights -->
           <section class="perks-grid">
             <div class="perks-grid__card perk-card">
               <div class="perk-card__top-row perk-top-row">
@@ -947,8 +888,6 @@
               </div>
             </div>
           </section>
-
-          <!-- FAQ -->
           <section class="faq-section">
             <div class="faq-section__header-row faq-header-row">
               <h2 class="faq-section__title faq-section-title" data-i18n="faqTitle">Часто задаваемые вопросы (FAQ)</h2>
@@ -1036,8 +975,6 @@
             </div>
           </section>
         </main>
-
-        <!-- Site Footer -->
         <footer class="site-footer app__footer">
           <div class="site-footer__inner footer-inner">
             <div class="site-footer__top footer-top">
@@ -1072,8 +1009,6 @@
         </footer>
       </div>
     </div>
-
-    <!-- Dynamic Modals Container -->
     <div id="modals-root"></div>
 
   </body>
