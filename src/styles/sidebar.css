@@ -1,6 +1,5 @@
-/* Sidebar */
 
-.sidebar-backdrop {
+.app__sidebar-backdrop, .sidebar-backdrop {
   position: fixed;
   inset: 0;
   z-index: 45;
@@ -9,12 +8,12 @@
   display: none;
 }
 
-.sidebar-backdrop.active {
+.app__sidebar-backdrop, .sidebar-backdrop.active {
   display: block;
 }
 
 @media (min-width: 1024px) {
-  .sidebar-backdrop {
+  .app__sidebar-backdrop, .sidebar-backdrop {
     display: none !important;
   }
 }
@@ -37,7 +36,6 @@
   scrollbar-color: #c2410c transparent;
 }
 
-/* Sidebar Dark Orange Scrollbar */
 .site-sidebar::-webkit-scrollbar {
   width: 5px;
 }
@@ -143,10 +141,21 @@
 }
 
 .nav-item-icon {
-  font-size: 18px;
-  width: 24px;
-  text-align: center;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.nav-item-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  display: block;
 }
 
 .nav-badge {
@@ -182,7 +191,6 @@
   user-select: none;
 }
 
-/* Sidebar VIP Card Widget */
 .sidebar-vip-box {
   background: linear-gradient(135deg, #3d1306 0%, #5d1f0a 100%);
   color: #ffffff;
@@ -229,13 +237,12 @@
   overflow: hidden;
 }
 
-.vip-progress-fill {
+.vip-loyalty-section__progress-fill, .vip-progress-fill {
   height: 100%;
   border-radius: var(--radius-full);
   background: var(--accent-gold);
 }
 
-/* Sidebar Tournament Widgets */
 .sidebar-tournament-card {
   background: linear-gradient(135deg, #260a03 0%, #431407 100%);
   color: #ffffff;
@@ -322,7 +329,18 @@
 }
 
 .st-leader-avatar {
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.st-leader-avatar svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  display: block;
 }
 
 .st-leader-name {
@@ -363,7 +381,19 @@
 }
 
 .smt-icon {
-  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ea580c;
+}
+
+.smt-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  display: block;
 }
 
 .smt-title {
@@ -387,7 +417,6 @@
   border-radius: var(--radius-full);
 }
 
-/* Sidebar Loyalty Status Card */
 .sidebar-loyalty-card {
   background: #f8fafc;
   border-radius: var(--radius-lg);
