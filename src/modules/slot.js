@@ -113,7 +113,6 @@ export function renderHistory(state) {
       try {
         localStorage.setItem('spinpulse_history', JSON.stringify([]));
       } catch {
-        // ignore storage errors
       }
       renderHistory(state);
     });

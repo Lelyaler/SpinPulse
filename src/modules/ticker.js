@@ -19,7 +19,6 @@ export function renderLiveWins(container, winners = []) {
 }
 
 export function initJackpotTicker(jackpots, callback) {
-  // Simulates small realistic increments in progressive jackpot pools
   const interval = setInterval(() => {
     jackpots.grand += Math.random() * 0.45;
     jackpots.major += Math.random() * 0.15;

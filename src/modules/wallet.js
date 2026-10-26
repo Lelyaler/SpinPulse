@@ -29,7 +29,6 @@ export function claimDailyBonus(state, saveState, onUpdate) {
   try {
     localStorage.setItem('spinpulse_daily_claimed', new Date().toDateString());
   } catch {
-    // localStorage unavailable
   }
   if (saveState) saveState();
   if (onUpdate) onUpdate();
