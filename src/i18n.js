@@ -1,7 +1,6 @@
 export const translations = {
   RU: {
     metaTitle: 'SpinPulse — Демо-слоты и Джекпоты',
-    // Header
     headerSearchPlaceholder: 'Поиск игр и слотов...',
     headerDailyBtn: 'Бонус +$250',
     bonusClaimed: 'Бонус взят',
@@ -17,7 +16,6 @@ export const translations = {
     notif3Time: '3ч назад',
     vipRankSub: 'Колесо Удачи',
 
-    // Sidebar
     casinoLobby: 'CASINO LOBBY',
     allGames: 'Все игры',
     slots: 'Слоты',
@@ -31,23 +29,20 @@ export const translations = {
     sidebarTournaments: 'Турниры и события',
     sidebarPromos: 'Бонусы и VIP',
     sidebarHistory: 'История ставок',
-    sidebarVipBadge: '🎡 БОНУС ДНЯ',
+    sidebarVipBadge: 'БОНУС ДНЯ',
     sidebarVipTitle: 'Колесо Фортуны',
     sidebarVipDesc: 'Крутите колесо и выигрывайте до $2,500 demo монет!',
     bonusesAndPromos: 'Бонусы и промокоды',
     liveSupport: 'Онлайн Поддержка',
 
-    // Hero
     claimBonus: 'ЗАБРАТЬ БОНУС',
 
-    // Jackpot
     progJackpotTitle: 'Прогрессивный Джекпот',
     progJackpotSub: 'Накопительный фонд SpinPulse',
     jackpotActionBtn: 'Играть в слоты с джекпотом',
     liveWinsTitle: 'Недавние крупные выигрыши',
     realTimeBadge: 'В реальном времени',
 
-    // Categories and filters
     catAll: 'Все игры',
     catPlayable: 'Live Демо',
     catSlots: 'Слоты',
@@ -64,7 +59,6 @@ export const translations = {
     noGamesFound: 'Игры не найдены',
     noGamesHint: 'Попробуйте сбросить фильтры или изменить поисковый запрос',
 
-    // Tournament
     tournamentActive: 'АКТИВЕН',
     tournamentPrizePool: 'Призовой Фонд',
     tournamentTimerLabel: 'До конца раунда',
@@ -74,8 +68,7 @@ export const translations = {
     pointsSuffix: 'очков',
     playersSuffix: 'игроков',
 
-    // VIP Loyalty
-    vipBadge: '👑 ПРОГРАММА ЛОЯЛЬНОСТИ',
+    vipBadge: 'ПРОГРАММА ЛОЯЛЬНОСТИ',
     vipTitle: 'Ваш статус: Gold VIP (Уровень 3)',
     vipDesc: 'Накапливайте баллы за каждую ставку, чтобы открыть Platinum статус и повышенный кэшбэк 15%!',
     vipProgressTarget: '57% до Platinum',
@@ -84,21 +77,19 @@ export const translations = {
     vipPayoutsLabel: 'Быстрые выплаты',
     vipBirthdayLabel: 'Подарок на день рождения',
 
-    // Perks Grid
     perk1Badge: 'Verified RTP',
     perk1Title: 'Официальные серверы провайдеров',
     perk1Desc: 'Оригинальные математические алгоритмы и отдача слотов напрямую от серверов Pragmatic, Hacksaw и Endorphina.',
     perk2Badge: 'Zero Latency',
     perk2Title: 'Мгновенный баланс и пополнение',
     perk2Desc: 'Автоматическое зачисление выигрышей на баланс сессии, ежедневные релоады и быстрый демо-депозит.',
-    perk3Badge: 'eCOGRA Standard',
-    perk3Title: 'Сертифицированный генератор чисел',
-    perk3Desc: 'Криптографическая независимость исходов раундов с честным математическим распределением.',
-    perk4Badge: '24/7 Priority',
-    perk4Title: 'Круглосуточный VIP-консьерж',
-    perk4Desc: 'Оперативное решение любых вопросов по механике игр, правилам турниров и активации бонусов в реальном времени.',
+    perk3Badge: 'RNG Verified',
+    perk3Title: 'Честный генератор чисел',
+    perk3Desc: 'Раунды рассчитываются независимо по стандартным математическим моделям вероятности.',
+    perk4Badge: 'Direct Help',
+    perk4Title: 'Встроенный справочный центр',
+    perk4Desc: 'Подробные правила механики слотов, расчет турнирных очков и условия активации промокодов.',
 
-    // Promo Bonus Showcase
     promoBonusBadge: 'Специальное предложение',
     promoBonusTitle: 'Забирайте до $1,500 Демо Монет и 100 Free Spins',
     promoBonusDesc: 'Крутите ежедневный секретный кейс и получайте моментальный буст игрового баланса для всех слотов каталога. Без ограничений и вейджеров.',
@@ -108,28 +99,25 @@ export const translations = {
     promoSuccessToast: 'Поздравляем! Начислено +$500 demo монет!',
     promoAlreadyClaimedToast: 'Вы уже забрали сегодняшний бонус! Открываем список промокодов.',
 
-    // FAQ
     faqTitle: 'Часто задаваемые вопросы (FAQ)',
     faqCount: '6 ответов',
     faqQ1: 'Как работает виртуальный демо-баланс и как его пополнить?',
-    faqA1: 'При первом входе вам автоматически начисляется стартовый демо-баланс в размере $2,500. Вы можете свободно делать ставки в любых слотах и играх лобби. Если баланс закончился, нажмите кнопку «Депозит» в шапке сайта для мгновенного бесплатного пополнения на +$500, забирайте ежедневный бонус +$250 или крутите Колесо Удачи.',
+    faqA1: 'На старте вы получаете $2,500 демо-баланса для любых игр каталога. Если баланс исчерпан, нажмите «Депозит» для мгновенного бесплатного пополнения на +$500, заберите ежедневный бонус +$250 или крутите Колесо Удачи.',
     faqQ2: 'Гарантируется ли честность игровых раундов (RNG / RTP)?',
-    faqA2: 'Да. Все представленные игры работают на основе взвешенной модели распределения случайных чисел со средним возвратом игроку (RTP) от 96.5% до 98.4%. Результаты каждого спина рассчитываются независимо от предыдущих раундов.',
+    faqA2: 'Да, все слоты используют сертифицированные алгоритмы ГСЧ с отдачей (RTP) 96.5%–98.4%. Каждый спин рассчитывается независимо от предыдущих.',
     faqQ3: 'Нужна ли регистрация или верификация (KYC) для игры?',
-    faqA3: 'Регистрация и подтверждение документов не требуются. SpinPulse — это современное интерактивное игровое лобби, где весь функционал доступен моментально прямо в браузере. Ваши настройки, история ставок, избранные слоты и демо-баланс надёжно сохраняются локально в вашем браузере.',
+    faqA3: 'Нет, регистрация и документы не требуются. Игры запускаются сразу в браузере, а демо-баланс, избранное и история ставок сохраняются локально на вашем устройстве.',
     faqQ4: 'Какие провайдеры софта и слоты представлены в лобби?',
-    faqA4: 'В каталоге собраны хиты ведущих мировых провайдеров: Pragmatic Play, Evolution, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe, 3 Oaks, SmartSoft, Belatra, Endorphina и других. Доступны классические слоты, видеослоты с механикой Megaways и Bonus Buy, моментальные краш-игры (Aviator, JetX, Cappadocia) и live-столы.',
+    faqA4: 'В лобби собраны слоты Pragmatic Play, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe и других студий: классические автоматы, Megaways, Bonus Buy и краш-игры.',
     faqQ5: 'Как участвовать в турнирах и повышать VIP-уровень?',
-    faqA5: 'Участие в турнирах автоматическое — просто делайте спины в турнирных слотах. За каждый выигрышный множитель вам начисляются турнирные очки в таблице лидеров. Активная игра также накапливает XP для повышения статуса в VIP-клубе, открывая повышенные множители кэшбэка и секретные подарки.',
+    faqA5: 'Участие автоматическое: крутите слоты турнира и копите очки за выигрышные множители. За спины также начисляются XP для повышения VIP-уровня и кэшбэка.',
     faqQ6: 'Можно ли играть со смартфона или установить приложение?',
-    faqA6: 'Платформа полностью оптимизирована для мобильных устройств iOS и Android. Поддерживаются сенсорные жесты, вертикальный режим и адаптивная графика. Вы можете добавить сайт на главный экран телефона как PWA-приложение для быстрого запуска без браузерных рамок.',
+    faqA6: 'Да, интерфейс адаптирован под iOS и Android со свайпами и полноэкранным режимом. Вы также можете добавить ярлык на главный экран как PWA.',
 
-    // Footer
     selectLanguage: 'Язык интерфейса:',
     footerSubtext: 'Лицензионный Демо Симулятор Казино',
     footerDisclaimer: 'SpinPulse является демонстрационной обучающей веб-платформой для ознакомления с визуальными механиками игровых слотов. Игра ведётся исключительно на виртуальные внутриигровые монеты без возможности ввода реальных денежных средств. Играйте ответственно.',
 
-    // Modals
     wheelTitle: 'Колесо Удачи',
     wheelDesc: 'Крутите колесо и выигрывайте до $2,500 demo монет!',
     spinWheelBtn: 'КРУТИТЬ КОЛЕСО',
@@ -142,7 +130,7 @@ export const translations = {
     copiedBtn: '✓ Скопировано',
     claimedBtn: '✓ Активирован',
     supportTitle: 'Центр поддержки SpinPulse',
-    supportOnlineStatus: '● Дежурный специалист онлайн (24/7)',
+    supportOnlineStatus: '● Центр помощи активен',
     supportFaqLabel: 'Частые вопросы:',
     supportTicketFormLabel: 'Отправить обращение в поддержку:',
     supportTopicLabel: 'Тема обращения:',
@@ -168,7 +156,6 @@ export const translations = {
     historySessionResult: 'Результат сессии',
     historyEmptyNote: 'Демо-сессия активна. Ставки логируются автоматически.',
 
-    // Playable Game Modal
     gmPlayLive: 'LIVE DEMO',
     gmConnecting: 'Запуск слота...',
     gmLoadingEngine: 'Подключение официального демо-сервера...',
@@ -180,7 +167,6 @@ export const translations = {
   },
   EN: {
     metaTitle: 'SpinPulse — Demo Slots & Jackpots',
-    // Header
     headerSearchPlaceholder: 'Search games & slots...',
     headerDailyBtn: 'Bonus +$250',
     bonusClaimed: 'Claimed',
@@ -196,7 +182,6 @@ export const translations = {
     notif3Time: '3h ago',
     vipRankSub: 'Lucky Wheel',
 
-    // Sidebar
     casinoLobby: 'CASINO LOBBY',
     allGames: 'All Games',
     slots: 'Slots',
@@ -210,23 +195,20 @@ export const translations = {
     sidebarTournaments: 'Tournaments & Events',
     sidebarPromos: 'Rewards & VIP',
     sidebarHistory: 'Betting History',
-    sidebarVipBadge: '🎡 DAILY BONUS',
+    sidebarVipBadge: 'DAILY BONUS',
     sidebarVipTitle: 'Lucky Wheel',
     sidebarVipDesc: 'Spin the wheel to win up to $2,500 demo coins!',
     bonusesAndPromos: 'Bonuses & Promos',
     liveSupport: 'Live Support',
 
-    // Hero
     claimBonus: 'CLAIM BONUS',
 
-    // Jackpot
     progJackpotTitle: 'Progressive Jackpot',
     progJackpotSub: 'SpinPulse Cumulative Prize Pool',
     jackpotActionBtn: 'Play Jackpot Slots',
     liveWinsTitle: 'Recent Big Wins',
     realTimeBadge: 'Real-Time Feed',
 
-    // Categories and filters
     catAll: 'All Games',
     catPlayable: 'Live Demo',
     catSlots: 'Slots',
@@ -243,7 +225,6 @@ export const translations = {
     noGamesFound: 'No games found',
     noGamesHint: 'Try resetting your search query or provider filter',
 
-    // Tournament
     tournamentActive: 'ACTIVE',
     tournamentPrizePool: 'Prize Pool',
     tournamentTimerLabel: 'Time Remaining',
@@ -253,8 +234,7 @@ export const translations = {
     pointsSuffix: 'pts',
     playersSuffix: 'players',
 
-    // VIP Loyalty
-    vipBadge: '👑 VIP REWARDS PROGRAM',
+    vipBadge: 'VIP REWARDS PROGRAM',
     vipTitle: 'Your Tier: Gold VIP (Level 3)',
     vipDesc: 'Earn points with every spin to unlock Platinum status and an increased 15% cashback!',
     vipProgressTarget: '57% to Platinum',
@@ -263,21 +243,19 @@ export const translations = {
     vipPayoutsLabel: 'Fast Cashouts',
     vipBirthdayLabel: 'Birthday Bonus',
 
-    // Perks Grid
     perk1Badge: 'Verified RTP',
     perk1Title: 'Official Provider Game Servers',
     perk1Desc: 'Authentic math engines and certified return-to-player rates streamed directly from Pragmatic, Hacksaw, and Endorphina.',
     perk2Badge: 'Zero Latency',
     perk2Title: 'Instant Reloads & Free Balance',
     perk2Desc: 'Automated credit payouts to session bankroll with one-click reloads, daily rewards, and zero fees.',
-    perk3Badge: 'eCOGRA Standard',
-    perk3Title: 'Certified Random Number Generator',
-    perk3Desc: 'Cryptographically verified round fairness and mathematical consistency across all catalog games.',
-    perk4Badge: '24/7 Priority',
-    perk4Title: 'Dedicated Concierge Support',
-    perk4Desc: 'Real-time live assistance on slot mechanics, tournament scoring, and promo activation around the clock.',
+    perk3Badge: 'RNG Verified',
+    perk3Title: 'Fair Random Number Generator',
+    perk3Desc: 'Round outcomes are calculated independently following standard statistical probability models.',
+    perk4Badge: 'Direct Help',
+    perk4Title: 'Integrated Help Center',
+    perk4Desc: 'Comprehensive gameplay rules, leaderboard scoring guides, and bonus code instructions.',
 
-    // Promo Bonus Showcase
     promoBonusBadge: 'Special Offer',
     promoBonusTitle: 'Claim Up To $1,500 Demo Coins & 100 Free Spins',
     promoBonusDesc: 'Unlock your daily secret bonus crate for an instant balance boost across all catalog slots. No wagering and no limits.',
@@ -287,28 +265,25 @@ export const translations = {
     promoSuccessToast: 'Congratulations! +$500 demo coins credited!',
     promoAlreadyClaimedToast: 'You have already claimed today\'s bonus! Opening promo codes.',
 
-    // FAQ
     faqTitle: 'Frequently Asked Questions (FAQ)',
     faqCount: '6 answers',
     faqQ1: 'How does virtual demo balance work and how to top it up?',
-    faqA1: 'Upon first arrival, you are automatically credited with a starter demo balance of $2,500. You are free to place bets in any slot or casino game in the lobby. If you run out of coins, tap the "Deposit" button in the header for an instant free +$500 refill, claim the daily +$250 bonus, or spin the Lucky Wheel.',
+    faqA1: 'You start with a free $2,500 demo balance for any games in the catalog. If you run out, tap "Deposit" for an instant +$500 top-up, grab the daily +$250 reward, or spin the Lucky Wheel.',
     faqQ2: 'Is the game fairness guaranteed (RNG / RTP)?',
-    faqA2: 'Yes. All featured titles operate using certified random number generation models with an average return to player (RTP) between 96.5% and 98.4%. Each round is computed completely independently of previous spins.',
+    faqA2: 'Yes. All games use certified RNG models with return rates (RTP) between 96.5% and 98.4%. Every round is calculated independently of previous spins.',
     faqQ3: 'Is registration or KYC verification required to play?',
-    faqA3: 'No registration or identity verification is required. SpinPulse is an interactive browser game lobby where all features are immediately unlocked. Your settings, session history, favorite slots, and demo balance are securely stored in your local browser storage.',
+    faqA3: 'No registration or verification needed. Everything runs directly in your browser, saving your demo balance, favorites, and history locally.',
     faqQ4: 'Which software providers and games are available?',
-    faqA4: 'The catalog features industry-leading studios: Pragmatic Play, Evolution, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe, 3 Oaks, SmartSoft, Belatra, Endorphina, and more. Enjoy classic reels, Megaways and Bonus Buy slots, instant crash games (Aviator, JetX, Cappadocia), and live table games.',
+    faqA4: 'We feature top releases from Pragmatic Play, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe, and others — covering classic reels, Bonus Buy, Megaways, and instant crash games.',
     faqQ5: 'How to participate in tournaments and level up VIP tier?',
-    faqA5: 'Tournament entry is automatic — simply spin on tournament-eligible games. Every win multiplier earns you leaderboard points. Active play also accumulates loyalty XP to upgrade your VIP tier for higher cashback and secret perks.',
+    faqA5: 'Tournament entry is automatic: play participating slots and rack up points for win multipliers. Bets also earn XP towards higher VIP tiers and increased cashback.',
     faqQ6: 'Can I play on mobile or install an app?',
-    faqA6: 'The platform is completely optimized for iOS and Android mobile devices. Touch gestures, portrait orientation, and responsive graphics are natively supported. You can add the website to your home screen as a PWA for an app-like fullscreen experience.',
+    faqA6: 'Yes, the interface is fully optimized for iOS and Android with touch gestures and PWA support for one-tap home screen access.',
 
-    // Footer
     selectLanguage: 'Language:',
     footerSubtext: 'Licensed Demo Casino Simulator',
     footerDisclaimer: 'SpinPulse is a free-to-play educational demo gaming platform designed to showcase slot mechanics and visual gameplay. All games utilize virtual in-game credits only. No real money wagering or monetary prizes are offered. Play responsibly.',
 
-    // Modals
     wheelTitle: 'Lucky Wheel',
     wheelDesc: 'Spin the wheel to win up to $2,500 demo coins!',
     spinWheelBtn: 'SPIN THE WHEEL',
@@ -321,7 +296,7 @@ export const translations = {
     copiedBtn: '✓ Copied',
     claimedBtn: '✓ Claimed',
     supportTitle: 'SpinPulse Support Center',
-    supportOnlineStatus: '● Specialist online (24/7)',
+    supportOnlineStatus: '● Help desk active',
     supportFaqLabel: 'Frequently Asked Questions:',
     supportTicketFormLabel: 'Submit a Support Ticket:',
     supportTopicLabel: 'Category:',
@@ -347,7 +322,6 @@ export const translations = {
     historySessionResult: 'Session Result',
     historyEmptyNote: 'Demo session active. Bets are logged automatically.',
 
-    // Playable Game Modal
     gmPlayLive: 'LIVE DEMO',
     gmConnecting: 'Launching slot...',
     gmLoadingEngine: 'Connecting official game provider server...',
@@ -370,7 +344,6 @@ export function applyTranslations(lang = 'RU', state = {}) {
   document.documentElement.lang = lang.toLowerCase();
   document.title = t.metaTitle;
 
-  // Static text translations
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) {
@@ -378,7 +351,6 @@ export function applyTranslations(lang = 'RU', state = {}) {
     }
   });
 
-  // Placeholder translations
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     const key = el.getAttribute('data-i18n-placeholder');
     if (t[key] !== undefined) {
@@ -386,13 +358,11 @@ export function applyTranslations(lang = 'RU', state = {}) {
     }
   });
 
-  // Update all language switcher buttons active states
   document.querySelectorAll('[data-lang]').forEach((btn) => {
     const btnLang = btn.getAttribute('data-lang');
     btn.classList.toggle('active', btnLang === lang);
   });
 
-  // Language buttons labels (Header + Sidebar legacy fallbacks)
   const langLabelSidebar = document.getElementById('lang-label');
   if (langLabelSidebar) {
     langLabelSidebar.textContent = isRu ? 'RU / EN' : 'EN / RU';
@@ -403,7 +373,6 @@ export function applyTranslations(lang = 'RU', state = {}) {
     langLabelHeader.textContent = lang;
   }
 
-  // Daily bonus button text update
   const dailyBtn = document.getElementById('header-daily-btn');
   if (dailyBtn) {
     const textSpan = dailyBtn.querySelector('span:last-child');
@@ -412,7 +381,6 @@ export function applyTranslations(lang = 'RU', state = {}) {
     }
   }
 
-  // Tournament join button text update
   const joinTournamentBtn = document.getElementById('btn-join-tournament');
   if (joinTournamentBtn) {
     if (state.tournamentJoined) {
@@ -422,13 +390,11 @@ export function applyTranslations(lang = 'RU', state = {}) {
     }
   }
 
-  // Tournament participants counter
   const participantsCount = document.getElementById('tournament-participants-count');
   if (participantsCount && state.tournamentParticipants) {
     participantsCount.textContent = `${state.tournamentParticipants.toLocaleString()} ${t.playersSuffix}`;
   }
 
-  // Tournament points in leaderboard rows
   document.querySelectorAll('.leaderboard-points[data-pts]').forEach((el) => {
     const pts = parseInt(el.getAttribute('data-pts') || '0', 10);
     el.textContent = `${pts.toLocaleString()} ${t.pointsSuffix}`;
