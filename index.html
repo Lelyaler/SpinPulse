@@ -57,12 +57,12 @@
       }
     </script>
     <div class="app app-container">
-      <div id="sidebar-backdrop" class="app__sidebar-backdrop sidebar-backdrop"></div>
+      <div id="sidebar-backdrop" class="app__sidebar-backdrop"></div>
       <aside id="site-sidebar" class="site-sidebar">
         <div class="sidebar-header">
           <div class="sidebar-logo-group">
             <div class="brand-logo brand-logo-icon" aria-hidden="true">
-              <svg class="brand-logo__svg brand-pulse-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="brand-logo__svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="9" stroke="rgba(255, 255, 255, 0.75)" stroke-width="2" stroke-linecap="round" stroke-dasharray="34 10"/>
                 <path d="M6.5 12h2.2l1.8-4 2.8 8 2.2-5 1.5 2h2.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -220,113 +220,113 @@
           <span class="sidebar-version-tag">SpinPulse v2.4</span>
         </div>
       </aside>
-      <div class="app__main main-content">
+      <div class="app__main">
         <header class="site-header app__header">
-          <div class="site-header__inner header-inner">
-            <div class="site-header__left header-left">
-              <button id="menu-toggle-btn" class="site-header__menu-btn menu-toggle-btn" aria-label="Toggle Menu">
+          <div class="site-header__inner">
+            <div class="site-header__left">
+              <button id="menu-toggle-btn" class="site-header__menu-btn" aria-label="Toggle Menu">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
               </button>
 
-              <div class="site-header__mobile-brand header-mobile-brand">
-                <div class="brand-logo site-header__brand-logo brand-logo-icon" aria-hidden="true">
-                  <svg class="brand-logo__svg brand-pulse-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div class="site-header__mobile-brand">
+                <div class="site-header__brand-logo" aria-hidden="true">
+                  <svg class="brand-logo__svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="9" stroke="rgba(255, 255, 255, 0.75)" stroke-width="2" stroke-linecap="round" stroke-dasharray="34 10"/>
                     <path d="M6.5 12h2.2l1.8-4 2.8 8 2.2-5 1.5 2h2.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <span class="brand-text site-header__brand-text">Spin<span class="brand-highlight site-header__brand-highlight">Pulse</span></span>
+                <span class="site-header__brand-text">Spin<span class="site-header__brand-highlight">Pulse</span></span>
               </div>
 
-              <div class="site-header__search-wrap header-search-wrap">
-                <span class="site-header__search-icon header-search-icon">
+              <div class="site-header__search-wrap">
+                <span class="site-header__search-icon">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </span>
                 <input 
                   type="text" 
                   id="header-search" 
-                  class="site-header__search-input header-search-input" 
+                  class="site-header__search-input" 
                   placeholder="Поиск игр и слотов..." 
                   data-i18n-placeholder="headerSearchPlaceholder"
                   aria-label="Search games"
                 />
-                <button type="button" id="header-search-clear" class="site-header__search-clear header-search-clear" style="display: none;" aria-label="Clear search">✕</button>
+                <button type="button" id="header-search-clear" class="site-header__search-clear" style="display: none;" aria-label="Clear search">✕</button>
               </div>
             </div>
 
-            <div class="site-header__right header-right">
-              <button id="header-daily-btn" class="site-header__daily-btn daily-bonus-btn" type="button">
+            <div class="site-header__right">
+              <button id="header-daily-btn" class="site-header__daily-btn" type="button">
                 <span class="site-header__daily-icon">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                 </span>
                 <span class="site-header__daily-text" data-i18n="headerDailyBtn">Бонус +$250</span>
               </button>
 
-              <div class="site-header__wallet wallet-badge">
-                <div class="wallet-badge__info wallet-info">
-                  <span class="wallet-badge__label wallet-label" data-i18n="demoBalance">Демо Баланс</span>
-                  <span id="header-balance" class="wallet-badge__balance wallet-balance">$2,500.00</span>
+              <div class="site-header__wallet">
+                <div class="wallet-badge__info">
+                  <span class="wallet-badge__label" data-i18n="demoBalance">Демо Баланс</span>
+                  <span id="header-balance" class="wallet-badge__balance">$2,500.00</span>
                 </div>
-                <button id="topup-btn" class="wallet-badge__topup-btn topup-btn" type="button" title="Top Up +$500">
+                <button id="topup-btn" class="wallet-badge__topup-btn" type="button" title="Top Up +$500">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                   <span data-i18n="deposit">Депозит</span>
                 </button>
               </div>
-              <div class="site-header__lang-switch lang-segmented-switch" id="header-lang-switch" role="group" aria-label="Language Switcher">
-                <button type="button" id="header-lang-btn" class="lang-segmented-switch__btn lang-segment-btn active" data-lang="RU" title="Русский">
-                  <span class="lang-segmented-switch__flag lang-flag-mini">🇷🇺</span> RU
+              <div class="site-header__lang-switch" id="header-lang-switch" role="group" aria-label="Language Switcher">
+                <button type="button" id="header-lang-btn" class="lang-segmented-switch__btn active" data-lang="RU" title="Русский">
+                  <span class="lang-segmented-switch__flag">🇷🇺</span> RU
                 </button>
-                <button type="button" class="lang-segmented-switch__btn lang-segment-btn" data-lang="EN" title="English">
-                  <span class="lang-segmented-switch__flag lang-flag-mini">🇬🇧</span> EN
+                <button type="button" class="lang-segmented-switch__btn" data-lang="EN" title="English">
+                  <span class="lang-segmented-switch__flag">🇬🇧</span> EN
                 </button>
               </div>
-              <div class="site-header__notif notif-wrapper">
-                <button id="notif-btn" class="notif-wrapper__btn icon-action-btn" type="button" aria-label="Notifications" title="Notifications">
+              <div class="site-header__notif">
+                <button id="notif-btn" class="notif-wrapper__btn" type="button" aria-label="Notifications" title="Notifications">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                  <span class="notif-wrapper__dot notification-dot"></span>
+                  <span class="notif-wrapper__dot"></span>
                 </button>
-                <div id="notif-dropdown" class="notif-wrapper__dropdown header-dropdown">
-                  <div class="header-dropdown__header dropdown-header">
+                <div id="notif-dropdown" class="notif-wrapper__dropdown">
+                  <div class="header-dropdown__header">
                     <span data-i18n="notificationsTitle">Уведомления</span>
-                    <span class="header-dropdown__badge dropdown-badge-new" data-i18n="notificationsBadge">3 Новых</span>
+                    <span class="header-dropdown__badge" data-i18n="notificationsBadge">3 Новых</span>
                   </div>
-                  <div class="header-dropdown__item notification-item">
-                    <div class="header-dropdown__title notification-title" data-i18n="notif1Title">Турнир Grand Prix стартовал!</div>
-                    <div class="header-dropdown__time notification-time" data-i18n="notif1Time">5м назад</div>
+                  <div class="header-dropdown__item">
+                    <div class="header-dropdown__title" data-i18n="notif1Title">Турнир Grand Prix стартовал!</div>
+                    <div class="header-dropdown__time" data-i18n="notif1Time">5м назад</div>
                   </div>
-                  <div class="header-dropdown__item notification-item">
-                    <div class="header-dropdown__title notification-title" data-i18n="notif2Title">Еженедельный кэшбэк начислен: +$125</div>
-                    <div class="header-dropdown__time notification-time" data-i18n="notif2Time">1ч назад</div>
+                  <div class="header-dropdown__item">
+                    <div class="header-dropdown__title" data-i18n="notif2Title">Еженедельный кэшбэк начислен: +$125</div>
+                    <div class="header-dropdown__time" data-i18n="notif2Time">1ч назад</div>
                   </div>
-                  <div class="header-dropdown__item notification-item">
-                    <div class="header-dropdown__title notification-title" data-i18n="notif3Title">Новинка каталога: Sugar Rush 1000</div>
-                    <div class="header-dropdown__time notification-time" data-i18n="notif3Time">3ч назад</div>
+                  <div class="header-dropdown__item">
+                    <div class="header-dropdown__title" data-i18n="notif3Title">Новинка каталога: Sugar Rush 1000</div>
+                    <div class="header-dropdown__time" data-i18n="notif3Time">3ч назад</div>
                   </div>
                 </div>
               </div>
-              <button id="sound-toggle-btn" class="site-header__sound-btn icon-action-btn" type="button" aria-label="Toggle Sound" title="Sound Mute/Unmute">
+              <button id="sound-toggle-btn" class="site-header__sound-btn" type="button" aria-label="Toggle Sound" title="Sound Mute/Unmute">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
               </button>
-              <button id="trigger-history-btn" class="site-header__history-btn icon-action-btn" type="button" aria-label="Recent Spins History" title="Recent History">
+              <button id="trigger-history-btn" class="site-header__history-btn" type="button" aria-label="Recent Spins History" title="Recent History">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </button>
-              <button type="button" id="trigger-wheel-btn" class="site-header__vip-pill vip-pill-btn" aria-label="Wheel of Fortune">
-                <div class="vip-pill-btn__avatar vip-avatar-circle">
+              <button type="button" id="trigger-wheel-btn" class="site-header__vip-pill" aria-label="Wheel of Fortune">
+                <div class="vip-pill-btn__avatar">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
                 </div>
-                <div class="vip-pill-btn__info vip-pill-info">
-                  <span class="vip-pill-btn__rank vip-rank-title">Gold VIP</span>
-                  <span class="vip-pill-btn__sub vip-rank-sub" data-i18n="vipRankSub">Колесо Удачи</span>
+                <div class="vip-pill-btn__info">
+                  <span class="vip-pill-btn__rank">Gold VIP</span>
+                  <span class="vip-pill-btn__sub" data-i18n="vipRankSub">Колесо Удачи</span>
                 </div>
               </button>
             </div>
           </div>
         </header>
-        <main class="app__content content-container">
+        <main class="app__content">
           <section class="hero-carousel hero-carousel-section" aria-label="Промо-акции и горячие игры">
-            <div id="hero-slides-wrap" class="hero-carousel__slides hero-slides-container">
-              <div class="hero-carousel__slide hero-slide" data-track-idx="0" data-orig-idx="3">
-                <picture class="hero-carousel__bg-picture hero-bg-picture">
+            <div id="hero-slides-wrap" class="hero-carousel__slides">
+              <div class="hero-carousel__slide" data-track-idx="0" data-orig-idx="3">
+                <picture class="hero-carousel__bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-welcome-mobile.webp" />
                   <img 
                     class="hero-carousel__bg-img"
@@ -340,24 +340,24 @@
                     style="--bg-pos: 70% 50%; --bg-pos-m: 68% 50%;" 
                   />
                 </picture>
-                <div class="hero-carousel__overlay hero-overlay"></div>
-                <div class="hero-carousel__content hero-card-box hero-content">
-                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="3">ПРИВЕТСТВЕННЫЙ ПАКЕТ</span>
-                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>500 FS</span>
+                <div class="hero-carousel__overlay"></div>
+                <div class="hero-carousel__content">
+                  <div class="hero-carousel__badge-row">
+                    <span class="hero-carousel__tag" data-hero-tag="3">ПРИВЕТСТВЕННЫЙ ПАКЕТ</span>
+                    <span class="hero-carousel__accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>500 FS</span>
                   </div>
-                  <h2 class="hero-carousel__title hero-title" data-hero-title="3">ПРИВЕТСТВЕННЫЙ БОНУС 100%</h2>
-                  <p class="hero-carousel__desc hero-desc" data-hero-desc="3">Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых видеослотах!</p>
-                  <div class="hero-carousel__actions hero-actions">
-                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                  <h2 class="hero-carousel__title" data-hero-title="3">ПРИВЕТСТВЕННЫЙ БОНУС 100%</h2>
+                  <p class="hero-carousel__desc" data-hero-desc="3">Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых видеослотах!</p>
+                  <div class="hero-carousel__actions">
+                    <button type="button" class="hero-carousel__cta-btn">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                       <span data-hero-btn="3">ЗАБРАТЬ БОНУС</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="hero-carousel__slide hero-slide hero-carousel__slide--active active" data-track-idx="1" data-orig-idx="0">
-                <picture class="hero-carousel__bg-picture hero-bg-picture">
+              <div class="hero-carousel__slide hero-carousel__slide--active active" data-track-idx="1" data-orig-idx="0">
+                <picture class="hero-carousel__bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-zeus-mobile.webp" />
                   <img 
                     class="hero-carousel__bg-img"
@@ -371,24 +371,24 @@
                     style="--bg-pos: 70% 12%; --bg-pos-m: 68% 10%;" 
                   />
                 </picture>
-                <div class="hero-carousel__overlay hero-overlay"></div>
-                <div class="hero-carousel__content hero-card-box hero-content">
-                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="0">ФЛАГМАНСКИЙ СЛОТ</span>
-                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>15,000x</span>
+                <div class="hero-carousel__overlay"></div>
+                <div class="hero-carousel__content">
+                  <div class="hero-carousel__badge-row">
+                    <span class="hero-carousel__tag" data-hero-tag="0">ФЛАГМАНСКИЙ СЛОТ</span>
+                    <span class="hero-carousel__accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>15,000x</span>
                   </div>
-                  <h2 class="hero-carousel__title hero-title" data-hero-title="0">GATES OF OLYMPUS 1000</h2>
-                  <p class="hero-carousel__desc hero-desc" data-hero-desc="0">Зевс обрушивает множители до 15,000x! Каскадные барабаны, покупка фриспинов и легендарная механика выплат.</p>
-                  <div class="hero-carousel__actions hero-actions">
-                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                  <h2 class="hero-carousel__title" data-hero-title="0">GATES OF OLYMPUS 1000</h2>
+                  <p class="hero-carousel__desc" data-hero-desc="0">Зевс обрушивает множители до 15,000x! Каскадные барабаны, покупка фриспинов и легендарная механика выплат.</p>
+                  <div class="hero-carousel__actions">
+                    <button type="button" class="hero-carousel__cta-btn">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                       <span data-hero-btn="0">ЗАБРАТЬ БОНУС</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="hero-carousel__slide hero-slide" data-track-idx="2" data-orig-idx="1">
-                <picture class="hero-carousel__bg-picture hero-bg-picture">
+              <div class="hero-carousel__slide" data-track-idx="2" data-orig-idx="1">
+                <picture class="hero-carousel__bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-tournament-mobile.webp" />
                   <img 
                     class="hero-carousel__bg-img"
@@ -402,24 +402,24 @@
                     style="--bg-pos: 68% 50%; --bg-pos-m: 65% 50%;" 
                   />
                 </picture>
-                <div class="hero-carousel__overlay hero-overlay"></div>
-                <div class="hero-carousel__content hero-card-box hero-content">
-                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="1">ТУРНИР НЕДЕЛИ</span>
-                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v5a6 6 0 0 1-12 0V4Z"/></svg>$50,000</span>
+                <div class="hero-carousel__overlay"></div>
+                <div class="hero-carousel__content">
+                  <div class="hero-carousel__badge-row">
+                    <span class="hero-carousel__tag" data-hero-tag="1">ТУРНИР НЕДЕЛИ</span>
+                    <span class="hero-carousel__accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v5a6 6 0 0 1-12 0V4Z"/></svg>$50,000</span>
                   </div>
-                  <h2 class="hero-carousel__title hero-title" data-hero-title="1">GRAND PRIX • $50,000</h2>
-                  <p class="hero-carousel__desc hero-desc" data-hero-desc="1">Вступайте в грандиозную битву провайдеров! Зарабатывайте очки за множители и разделяйте призовой фонд.</p>
-                  <div class="hero-carousel__actions hero-actions">
-                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                  <h2 class="hero-carousel__title" data-hero-title="1">GRAND PRIX • $50,000</h2>
+                  <p class="hero-carousel__desc" data-hero-desc="1">Вступайте в грандиозную битву провайдеров! Зарабатывайте очки за множители и разделяйте призовой фонд.</p>
+                  <div class="hero-carousel__actions">
+                    <button type="button" class="hero-carousel__cta-btn">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                       <span data-hero-btn="1">ЗАБРАТЬ БОНУС</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="hero-carousel__slide hero-slide" data-track-idx="3" data-orig-idx="2">
-                <picture class="hero-carousel__bg-picture hero-bg-picture">
+              <div class="hero-carousel__slide" data-track-idx="3" data-orig-idx="2">
+                <picture class="hero-carousel__bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-crash-mobile.webp" />
                   <img 
                     class="hero-carousel__bg-img"
@@ -433,24 +433,24 @@
                     style="--bg-pos: 68% 46%; --bg-pos-m: 65% 45%;" 
                   />
                 </picture>
-                <div class="hero-carousel__overlay hero-overlay"></div>
-                <div class="hero-carousel__content hero-card-box hero-content">
-                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="2">КРАШ-РЕВОЛЮЦИЯ</span>
-                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>10,000x</span>
+                <div class="hero-carousel__overlay"></div>
+                <div class="hero-carousel__content">
+                  <div class="hero-carousel__badge-row">
+                    <span class="hero-carousel__tag" data-hero-tag="2">КРАШ-РЕВОЛЮЦИЯ</span>
+                    <span class="hero-carousel__accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>10,000x</span>
                   </div>
-                  <h2 class="hero-carousel__title hero-title" data-hero-title="2">AVIATOR & JETX CRASH</h2>
-                  <p class="hero-carousel__desc hero-desc" data-hero-desc="2">Успейте забрать выигрыш до взрыва ракеты! Мгновенные раунды с сертифицированным RNG.</p>
-                  <div class="hero-carousel__actions hero-actions">
-                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                  <h2 class="hero-carousel__title" data-hero-title="2">AVIATOR & JETX CRASH</h2>
+                  <p class="hero-carousel__desc" data-hero-desc="2">Успейте забрать выигрыш до взрыва ракеты! Мгновенные раунды с сертифицированным RNG.</p>
+                  <div class="hero-carousel__actions">
+                    <button type="button" class="hero-carousel__cta-btn">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                       <span data-hero-btn="2">ЗАБРАТЬ БОНУС</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="hero-carousel__slide hero-slide" data-track-idx="4" data-orig-idx="3">
-                <picture class="hero-carousel__bg-picture hero-bg-picture">
+              <div class="hero-carousel__slide" data-track-idx="4" data-orig-idx="3">
+                <picture class="hero-carousel__bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-welcome-mobile.webp" />
                   <img 
                     class="hero-carousel__bg-img"
@@ -464,24 +464,24 @@
                     style="--bg-pos: 70% 50%; --bg-pos-m: 68% 50%;" 
                   />
                 </picture>
-                <div class="hero-carousel__overlay hero-overlay"></div>
-                <div class="hero-carousel__content hero-card-box hero-content">
-                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="3">ПРИВЕТСТВЕННЫЙ ПАКЕТ</span>
-                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>500 FS</span>
+                <div class="hero-carousel__overlay"></div>
+                <div class="hero-carousel__content">
+                  <div class="hero-carousel__badge-row">
+                    <span class="hero-carousel__tag" data-hero-tag="3">ПРИВЕТСТВЕННЫЙ ПАКЕТ</span>
+                    <span class="hero-carousel__accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>500 FS</span>
                   </div>
-                  <h2 class="hero-carousel__title hero-title" data-hero-title="3">ПРИВЕТСТВЕННЫЙ БОНУС 100%</h2>
-                  <p class="hero-carousel__desc hero-desc" data-hero-desc="3">Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых видеослотах!</p>
-                  <div class="hero-carousel__actions hero-actions">
-                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                  <h2 class="hero-carousel__title" data-hero-title="3">ПРИВЕТСТВЕННЫЙ БОНУС 100%</h2>
+                  <p class="hero-carousel__desc" data-hero-desc="3">Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых видеослотах!</p>
+                  <div class="hero-carousel__actions">
+                    <button type="button" class="hero-carousel__cta-btn">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                       <span data-hero-btn="3">ЗАБРАТЬ БОНУС</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div class="hero-carousel__slide hero-slide" data-track-idx="5" data-orig-idx="0">
-                <picture class="hero-carousel__bg-picture hero-bg-picture">
+              <div class="hero-carousel__slide" data-track-idx="5" data-orig-idx="0">
+                <picture class="hero-carousel__bg-picture">
                   <source media="(max-width: 640px)" srcset="./banners/banner-zeus-mobile.webp" />
                   <img 
                     class="hero-carousel__bg-img"
@@ -495,16 +495,16 @@
                     style="--bg-pos: 70% 12%; --bg-pos-m: 68% 10%;" 
                   />
                 </picture>
-                <div class="hero-carousel__overlay hero-overlay"></div>
-                <div class="hero-carousel__content hero-card-box hero-content">
-                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="0">ФЛАГМАНСКИЙ СЛОТ</span>
-                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>15,000x</span>
+                <div class="hero-carousel__overlay"></div>
+                <div class="hero-carousel__content">
+                  <div class="hero-carousel__badge-row">
+                    <span class="hero-carousel__tag" data-hero-tag="0">ФЛАГМАНСКИЙ СЛОТ</span>
+                    <span class="hero-carousel__accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>15,000x</span>
                   </div>
-                  <h2 class="hero-carousel__title hero-title" data-hero-title="0">GATES OF OLYMPUS 1000</h2>
-                  <p class="hero-carousel__desc hero-desc" data-hero-desc="0">Зевс обрушивает множители до 15,000x! Каскадные барабаны, покупка фриспинов и легендарная механика выплат.</p>
-                  <div class="hero-carousel__actions hero-actions">
-                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                  <h2 class="hero-carousel__title" data-hero-title="0">GATES OF OLYMPUS 1000</h2>
+                  <p class="hero-carousel__desc" data-hero-desc="0">Зевс обрушивает множители до 15,000x! Каскадные барабаны, покупка фриспинов и легендарная механика выплат.</p>
+                  <div class="hero-carousel__actions">
+                    <button type="button" class="hero-carousel__cta-btn">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                       <span data-hero-btn="0">ЗАБРАТЬ БОНУС</span>
                     </button>
@@ -512,27 +512,27 @@
                 </div>
               </div>
             </div>
-            <button id="hero-prev-btn" class="hero-carousel__arrow hero-carousel__arrow--prev hero-nav-arrow hero-nav-prev" type="button" aria-label="Предыдущий слайд" title="Предыдущий">
+            <button id="hero-prev-btn" class="hero-carousel__arrow hero-carousel__arrow--prev" type="button" aria-label="Предыдущий слайд" title="Предыдущий">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             </button>
-            <button id="hero-next-btn" class="hero-carousel__arrow hero-carousel__arrow--next hero-nav-arrow hero-nav-next" type="button" aria-label="Следующий слайд" title="Следующий">
+            <button id="hero-next-btn" class="hero-carousel__arrow hero-carousel__arrow--next" type="button" aria-label="Следующий слайд" title="Следующий">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-            <div id="hero-dots" class="hero-carousel__dots hero-dots-row">
-              <button type="button" class="hero-carousel__dot hero-dot hero-carousel__dot--active active" data-slide="0" aria-label="Слайд 1"></button>
-              <button type="button" class="hero-carousel__dot hero-dot" data-slide="1" aria-label="Слайд 2"></button>
-              <button type="button" class="hero-carousel__dot hero-dot" data-slide="2" aria-label="Слайд 3"></button>
-              <button type="button" class="hero-carousel__dot hero-dot" data-slide="3" aria-label="Слайд 4"></button>
+            <div id="hero-dots" class="hero-carousel__dots">
+              <button type="button" class="hero-carousel__dot hero-carousel__dot--active active" data-slide="0" aria-label="Слайд 1"></button>
+              <button type="button" class="hero-carousel__dot" data-slide="1" aria-label="Слайд 2"></button>
+              <button type="button" class="hero-carousel__dot" data-slide="2" aria-label="Слайд 3"></button>
+              <button type="button" class="hero-carousel__dot" data-slide="3" aria-label="Слайд 4"></button>
             </div>
           </section>
           <section id="jackpot-section" class="jackpot-section jackpot-wins-grid">
-            <div class="jackpot-card jackpot-section__jackpot">
-              <div class="jackpot-card__bg jackpot-card-bg"></div>
-              <div class="jackpot-card__glow jackpot-card-glow"></div>
+            <div class="jackpot-section__jackpot">
+              <div class="jackpot-card__bg"></div>
+              <div class="jackpot-card__glow"></div>
 
-              <div class="jackpot-card__header jackpot-header-row">
-                <div class="jackpot-card__title-wrap jackpot-title-wrap">
-                  <div class="jackpot-card__trophy jackpot-trophy-badge" aria-hidden="true">
+              <div class="jackpot-card__header">
+                <div class="jackpot-card__title-wrap">
+                  <div class="jackpot-card__trophy" aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
                       <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
@@ -542,61 +542,61 @@
                       <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
                     </svg>
                   </div>
-                  <div class="jackpot-card__title-texts jackpot-title-texts">
-                    <span class="jackpot-card__title-label jackpot-title-label" data-i18n="progJackpotTitle">Прогрессивный Джекпот</span>
-                    <span class="jackpot-card__title-sub jackpot-title-sub" data-i18n="progJackpotSub">Накопительный фонд SpinPulse</span>
+                  <div class="jackpot-card__title-texts">
+                    <span class="jackpot-card__title-label" data-i18n="progJackpotTitle">Прогрессивный Джекпот</span>
+                    <span class="jackpot-card__title-sub" data-i18n="progJackpotSub">Накопительный фонд SpinPulse</span>
                   </div>
                 </div>
-                <div class="jackpot-card__badge-live jackpot-badge-live">
+                <div class="jackpot-card__badge-live">
                   <span class="live-pulse-dot"></span>
                   <span>LIVE</span>
                 </div>
               </div>
 
-              <div class="jackpot-card__grand-block jackpot-grand-block">
-                <div class="jackpot-card__grand-header jackpot-grand-header">
-                  <span class="jackpot-card__grand-tag jackpot-grand-tag">
+              <div class="jackpot-card__grand-block">
+                <div class="jackpot-card__grand-header">
+                  <span class="jackpot-card__grand-tag">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                     </svg>
                     GRAND PRIZE
                   </span>
-                  <span class="jackpot-card__growth-rate jackpot-growth-rate">+0.05%/сек</span>
+                  <span class="jackpot-card__growth-rate">+0.05%/сек</span>
                 </div>
-                <div class="jackpot-card__amount-display jackpot-amount-display">
-                  <span class="jackpot-card__currency-sign jackpot-currency-sign">$</span>
-                  <span id="jackpot-grand-val" class="jackpot-card__main-amount jackpot-main-amount">4,821,590.84</span>
+                <div class="jackpot-card__amount-display">
+                  <span class="jackpot-card__currency-sign">$</span>
+                  <span id="jackpot-grand-val" class="jackpot-card__main-amount">4,821,590.84</span>
                 </div>
-                <div class="jackpot-card__progress-track jackpot-progress-track">
-                  <div class="jackpot-card__progress-bar jackpot-progress-bar" style="width: 82%;"></div>
-                </div>
-              </div>
-
-              <div class="jackpot-card__sub-grid jackpot-sub-grid">
-                <div class="jackpot-card__sub-item sub-jackpot-item">
-                  <div class="jackpot-card__sub-header sub-jackpot-header">
-                    <span class="jackpot-card__sub-indicator sub-pot-indicator major-indicator"></span>
-                    <span class="jackpot-card__sub-label sub-jackpot-label">MAJOR JACKPOT</span>
-                  </div>
-                  <div class="jackpot-card__sub-amount-row sub-jackpot-amount-row">
-                    <span class="jackpot-card__sub-currency sub-currency">$</span>
-                    <span id="jackpot-major-val" class="jackpot-card__sub-val sub-jackpot-val">248,190.15</span>
-                  </div>
-                </div>
-
-                <div class="jackpot-card__sub-item sub-jackpot-item">
-                  <div class="jackpot-card__sub-header sub-jackpot-header">
-                    <span class="jackpot-card__sub-indicator sub-pot-indicator mini-indicator"></span>
-                    <span class="jackpot-card__sub-label sub-jackpot-label">MINI JACKPOT</span>
-                  </div>
-                  <div class="jackpot-card__sub-amount-row sub-jackpot-amount-row">
-                    <span class="jackpot-card__sub-currency sub-currency">$</span>
-                    <span id="jackpot-mini-val" class="jackpot-card__sub-val sub-jackpot-val">14,850.50</span>
-                  </div>
+                <div class="jackpot-card__progress-track">
+                  <div class="jackpot-card__progress-bar" style="width: 82%;"></div>
                 </div>
               </div>
 
-              <button type="button" id="jackpot-filter-btn" class="jackpot-card__action-btn jackpot-action-btn">
+              <div class="jackpot-card__sub-grid">
+                <div class="jackpot-card__sub-item">
+                  <div class="jackpot-card__sub-header">
+                    <span class="jackpot-card__sub-indicator"></span>
+                    <span class="jackpot-card__sub-label">MAJOR JACKPOT</span>
+                  </div>
+                  <div class="jackpot-card__sub-amount-row">
+                    <span class="jackpot-card__sub-currency">$</span>
+                    <span id="jackpot-major-val" class="jackpot-card__sub-val">248,190.15</span>
+                  </div>
+                </div>
+
+                <div class="jackpot-card__sub-item">
+                  <div class="jackpot-card__sub-header">
+                    <span class="jackpot-card__sub-indicator"></span>
+                    <span class="jackpot-card__sub-label">MINI JACKPOT</span>
+                  </div>
+                  <div class="jackpot-card__sub-amount-row">
+                    <span class="jackpot-card__sub-currency">$</span>
+                    <span id="jackpot-mini-val" class="jackpot-card__sub-val">14,850.50</span>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" id="jackpot-filter-btn" class="jackpot-card__action-btn">
                 <span data-i18n="jackpotActionBtn">Играть в слоты с джекпотом</span>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
@@ -604,68 +604,68 @@
               </button>
             </div>
 
-            <div class="live-wins-card jackpot-section__live-wins">
-              <div class="live-wins-card__header live-wins-header">
-                <h3 class="live-wins-card__title live-wins-title">
-                  <span class="live-wins-card__icon-wrap live-wins-icon-wrap" aria-hidden="true">
+            <div class="jackpot-section__live-wins">
+              <div class="live-wins-card__header">
+                <h3 class="live-wins-card__title">
+                  <span class="live-wins-card__icon-wrap" aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                     </svg>
                   </span>
                   <span data-i18n="liveWinsTitle">Недавние крупные выигрыши</span>
                 </h3>
-                <span class="live-wins-card__stream-badge live-stream-badge">
+                <span class="live-wins-card__stream-badge">
                   <span class="stream-pulse-dot"></span>
                   <span data-i18n="realTimeBadge">В реальном времени</span>
                 </span>
               </div>
-              <div id="live-wins-list" class="live-wins-card__feed live-wins-feed"></div>
+              <div id="live-wins-list" class="live-wins-card__feed"></div>
             </div>
           </section>
           <section id="games-section" class="category-nav category-nav-section">
-            <div class="category-nav__pills-row category-pills-row">
-              <button id="cat-scroll-left" class="category-nav__scroll-btn category-nav__scroll-btn--left cat-nav-btn cat-nav-left" aria-label="Scroll left">‹</button>
+            <div class="category-nav__pills-row">
+              <button id="cat-scroll-left" class="category-nav__scroll-btn category-nav__scroll-btn--left" aria-label="Scroll left">‹</button>
               
-              <div id="cat-scroll-container" class="category-nav__scroll-container category-scroll-container">
-                <button type="button" class="category-nav__pill-btn cat-pill-btn active" data-cat="all">
+              <div id="cat-scroll-container" class="category-nav__scroll-container">
+                <button type="button" class="category-nav__pill-btn active" data-cat="all">
                   <span class="category-nav__pill-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   </span>
                   <span data-i18n="catAll">Все игры</span>
                 </button>
-                <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="slots">
+                <button type="button" class="category-nav__pill-btn" data-cat="slots">
                   <span class="category-nav__pill-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><line x1="8" x2="8" y1="5" y2="19"/><line x1="16" x2="16" y1="5" y2="19"/></svg>
                   </span>
                   <span data-i18n="catSlots">Слоты</span>
-                  <span class="category-nav__pill-badge cat-pill-badge" style="background:#047857;color:#fff;">LIVE</span>
+                  <span class="category-nav__pill-badge" style="background:#047857;color:#fff;">LIVE</span>
                 </button>
-                <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="bonusbuy">
+                <button type="button" class="category-nav__pill-btn" data-cat="bonusbuy">
                   <span class="category-nav__pill-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                   </span>
                   <span data-i18n="catBonusBuy">Bonus Buy</span>
                 </button>
-                <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="jackpot">
+                <button type="button" class="category-nav__pill-btn" data-cat="jackpot">
                   <span class="category-nav__pill-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg>
                   </span>
                   <span data-i18n="catJackpot">Джекпоты</span>
                 </button>
-                <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="favorites">
+                <button type="button" class="category-nav__pill-btn" data-cat="favorites">
                   <span class="category-nav__pill-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                   </span>
                   <span data-i18n="catFavorites">Избранное</span>
-                  <span id="cat-fav-count" class="category-nav__pill-badge cat-pill-badge cat-fav-badge">0</span>
+                  <span id="cat-fav-count" class="category-nav__pill-badge">0</span>
                 </button>
               </div>
 
-              <button id="cat-scroll-right" class="category-nav__scroll-btn category-nav__scroll-btn--right cat-nav-btn cat-nav-right" aria-label="Scroll right">›</button>
+              <button id="cat-scroll-right" class="category-nav__scroll-btn category-nav__scroll-btn--right" aria-label="Scroll right">›</button>
             </div>
 
-            <div class="category-nav__filter-controls filter-controls-row">
-              <div class="category-nav__provider-select-wrap provider-select-wrap">
+            <div class="category-nav__filter-controls">
+              <div class="category-nav__provider-select-wrap">
                 <select id="provider-select" class="category-nav__provider-select" aria-label="Filter by Game Provider">
                   <option value="All Providers" data-i18n="allProvidersOption">Все провайдеры (4)</option>
                   <option value="Pragmatic Play">Pragmatic Play (30)</option>
@@ -675,43 +675,43 @@
                 </select>
               </div>
 
-              <span id="games-count-label" class="category-nav__meta-count filter-meta-count">Игры загружаются...</span>
+              <span id="games-count-label" class="category-nav__meta-count">Игры загружаются...</span>
             </div>
           </section>
           <section class="games-section">
             <div id="games-grid" class="games-grid"></div>
-            <div class="games-section__load-more load-more-wrap">
-              <button id="load-more-btn" class="games-section__load-more-btn btn-load-more" type="button" data-i18n="loadMoreBtn">Показать ещё</button>
+            <div class="games-section__load-more">
+              <button id="load-more-btn" class="games-section__load-more-btn" type="button" data-i18n="loadMoreBtn">Показать ещё</button>
             </div>
           </section>
           <section id="promo-bonus-section" class="promo-bonus-section">
-            <div class="promo-bonus-section__card promo-bonus-card">
-              <div class="promo-bonus-section__content promo-bonus-content">
-                <span class="promo-bonus-section__tag promo-tag" data-i18n="promoBonusBadge">Специальное предложение</span>
+            <div class="promo-bonus-section__card">
+              <div class="promo-bonus-section__content">
+                <span class="promo-bonus-section__tag" data-i18n="promoBonusBadge">Специальное предложение</span>
                 
-                <h3 class="promo-bonus-section__title promo-bonus-title" data-i18n="promoBonusTitle">
-                  Забирайте до <span class="promo-bonus-section__gold-text promo-gold-text">$1,500</span> Демо Монет и 100 Free Spins
+                <h3 class="promo-bonus-section__title" data-i18n="promoBonusTitle">
+                  Забирайте до <span class="promo-bonus-section__gold-text">$1,500</span> Демо Монет и 100 Free Spins
                 </h3>
                 
-                <p class="promo-bonus-section__desc promo-bonus-desc" data-i18n="promoBonusDesc">
+                <p class="promo-bonus-section__desc" data-i18n="promoBonusDesc">
                   Крутите ежедневный секретный кейс и получайте моментальный буст игрового баланса для всех слотов каталога. Без ограничений и вейджеров.
                 </p>
 
-                <div class="promo-bonus-section__actions promo-actions-row">
-                  <button type="button" id="promo-claim-btn" class="promo-bonus-section__cta-btn promo-cta-btn" data-i18n="promoClaimBtn">
+                <div class="promo-bonus-section__actions">
+                  <button type="button" id="promo-claim-btn" class="promo-bonus-section__cta-btn" data-i18n="promoClaimBtn">
                     Открыть бонус-бокс
                   </button>
-                  <button type="button" id="promo-wheel-trigger-btn" class="promo-bonus-section__secondary-btn promo-secondary-btn" data-i18n="promoWheelBtn">
+                  <button type="button" id="promo-wheel-trigger-btn" class="promo-bonus-section__secondary-btn" data-i18n="promoWheelBtn">
                     Колесо Удачи
                   </button>
                 </div>
               </div>
 
-              <div class="promo-bonus-section__visual promo-bonus-visual">
+              <div class="promo-bonus-section__visual">
                 <img 
                   src="./banners/obj-04.webp" 
                   alt="Bonus Promo" 
-                  class="promo-bonus-section__character-img promo-character-img"
+                  class="promo-bonus-section__character-img"
                   loading="lazy"
                   width="810"
                   height="580"
@@ -720,255 +720,255 @@
             </div>
           </section>
           <section id="tournaments-section" class="tournament-box">
-            <div class="tournament-box__top-row tournament-top-row">
-              <div class="tournament-box__brand-group tournament-brand-group">
-                <div class="tournament-box__trophy-icon tournament-trophy-icon">
+            <div class="tournament-box__top-row">
+              <div class="tournament-box__brand-group">
+                <div class="tournament-box__trophy-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v5a6 6 0 0 1-12 0V4Z"/></svg>
                 </div>
                 <div class="tournament-box__brand-texts">
-                  <div class="tournament-box__status-row tournament-status-row">
-                    <span class="tournament-box__live-badge tournament-live-badge" data-i18n="tournamentActive">АКТИВЕН</span>
-                    <span class="tournament-box__providers-sub tournament-providers-sub">Pragmatic Play, Hacksaw & NoLimit City Battle</span>
+                  <div class="tournament-box__status-row">
+                    <span class="tournament-box__live-badge" data-i18n="tournamentActive">АКТИВЕН</span>
+                    <span class="tournament-box__providers-sub">Pragmatic Play, Hacksaw & NoLimit City Battle</span>
                   </div>
-                  <h3 class="tournament-box__heading tournament-heading">Weekly Grand Prix • $50,000</h3>
+                  <h3 class="tournament-box__heading">Weekly Grand Prix • $50,000</h3>
                 </div>
               </div>
 
-              <div class="tournament-box__meta-group tournament-meta-group">
-                <div class="tournament-box__stat-box tournament-stat-box">
-                  <span class="tournament-box__stat-label tournament-stat-label" data-i18n="tournamentPrizePool">Призовой Фонд</span>
-                  <span class="tournament-box__stat-val tournament-stat-val">$50,000</span>
+              <div class="tournament-box__meta-group">
+                <div class="tournament-box__stat-box">
+                  <span class="tournament-box__stat-label" data-i18n="tournamentPrizePool">Призовой Фонд</span>
+                  <span class="tournament-box__stat-val">$50,000</span>
                 </div>
-                <div class="tournament-box__stat-box tournament-stat-box">
-                  <span class="tournament-box__stat-label tournament-stat-label" data-i18n="tournamentTimerLabel">До конца раунда</span>
-                  <span class="tournament-box__timer tournament-timer">34ч : 18м : 45с</span>
+                <div class="tournament-box__stat-box">
+                  <span class="tournament-box__stat-label" data-i18n="tournamentTimerLabel">До конца раунда</span>
+                  <span class="tournament-box__timer">34ч : 18м : 45с</span>
                 </div>
-                <button type="button" id="btn-join-tournament" class="tournament-box__cta-btn hero-cta-btn tournament-cta-btn" data-i18n="joinTournamentBtn">
+                <button type="button" id="btn-join-tournament" class="tournament-box__cta-btn" data-i18n="joinTournamentBtn">
                   Вступить в турнир
                 </button>
               </div>
             </div>
 
             <div class="tournament-box__leaderboard-wrap">
-              <div class="tournament-box__leaderboard-header leaderboard-header">
+              <div class="tournament-box__leaderboard-header">
                 <span data-i18n="leaderboardTitle">Лидеры турнира</span>
                 <span id="tournament-participants-count">1,482 игроков</span>
               </div>
-              <div class="tournament-box__leaderboard tournament-leaderboard">
-                <div class="tournament-leaderboard__row leaderboard-row rank-1">
-                  <div class="tournament-leaderboard__user-group leaderboard-user-group">
-                    <span class="tournament-leaderboard__rank-badge leader-rank-badge">1</span>
-                    <span class="tournament-leaderboard__name leaderboard-name">CyberKing_99</span>
+              <div class="tournament-box__leaderboard">
+                <div class="tournament-leaderboard__row">
+                  <div class="tournament-leaderboard__user-group">
+                    <span class="tournament-leaderboard__rank-badge">1</span>
+                    <span class="tournament-leaderboard__name">CyberKing_99</span>
                   </div>
-                  <div class="tournament-leaderboard__stats-group leaderboard-stats-group">
-                    <span class="tournament-leaderboard__points leaderboard-points" data-pts="184200">184,200 очков</span>
-                    <span class="tournament-leaderboard__prize leaderboard-prize prize-gold">$18,000</span>
-                  </div>
-                </div>
-
-                <div class="tournament-leaderboard__row leaderboard-row">
-                  <div class="tournament-leaderboard__user-group leaderboard-user-group">
-                    <span class="tournament-leaderboard__rank-badge leader-rank-badge">2</span>
-                    <span class="tournament-leaderboard__name leaderboard-name">LuckyValkyrie</span>
-                  </div>
-                  <div class="tournament-leaderboard__stats-group leaderboard-stats-group">
-                    <span class="tournament-leaderboard__points leaderboard-points" data-pts="142500">142,500 очков</span>
-                    <span class="tournament-leaderboard__prize leaderboard-prize prize-silver">$10,000</span>
+                  <div class="tournament-leaderboard__stats-group">
+                    <span class="tournament-leaderboard__points" data-pts="184200">184,200 очков</span>
+                    <span class="tournament-leaderboard__prize">$18,000</span>
                   </div>
                 </div>
 
-                <div class="tournament-leaderboard__row leaderboard-row">
-                  <div class="tournament-leaderboard__user-group leaderboard-user-group">
-                    <span class="tournament-leaderboard__rank-badge leader-rank-badge">3</span>
-                    <span class="tournament-leaderboard__name leaderboard-name">MaxMultiplier</span>
+                <div class="tournament-leaderboard__row">
+                  <div class="tournament-leaderboard__user-group">
+                    <span class="tournament-leaderboard__rank-badge">2</span>
+                    <span class="tournament-leaderboard__name">LuckyValkyrie</span>
                   </div>
-                  <div class="tournament-leaderboard__stats-group leaderboard-stats-group">
-                    <span class="tournament-leaderboard__points leaderboard-points" data-pts="98400">98,400 очков</span>
-                    <span class="tournament-leaderboard__prize leaderboard-prize prize-bronze">$2,500</span>
+                  <div class="tournament-leaderboard__stats-group">
+                    <span class="tournament-leaderboard__points" data-pts="142500">142,500 очков</span>
+                    <span class="tournament-leaderboard__prize">$10,000</span>
+                  </div>
+                </div>
+
+                <div class="tournament-leaderboard__row">
+                  <div class="tournament-leaderboard__user-group">
+                    <span class="tournament-leaderboard__rank-badge">3</span>
+                    <span class="tournament-leaderboard__name">MaxMultiplier</span>
+                  </div>
+                  <div class="tournament-leaderboard__stats-group">
+                    <span class="tournament-leaderboard__points" data-pts="98400">98,400 очков</span>
+                    <span class="tournament-leaderboard__prize">$2,500</span>
                   </div>
                 </div>
               </div>
             </div>
           </section>
           <section id="vip-loyalty-section" class="vip-loyalty-section">
-            <div class="vip-loyalty-section__content vip-content-col">
-              <span class="vip-loyalty-section__badge vip-program-badge">
+            <div class="vip-loyalty-section__content">
+              <span class="vip-loyalty-section__badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
                 <span data-i18n="vipBadge">ПРОГРАММА ЛОЯЛЬНОСТИ</span>
               </span>
-              <h3 class="vip-loyalty-section__title vip-title" data-i18n="vipTitle">Ваш статус: Gold VIP (Уровень 3)</h3>
-              <p class="vip-loyalty-section__desc vip-desc" data-i18n="vipDesc">
+              <h3 class="vip-loyalty-section__title" data-i18n="vipTitle">Ваш статус: Gold VIP (Уровень 3)</h3>
+              <p class="vip-loyalty-section__desc" data-i18n="vipDesc">
                 Накапливайте баллы за каждую ставку, чтобы открыть Platinum статус и повышенный кэшбэк 15%!
               </p>
-              <div class="vip-loyalty-section__progress-wrap vip-progress-wrap">
-                <div class="vip-loyalty-section__progress-header vip-progress-header">
+              <div class="vip-loyalty-section__progress-wrap">
+                <div class="vip-loyalty-section__progress-header">
                   <span>2,850 / 5,000 pts</span>
-                  <span class="vip-loyalty-section__target-label vip-target-label" data-i18n="vipProgressTarget">57% до Platinum</span>
+                  <span class="vip-loyalty-section__target-label" data-i18n="vipProgressTarget">57% до Platinum</span>
                 </div>
-                <div class="vip-loyalty-section__progress-track vip-progress-track">
-                  <div class="vip-loyalty-section__progress-fill vip-progress-fill" style="width: 57%;"></div>
+                <div class="vip-loyalty-section__progress-track">
+                  <div class="vip-loyalty-section__progress-fill" style="width: 57%;"></div>
                 </div>
               </div>
             </div>
 
-            <div class="vip-loyalty-section__perks-row vip-perks-row">
-              <div class="vip-loyalty-section__perk-item vip-perk-item">
-                <span class="vip-perk-item__icon vip-perk-icon">
+            <div class="vip-loyalty-section__perks-row">
+              <div class="vip-loyalty-section__perk-item">
+                <span class="vip-perk-item__icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </span>
-                <span class="vip-perk-item__val vip-perk-val">10%</span>
-                <span class="vip-perk-item__label vip-perk-label" data-i18n="vipCashbackLabel">Еженедельный кэшбэк</span>
+                <span class="vip-perk-item__val">10%</span>
+                <span class="vip-perk-item__label" data-i18n="vipCashbackLabel">Еженедельный кэшбэк</span>
               </div>
-              <div class="vip-loyalty-section__perk-item vip-perk-item">
-                <span class="vip-perk-item__icon vip-perk-icon">
+              <div class="vip-loyalty-section__perk-item">
+                <span class="vip-perk-item__icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </span>
-                <span class="vip-perk-item__val vip-perk-val" data-i18n="vipPayoutsVal">Instant</span>
-                <span class="vip-perk-item__label vip-perk-label" data-i18n="vipPayoutsLabel">Быстрые выплаты</span>
+                <span class="vip-perk-item__val" data-i18n="vipPayoutsVal">Instant</span>
+                <span class="vip-perk-item__label" data-i18n="vipPayoutsLabel">Быстрые выплаты</span>
               </div>
-              <div class="vip-loyalty-section__perk-item vip-perk-item">
-                <span class="vip-perk-item__icon vip-perk-icon">
+              <div class="vip-loyalty-section__perk-item">
+                <span class="vip-perk-item__icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                 </span>
-                <span class="vip-perk-item__val vip-perk-val">$500</span>
-                <span class="vip-perk-item__label vip-perk-label" data-i18n="vipBirthdayLabel">Подарок на день рождения</span>
+                <span class="vip-perk-item__val">$500</span>
+                <span class="vip-perk-item__label" data-i18n="vipBirthdayLabel">Подарок на день рождения</span>
               </div>
             </div>
           </section>
           <section class="perks-grid">
-            <div class="perks-grid__card perk-card">
-              <div class="perk-card__top-row perk-top-row">
-                <div class="perk-card__icon-box perk-icon-box">
+            <div class="perks-grid__card">
+              <div class="perk-card__top-row">
+                <div class="perk-card__icon-box">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                 </div>
-                <span class="perk-card__badge perk-badge" data-i18n="perk1Badge">Verified RTP</span>
+                <span class="perk-card__badge" data-i18n="perk1Badge">Verified RTP</span>
               </div>
               <div class="perk-card__content">
-                <h4 class="perk-card__title perk-title" data-i18n="perk1Title">Официальные серверы провайдеров</h4>
-                <p class="perk-card__desc perk-desc" data-i18n="perk1Desc">Оригинальные математические алгоритмы и отдача слотов напрямую от серверов Pragmatic, Hacksaw и Endorphina.</p>
+                <h4 class="perk-card__title" data-i18n="perk1Title">Официальные серверы провайдеров</h4>
+                <p class="perk-card__desc" data-i18n="perk1Desc">Оригинальные математические алгоритмы и отдача слотов напрямую от серверов Pragmatic, Hacksaw и Endorphina.</p>
               </div>
             </div>
 
-            <div class="perks-grid__card perk-card">
-              <div class="perk-card__top-row perk-top-row">
-                <div class="perk-card__icon-box perk-icon-box">
+            <div class="perks-grid__card">
+              <div class="perk-card__top-row">
+                <div class="perk-card__icon-box">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
-                <span class="perk-card__badge perk-badge" data-i18n="perk2Badge">Zero Latency</span>
+                <span class="perk-card__badge" data-i18n="perk2Badge">Zero Latency</span>
               </div>
               <div class="perk-card__content">
-                <h4 class="perk-card__title perk-title" data-i18n="perk2Title">Мгновенный баланс и пополнение</h4>
-                <p class="perk-card__desc perk-desc" data-i18n="perk2Desc">Автоматическое зачисление выигрышей на баланс сессии, ежедневные релоады и быстрый демо-депозит.</p>
+                <h4 class="perk-card__title" data-i18n="perk2Title">Мгновенный баланс и пополнение</h4>
+                <p class="perk-card__desc" data-i18n="perk2Desc">Автоматическое зачисление выигрышей на баланс сессии, ежедневные релоады и быстрый демо-депозит.</p>
               </div>
             </div>
 
-            <div class="perks-grid__card perk-card">
-              <div class="perk-card__top-row perk-top-row">
-                <div class="perk-card__icon-box perk-icon-box">
+            <div class="perks-grid__card">
+              <div class="perk-card__top-row">
+                <div class="perk-card__icon-box">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5"/></svg>
                 </div>
-                <span class="perk-card__badge perk-badge" data-i18n="perk3Badge">RNG Verified</span>
+                <span class="perk-card__badge" data-i18n="perk3Badge">RNG Verified</span>
               </div>
               <div class="perk-card__content">
-                <h4 class="perk-card__title perk-title" data-i18n="perk3Title">Честный генератор чисел</h4>
-                <p class="perk-card__desc perk-desc" data-i18n="perk3Desc">Раунды рассчитываются независимо по стандартным математическим моделям вероятности.</p>
+                <h4 class="perk-card__title" data-i18n="perk3Title">Честный генератор чисел</h4>
+                <p class="perk-card__desc" data-i18n="perk3Desc">Раунды рассчитываются независимо по стандартным математическим моделям вероятности.</p>
               </div>
             </div>
 
-            <div class="perks-grid__card perk-card">
-              <div class="perk-card__top-row perk-top-row">
-                <div class="perk-card__icon-box perk-icon-box">
+            <div class="perks-grid__card">
+              <div class="perk-card__top-row">
+                <div class="perk-card__icon-box">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
                 </div>
-                <span class="perk-card__badge perk-badge" data-i18n="perk4Badge">Direct Help</span>
+                <span class="perk-card__badge" data-i18n="perk4Badge">Direct Help</span>
               </div>
               <div class="perk-card__content">
-                <h4 class="perk-card__title perk-title" data-i18n="perk4Title">Встроенный справочный центр</h4>
-                <p class="perk-card__desc perk-desc" data-i18n="perk4Desc">Подробные правила механики слотов, расчет турнирных очков и условия активации промокодов.</p>
+                <h4 class="perk-card__title" data-i18n="perk4Title">Встроенный справочный центр</h4>
+                <p class="perk-card__desc" data-i18n="perk4Desc">Подробные правила механики слотов, расчет турнирных очков и условия активации промокодов.</p>
               </div>
             </div>
           </section>
           <section class="faq-section">
-            <div class="faq-section__header-row faq-header-row">
-              <h2 class="faq-section__title faq-section-title" data-i18n="faqTitle">Часто задаваемые вопросы (FAQ)</h2>
-              <span class="faq-section__count-badge faq-count-badge" data-i18n="faqCount">6 ответов</span>
+            <div class="faq-section__header-row">
+              <h2 class="faq-section__title" data-i18n="faqTitle">Часто задаваемые вопросы (FAQ)</h2>
+              <span class="faq-section__count-badge" data-i18n="faqCount">6 ответов</span>
             </div>
 
-            <div class="faq-section__list faq-list">
+            <div class="faq-section__list">
               <div class="faq-section__card faq-card">
-                <button type="button" class="faq-card__trigger faq-trigger">
-                  <div class="faq-card__question-wrap faq-question-wrap">
-                    <span class="faq-card__q-index faq-q-index">01</span>
+                <button type="button" class="faq-card__trigger">
+                  <div class="faq-card__question-wrap">
+                    <span class="faq-card__q-index">01</span>
                     <span data-i18n="faqQ1">Как работает виртуальный демо-баланс и как его пополнить?</span>
                   </div>
-                  <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
+                  <span class="faq-card__toggle-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-card__content faq-content" data-i18n="faqA1">
+                <div class="faq-card__content" data-i18n="faqA1">
                   На старте вы получаете $2,500 демо-баланса для любых игр каталога. Если баланс исчерпан, нажмите «Депозит» для мгновенного бесплатного пополнения на +$500, заберите ежедневный бонус +$250 или крутите Колесо Удачи.
                 </div>
               </div>
 
               <div class="faq-section__card faq-card">
-                <button type="button" class="faq-card__trigger faq-trigger">
-                  <div class="faq-card__question-wrap faq-question-wrap">
-                    <span class="faq-card__q-index faq-q-index">02</span>
+                <button type="button" class="faq-card__trigger">
+                  <div class="faq-card__question-wrap">
+                    <span class="faq-card__q-index">02</span>
                     <span data-i18n="faqQ2">Гарантируется ли честность игровых раундов (RNG / RTP)?</span>
                   </div>
-                  <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
+                  <span class="faq-card__toggle-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-card__content faq-content" data-i18n="faqA2">
+                <div class="faq-card__content" data-i18n="faqA2">
                   Да, все слоты используют сертифицированные алгоритмы ГСЧ с отдачей (RTP) 96.5%–98.4%. Каждый спин рассчитывается независимо от предыдущих.
                 </div>
               </div>
 
               <div class="faq-section__card faq-card">
-                <button type="button" class="faq-card__trigger faq-trigger">
-                  <div class="faq-card__question-wrap faq-question-wrap">
-                    <span class="faq-card__q-index faq-q-index">03</span>
+                <button type="button" class="faq-card__trigger">
+                  <div class="faq-card__question-wrap">
+                    <span class="faq-card__q-index">03</span>
                     <span data-i18n="faqQ3">Нужна ли регистрация или верификация (KYC) для игры?</span>
                   </div>
-                  <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
+                  <span class="faq-card__toggle-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-card__content faq-content" data-i18n="faqA3">
+                <div class="faq-card__content" data-i18n="faqA3">
                   Нет, регистрация и документы не требуются. Игры запускаются сразу в браузере, а демо-баланс, избранное и история ставок сохраняются локально на вашем устройстве.
                 </div>
               </div>
 
               <div class="faq-section__card faq-card">
-                <button type="button" class="faq-card__trigger faq-trigger">
-                  <div class="faq-card__question-wrap faq-question-wrap">
-                    <span class="faq-card__q-index faq-q-index">04</span>
+                <button type="button" class="faq-card__trigger">
+                  <div class="faq-card__question-wrap">
+                    <span class="faq-card__q-index">04</span>
                     <span data-i18n="faqQ4">Какие провайдеры софта и слоты представлены в лобби?</span>
                   </div>
-                  <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
+                  <span class="faq-card__toggle-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-card__content faq-content" data-i18n="faqA4">
+                <div class="faq-card__content" data-i18n="faqA4">
                   В лобби собраны слоты Pragmatic Play, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe и других студий: классические автоматы, Megaways, Bonus Buy и краш-игры.
                 </div>
               </div>
 
               <div class="faq-section__card faq-card">
-                <button type="button" class="faq-card__trigger faq-trigger">
-                  <div class="faq-card__question-wrap faq-question-wrap">
-                    <span class="faq-card__q-index faq-q-index">05</span>
+                <button type="button" class="faq-card__trigger">
+                  <div class="faq-card__question-wrap">
+                    <span class="faq-card__q-index">05</span>
                     <span data-i18n="faqQ5">Как участвовать в турнирах и повышать VIP-уровень?</span>
                   </div>
-                  <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
+                  <span class="faq-card__toggle-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-card__content faq-content" data-i18n="faqA5">
+                <div class="faq-card__content" data-i18n="faqA5">
                   Участие автоматическое: крутите слоты турнира и копите очки за выигрышные множители. За спины также начисляются XP для повышения VIP-уровня и кэшбэка.
                 </div>
               </div>
 
               <div class="faq-section__card faq-card">
-                <button type="button" class="faq-card__trigger faq-trigger">
-                  <div class="faq-card__question-wrap faq-question-wrap">
-                    <span class="faq-card__q-index faq-q-index">06</span>
+                <button type="button" class="faq-card__trigger">
+                  <div class="faq-card__question-wrap">
+                    <span class="faq-card__q-index">06</span>
                     <span data-i18n="faqQ6">Можно ли играть со смартфона или установить приложение?</span>
                   </div>
-                  <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
+                  <span class="faq-card__toggle-icon" aria-hidden="true"></span>
                 </button>
-                <div class="faq-card__content faq-content" data-i18n="faqA6">
+                <div class="faq-card__content" data-i18n="faqA6">
                   Да, интерфейс адаптирован под iOS и Android со свайпами и полноэкранным режимом. Вы также можете добавить ярлык на главный экран как PWA.
                 </div>
               </div>
@@ -976,34 +976,34 @@
           </section>
         </main>
         <footer class="site-footer app__footer">
-          <div class="site-footer__inner footer-inner">
-            <div class="site-footer__top footer-top">
-              <div class="site-footer__brand-wrap footer-brand-wrap">
-                <div class="brand-logo site-footer__brand-logo brand-logo-icon" aria-hidden="true">
-                  <svg class="brand-logo__svg brand-pulse-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="site-footer__inner">
+            <div class="site-footer__top">
+              <div class="site-footer__brand-wrap">
+                <div class="site-footer__brand-logo" aria-hidden="true">
+                  <svg class="brand-logo__svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="9" stroke="rgba(255, 255, 255, 0.75)" stroke-width="2" stroke-linecap="round" stroke-dasharray="34 10"/>
                     <path d="M6.5 12h2.2l1.8-4 2.8 8 2.2-5 1.5 2h2.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <div class="site-footer__brand-texts">
-                  <div class="brand-text site-footer__brand-text">Spin<span class="brand-highlight site-footer__brand-highlight">Pulse</span></div>
-                  <span class="site-footer__subtext footer-subtext" data-i18n="footerSubtext">Лицензионный Демо Симулятор Казино</span>
+                  <div class="site-footer__brand-text">Spin<span class="site-footer__brand-highlight">Pulse</span></div>
+                  <span class="site-footer__subtext" data-i18n="footerSubtext">Лицензионный Демо Симулятор Казино</span>
                 </div>
               </div>
 
-              <div class="site-footer__badges footer-badges">
-                <span class="site-footer__badge footer-badge badge-18">18+ ONLY</span>
-                <span class="site-footer__badge footer-badge badge-ssl">SSL ENCRYPTED</span>
-                <span class="site-footer__badge footer-badge badge-fair">PROVABLY FAIR</span>
+              <div class="site-footer__badges">
+                <span class="site-footer__badge">18+ ONLY</span>
+                <span class="site-footer__badge">SSL ENCRYPTED</span>
+                <span class="site-footer__badge">PROVABLY FAIR</span>
               </div>
             </div>
 
-            <p class="site-footer__disclaimer footer-disclaimer" data-i18n="footerDisclaimer">
+            <p class="site-footer__disclaimer" data-i18n="footerDisclaimer">
               SpinPulse является демонстрационной обучающей веб-платформой для ознакомления с визуальными механиками игровых слотов. Игра ведётся исключительно на виртуальные внутриигровые монеты без возможности ввода реальных денежных средств. Играйте ответственно.
             </p>
 
-            <div class="site-footer__bottom footer-bottom">
-              <span class="site-footer__copyright footer-copyright">© 2026 SpinPulse Casino Entertainment. All Rights Reserved.</span>
+            <div class="site-footer__bottom">
+              <span class="site-footer__copyright">© 2026 SpinPulse Casino Entertainment. All Rights Reserved.</span>
             </div>
           </div>
         </footer>
