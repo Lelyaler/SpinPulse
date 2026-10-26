@@ -28,23 +28,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=JetBrains+Mono:wght@700&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=JetBrains+Mono:wght@700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=JetBrains+Mono:wght@700&display=swap"
+      />
+    </noscript>
 
 
-    <!-- Preload Critical Hero Banner Assets for Smooth Sliding & Fast LCP -->
+    <!-- Preload Critical Hero Banner Asset for Fast LCP -->
     <link rel="preload" as="image" href="./banners/banner-zeus-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="./banners/banner-tournament-bright.webp" type="image/webp" />
-    <link rel="preload" as="image" href="./banners/banner-crash-bright.webp" type="image/webp" />
-    <link rel="preload" as="image" href="./banners/banner-welcome-bright.webp" type="image/webp" />
     <script type="module" crossorigin src="./assets/index.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index.css">
   </head>
   <body>
     <div id="file-protocol-alert" class="file-warning" style="display: none;">
-      ⚠️ Вы открыли страницу через локальный файл (file://). Браузеры блокируют JavaScript-модули и интерактивные функции в этом режиме. Запустите <code>npm run dev</code> или откройте проект онлайн: <a href="https://lelyaler.github.io/SpinPulse/" target="_blank" rel="noopener">https://lelyaler.github.io/SpinPulse/</a>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Вы открыли страницу через локальный файл (file://). Браузеры блокируют JavaScript-модули и интерактивные функции в этом режиме. Запустите <code>npm run dev</code> или откройте проект онлайн: <a href="https://lelyaler.github.io/SpinPulse/" target="_blank" rel="noopener">https://lelyaler.github.io/SpinPulse/</a>
     </div>
     <script>
       if (window.location.protocol === 'file:') {
@@ -57,149 +67,175 @@
       <div id="sidebar-backdrop" class="app__sidebar-backdrop sidebar-backdrop"></div>
 
       <!-- Left Sidebar Navigation -->
-      <aside id="site-sidebar" class="site-sidebar app__sidebar">
-        <div class="site-sidebar__header sidebar-header">
-          <div class="site-sidebar__brand sidebar-logo-group">
-            <div class="brand-logo site-sidebar__brand-logo brand-logo-icon" aria-hidden="true">
+      <aside id="site-sidebar" class="site-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo-group">
+            <div class="brand-logo brand-logo-icon" aria-hidden="true">
               <svg class="brand-logo__svg brand-pulse-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="9" stroke="rgba(255, 255, 255, 0.75)" stroke-width="2" stroke-linecap="round" stroke-dasharray="34 10"/>
                 <path d="M6.5 12h2.2l1.8-4 2.8 8 2.2-5 1.5 2h2.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div class="site-sidebar__brand-meta">
-              <div class="site-sidebar__title-row sidebar-title-row">
-                <span class="brand-text site-sidebar__brand-text">Spin<span class="brand-highlight site-sidebar__brand-highlight">Pulse</span></span>
-                <span class="site-sidebar__vip-badge sidebar-vip-badge">VIP</span>
+            <div>
+              <div class="sidebar-title-row">
+                <span class="brand-text">Spin<span class="brand-highlight">Pulse</span></span>
+                <span class="sidebar-vip-badge">VIP</span>
               </div>
-              <span class="site-sidebar__lobby-tag sidebar-lobby-tag">CASINO LOBBY</span>
+              <span class="sidebar-lobby-tag">CASINO LOBBY</span>
             </div>
           </div>
-          <button id="sidebar-close-btn" class="site-sidebar__close-btn sidebar-close-btn" aria-label="Close Sidebar">✕</button>
+          <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close Sidebar">✕</button>
         </div>
 
-        <div class="site-sidebar__body sidebar-body">
+        <div class="sidebar-body">
           <!-- Game Categories Section -->
-          <div class="site-sidebar__section-title sidebar-section-title" data-i18n="sidebarLobby">Разделы игр</div>
-          <ul class="site-sidebar__nav-list sidebar-nav-list">
-            <li class="site-sidebar__nav-item sidebar-nav-item site-sidebar__nav-item--active active">
-              <button type="button" class="site-sidebar__nav-btn sidebar-cat-btn" data-cat="all">
-                <span class="site-sidebar__nav-icon nav-item-icon">🌟</span>
-                <span class="site-sidebar__nav-text" data-i18n="allGames">Все игры</span>
+          <div class="sidebar-section-title" data-i18n="sidebarLobby">Разделы игр</div>
+          <ul class="sidebar-nav-list">
+            <li class="sidebar-nav-item active">
+              <button type="button" class="sidebar-cat-btn" data-cat="all">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </span>
+                <span data-i18n="allGames">Все игры</span>
               </button>
             </li>
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" class="site-sidebar__nav-btn sidebar-cat-btn" data-cat="slots">
-                <span class="site-sidebar__nav-icon nav-item-icon">🎰</span>
-                <span class="site-sidebar__nav-text" data-i18n="slots">Слоты</span>
-                <span class="site-sidebar__nav-badge nav-badge nav-badge-hot">LIVE</span>
+            <li class="sidebar-nav-item">
+              <button type="button" class="sidebar-cat-btn" data-cat="slots">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><line x1="8" x2="8" y1="5" y2="19"/><line x1="16" x2="16" y1="5" y2="19"/></svg>
+                </span>
+                <span data-i18n="slots">Слоты</span>
+                <span class="nav-badge nav-badge-hot">LIVE</span>
               </button>
             </li>
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" class="site-sidebar__nav-btn sidebar-cat-btn" data-cat="bonusbuy">
-                <span class="site-sidebar__nav-icon nav-item-icon">⚡</span>
-                <span class="site-sidebar__nav-text" data-i18n="bonusBuy">Bonus Buy</span>
+            <li class="sidebar-nav-item">
+              <button type="button" class="sidebar-cat-btn" data-cat="bonusbuy">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </span>
+                <span data-i18n="bonusBuy">Bonus Buy</span>
               </button>
             </li>
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" class="site-sidebar__nav-btn sidebar-cat-btn" data-cat="jackpot">
-                <span class="site-sidebar__nav-icon nav-item-icon">💰</span>
-                <span class="site-sidebar__nav-text" data-i18n="jackpots">Джекпоты</span>
+            <li class="sidebar-nav-item">
+              <button type="button" class="sidebar-cat-btn" data-cat="jackpot">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg>
+                </span>
+                <span data-i18n="jackpots">Джекпоты</span>
               </button>
             </li>
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" class="site-sidebar__nav-btn sidebar-cat-btn" data-cat="favorites">
-                <span class="site-sidebar__nav-icon nav-item-icon">❤️</span>
-                <span class="site-sidebar__nav-text" data-i18n="favorites">Избранное</span>
-                <span id="sidebar-fav-count" class="site-sidebar__nav-badge nav-badge nav-badge-count">0</span>
+            <li class="sidebar-nav-item">
+              <button type="button" class="sidebar-cat-btn" data-cat="favorites">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </span>
+                <span data-i18n="favorites">Избранное</span>
+                <span id="sidebar-fav-count" class="nav-badge nav-badge-count">0</span>
               </button>
             </li>
           </ul>
 
           <!-- Tournaments & Events Section -->
-          <div class="site-sidebar__section-title sidebar-section-title" data-i18n="sidebarTournaments">Турниры и события</div>
-          <div id="sidebar-tournament-widget" class="site-sidebar__tournament-card sidebar-tournament-card" title="Открыть турнир">
-            <div class="site-sidebar__tournament-header sidebar-tournament-header">
-              <span class="site-sidebar__tournament-live sidebar-tournament-live">
+          <div class="sidebar-section-title" data-i18n="sidebarTournaments">Турниры и события</div>
+          <div id="sidebar-tournament-widget" class="sidebar-tournament-card" title="Открыть турнир">
+            <div class="sidebar-tournament-header">
+              <span class="sidebar-tournament-live">
                 <span class="live-dot-pulse"></span> LIVE
               </span>
-              <span class="site-sidebar__tournament-prize sidebar-tournament-prize">0,000</span>
+              <span class="sidebar-tournament-prize">$50,000</span>
             </div>
-            <div class="site-sidebar__tournament-name sidebar-tournament-name">Weekly Grand Prix</div>
-            <div class="site-sidebar__tournament-meta sidebar-tournament-meta">
+            <div class="sidebar-tournament-name">Weekly Grand Prix</div>
+            <div class="sidebar-tournament-meta">
               <span>⏱ 34ч осталось</span>
               <span>•</span>
               <span id="sidebar-tournament-players">1,482 чел.</span>
             </div>
-            <div class="site-sidebar__tournament-leader sidebar-tournament-leader">
-              <span class="site-sidebar__leader-avatar st-leader-avatar">👑</span>
-              <span class="site-sidebar__leader-name st-leader-name">CyberKing_99</span>
-              <span class="site-sidebar__leader-pts st-leader-pts">184,200 pts</span>
+            <div class="sidebar-tournament-leader">
+              <span class="st-leader-avatar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+              </span>
+              <span class="st-leader-name">CyberKing_99</span>
+              <span class="st-leader-pts">184,200 pts</span>
             </div>
           </div>
 
-          <div id="sidebar-mini-tournament-widget" class="site-sidebar__mini-tournament sidebar-mini-tournament" title="Daily Drop & Wins">
-            <div class="site-sidebar__mini-left smt-left">
-              <span class="site-sidebar__mini-icon smt-icon">⚡</span>
+          <div id="sidebar-mini-tournament-widget" class="sidebar-mini-tournament" title="Daily Drop & Wins">
+            <div class="smt-left">
+              <span class="smt-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </span>
               <div>
-                <div class="site-sidebar__mini-title smt-title">Daily Drop & Wins</div>
-                <div class="site-sidebar__mini-sub smt-sub">0,000 Ежедневно</div>
+                <div class="smt-title">Daily Drop & Wins</div>
+                <div class="smt-sub">$10,000 Ежедневно</div>
               </div>
             </div>
-            <span class="site-sidebar__mini-badge smt-badge">HOT</span>
+            <span class="smt-badge">HOT</span>
           </div>
 
           <!-- Promos & Rewards Section -->
-          <div class="site-sidebar__section-title sidebar-section-title" data-i18n="sidebarPromos">Бонусы и VIP</div>
+          <div class="sidebar-section-title" data-i18n="sidebarPromos">Бонусы и VIP</div>
 
           <!-- Sidebar VIP Box (Lucky Wheel) -->
-          <div id="trigger-wheel-btn-sidebar" class="site-sidebar__vip-box sidebar-vip-box" title="Крутить Колесо Фортуны">
-            <div class="site-sidebar__vip-top vip-box-top">
-              <span class="site-sidebar__vip-badge vip-box-badge" data-i18n="sidebarVipBadge">🎡 БОНУС ДНЯ</span>
-              <span class="site-sidebar__vip-arrow vip-box-arrow">➔</span>
+          <div id="trigger-wheel-btn-sidebar" class="sidebar-vip-box" title="Крутить Колесо Фортуны">
+            <div class="vip-box-top">
+              <span class="vip-box-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+                <span data-i18n="sidebarVipBadge">БОНУС ДНЯ</span>
+              </span>
+              <span class="vip-box-arrow">➔</span>
             </div>
-            <div class="site-sidebar__vip-title vip-box-title" data-i18n="sidebarVipTitle">Колесо Фортуны</div>
-            <p class="site-sidebar__vip-desc vip-box-desc" data-i18n="sidebarVipDesc">Крутите колесо и выигрывайте до ,500 demo монет!</p>
+            <div class="vip-box-title" data-i18n="sidebarVipTitle">Колесо Фортуны</div>
+            <p class="vip-box-desc" data-i18n="sidebarVipDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
           </div>
 
           <!-- Sidebar Loyalty Status Card -->
-          <div id="sidebar-vip-loyalty-widget" class="site-sidebar__loyalty-card sidebar-loyalty-card" title="VIP Программа лояльности">
-            <div class="site-sidebar__loyalty-top slc-top">
-              <span class="site-sidebar__loyalty-tier slc-tier">👑 Gold VIP · Lvl 3</span>
-              <span class="site-sidebar__loyalty-cashback slc-cashback">5% Cashback</span>
+          <div id="sidebar-vip-loyalty-widget" class="sidebar-loyalty-card" title="VIP Программа лояльности">
+            <div class="slc-top">
+              <span class="slc-tier">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+                Gold VIP · Lvl 3
+              </span>
+              <span class="slc-cashback">5% Cashback</span>
             </div>
-            <div class="site-sidebar__loyalty-bar-wrap slc-bar-wrap">
-              <div class="site-sidebar__loyalty-bar-fill slc-bar-fill" style="width: 72%;"></div>
+            <div class="slc-bar-wrap">
+              <div class="slc-bar-fill" style="width: 72%;"></div>
             </div>
-            <div class="site-sidebar__loyalty-bottom slc-bottom">
+            <div class="slc-bottom">
               <span>7,200 / 10,000 XP</span>
-              <span class="site-sidebar__loyalty-next slc-next">До Platinum: 28%</span>
+              <span class="slc-next">До Platinum: 28%</span>
             </div>
           </div>
 
-          <ul class="site-sidebar__nav-list sidebar-nav-list site-sidebar__nav-list--secondary sidebar-nav-secondary">
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" id="trigger-history-btn-sidebar" class="site-sidebar__nav-btn">
-                <span class="site-sidebar__nav-icon nav-item-icon">📜</span>
-                <span class="site-sidebar__nav-text" data-i18n="sidebarHistory">История ставок</span>
+          <ul class="sidebar-nav-list sidebar-nav-secondary">
+            <li class="sidebar-nav-item">
+              <button type="button" id="trigger-history-btn-sidebar" class="sidebar-nav-btn">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                <span data-i18n="sidebarHistory">История ставок</span>
               </button>
             </li>
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" id="trigger-bonuses-btn" class="site-sidebar__nav-btn">
-                <span class="site-sidebar__nav-icon nav-item-icon">🎁</span>
-                <span class="site-sidebar__nav-text" data-i18n="bonusesAndPromos">Бонусы и промокоды</span>
+            <li class="sidebar-nav-item">
+              <button type="button" id="trigger-bonuses-btn" class="sidebar-nav-btn">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                </span>
+                <span data-i18n="bonusesAndPromos">Бонусы и промокоды</span>
               </button>
             </li>
-            <li class="site-sidebar__nav-item sidebar-nav-item">
-              <button type="button" id="trigger-support-btn" class="site-sidebar__nav-btn">
-                <span class="site-sidebar__nav-icon nav-item-icon">💬</span>
-                <span class="site-sidebar__nav-text" data-i18n="liveSupport">Онлайн Поддержка</span>
+            <li class="sidebar-nav-item">
+              <button type="button" id="trigger-support-btn" class="sidebar-nav-btn">
+                <span class="nav-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <span data-i18n="liveSupport">Онлайн Поддержка</span>
               </button>
             </li>
           </ul>
         </div>
 
-        <div class="site-sidebar__footer sidebar-footer">
-          <span class="site-sidebar__version-tag sidebar-version-tag">v2.0 • 60 FPS</span>
+        <div class="sidebar-footer">
+          <span class="sidebar-version-tag">v2.0 • 60 FPS</span>
         </div>
       </aside>
 
@@ -224,7 +260,9 @@
               </div>
 
               <div class="site-header__search-wrap header-search-wrap">
-                <span class="site-header__search-icon header-search-icon">🔍</span>
+                <span class="site-header__search-icon header-search-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
                 <input 
                   type="text" 
                   id="header-search" 
@@ -239,16 +277,18 @@
 
             <div class="site-header__right header-right">
               <button id="header-daily-btn" class="site-header__daily-btn daily-bonus-btn" type="button">
-                <span class="site-header__daily-icon">🎁</span>
-                <span class="site-header__daily-text" data-i18n="headerDailyBtn">Бонус +50</span>
+                <span class="site-header__daily-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                </span>
+                <span class="site-header__daily-text" data-i18n="headerDailyBtn">Бонус +$250</span>
               </button>
 
               <div class="site-header__wallet wallet-badge">
                 <div class="wallet-badge__info wallet-info">
                   <span class="wallet-badge__label wallet-label" data-i18n="demoBalance">Демо Баланс</span>
-                  <span id="header-balance" class="wallet-badge__balance wallet-balance">,500.00</span>
+                  <span id="header-balance" class="wallet-badge__balance wallet-balance">$2,500.00</span>
                 </div>
-                <button id="topup-btn" class="wallet-badge__topup-btn topup-btn" type="button" title="Top Up +00">
+                <button id="topup-btn" class="wallet-badge__topup-btn topup-btn" type="button" title="Top Up +$500">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                   <span data-i18n="deposit">Депозит</span>
                 </button>
@@ -280,7 +320,7 @@
                     <div class="header-dropdown__time notification-time" data-i18n="notif1Time">5м назад</div>
                   </div>
                   <div class="header-dropdown__item notification-item">
-                    <div class="header-dropdown__title notification-title" data-i18n="notif2Title">Еженедельный кэшбэк начислен: +25</div>
+                    <div class="header-dropdown__title notification-title" data-i18n="notif2Title">Еженедельный кэшбэк начислен: +$125</div>
                     <div class="header-dropdown__time notification-time" data-i18n="notif2Time">1ч назад</div>
                   </div>
                   <div class="header-dropdown__item notification-item">
@@ -292,7 +332,7 @@
 
               <!-- Sound Toggle -->
               <button id="sound-toggle-btn" class="site-header__sound-btn icon-action-btn" type="button" aria-label="Toggle Sound" title="Sound Mute/Unmute">
-                🔊
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
               </button>
 
               <!-- Recent Spins History -->
@@ -302,7 +342,9 @@
 
               <!-- VIP Profile Pill -->
               <button type="button" id="trigger-wheel-btn" class="site-header__vip-pill vip-pill-btn" aria-label="Wheel of Fortune">
-                <div class="vip-pill-btn__avatar vip-avatar-circle">👑</div>
+                <div class="vip-pill-btn__avatar vip-avatar-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+                </div>
                 <div class="vip-pill-btn__info vip-pill-info">
                   <span class="vip-pill-btn__rank vip-rank-title">Gold VIP</span>
                   <span class="vip-pill-btn__sub vip-rank-sub" data-i18n="vipRankSub">Колесо Удачи</span>
@@ -316,14 +358,217 @@
         <main class="app__content content-container">
           <!-- Hero Carousel -->
           <section class="hero-carousel hero-carousel-section" aria-label="Промо-акции и горячие игры">
-            <div id="hero-slides-wrap" class="hero-carousel__slides hero-slides-container"></div>
+            <div id="hero-slides-wrap" class="hero-carousel__slides hero-slides-container">
+              <!-- Slide 0 (Clone of Slide 3) -->
+              <div class="hero-carousel__slide hero-slide" data-track-idx="0" data-orig-idx="3">
+                <picture class="hero-carousel__bg-picture hero-bg-picture">
+                  <source media="(max-width: 640px)" srcset="./banners/banner-welcome-mobile.webp" />
+                  <img 
+                    class="hero-carousel__bg-img"
+                    src="./banners/banner-welcome-bright.webp" 
+                    alt="ПРИВЕТСТВЕННЫЙ БОНУС 100%" 
+                    loading="lazy" 
+                    fetchpriority="low" 
+                    decoding="async" 
+                    width="1280" 
+                    height="420"
+                    style="--bg-pos: 70% 50%; --bg-pos-m: 68% 50%;" 
+                  />
+                </picture>
+                <div class="hero-carousel__overlay hero-overlay"></div>
+                <div class="hero-carousel__content hero-card-box hero-content">
+                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
+                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="3">ПРИВЕТСТВЕННЫЙ ПАКЕТ</span>
+                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>500 FS</span>
+                  </div>
+                  <h2 class="hero-carousel__title hero-title" data-hero-title="3">ПРИВЕТСТВЕННЫЙ БОНУС 100%</h2>
+                  <p class="hero-carousel__desc hero-desc" data-hero-desc="3">Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых видеослотах!</p>
+                  <div class="hero-carousel__actions hero-actions">
+                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                      <span data-hero-btn="3">ЗАБРАТЬ БОНУС</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 1 (Flagship: Zeus - LCP Element) -->
+              <div class="hero-carousel__slide hero-slide hero-carousel__slide--active active" data-track-idx="1" data-orig-idx="0">
+                <picture class="hero-carousel__bg-picture hero-bg-picture">
+                  <source media="(max-width: 640px)" srcset="./banners/banner-zeus-mobile.webp" />
+                  <img 
+                    class="hero-carousel__bg-img"
+                    src="./banners/banner-zeus-bright.webp" 
+                    alt="GATES OF OLYMPUS 1000" 
+                    loading="eager" 
+                    fetchpriority="high" 
+                    decoding="async" 
+                    width="1280" 
+                    height="420"
+                    style="--bg-pos: 70% 12%; --bg-pos-m: 68% 10%;" 
+                  />
+                </picture>
+                <div class="hero-carousel__overlay hero-overlay"></div>
+                <div class="hero-carousel__content hero-card-box hero-content">
+                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
+                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="0">ФЛАГМАНСКИЙ СЛОТ</span>
+                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>15,000x</span>
+                  </div>
+                  <h2 class="hero-carousel__title hero-title" data-hero-title="0">GATES OF OLYMPUS 1000</h2>
+                  <p class="hero-carousel__desc hero-desc" data-hero-desc="0">Зевс обрушивает множители до 15,000x! Каскадные барабаны, покупка фриспинов и легендарная механика выплат.</p>
+                  <div class="hero-carousel__actions hero-actions">
+                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                      <span data-hero-btn="0">ЗАБРАТЬ БОНУС</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 (Tournament) -->
+              <div class="hero-carousel__slide hero-slide" data-track-idx="2" data-orig-idx="1">
+                <picture class="hero-carousel__bg-picture hero-bg-picture">
+                  <source media="(max-width: 640px)" srcset="./banners/banner-tournament-mobile.webp" />
+                  <img 
+                    class="hero-carousel__bg-img"
+                    src="./banners/banner-tournament-bright.webp" 
+                    alt="GRAND PRIX • $50,000" 
+                    loading="lazy" 
+                    fetchpriority="low" 
+                    decoding="async" 
+                    width="1280" 
+                    height="420"
+                    style="--bg-pos: 68% 50%; --bg-pos-m: 65% 50%;" 
+                  />
+                </picture>
+                <div class="hero-carousel__overlay hero-overlay"></div>
+                <div class="hero-carousel__content hero-card-box hero-content">
+                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
+                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="1">ТУРНИР НЕДЕЛИ</span>
+                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v5a6 6 0 0 1-12 0V4Z"/></svg>$50,000</span>
+                  </div>
+                  <h2 class="hero-carousel__title hero-title" data-hero-title="1">GRAND PRIX • $50,000</h2>
+                  <p class="hero-carousel__desc hero-desc" data-hero-desc="1">Вступайте в грандиозную битву провайдеров! Зарабатывайте очки за множители и разделяйте призовой фонд.</p>
+                  <div class="hero-carousel__actions hero-actions">
+                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                      <span data-hero-btn="1">ЗАБРАТЬ БОНУС</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 (Crash) -->
+              <div class="hero-carousel__slide hero-slide" data-track-idx="3" data-orig-idx="2">
+                <picture class="hero-carousel__bg-picture hero-bg-picture">
+                  <source media="(max-width: 640px)" srcset="./banners/banner-crash-mobile.webp" />
+                  <img 
+                    class="hero-carousel__bg-img"
+                    src="./banners/banner-crash-bright.webp" 
+                    alt="AVIATOR & JETX CRASH" 
+                    loading="lazy" 
+                    fetchpriority="low" 
+                    decoding="async" 
+                    width="1280" 
+                    height="420"
+                    style="--bg-pos: 68% 46%; --bg-pos-m: 65% 45%;" 
+                  />
+                </picture>
+                <div class="hero-carousel__overlay hero-overlay"></div>
+                <div class="hero-carousel__content hero-card-box hero-content">
+                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
+                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="2">КРАШ-РЕВОЛЮЦИЯ</span>
+                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>10,000x</span>
+                  </div>
+                  <h2 class="hero-carousel__title hero-title" data-hero-title="2">AVIATOR & JETX CRASH</h2>
+                  <p class="hero-carousel__desc hero-desc" data-hero-desc="2">Успейте забрать выигрыш до взрыва ракеты! Мгновенные раунды с сертифицированным RNG.</p>
+                  <div class="hero-carousel__actions hero-actions">
+                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                      <span data-hero-btn="2">ЗАБРАТЬ БОНУС</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4 (Welcome) -->
+              <div class="hero-carousel__slide hero-slide" data-track-idx="4" data-orig-idx="3">
+                <picture class="hero-carousel__bg-picture hero-bg-picture">
+                  <source media="(max-width: 640px)" srcset="./banners/banner-welcome-mobile.webp" />
+                  <img 
+                    class="hero-carousel__bg-img"
+                    src="./banners/banner-welcome-bright.webp" 
+                    alt="ПРИВЕТСТВЕННЫЙ БОНУС 100%" 
+                    loading="lazy" 
+                    fetchpriority="low" 
+                    decoding="async" 
+                    width="1280" 
+                    height="420"
+                    style="--bg-pos: 70% 50%; --bg-pos-m: 68% 50%;" 
+                  />
+                </picture>
+                <div class="hero-carousel__overlay hero-overlay"></div>
+                <div class="hero-carousel__content hero-card-box hero-content">
+                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
+                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="3">ПРИВЕТСТВЕННЫЙ ПАКЕТ</span>
+                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>500 FS</span>
+                  </div>
+                  <h2 class="hero-carousel__title hero-title" data-hero-title="3">ПРИВЕТСТВЕННЫЙ БОНУС 100%</h2>
+                  <p class="hero-carousel__desc hero-desc" data-hero-desc="3">Удвойте баланс на первый депозит и заберите 500 фриспинов в топовых видеослотах!</p>
+                  <div class="hero-carousel__actions hero-actions">
+                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                      <span data-hero-btn="3">ЗАБРАТЬ БОНУС</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5 (Clone of Slide 0) -->
+              <div class="hero-carousel__slide hero-slide" data-track-idx="5" data-orig-idx="0">
+                <picture class="hero-carousel__bg-picture hero-bg-picture">
+                  <source media="(max-width: 640px)" srcset="./banners/banner-zeus-mobile.webp" />
+                  <img 
+                    class="hero-carousel__bg-img"
+                    src="./banners/banner-zeus-bright.webp" 
+                    alt="GATES OF OLYMPUS 1000" 
+                    loading="lazy" 
+                    fetchpriority="low" 
+                    decoding="async" 
+                    width="1280" 
+                    height="420"
+                    style="--bg-pos: 70% 12%; --bg-pos-m: 68% 10%;" 
+                  />
+                </picture>
+                <div class="hero-carousel__overlay hero-overlay"></div>
+                <div class="hero-carousel__content hero-card-box hero-content">
+                  <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
+                    <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="0">ФЛАГМАНСКИЙ СЛОТ</span>
+                    <span class="hero-carousel__accent hero-chip-accent hero-accent-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>15,000x</span>
+                  </div>
+                  <h2 class="hero-carousel__title hero-title" data-hero-title="0">GATES OF OLYMPUS 1000</h2>
+                  <p class="hero-carousel__desc hero-desc" data-hero-desc="0">Зевс обрушивает множители до 15,000x! Каскадные барабаны, покупка фриспинов и легендарная механика выплат.</p>
+                  <div class="hero-carousel__actions hero-actions">
+                    <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
+                      <span data-hero-btn="0">ЗАБРАТЬ БОНУС</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button id="hero-prev-btn" class="hero-carousel__arrow hero-carousel__arrow--prev hero-nav-arrow hero-nav-prev" type="button" aria-label="Предыдущий слайд" title="Предыдущий">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             </button>
             <button id="hero-next-btn" class="hero-carousel__arrow hero-carousel__arrow--next hero-nav-arrow hero-nav-next" type="button" aria-label="Следующий слайд" title="Следующий">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-            <div id="hero-dots" class="hero-carousel__dots hero-dots-row"></div>
+            <div id="hero-dots" class="hero-carousel__dots hero-dots-row">
+              <button type="button" class="hero-carousel__dot hero-dot hero-carousel__dot--active active" data-slide="0" aria-label="Слайд 1"></button>
+              <button type="button" class="hero-carousel__dot hero-dot" data-slide="1" aria-label="Слайд 2"></button>
+              <button type="button" class="hero-carousel__dot hero-dot" data-slide="2" aria-label="Слайд 3"></button>
+              <button type="button" class="hero-carousel__dot hero-dot" data-slide="3" aria-label="Слайд 4"></button>
+            </div>
           </section>
 
           <!-- Jackpots & Live Wins -->
@@ -432,24 +677,34 @@
               
               <div id="cat-scroll-container" class="category-nav__scroll-container category-scroll-container">
                 <button type="button" class="category-nav__pill-btn cat-pill-btn active" data-cat="all">
-                  <span class="category-nav__pill-icon">🌟</span>
+                  <span class="category-nav__pill-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </span>
                   <span data-i18n="catAll">Все игры</span>
                 </button>
                 <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="slots">
-                  <span class="category-nav__pill-icon">🎰</span>
+                  <span class="category-nav__pill-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><line x1="8" x2="8" y1="5" y2="19"/><line x1="16" x2="16" y1="5" y2="19"/></svg>
+                  </span>
                   <span data-i18n="catSlots">Слоты</span>
                   <span class="category-nav__pill-badge cat-pill-badge" style="background:#10b981;color:#fff;">LIVE</span>
                 </button>
                 <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="bonusbuy">
-                  <span class="category-nav__pill-icon">⚡</span>
+                  <span class="category-nav__pill-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  </span>
                   <span data-i18n="catBonusBuy">Bonus Buy</span>
                 </button>
                 <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="jackpot">
-                  <span class="category-nav__pill-icon">💰</span>
+                  <span class="category-nav__pill-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg>
+                  </span>
                   <span data-i18n="catJackpot">Джекпоты</span>
                 </button>
                 <button type="button" class="category-nav__pill-btn cat-pill-btn" data-cat="favorites">
-                  <span class="category-nav__pill-icon">❤️</span>
+                  <span class="category-nav__pill-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  </span>
                   <span data-i18n="catFavorites">Избранное</span>
                   <span id="cat-fav-count" class="category-nav__pill-badge cat-pill-badge cat-fav-badge">0</span>
                 </button>
@@ -488,7 +743,7 @@
                 <span class="promo-bonus-section__tag promo-tag" data-i18n="promoBonusBadge">Специальное предложение</span>
                 
                 <h3 class="promo-bonus-section__title promo-bonus-title" data-i18n="promoBonusTitle">
-                  Забирайте до <span class="promo-bonus-section__gold-text promo-gold-text">,500</span> Демо Монет и 100 Free Spins
+                  Забирайте до <span class="promo-bonus-section__gold-text promo-gold-text">$1,500</span> Демо Монет и 100 Free Spins
                 </h3>
                 
                 <p class="promo-bonus-section__desc promo-bonus-desc" data-i18n="promoBonusDesc">
@@ -522,20 +777,22 @@
           <section id="tournaments-section" class="tournament-box">
             <div class="tournament-box__top-row tournament-top-row">
               <div class="tournament-box__brand-group tournament-brand-group">
-                <div class="tournament-box__trophy-icon tournament-trophy-icon">🏆</div>
+                <div class="tournament-box__trophy-icon tournament-trophy-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v5a6 6 0 0 1-12 0V4Z"/></svg>
+                </div>
                 <div class="tournament-box__brand-texts">
                   <div class="tournament-box__status-row tournament-status-row">
                     <span class="tournament-box__live-badge tournament-live-badge" data-i18n="tournamentActive">АКТИВЕН</span>
                     <span class="tournament-box__providers-sub tournament-providers-sub">Pragmatic Play, Hacksaw & NoLimit City Battle</span>
                   </div>
-                  <h3 class="tournament-box__heading tournament-heading">Weekly Grand Prix • 0,000</h3>
+                  <h3 class="tournament-box__heading tournament-heading">Weekly Grand Prix • $50,000</h3>
                 </div>
               </div>
 
               <div class="tournament-box__meta-group tournament-meta-group">
                 <div class="tournament-box__stat-box tournament-stat-box">
                   <span class="tournament-box__stat-label tournament-stat-label" data-i18n="tournamentPrizePool">Призовой Фонд</span>
-                  <span class="tournament-box__stat-val tournament-stat-val">0,000</span>
+                  <span class="tournament-box__stat-val tournament-stat-val">$50,000</span>
                 </div>
                 <div class="tournament-box__stat-box tournament-stat-box">
                   <span class="tournament-box__stat-label tournament-stat-label" data-i18n="tournamentTimerLabel">До конца раунда</span>
@@ -560,7 +817,7 @@
                   </div>
                   <div class="tournament-leaderboard__stats-group leaderboard-stats-group">
                     <span class="tournament-leaderboard__points leaderboard-points" data-pts="184200">184,200 очков</span>
-                    <span class="tournament-leaderboard__prize leaderboard-prize prize-gold">8,000</span>
+                    <span class="tournament-leaderboard__prize leaderboard-prize prize-gold">$18,000</span>
                   </div>
                 </div>
 
@@ -571,7 +828,7 @@
                   </div>
                   <div class="tournament-leaderboard__stats-group leaderboard-stats-group">
                     <span class="tournament-leaderboard__points leaderboard-points" data-pts="142500">142,500 очков</span>
-                    <span class="tournament-leaderboard__prize leaderboard-prize prize-silver">1,000</span>
+                    <span class="tournament-leaderboard__prize leaderboard-prize prize-silver">$10,000</span>
                   </div>
                 </div>
 
@@ -582,7 +839,7 @@
                   </div>
                   <div class="tournament-leaderboard__stats-group leaderboard-stats-group">
                     <span class="tournament-leaderboard__points leaderboard-points" data-pts="98400">98,400 очков</span>
-                    <span class="tournament-leaderboard__prize leaderboard-prize prize-bronze">,500</span>
+                    <span class="tournament-leaderboard__prize leaderboard-prize prize-bronze">$2,500</span>
                   </div>
                 </div>
               </div>
@@ -592,8 +849,9 @@
           <!-- VIP Rewards -->
           <section id="vip-loyalty-section" class="vip-loyalty-section">
             <div class="vip-loyalty-section__content vip-content-col">
-              <span class="vip-loyalty-section__badge vip-program-badge" data-i18n="vipBadge">
-                👑 ПРОГРАММА ЛОЯЛЬНОСТИ
+              <span class="vip-loyalty-section__badge vip-program-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+                <span data-i18n="vipBadge">ПРОГРАММА ЛОЯЛЬНОСТИ</span>
               </span>
               <h3 class="vip-loyalty-section__title vip-title" data-i18n="vipTitle">Ваш статус: Gold VIP (Уровень 3)</h3>
               <p class="vip-loyalty-section__desc vip-desc" data-i18n="vipDesc">
@@ -629,7 +887,7 @@
                 <span class="vip-perk-item__icon vip-perk-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8v14M3 12h18M12 8a3 3 0 1 0-3-3c0 1.66 3 3 3 3ZM12 8a3 3 0 1 1 3-3c0 1.66-3 3-3 3Z"/></svg>
                 </span>
-                <span class="vip-perk-item__val vip-perk-val">00</span>
+                <span class="vip-perk-item__val vip-perk-val">$500</span>
                 <span class="vip-perk-item__label vip-perk-label" data-i18n="vipBirthdayLabel">Подарок на день рождения</span>
               </div>
             </div>
@@ -707,7 +965,7 @@
                   <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-card__content faq-content" data-i18n="faqA1">
-                  При первом входе вам автоматически начисляется стартовый демо-баланс в размере ,500. Вы можете свободно делать ставки в любых слотах и играх лобби. Если баланс закончился, нажмите кнопку «Депозит» в шапке сайта для мгновенного бесплатного пополнения на +00, забирайте ежедневный бонус +50 или крутите Колесо Удачи.
+                  На старте вы получаете $2,500 демо-баланса для любых игр каталога. Если баланс исчерпан, нажмите «Депозит» для мгновенного бесплатного пополнения на +$500, заберите ежедневный бонус +$250 или крутите Колесо Удачи.
                 </div>
               </div>
 
@@ -720,7 +978,7 @@
                   <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-card__content faq-content" data-i18n="faqA2">
-                  Да. Все представленные игры работают на основе взвешенной модели распределения случайных чисел со средним возвратом игроку (RTP) от 96.5% до 98.4%. Результаты каждого спина рассчитываются независимо от предыдущих раундов.
+                  Да, все слоты используют сертифицированные алгоритмы ГСЧ с отдачей (RTP) 96.5%–98.4%. Каждый спин рассчитывается независимо от предыдущих.
                 </div>
               </div>
 
@@ -733,7 +991,7 @@
                   <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-card__content faq-content" data-i18n="faqA3">
-                  Регистрация и подтверждение документов не требуются. SpinPulse — это современное интерактивное игровое лобби, где весь функционал доступен моментально прямо в браузере. Ваши настройки, история ставок, избранные слоты и демо-баланс надёжно сохраняются локально в вашем браузере.
+                  Нет, регистрация и документы не требуются. Игры запускаются сразу в браузере, а демо-баланс, избранное и история ставок сохраняются локально на вашем устройстве.
                 </div>
               </div>
 
@@ -746,7 +1004,7 @@
                   <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-card__content faq-content" data-i18n="faqA4">
-                  В каталоге собраны хиты ведущих мировых провайдеров: Pragmatic Play, Evolution, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe, 3 Oaks, SmartSoft, Belatra, Endorphina и других. Доступны классические слоты, видеослоты с механикой Megaways и Bonus Buy, моментальные краш-игры (Aviator, JetX, Cappadocia) и live-столы.
+                  В лобби собраны слоты Pragmatic Play, Hacksaw Gaming, Push Gaming, NoLimit City, Spribe и других студий: классические автоматы, Megaways, Bonus Buy и краш-игры.
                 </div>
               </div>
 
@@ -759,7 +1017,7 @@
                   <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-card__content faq-content" data-i18n="faqA5">
-                  Участие в турнирах автоматическое — просто делайте спины в турнирных слотах. За каждый выигрышный множитель вам начисляются турнирные очки в таблице лидеров. Активная игра также накапливает XP для повышения статуса в VIP-клубе, открывая повышенные множители кэшбэка и секретные подарки.
+                  Участие автоматическое: крутите слоты турнира и копите очки за выигрышные множители. За спины также начисляются XP для повышения VIP-уровня и кэшбэка.
                 </div>
               </div>
 
@@ -772,7 +1030,7 @@
                   <span class="faq-card__toggle-icon faq-toggle-icon" aria-hidden="true"></span>
                 </button>
                 <div class="faq-card__content faq-content" data-i18n="faqA6">
-                  Платформа полностью оптимизирована для мобильных устройств iOS и Android. Поддерживаются сенсорные жесты, вертикальный режим и адаптивная графика. Вы можете добавить сайт на главный экран телефона как PWA-приложение для быстрого запуска без браузерных рамок.
+                  Да, интерфейс адаптирован под iOS и Android со свайпами и полноэкранным режимом. Вы также можете добавить ярлык на главный экран как PWA.
                 </div>
               </div>
             </div>
