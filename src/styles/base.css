@@ -1,4 +1,3 @@
-/* SpinPulse Styles */
 
 :root {
   --primary: #f59e0b;
@@ -6,10 +5,10 @@
   --primary-light: #fef3c7;
   --accent-gold: #fbbf24;
   --accent-orange: #f97316;
-  --accent-rose: #f43f5e;
-  --accent-emerald: #10b981;
-  --accent-indigo: #6366f1;
-  --accent-purple: #8b5cf6;
+  --accent-rose: #e11d48;
+  --accent-emerald: #059669;
+  --accent-indigo: #4f46e5;
+  --accent-purple: #7c3aed;
   --gradient-primary: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f59e0b 100%);
 
   --bg-body: #f8fafc;
@@ -101,7 +100,6 @@ picture {
   display: block;
 }
 
-/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -120,15 +118,13 @@ picture {
   background: #94a3b8;
 }
 
-/* App Layout */
-
 .app-container {
   display: flex;
   min-height: 100vh;
   width: 100%;
 }
 
-.main-content {
+.app__main, .main-content {
   flex: 1;
   min-width: 0;
   display: flex;
@@ -136,12 +132,12 @@ picture {
 }
 
 @media (min-width: 1024px) {
-  .main-content {
+  .app__main, .main-content {
     margin-left: var(--sidebar-width);
   }
 }
 
-.content-container {
+.app__content, .content-container {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
@@ -152,7 +148,7 @@ picture {
 }
 
 @media (max-width: 640px) {
-  .content-container {
+  .app__content, .content-container {
     padding: 14px 12px;
     gap: 20px;
   }

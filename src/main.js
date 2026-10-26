@@ -24,14 +24,12 @@ function getInitialLanguage() {
     const q = params.get('lang')?.toUpperCase();
     if (q === 'EN' || q === 'RU') return q;
   } catch {
-    // URL parsing fallback
   }
 
   try {
     const saved = localStorage.getItem('spinpulse_lang')?.toUpperCase();
     if (saved === 'EN' || saved === 'RU') return saved;
   } catch {
-    // localStorage fallback
   }
 
   return 'RU';
@@ -91,7 +89,6 @@ function saveState() {
     localStorage.setItem('spinpulse_favorites', JSON.stringify([...state.favorites]));
     localStorage.setItem('spinpulse_history', JSON.stringify(state.history.slice(0, 50)));
   } catch {
-    // localStorage unavailable
   }
 }
 
@@ -99,6 +96,8 @@ const $ = (id) => document.getElementById(id);
 
 function syncWallet() {
   updateBalanceDisplay(state.balance);
+  const liveWinsEl = $('live-wins-list');
+  if (liveWinsEl) renderLiveWins(liveWinsEl, state.winners);
 }
 
 function openGameModal(game) {
@@ -126,7 +125,6 @@ function openGameModal(game) {
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  // Log demo session to history
   state.history.unshift({
     id: Date.now(),
     gameId: game.id,
@@ -171,7 +169,6 @@ function renderGames() {
   if (!container) return;
 
   const filtered = gamesCatalog.filter((game) => {
-    // Only display games that have a valid playable demo URL
     if (!game.demoUrl) return false;
 
     if (state.activeCategory === 'favorites') {
@@ -232,42 +229,41 @@ function renderGames() {
 
     let badgeHtml = '';
     if (game.demoUrl) {
-      badgeHtml += `<span class="game-card__badge badge-pill badge-playable"><span class="badge-pulse-dot"></span>▶ PLAY</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--playable"><span class="badge-pulse-dot"></span>▶ PLAY</span>`;
     }
     if (game.isHot) {
-      badgeHtml += `<span class="game-card__badge badge-pill badge-hot">🔥 HOT</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--hot">🔥 HOT</span>`;
     } else if (game.isNew) {
-      badgeHtml += `<span class="game-card__badge badge-pill badge-new">✨ NEW</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--new">✨ NEW</span>`;
     } else if (game.category === 'crash') {
-      badgeHtml += `<span class="game-card__badge badge-pill badge-crash">🚀 CRASH</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--crash">🚀 CRASH</span>`;
     } else if (game.category === 'live') {
-      badgeHtml += `<span class="game-card__badge badge-pill badge-live">🔴 LIVE</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--live">🔴 LIVE</span>`;
     }
 
     if (game.isBonusBuy) {
-      badgeHtml += `<span class="game-card__badge badge-pill badge-buy">⚡ BUY</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--buy">⚡ BUY</span>`;
     }
 
-    const isEager = idx < 4;
     return `
       <div class="game-card games-grid__item" data-game-id="${game.id}">
-        <div class="game-card__media game-card-media">
+        <div class="game-card__media">
           <img 
             class="game-card__img"
             src="${game.coverImage}" 
             alt="${game.title}" 
-            loading="${isEager ? 'eager' : 'lazy'}" 
-            fetchpriority="${idx < 2 ? 'high' : 'auto'}"
+            loading="lazy" 
+            fetchpriority="low"
             decoding="async" 
             width="400" 
             height="300" 
           />
-          <div class="game-card__badge-group card-badge-group">
+          <div class="game-card__badge-group">
             ${badgeHtml}
           </div>
           <button 
             type="button" 
-            class="game-card__fav-btn fav-btn ${isFav ? 'game-card__fav-btn--active active' : ''}" 
+            class="game-card__fav-btn ${isFav ? 'game-card__fav-btn--active' : ''}" 
             data-fav-id="${game.id}" 
             aria-label="Toggle Favorite"
           >
@@ -275,25 +271,24 @@ function renderGames() {
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
             </svg>
           </button>
-          <div class="game-card__hover-overlay card-hover-overlay">
-            <div class="game-card__hover-play-btn hover-play-btn">
+          <div class="game-card__hover-overlay">
+            <div class="game-card__hover-play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" /></svg>
             </div>
-            <div class="game-card__hover-demo-pill hover-demo-pill">${game.demoUrl ? (isRu ? 'ИГРАТЬ DEMO' : 'PLAY DEMO') : (isRu ? 'ДЕМО' : 'DEMO')}</div>
+            <div class="game-card__hover-demo-pill">${game.demoUrl ? (isRu ? 'ИГРАТЬ DEMO' : 'PLAY DEMO') : (isRu ? 'ДЕМО' : 'DEMO')}</div>
           </div>
         </div>
-        <div class="game-card__info game-card-info">
-          <div class="game-card__title-row game-card-title-row">
-            <h4 class="game-card__title game-title" title="${game.title}">${game.title}</h4>
-            <span class="game-card__rtp-badge game-rtp-badge">${game.rtp ? game.rtp.toFixed(1) + '%' : '96.5%'}</span>
+        <div class="game-card__info">
+          <div class="game-card__title-row">
+            <h4 class="game-card__title" title="${game.title}">${game.title}</h4>
+            <span class="game-card__rtp-badge">${game.rtp ? game.rtp.toFixed(1) + '%' : '96.5%'}</span>
           </div>
         </div>
       </div>
     `;
   }).join('');
 
-  // Favorite toggle handlers
-  container.querySelectorAll('.fav-btn').forEach((btn) => {
+  container.querySelectorAll('.game-card__fav-btn, .fav-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const id = btn.getAttribute('data-fav-id');
@@ -308,10 +303,9 @@ function renderGames() {
     });
   });
 
-  // Card click demo spin handler or game modal launcher
   container.querySelectorAll('.game-card').forEach((card) => {
     card.addEventListener('click', (e) => {
-      if (e.target.closest('.fav-btn')) return;
+      if (e.target.closest('.game-card__fav-btn, .fav-btn')) return;
       const gameId = card.getAttribute('data-game-id') || card.getAttribute('data-id');
       const game = gamesCatalog.find((g) => g.id === gameId);
       if (game && game.demoUrl) {
@@ -322,7 +316,6 @@ function renderGames() {
     });
   });
 
-  // Load more button pagination
   const loadMoreBtn = $('load-more-btn');
   if (loadMoreBtn) {
     if (filtered.length > state.visibleCount) {
@@ -337,7 +330,6 @@ function renderGames() {
   }
 }
 
-// Hero Carousel Slides
 const slides = [
   {
     tagRu: 'ФЛАГМАНСКИЙ СЛОТ', tagEn: 'FLAGSHIP SLOT',
@@ -394,9 +386,11 @@ function updateHeroDots(activeSlideIdx) {
   state.currentSlide = activeSlideIdx;
   const dotsContainer = $('hero-dots');
   if (dotsContainer) {
-    const dots = dotsContainer.querySelectorAll('.hero-dot');
+    const dots = dotsContainer.querySelectorAll('.hero-carousel__dot, .hero-dot');
     dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === activeSlideIdx);
+      const isActive = i === activeSlideIdx;
+      dot.classList.toggle('active', isActive);
+      dot.classList.toggle('hero-carousel__dot--active', isActive);
     });
   }
 }
@@ -404,9 +398,11 @@ function updateHeroDots(activeSlideIdx) {
 function updateHeroSlideActiveClasses() {
   const container = $('hero-slides-wrap');
   if (!container) return;
-  const slideEls = container.querySelectorAll('.hero-slide');
+  const slideEls = container.querySelectorAll('.hero-carousel__slide, .hero-slide');
   slideEls.forEach((slideEl, idx) => {
-    slideEl.classList.toggle('active', idx === heroTrackIndex);
+    const isActive = idx === heroTrackIndex;
+    slideEl.classList.toggle('active', isActive);
+    slideEl.classList.toggle('hero-carousel__slide--active', isActive);
   });
 }
 
@@ -418,16 +414,18 @@ function resetTrackPositionInstant() {
     container.style.transition = 'none';
     heroTrackIndex = 1;
     container.style.transform = `translate3d(-${heroTrackIndex * 100}%, 0, 0)`;
-    void container.offsetHeight;
-    container.style.transition = '';
-    updateHeroSlideActiveClasses();
+    requestAnimationFrame(() => {
+      container.style.transition = '';
+      updateHeroSlideActiveClasses();
+    });
   } else if (heroTrackIndex <= 0) {
     container.style.transition = 'none';
     heroTrackIndex = slides.length;
     container.style.transform = `translate3d(-${heroTrackIndex * 100}%, 0, 0)`;
-    void container.offsetHeight;
-    container.style.transition = '';
-    updateHeroSlideActiveClasses();
+    requestAnimationFrame(() => {
+      container.style.transition = '';
+      updateHeroSlideActiveClasses();
+    });
   }
 }
 
@@ -525,46 +523,48 @@ function initHeroCarousel() {
   if (!container) return;
 
   const isRu = state.lang === 'RU';
-  const trackSlides = [slides[slides.length - 1], ...slides, slides[0]];
-
-  container.innerHTML = trackSlides.map((slide, trackIdx) => {
-    const origIdx = trackIdx === 0 ? slides.length - 1 : (trackIdx === trackSlides.length - 1 ? 0 : trackIdx - 1);
-    return `
-      <div class="hero-carousel__slide hero-slide ${trackIdx === 1 ? 'hero-carousel__slide--active active' : ''}" data-track-idx="${trackIdx}" data-orig-idx="${origIdx}">
-        <picture class="hero-carousel__bg-picture hero-bg-picture">
-          <source media="(max-width: 640px)" srcset="${slide.mobileBg}" />
-          <img 
-            class="hero-carousel__bg-img"
-            src="${slide.bg}" 
-            alt="${isRu ? slide.titleRu : slide.titleEn}" 
-            loading="${trackIdx <= 2 ? 'eager' : 'lazy'}" 
-            fetchpriority="${trackIdx === 1 ? 'high' : 'auto'}" 
-            decoding="async" 
-            width="1280" 
-            height="420"
-            style="--bg-pos: ${slide.position}; --bg-pos-m: ${slide.mobilePosition || slide.position};" 
-          />
-        </picture>
-        <div class="hero-carousel__overlay hero-overlay"></div>
-        <div class="hero-carousel__content hero-card-box hero-content">
-          <div class="hero-carousel__badge-row hero-badge-row hero-tag-row">
-            <span class="hero-carousel__tag hero-chip-tag hero-tag" data-hero-tag="${origIdx}">${isRu ? slide.tagRu : slide.tagEn}</span>
-            <span class="hero-carousel__accent hero-chip-accent hero-accent-badge">${slide.accent}</span>
-          </div>
-          <h2 class="hero-carousel__title hero-title" data-hero-title="${origIdx}">${isRu ? slide.titleRu : slide.titleEn}</h2>
-          <p class="hero-carousel__desc hero-desc" data-hero-desc="${origIdx}">${isRu ? slide.descRu : slide.descEn}</p>
-          <div class="hero-carousel__actions hero-actions">
-            <button type="button" class="hero-carousel__cta-btn hero-cta-btn hero-bonus-trigger">
-              <span>🎁</span>
-              <span data-hero-btn="${origIdx}">${isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS'}</span>
-            </button>
+  if (!container.children.length) {
+    const trackSlides = [slides[slides.length - 1], ...slides, slides[0]];
+    container.innerHTML = trackSlides.map((slide, trackIdx) => {
+      const origIdx = trackIdx === 0 ? slides.length - 1 : (trackIdx === trackSlides.length - 1 ? 0 : trackIdx - 1);
+      const isFirstVisible = trackIdx === 1;
+      return `
+        <div class="hero-carousel__slide ${isFirstVisible ? 'hero-carousel__slide--active' : ''}" data-track-idx="${trackIdx}" data-orig-idx="${origIdx}">
+          <picture class="hero-carousel__bg-picture">
+            <source media="(max-width: 640px)" srcset="${slide.mobileBg}" />
+            <img 
+              class="hero-carousel__bg-img"
+              src="${slide.bg}" 
+              alt="${isRu ? slide.titleRu : slide.titleEn}" 
+              loading="${isFirstVisible ? 'eager' : 'lazy'}" 
+              fetchpriority="${isFirstVisible ? 'high' : 'low'}" 
+              decoding="async" 
+              width="1280" 
+              height="420"
+              style="--bg-pos: ${slide.position}; --bg-pos-m: ${slide.mobilePosition || slide.position};" 
+            />
+          </picture>
+          <div class="hero-carousel__overlay"></div>
+          <div class="hero-carousel__content">
+            <div class="hero-carousel__badge-row">
+              <span class="hero-carousel__tag" data-hero-tag="${origIdx}">${isRu ? slide.tagRu : slide.tagEn}</span>
+              <span class="hero-carousel__accent">${slide.accent}</span>
+            </div>
+            <h2 class="hero-carousel__title" data-hero-title="${origIdx}">${isRu ? slide.titleRu : slide.titleEn}</h2>
+            <p class="hero-carousel__desc" data-hero-desc="${origIdx}">${isRu ? slide.descRu : slide.descEn}</p>
+            <div class="hero-carousel__actions">
+              <button type="button" class="hero-carousel__cta-btn">
+                <span>🎁</span>
+                <span data-hero-btn="${origIdx}">${isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS'}</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    `;
-  }).join('');
+      `;
+    }).join('');
+  }
 
-  container.querySelectorAll('.hero-bonus-trigger').forEach((btn) => {
+  container.querySelectorAll('.hero-carousel__cta-btn, .hero-bonus-trigger').forEach((btn) => {
     btn.addEventListener('click', () => {
       openModal('bonuses-modal');
     });
@@ -572,11 +572,13 @@ function initHeroCarousel() {
 
   const dotsContainer = $('hero-dots');
   if (dotsContainer) {
-    dotsContainer.innerHTML = slides.map((_, i) => `
-      <button type="button" class="hero-carousel__dot hero-dot ${i === 0 ? 'hero-carousel__dot--active active' : ''}" data-slide="${i}" aria-label="Слайд ${i + 1}"></button>
-    `).join('');
+    if (!dotsContainer.children.length) {
+      dotsContainer.innerHTML = slides.map((_, i) => `
+        <button type="button" class="hero-carousel__dot ${i === 0 ? 'hero-carousel__dot--active' : ''}" data-slide="${i}" aria-label="Слайд ${i + 1}"></button>
+      `).join('');
+    }
 
-    dotsContainer.querySelectorAll('.hero-dot').forEach((dot) => {
+    dotsContainer.querySelectorAll('.hero-carousel__dot, .hero-dot').forEach((dot) => {
       dot.addEventListener('click', () => {
         const targetSlide = parseInt(dot.getAttribute('data-slide'), 10);
         goToHeroSlideIndex(targetSlide);
@@ -591,12 +593,12 @@ function initHeroCarousel() {
     heroAnimating = false;
   });
 
-  // Set initial position
   heroTrackIndex = 1;
   container.style.transition = 'none';
   container.style.transform = `translate3d(-100%, 0, 0)`;
-  void container.offsetHeight;
-  container.style.transition = '';
+  requestAnimationFrame(() => {
+    container.style.transition = '';
+  });
 
   updateHeroDots(0);
   startHeroTimer();
@@ -631,17 +633,29 @@ function safeRun(fn, name) {
 function initApp() {
   window.__SPINPULSE_LOADED__ = true;
 
-  safeRun(mountModals, 'mountModals');
   safeRun(() => applyTranslations(state.lang, state), 'applyTranslations');
   safeRun(syncWallet, 'syncWallet');
-  safeRun(() => updateFavoritesCounter(state.favorites), 'updateFavoritesCounter');
-  safeRun(renderGames, 'renderGames');
   safeRun(initHeroCarousel, 'initHeroCarousel');
-  safeRun(() => renderLiveWins($('live-wins-list'), state.winners), 'renderLiveWins');
-  safeRun(() => drawWheel($('wheel-canvas')), 'drawWheel');
-  safeRun(() => renderHistory(state), 'renderHistory');
 
-  // Daily bonus button state
+  const deferInit = () => {
+    safeRun(renderGames, 'renderGames');
+    setTimeout(() => {
+      safeRun(mountModals, 'mountModals');
+      safeRun(() => updateFavoritesCounter(state.favorites), 'updateFavoritesCounter');
+    }, 80);
+    setTimeout(() => {
+      safeRun(() => renderLiveWins($('live-wins-list'), state.winners), 'renderLiveWins');
+      safeRun(() => drawWheel($('wheel-canvas')), 'drawWheel');
+      safeRun(() => renderHistory(state), 'renderHistory');
+    }, 200);
+  };
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(deferInit, { timeout: 1000 });
+  } else {
+    setTimeout(deferInit, 80);
+  }
+
   if (state.hasClaimedDaily) {
     const btn = $('header-daily-btn');
     if (btn) {
@@ -653,18 +667,19 @@ function initApp() {
     }
   }
 
-  // Audio mute toggle
   const soundBtn = $('sound-toggle-btn');
+  const soundOnSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+  const soundOffSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
   if (soundBtn) {
+    soundBtn.innerHTML = isSoundEnabled() ? soundOnSvg : soundOffSvg;
     soundBtn.addEventListener('click', () => {
       const next = !isSoundEnabled();
       setSoundEnabled(next);
-      soundBtn.innerHTML = next ? '🔊' : '🔇';
+      soundBtn.innerHTML = next ? soundOnSvg : soundOffSvg;
       if (next) playButtonClick();
     });
   }
 
-  // Balance top-up
   const topUpBtn = $('topup-btn');
   if (topUpBtn) {
     topUpBtn.addEventListener('click', () => {
@@ -672,7 +687,6 @@ function initApp() {
     });
   }
 
-  // Claim daily reward
   const dailyBtn = $('header-daily-btn');
   if (dailyBtn) {
     dailyBtn.addEventListener('click', () => {
@@ -686,7 +700,6 @@ function initApp() {
     });
   }
 
-  // Mobile sidebar controls
   const menuBtn = $('menu-toggle-btn');
   const sidebar = $('site-sidebar');
   const backdrop = $('sidebar-backdrop');
@@ -723,7 +736,6 @@ function initApp() {
     }
   });
 
-  // Notifications dropdown
   const notifBtn = $('notif-btn');
   const notifDropdown = $('notif-dropdown');
   if (notifBtn && notifDropdown) {
@@ -738,10 +750,9 @@ function initApp() {
     });
   }
 
-  // Category navigation tabs
-  document.querySelectorAll('.cat-pill-btn').forEach((btn) => {
+  document.querySelectorAll('.category-nav__pill-btn, .cat-pill-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.cat-pill-btn').forEach((b) => b.classList.remove('active'));
+      document.querySelectorAll('.category-nav__pill-btn, .cat-pill-btn').forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
       state.activeCategory = btn.getAttribute('data-cat');
       state.visibleCount = 18;
@@ -749,13 +760,12 @@ function initApp() {
     });
   });
 
-  // Sidebar navigation links
-  document.querySelectorAll('.sidebar-cat-btn').forEach((btn) => {
+  document.querySelectorAll('.site-sidebar__nav-btn, .sidebar-cat-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const cat = btn.getAttribute('data-cat');
       state.activeCategory = cat;
       state.visibleCount = 18;
-      document.querySelectorAll('.cat-pill-btn').forEach((b) => {
+      document.querySelectorAll('.category-nav__pill-btn, .cat-pill-btn').forEach((b) => {
         b.classList.toggle('active', b.getAttribute('data-cat') === cat);
       });
       renderGames();
@@ -764,13 +774,12 @@ function initApp() {
     });
   });
 
-  // Jackpot shortcut button
   const jackpotBtn = $('jackpot-filter-btn');
   if (jackpotBtn) {
     jackpotBtn.addEventListener('click', () => {
       state.activeCategory = 'jackpot';
       state.visibleCount = 18;
-      document.querySelectorAll('.cat-pill-btn').forEach((b) => {
+      document.querySelectorAll('.category-nav__pill-btn, .cat-pill-btn').forEach((b) => {
         b.classList.toggle('active', b.getAttribute('data-cat') === 'jackpot');
       });
       renderGames();
@@ -778,7 +787,6 @@ function initApp() {
     });
   }
 
-  // Horizontal category scroll buttons
   const catScroll = $('cat-scroll-container');
   const scrollLeftBtn = $('cat-scroll-left');
   const scrollRightBtn = $('cat-scroll-right');
@@ -795,7 +803,6 @@ function initApp() {
     });
   }
 
-  // Provider filter select
   const provSelect = $('provider-select');
   if (provSelect) {
     provSelect.addEventListener('change', (e) => {
@@ -805,7 +812,6 @@ function initApp() {
     });
   }
 
-  // Header and catalog search
   const headerSearch = $('header-search');
   const headerSearchClear = $('header-search-clear');
 
@@ -831,7 +837,6 @@ function initApp() {
     });
   }
 
-  // Catalog pagination
   const loadMoreBtn = $('load-more-btn');
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener('click', () => {
@@ -840,7 +845,6 @@ function initApp() {
     });
   }
 
-  // Hero carousel navigation
   const prevSlideBtn = $('hero-prev-btn');
   const nextSlideBtn = $('hero-next-btn');
 
@@ -859,8 +863,7 @@ function initApp() {
     });
   }
 
-  // Hero carousel touch swipe and hover pause
-  const heroSection = document.querySelector('.hero-carousel-section');
+  const heroSection = document.querySelector('.hero-carousel, .hero-carousel-section');
   if (heroSection) {
     heroSection.addEventListener('mouseenter', stopHeroTimer);
     heroSection.addEventListener('mouseleave', startHeroTimer);
@@ -904,7 +907,6 @@ function initApp() {
     }
   });
 
-  // Progressive jackpot ticker
   setInterval(() => {
     state.jackpots.grand += Math.random() * 2.5 + 0.5;
     state.jackpots.major += Math.random() * 0.8 + 0.1;
@@ -918,31 +920,6 @@ function initApp() {
     if (miniEl) miniEl.textContent = state.jackpots.mini.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }, 1500);
 
-  // Live winners feed simulation
-  const sampleUsers = ['nikita_spb', 'johan_k', 'stefan_w', 'marina_v', 'daniil_94', 'kate_m', 'alex_dubai'];
-  const sampleSlots = ['Gates of Olympus 1000', 'Sweet Bonanza', 'Sugar Rush 1000', 'Big Bass Crash', 'JetX'];
-  const sampleAvatars = ['💎', '👑', '⚡', '🔥', '🎰', '🚀'];
-
-  setInterval(() => {
-    const user = sampleUsers[Math.floor(Math.random() * sampleUsers.length)];
-    const game = sampleSlots[Math.floor(Math.random() * sampleSlots.length)];
-    const avatar = sampleAvatars[Math.floor(Math.random() * sampleAvatars.length)];
-    const mult = Number((Math.random() * 80 + 5).toFixed(1));
-    const amount = Number((mult * (Math.random() * 20 + 8)).toFixed(2));
-
-    state.winners.unshift({
-      id: `win-${Date.now()}`,
-      user,
-      gameTitle: game,
-      amount,
-      multiplier: mult,
-      avatar
-    });
-    if (state.winners.length > 8) state.winners.pop();
-    renderLiveWins($('live-wins-list'), state.winners);
-  }, 7000);
-
-  // Tournament participation
   const joinTournamentBtn = $('btn-join-tournament');
   if (joinTournamentBtn) {
     if (state.tournamentJoined) {
@@ -964,19 +941,21 @@ function initApp() {
     });
   }
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-card').forEach((card) => {
-    const trigger = card.querySelector('.faq-trigger');
+  document.querySelectorAll('.faq-card, .faq-section__card').forEach((card) => {
+    const trigger = card.querySelector('.faq-card__trigger, .faq-trigger');
     if (trigger) {
       trigger.addEventListener('click', () => {
-        const isOpen = card.classList.contains('open');
-        document.querySelectorAll('.faq-card').forEach((c) => c.classList.remove('open'));
-        if (!isOpen) card.classList.add('open');
+        const isOpen = card.classList.contains('open') || card.classList.contains('faq-card--open');
+        document.querySelectorAll('.faq-card, .faq-section__card').forEach((c) => {
+          c.classList.remove('open', 'faq-card--open');
+        });
+        if (!isOpen) {
+          card.classList.add('open', 'faq-card--open');
+        }
       });
     }
   });
 
-  // Modal dialog bindings
   $('trigger-wheel-btn')?.addEventListener('click', () => openModal('lucky-wheel-modal'));
   $('trigger-wheel-btn-sidebar')?.addEventListener('click', () => { closeSidebar(); openModal('lucky-wheel-modal'); });
   $('close-wheel-btn')?.addEventListener('click', () => closeModal('lucky-wheel-modal'));
@@ -1021,7 +1000,6 @@ function initApp() {
     $('vip-loyalty-section')?.scrollIntoView({ behavior: 'smooth' });
   });
 
-  // Special promo bonus showcase handlers
   const promoClaimBtn = $('promo-claim-btn');
   const promoWheelBtn = $('promo-wheel-trigger-btn');
   const todayStr = new Date().toDateString();
@@ -1050,7 +1028,6 @@ function initApp() {
     try {
       localStorage.setItem('spinpulse_promo_crate_claimed', today);
     } catch {
-      // storage quota fallback
     }
 
     state.balance += 500;
@@ -1067,7 +1044,6 @@ function initApp() {
     promoClaimBtn.textContent = state.lang === 'RU' ? 'Бонус получен ✓' : 'Bonus Claimed ✓';
   });
 
-  // Playable slot game modal controls
   $('gm-close-btn')?.addEventListener('click', closeGameModal);
 
   $('gm-reload-btn')?.addEventListener('click', () => {
@@ -1102,7 +1078,6 @@ function initApp() {
     }
   });
 
-  // Backdrop click dismiss
   document.querySelectorAll('.modal-backdrop, .drawer-backdrop').forEach((backdropEl) => {
     backdropEl.addEventListener('click', (e) => {
       if (e.target === backdropEl) {
@@ -1115,7 +1090,6 @@ function initApp() {
     });
   });
 
-  // Language switcher
   function setLanguage(newLang) {
     if (newLang !== 'RU' && newLang !== 'EN') return;
     state.lang = newLang;
@@ -1130,7 +1104,6 @@ function initApp() {
       url.searchParams.set('lang', newLang.toLowerCase());
       window.history.replaceState({}, '', url.toString());
     } catch {
-      // history fallback
     }
 
     document.querySelectorAll('[data-lang]').forEach((btn) => {
@@ -1141,7 +1114,6 @@ function initApp() {
     showToast(newLang === 'RU' ? '🇷🇺 Язык: Русский' : '🇬🇧 Language: English', 'win');
   }
 
-  // Header language switch buttons
   document.querySelectorAll('#header-lang-switch button').forEach((btn) => {
     function handleLang(e) {
       if (e && e.type === 'touchstart') e.preventDefault();
@@ -1154,7 +1126,6 @@ function initApp() {
     btn.addEventListener('touchstart', handleLang, { passive: false });
   });
 
-  // Header language switch container delegation fallback
   const headerSwitch = $('header-lang-switch');
   if (headerSwitch) {
     headerSwitch.addEventListener('click', (e) => {
@@ -1168,7 +1139,6 @@ function initApp() {
     });
   }
 
-  // Respond to browser back/forward buttons if lang query changes
   window.addEventListener('popstate', () => {
     const queryLang = getInitialLanguage();
     if (queryLang !== state.lang) {
@@ -1183,21 +1153,19 @@ function initApp() {
     }
   });
 
-  // Support modal FAQ accordion
-  document.querySelectorAll('.support-faq-btn').forEach((btn) => {
+  document.querySelectorAll('.support-faq-section__btn, .support-faq-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-faq-target');
       const ansEl = $(targetId);
       if (ansEl) {
         const isHidden = ansEl.style.display === 'none';
         ansEl.style.display = isHidden ? 'block' : 'none';
-        const arrow = btn.querySelector('.faq-chip-arrow');
+        const arrow = btn.querySelector('.support-faq-section__arrow, .faq-chip-arrow');
         if (arrow) arrow.textContent = isHidden ? '▲' : '▼';
       }
     });
   });
 
-  // Support ticket form submission
   const supportForm = $('support-ticket-form');
   if (supportForm) {
     supportForm.addEventListener('submit', (e) => {
@@ -1229,8 +1197,7 @@ function initApp() {
     }
   });
 
-  // Promotional promo code clipboard copy
-  document.querySelectorAll('.copy-code-btn').forEach((btn) => {
+  document.querySelectorAll('.bonus-card-item__copy-btn, .copy-code-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const code = btn.getAttribute('data-code');
       navigator.clipboard.writeText(code).then(() => {
@@ -1242,8 +1209,7 @@ function initApp() {
     });
   });
 
-  // Promo code activation
-  document.querySelectorAll('.activate-bonus-btn').forEach((btn) => {
+  document.querySelectorAll('.bonus-card-item__activate-btn, .activate-bonus-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       playWinCoinsSound();
       const amt = parseInt(btn.getAttribute('data-amount') || '300');
