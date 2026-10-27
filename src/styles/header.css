@@ -549,7 +549,7 @@
   animation: dropdownIn 0.2s ease-out;
 }
 
-.notif-wrapper__dropdown, .header-dropdown.active {
+.notif-wrapper__dropdown.active, .header-dropdown.active {
   display: block;
 }
 
@@ -677,3 +677,18 @@
   color: var(--accent-gold);
 }
 
+
+.site-header__notif,
+.notif-wrapper {
+  position: relative;
+}
+
+.header-dropdown__badge,
+.dropdown-badge-new {
+  font-size: 10px;
+  font-weight: 800;
+  background: #fef3c7;
+  color: #b45309;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}

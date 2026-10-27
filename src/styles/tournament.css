@@ -1,0 +1,225 @@
+.tournament-box {
+  content-visibility: auto;
+  contain-intrinsic-size: 550px;
+  border-radius: var(--radius-xl);
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tournament-box__top-row,
+.tournament-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tournament-box__brand-group,
+.tournament-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tournament-box__trophy-icon,
+.tournament-trophy-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.tournament-box__trophy-icon svg,
+.tournament-trophy-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  display: block;
+}
+
+.tournament-box__status-row,
+.tournament-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tournament-box__live-badge,
+.tournament-live-badge {
+  font-size: 10px;
+  font-weight: 800;
+  background: #d1fae5;
+  color: #065f46;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.tournament-box__providers-sub,
+.tournament-providers-sub {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.tournament-box__heading,
+.tournament-heading {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+.tournament-box__meta-group,
+.tournament-meta-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tournament-box__stat-box,
+.tournament-stat-box {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.tournament-box__stat-label,
+.tournament-stat-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.tournament-box__stat-val,
+.tournament-stat-val {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.tournament-box__timer,
+.tournament-timer {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.tournament-box__cta-btn,
+.tournament-cta-btn {
+  padding: 10px 20px;
+  font-size: 0.8rem;
+}
+
+.tournament-box__leaderboard-header,
+.leaderboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.tournament-box__leaderboard,
+.tournament-leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tournament-leaderboard__row,
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: var(--transition);
+}
+
+.tournament-leaderboard__row:hover,
+.leaderboard-row:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.tournament-leaderboard__rank-badge,
+.leader-rank-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.tournament-leaderboard__row:nth-child(1) .tournament-leaderboard__rank-badge,
+.leaderboard-row.rank-1 .leader-rank-badge {
+  background: #e2e8f0;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+}
+
+.tournament-leaderboard__user-group,
+.leaderboard-user-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.leader-trophy-icon {
+  font-size: 18px;
+}
+
+.tournament-leaderboard__name,
+.leaderboard-name {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #0f172a;
+}
+
+.tournament-leaderboard__stats-group,
+.leaderboard-stats-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tournament-leaderboard__points,
+.leaderboard-points {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.tournament-leaderboard__prize,
+.leaderboard-prize {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: #0f172a;
+}

@@ -488,3 +488,46 @@
   justify-content: center;
 }
 
+
+.sidebar-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar-vip-badge {
+  font-size: 9px;
+  font-weight: 900;
+  background: rgba(15, 23, 42, 0.7);
+  color: #fde68a;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.sidebar-lobby-tag {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fed7aa;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.vip-box-arrow {
+  font-size: 13px;
+}
+
+.vip-box-desc {
+  font-size: 0.72rem;
+  color: #fed7aa;
+}
+
+.sidebar-nav-secondary {
+  margin-top: auto;
+}
+
+.sidebar-version-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+}
