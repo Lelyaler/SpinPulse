@@ -1,28 +1,5 @@
 export function createModalsMarkup() {
   return `
-    <!-- Lucky Wheel Modal -->
-    <div id="lucky-wheel-modal" class="modal-backdrop modal-backdrop--wheel">
-      <div class="modal-card wheel-modal-card">
-        <button id="close-wheel-btn" class="modal-card__close-btn" aria-label="Close">✕</button>
-        <div class="wheel-modal-card__header-row">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="wheel-modal-card__title-icon"><circle cx="12" cy="12" r="10"/><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></svg>
-          <h3 class="wheel-modal-card__title" data-i18n="wheelTitle">Колесо Удачи</h3>
-        </div>
-        <p class="wheel-modal-card__desc" data-i18n="wheelDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
-
-        <div class="wheel-modal-card__container">
-          <div class="wheel-modal-card__pointer"></div>
-          <canvas id="wheel-canvas" class="wheel-modal-card__canvas"></canvas>
-        </div>
-
-        <div id="wheel-won-text" class="wheel-modal-card__result-text"></div>
-
-        <button id="spin-wheel-btn" class="wheel-modal-card__spin-btn" type="button" data-i18n="spinWheelBtn">
-          КРУТИТЬ КОЛЕСО
-        </button>
-      </div>
-    </div>
-
     <!-- Bonuses Modal -->
     <div id="bonuses-modal" class="modal-backdrop modal-backdrop--bonuses">
       <div class="modal-card bonuses-modal-card">
@@ -94,11 +71,11 @@ export function createModalsMarkup() {
               </div>
               <div class="support-faq-section__item">
                 <button type="button" class="support-faq-section__btn" data-faq-target="faq-ans-2">
-                  <span data-i18n="promptWhereWheel">Колесо Удачи и фриспины</span>
+                  <span data-i18n="promptWhereVip">VIP клуб и бонусы</span>
                   <span class="support-faq-section__arrow">▼</span>
                 </button>
-                <div id="faq-ans-2" class="support-faq-section__ans" data-i18n="supportReplyWheel" style="display:none;">
-                  Колесо Удачи доступно через кнопку в шапке (VIP аватар), а также в боковом меню! Бесплатный спин доступен прямо сейчас.
+                <div id="faq-ans-2" class="support-faq-section__ans" data-i18n="supportReplyVip" style="display:none;">
+                  Бонусы и промокоды доступны через кнопку в шапке (VIP аватар), а также в боковом меню! Активируйте эксклюзивные коды на демо-монеты прямо сейчас.
                 </div>
               </div>
               <div class="support-faq-section__item">

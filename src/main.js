@@ -15,7 +15,6 @@ import {
   claimDailyBonus 
 } from './modules/wallet.js';
 import { renderLiveWins } from './modules/ticker.js';
-import { drawWheel, spinWheel } from './modules/wheel.js';
 import { playDemoGameRound, renderHistory } from './modules/slot.js';
 
 function getInitialLanguage() {
@@ -631,7 +630,6 @@ function initApp() {
     }, 80);
     setTimeout(() => {
       safeRun(() => renderLiveWins($('live-wins-list'), state.winners), 'renderLiveWins');
-      safeRun(() => drawWheel($('wheel-canvas')), 'drawWheel');
       safeRun(() => renderHistory(state), 'renderHistory');
     }, 200);
   };
@@ -942,21 +940,8 @@ function initApp() {
     }
   });
 
-  $('trigger-wheel-btn')?.addEventListener('click', () => openModal('lucky-wheel-modal'));
-  $('trigger-wheel-btn-sidebar')?.addEventListener('click', () => { closeSidebar(); openModal('lucky-wheel-modal'); });
-  $('close-wheel-btn')?.addEventListener('click', () => closeModal('lucky-wheel-modal'));
-  $('spin-wheel-btn')?.addEventListener('click', () => {
-    spinWheel({
-      canvas: $('wheel-canvas'),
-      spinBtn: $('spin-wheel-btn'),
-      wonText: $('wheel-won-text'),
-      state,
-      saveState,
-      onBalanceUpdate: syncWallet
-    });
-  });
-
-  $('trigger-bonuses-btn')?.addEventListener('click', () => { closeSidebar(); openModal('bonuses-modal'); });
+  $('trigger-bonuses-btn')?.addEventListener('click', () => openModal('bonuses-modal'));
+  $('trigger-bonuses-btn-sidebar')?.addEventListener('click', () => { closeSidebar(); openModal('bonuses-modal'); });
   $('close-bonuses-btn')?.addEventListener('click', () => closeModal('bonuses-modal'));
 
   $('trigger-support-btn')?.addEventListener('click', () => { closeSidebar(); openModal('support-modal'); });
@@ -987,7 +972,7 @@ function initApp() {
   });
 
   const promoClaimBtn = $('promo-claim-btn');
-  const promoWheelBtn = $('promo-wheel-trigger-btn');
+  const promoBonusesBtn = $('promo-bonuses-trigger-btn');
   const todayStr = new Date().toDateString();
 
   if (safeGetStorage('spinpulse_promo_crate_claimed', '') === todayStr && promoClaimBtn) {
@@ -995,8 +980,8 @@ function initApp() {
     promoClaimBtn.textContent = state.lang === 'RU' ? 'Бонус получен ✓' : 'Bonus Claimed ✓';
   }
 
-  promoWheelBtn?.addEventListener('click', () => {
-    openModal('lucky-wheel-modal');
+  promoBonusesBtn?.addEventListener('click', () => {
+    openModal('bonuses-modal');
   });
 
   promoClaimBtn?.addEventListener('click', () => {
