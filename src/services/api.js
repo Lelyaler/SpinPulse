@@ -4,9 +4,8 @@ import { gamesCatalog, currentTournament, initialWinners } from '../data.js';
  * API service for fetching catalog data and sending support tickets.
  */
 
-const BASE_URL = (import.meta.env.BASE_URL || './').endsWith('/')
-  ? import.meta.env.BASE_URL || './'
-  : `${import.meta.env.BASE_URL || './'}/`;
+const rawBase = (typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL) || './';
+const BASE_URL = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 
 /**
  * Simulates brief realistic network delay to showcase skeleton loaders.

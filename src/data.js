@@ -1,4 +1,5 @@
-const baseUrl = (import.meta.env.BASE_URL || "./").endsWith("/") ? (import.meta.env.BASE_URL || "./") : `${import.meta.env.BASE_URL || "./"}/`;
+const rawBase = (typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL) || './';
+const baseUrl = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 
 
 

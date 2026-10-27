@@ -20,6 +20,7 @@ import { initHeroCarousel, updateHeroTexts } from './modules/carousel.js';
 import { renderGames, renderSkeletons, initCatalog } from './modules/catalog.js';
 import { initTournament } from './modules/tournament.js';
 import { initFaqAccordion } from './modules/faq.js';
+import { createStore } from './modules/store.js';
 import { 
   fetchGamesCatalog, 
   fetchRecentWinners, 
@@ -63,7 +64,7 @@ function safeGetStorageJSON(key, fallback) {
   }
 }
 
-const state = {
+const store = createStore({
   lang: getInitialLanguage(),
   balance: parseFloat(safeGetStorage('spinpulse_balance', '2500')) || 2500,
   favorites: new Set(safeGetStorageJSON('spinpulse_favorites', [])),
@@ -83,7 +84,32 @@ const state = {
   winners: [...initialWinners],
   tournamentJoined: false,
   tournamentParticipants: currentTournament.participantsCount
-};
+});
+
+const state = store.state;
+
+// Reactive state subscribers
+store.subscribe((prop, value) => {
+  if (prop === 'balance') {
+    updateBalanceDisplay(value);
+    try {
+      localStorage.setItem('spinpulse_balance', value.toString());
+    } catch {}
+  } else if (prop === 'favorites') {
+    updateFavoritesCounter(value);
+    try {
+      localStorage.setItem('spinpulse_favorites', JSON.stringify([...value]));
+    } catch {}
+  } else if (prop === 'lang') {
+    try {
+      localStorage.setItem('spinpulse_lang', value);
+    } catch {}
+  } else if (prop === 'history') {
+    try {
+      localStorage.setItem('spinpulse_history', JSON.stringify(value.slice(0, 40)));
+    } catch {}
+  }
+});
 
 function saveState() {
   try {
