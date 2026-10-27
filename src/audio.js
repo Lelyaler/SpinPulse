@@ -11,7 +11,8 @@ try {
   console.warn('LocalStorage unavailable for sound settings:', err);
 }
 
-const baseUrl = (import.meta.env.BASE_URL || './').replace(/\/$/, '') + '/';
+const rawBase = (typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL) || './';
+const baseUrl = rawBase.replace(/\/$/, '') + '/';
 
 const audioExtension = (typeof Audio !== 'undefined' && new Audio().canPlayType('audio/mpeg')) ? 'mp3' : 'wav';
 
