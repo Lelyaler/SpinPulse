@@ -295,17 +295,20 @@
 .jackpot-card__action-btn, .jackpot-action-btn {
   position: relative;
   z-index: 2;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
-  padding: 12px 18px;
+  width: auto;
+  max-width: 320px;
+  margin: 0 auto;
+  align-self: center;
+  padding: 12px 28px;
   border-radius: var(--radius-md);
   font-size: 0.84rem;
   font-weight: 800;
   background: rgba(0, 0, 0, 0.32);
-  border: none;
+  border: 1px solid rgba(251, 191, 36, 0.25);
   color: #fbbf24;
   cursor: pointer;
   transition: all 0.2s ease;
