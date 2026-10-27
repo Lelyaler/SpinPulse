@@ -1,0 +1,187 @@
+.promo-bonus-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 550px;
+  width: 100%;
+  padding-top: 75px;
+  margin-bottom: 24px;
+}
+
+.promo-bonus-section__card, .promo-bonus-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #24140a 0%, #351a0c 48%, #170b05 100%);
+  box-shadow: 0 16px 36px -8px rgba(36, 20, 10, 0.4);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: visible;
+  min-height: 290px;
+}
+
+.promo-bonus-section__content, .promo-bonus-content {
+  flex: 1;
+  max-width: 540px;
+  padding: 44px 0 44px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.promo-bonus-section__tag, .promo-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.promo-bonus-section__title, .promo-bonus-title {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.promo-bonus-section__gold-text, .promo-gold-text {
+  color: #fbbf24;
+}
+
+.promo-bonus-section__desc, .promo-bonus-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #fed7aa;
+  margin: 0;
+  max-width: 500px;
+}
+
+.promo-bonus-section__actions, .promo-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.promo-bonus-section__cta-btn, .promo-cta-btn {
+  padding: 13px 28px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  border: none;
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-bonus-section__cta-btn:hover, .promo-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.55);
+}
+
+.promo-bonus-section__secondary-btn, .promo-secondary-btn {
+  padding: 13px 24px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fef3c7;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.promo-bonus-section__secondary-btn:hover, .promo-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.promo-bonus-section__visual, .promo-bonus-visual {
+  position: relative;
+  flex: 0 0 540px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  margin-right: -15px;
+}
+
+.promo-bonus-section__character-img, .promo-character-img {
+  width: 640px;
+  max-width: none;
+  height: auto;
+  display: block;
+  position: relative;
+  margin-top: -110px;
+  margin-bottom: -35px;
+  margin-right: -30px;
+  filter: drop-shadow(0 22px 36px rgba(0, 0, 0, 0.75));
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+.promo-bonus-section__card:hover .promo-bonus-section__character-img,
+.promo-bonus-card:hover .promo-character-img {
+  transform: translateY(-6px) scale(1.03);
+}
+
+@media (max-width: 1024px) {
+  .promo-bonus-section__content, .promo-bonus-content {
+    padding: 32px 0 32px 32px;
+  }
+
+  .promo-bonus-section__visual, .promo-bonus-visual {
+    flex: 0 0 440px;
+    margin-right: 0;
+  }
+
+  .promo-bonus-section__character-img, .promo-character-img {
+    width: 520px;
+    margin-top: -85px;
+    margin-bottom: -20px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .promo-bonus-section {
+    padding-top: 30px;
+  }
+
+  .promo-bonus-section__card, .promo-bonus-card {
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .promo-bonus-section__content, .promo-bonus-content {
+    max-width: 100%;
+    padding: 28px 20px 16px;
+  }
+
+  .promo-bonus-section__visual, .promo-bonus-visual {
+    flex: auto;
+    width: 100%;
+    margin-right: 0;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .promo-bonus-section__character-img, .promo-character-img {
+    width: 380px;
+    max-width: 95%;
+    margin-top: -25px;
+    margin-bottom: -15px;
+    margin-right: 0;
+    transform: none;
+  }
+}

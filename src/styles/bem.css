@@ -99,12 +99,12 @@
 }
 
 .faq-card--open .faq-card__toggle-icon,
-.faq-card.open .faq-card__toggle-icon, .faq-toggle-icon {
+.faq-card.open .faq-card__toggle-icon {
   transform: rotate(180deg);
 }
 
 .faq-card--open .faq-card__content,
-.faq-card.open .faq-card__content, .faq-content {
+.faq-card.open .faq-card__content {
   display: block;
 }
 

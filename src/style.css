@@ -4,4 +4,11 @@
 @import './styles/hero.css';
 @import './styles/ticker.css';
 @import './styles/games.css';
+@import './styles/promo.css';
+@import './styles/tournament.css';
+@import './styles/loyalty.css';
+@import './styles/perks.css';
+@import './styles/faq.css';
+@import './styles/footer.css';
+@import './styles/modal.css';
 @import './styles/bem.css';

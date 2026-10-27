@@ -156,33 +156,32 @@ export function createModalsMarkup() {
         <div class="drawer-card__header">
           <div class="drawer-card__title-group">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="drawer-card__icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <h3 class="drawer-card__title" data-i18n="historyTitle">История спинов сессии</h3>
+            <h3 class="drawer-card__title" data-i18n="historyTitle">Недавно запущенные игры</h3>
           </div>
           <button id="close-history-btn" class="drawer-card__close-btn" aria-label="Close">✕</button>
         </div>
         <div class="drawer-card__body">
           <div class="drawer-card__summary-box">
             <div class="drawer-card__summary-item">
-              <span class="drawer-card__stat-label" data-i18n="historyTotalBets">Сумма ставок</span>
-              <div id="history-total-bets" class="drawer-card__stat-val">$0.00</div>
+              <span class="drawer-card__stat-label" data-i18n="historyTotalBets">Запусков в сессии</span>
+              <div id="history-total-bets" class="drawer-card__stat-val">0</div>
             </div>
             <div class="drawer-card__summary-item">
-              <span class="drawer-card__stat-label" data-i18n="historySessionResult">Результат сессии</span>
-              <div id="history-session-result" class="drawer-card__stat-val">+$0.00</div>
+              <span class="drawer-card__stat-label" data-i18n="historySessionResult">Провайдер</span>
+              <div id="history-session-result" class="drawer-card__stat-val">Pragmatic</div>
             </div>
           </div>
           <div id="history-rounds-list" class="drawer-card__rounds-list"></div>
           <div id="history-empty-note" class="drawer-card__empty-note" style="display: none;">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drawer-card__empty-icon" style="margin:0 auto 12px;"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
-            <h4 class="drawer-card__empty-title">Нет ставок в текущей сессии</h4>
-            <p class="drawer-card__empty-desc">Запускайте любые демо-слоты из каталога — каждый раунд и выигрыш сразу фиксируются здесь.</p>
+            <h4 class="drawer-card__empty-title">История сессии пуста</h4>
+            <p class="drawer-card__empty-desc">Запускайте любые демо-слоты из лобби — они автоматически сохранятся здесь для быстрого повторного запуска.</p>
             <button type="button" id="history-spin-now-btn" class="drawer-card__spin-btn">Перейти к играм</button>
           </div>
         </div>
         <div class="drawer-card__footer">
           <div class="drawer-card__footer-stats">
-            <span class="drawer-card__stat-item">Раундов: <strong id="history-total-count">0</strong></span>
-            <span class="drawer-card__stat-item">Макс: <strong id="history-max-win" class="val-profit">$0.00</strong></span>
+            <span class="drawer-card__stat-item">В истории: <strong id="history-total-count">0</strong></span>
           </div>
           <button id="clear-history-btn" type="button" class="drawer-card__clear-btn" title="Очистить историю ставок">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
@@ -259,7 +258,6 @@ export function createModalsMarkup() {
 }
 
 export function mountModals() {
-  import('../styles/modal.css');
   let root = document.getElementById('modals-root');
   if (!root) {
     root = document.createElement('div');

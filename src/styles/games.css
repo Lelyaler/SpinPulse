@@ -146,7 +146,7 @@
   box-shadow: 0 16px 36px rgba(245, 158, 11, 0.22), 0 6px 14px rgba(0, 0, 0, 0.45);
 }
 
-.game-card-media {
+.game-card__media, .game-card-media {
   position: relative;
   aspect-ratio: 4 / 3;
   width: 100%;
@@ -155,7 +155,7 @@
   flex-shrink: 0;
 }
 
-.game-card-media img {
+.game-card__media img, .game-card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -165,11 +165,11 @@
   transition: transform 0.35s ease-out;
 }
 
-.game-card:hover .game-card-media img {
+.game-card:hover .game-card__media img, .game-card:hover .game-card-media img {
   transform: scale(1.15);
 }
 
-.card-badge-group {
+.game-card__badge-group, .card-badge-group {
   position: absolute;
   top: 8px;
   left: 8px;
@@ -234,7 +234,7 @@
   50% { opacity: 0.35; transform: scale(0.75); }
 }
 
-.fav-btn {
+.game-card__fav-btn, .fav-btn {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -252,22 +252,22 @@
   cursor: pointer;
 }
 
-.fav-btn:hover {
+.game-card__fav-btn:hover, .fav-btn:hover {
   background: #ffffff;
   color: var(--accent-rose);
 }
 
-.fav-btn.active {
+.game-card__fav-btn.active, .fav-btn.active, .game-card__fav-btn--active {
   color: var(--accent-rose);
   background: #ffffff;
 }
 
-.fav-btn svg {
+.game-card__fav-btn svg, .fav-btn svg {
   width: 16px;
   height: 16px;
 }
 
-.card-hover-overlay {
+.game-card__hover-overlay, .card-hover-overlay {
   position: absolute;
   inset: 0;
   z-index: 15;
@@ -283,11 +283,11 @@
   pointer-events: none;
 }
 
-.game-card:hover .card-hover-overlay {
+.game-card:hover .game-card__hover-overlay, .game-card:hover .card-hover-overlay {
   opacity: 1;
 }
 
-.hover-play-btn {
+.game-card__hover-play-btn, .hover-play-btn {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -299,14 +299,14 @@
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.5);
 }
 
-.hover-play-btn svg {
+.game-card__hover-play-btn svg, .hover-play-btn svg {
   width: 20px;
   height: 20px;
   margin-left: 2px;
   fill: currentColor;
 }
 
-.hover-demo-pill {
+.game-card__hover-demo-pill, .hover-demo-pill {
   padding: 4px 14px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.2);
@@ -316,7 +316,7 @@
   letter-spacing: 0.5px;
 }
 
-.game-card-info {
+.game-card__info, .game-card-info {
   padding: 10px 12px;
   height: 54px;
   min-height: 54px;
@@ -329,7 +329,7 @@
   flex-shrink: 0;
 }
 
-.game-card-title-row {
+.game-card__title-row, .game-card-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -338,7 +338,7 @@
   min-width: 0;
 }
 
-.game-title {
+.game-card__title, .game-title {
   font-size: 0.88rem;
   font-weight: 800;
   color: #f5f5f4;
@@ -354,11 +354,11 @@
   min-width: 0;
 }
 
-.game-card:hover .game-title {
+.game-card:hover .game-card__title, .game-card:hover .game-title {
   color: #fbbf24;
 }
 
-.game-rtp-badge {
+.game-card__rtp-badge, .game-rtp-badge {
   font-size: 10.5px;
   font-weight: 700;
   color: #fbbf24;
@@ -395,3 +395,29 @@
   transform: translateY(-1px);
 }
 
+
+.category-nav__scroll-btn,
+.cat-nav-btn {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+  color: #0f172a;
+  display: none;
+}
+
+.category-nav__scroll-btn.cat-nav-left,
+.cat-nav-left {
+  margin-right: 6px;
+}
+
+.category-nav__scroll-btn.cat-nav-right,
+.cat-nav-right {
+  margin-left: 6px;
+}
+
+.category-nav__pill-badge,
+.cat-fav-badge {
+  background: #fee2e2;
+  color: #dc2626;
+}
