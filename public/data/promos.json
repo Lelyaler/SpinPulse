@@ -1,0 +1,29 @@
+[
+  {
+    "id": "promo-welcome",
+    "title": "100% First Deposit + 500 Free Spins",
+    "description": "Boost your starting bankroll on all Pragmatic & Evolution titles.",
+    "reward": "Up to $600 + 500 FS",
+    "tag": "WELCOME PACK",
+    "bonusCode": "WELCOME100",
+    "minDeposit": 20
+  },
+  {
+    "id": "promo-reload",
+    "title": "Friday Reload 50% Match",
+    "description": "Exclusive weekend multiplier bonus every Friday for active players.",
+    "reward": "Up to $300 Match",
+    "tag": "WEEKLY RELOAD",
+    "bonusCode": "FRIDAY50",
+    "minDeposit": 25
+  },
+  {
+    "id": "promo-crypto",
+    "title": "Crypto VIP Cashback 10%",
+    "description": "Instant zero-wager cashback on all cryptocurrency demo transactions.",
+    "reward": "10% Unlimited Cashback",
+    "tag": "CRYPTO EXCLUSIVE",
+    "bonusCode": "CRYPTO10",
+    "minDeposit": 50
+  }
+]

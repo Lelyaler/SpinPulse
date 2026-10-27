@@ -1,4 +1,20 @@
-import { gamesCatalog } from '../data.js';
+/**
+ * Renders animated shimmer skeleton placeholders while catalog data is loading.
+ */
+export function renderSkeletons(count = 12) {
+  const container = document.getElementById('games-grid');
+  if (!container) return;
+
+  container.innerHTML = Array.from({ length: count }).map(() => `
+    <div class="game-card game-card--skeleton">
+      <div class="game-card__media skeleton-shimmer"></div>
+      <div class="game-card__info">
+        <div class="skeleton-bar skeleton-shimmer" style="width: 75%; height: 16px;"></div>
+        <div class="skeleton-bar skeleton-shimmer" style="width: 40%; height: 12px; margin-top: 4px;"></div>
+      </div>
+    </div>
+  `).join('');
+}
 
 /**
  * Renders filtered catalog games into the grid.
@@ -7,7 +23,14 @@ export function renderGames(state, saveState, openGameModal, updateFavoritesCoun
   const container = document.getElementById('games-grid');
   if (!container) return;
 
-  const filtered = gamesCatalog.filter((game) => {
+  if (state.gamesLoading) {
+    renderSkeletons(12);
+    return;
+  }
+
+  const catalog = state.games || [];
+
+  const filtered = catalog.filter((game) => {
     if (!game.demoUrl) return false;
 
     if (state.activeCategory === 'favorites') {
@@ -149,7 +172,7 @@ export function renderGames(state, saveState, openGameModal, updateFavoritesCoun
     card.addEventListener('click', (e) => {
       if (e.target.closest('.game-card__fav-btn, .fav-btn')) return;
       const gameId = card.getAttribute('data-game-id') || card.getAttribute('data-id');
-      const game = gamesCatalog.find((g) => g.id === gameId);
+      const game = (state.games || []).find((g) => g.id === gameId);
       if (game && typeof openGameModal === 'function') {
         openGameModal(game);
       }

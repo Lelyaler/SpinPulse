@@ -1,0 +1,47 @@
+{
+  "id": "tournament-weekly",
+  "title": "Weekly Grand Prix",
+  "subtitle": "Pragmatic Play, Hacksaw & NoLimit City Battle",
+  "prizePool": "$50,000",
+  "totalCoins": 50000,
+  "status": "ACTIVE",
+  "endsInSeconds": 126420,
+  "participantsCount": 1482,
+  "leaderboard": [
+    {
+      "rank": 1,
+      "user": "alex_k92",
+      "points": 184200,
+      "prize": "$18,000",
+      "avatar": "AK"
+    },
+    {
+      "rank": 2,
+      "user": "misha_nord",
+      "points": 142500,
+      "prize": "$11,000",
+      "avatar": "MN"
+    },
+    {
+      "rank": 3,
+      "user": "dmitry_v",
+      "points": 98400,
+      "prize": "$6,500",
+      "avatar": "DV"
+    },
+    {
+      "rank": 4,
+      "user": "sergey_spin",
+      "points": 71200,
+      "prize": "$4,000",
+      "avatar": "SS"
+    },
+    {
+      "rank": 5,
+      "user": "kate_spb",
+      "points": 53800,
+      "prize": "$2,500",
+      "avatar": "KS"
+    }
+  ]
+}
