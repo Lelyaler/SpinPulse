@@ -5,7 +5,7 @@ export function createModalsMarkup() {
       <div class="modal-card wheel-modal-card">
         <button id="close-wheel-btn" class="modal-card__close-btn" aria-label="Close">✕</button>
         <div class="wheel-modal-card__header-row">
-          <span class="wheel-modal-card__title-icon">🎡</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="wheel-modal-card__title-icon"><circle cx="12" cy="12" r="10"/><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></svg>
           <h3 class="wheel-modal-card__title" data-i18n="wheelTitle">Колесо Удачи</h3>
         </div>
         <p class="wheel-modal-card__desc" data-i18n="wheelDesc">Крутите колесо и выигрывайте до $2,500 demo монет!</p>
@@ -28,7 +28,7 @@ export function createModalsMarkup() {
       <div class="modal-card bonuses-modal-card">
         <button id="close-bonuses-btn" class="modal-card__close-btn" aria-label="Close">✕</button>
         <div class="bonuses-modal-card__header">
-          <span class="bonuses-modal-card__header-icon">🎁</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bonuses-modal-card__header-icon"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
           <div class="bonuses-modal-card__header-texts">
             <h3 class="bonuses-modal-card__title" data-i18n="bonusesModalTitle">Бонусы и промокоды</h3>
             <span class="bonuses-modal-card__sub" data-i18n="bonusesModalSub">Активируйте эксклюзивные бонусные коды</span>
@@ -44,7 +44,7 @@ export function createModalsMarkup() {
             <h4 class="bonus-card-item__title">100% First Deposit + 500 Free Spins</h4>
             <p class="bonus-card-item__desc" data-i18n="bonus1Desc">Увеличьте демо-баланс для игры во все слоты Pragmatic & Evolution.</p>
             <div class="bonus-card-item__actions">
-              <button class="bonus-card-item__copy-btn" data-code="IZZIPULSE100">IZZIPULSE100 📋</button>
+              <button class="bonus-card-item__copy-btn" data-code="WELCOME100">WELCOME100</button>
               <button class="bonus-card-item__activate-btn" data-amount="600" data-i18n="activateBtn">Активировать</button>
             </div>
           </div>
@@ -57,7 +57,7 @@ export function createModalsMarkup() {
             <h4 class="bonus-card-item__title">Friday Reload 50% Match</h4>
             <p class="bonus-card-item__desc" data-i18n="bonus2Desc">Пятничный буст баланса для активных игроков.</p>
             <div class="bonus-card-item__actions">
-              <button class="bonus-card-item__copy-btn" data-code="FRIDAY50">FRIDAY50 📋</button>
+              <button class="bonus-card-item__copy-btn" data-code="FRIDAY50">FRIDAY50</button>
               <button class="bonus-card-item__activate-btn" data-amount="300" data-i18n="activateBtn">Активировать</button>
             </div>
           </div>
@@ -70,7 +70,7 @@ export function createModalsMarkup() {
       <div class="modal-card support-modal-card">
         <div class="support-modal-card__header">
           <div class="support-modal-card__title-group">
-            <span class="support-modal-card__header-icon">🎧</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="support-modal-card__header-icon"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
             <div class="support-modal-card__title-texts">
               <h3 class="support-modal-card__title" data-i18n="supportTitle">Центр поддержки SpinPulse</h3>
               <span class="support-modal-card__online-status" data-i18n="supportOnlineStatus">● Центр помощи активен</span>
@@ -178,7 +178,7 @@ export function createModalsMarkup() {
       <div class="drawer-card">
         <div class="drawer-card__header">
           <div class="drawer-card__title-group">
-            <span class="drawer-card__icon">📜</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="drawer-card__icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <h3 class="drawer-card__title" data-i18n="historyTitle">История спинов сессии</h3>
           </div>
           <button id="close-history-btn" class="drawer-card__close-btn" aria-label="Close">✕</button>
@@ -196,7 +196,7 @@ export function createModalsMarkup() {
           </div>
           <div id="history-rounds-list" class="drawer-card__rounds-list"></div>
           <div id="history-empty-note" class="drawer-card__empty-note" style="display: none;">
-            <div class="drawer-card__empty-icon">🎰</div>
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drawer-card__empty-icon" style="margin:0 auto 12px;"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
             <h4 class="drawer-card__empty-title">Нет ставок в текущей сессии</h4>
             <p class="drawer-card__empty-desc">Запускайте любые демо-слоты из каталога — каждый раунд и выигрыш сразу фиксируются здесь.</p>
             <button type="button" id="history-spin-now-btn" class="drawer-card__spin-btn">Перейти к играм</button>
@@ -266,7 +266,7 @@ export function createModalsMarkup() {
 
         <div class="game-modal-card__footer">
           <div class="game-modal-card__tip">
-            <span class="game-modal-card__tip-icon">💡</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="game-modal-card__tip-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <span data-i18n="gmDemoDisclaimer">Бесплатный демо-режим слота от официального сервера провайдера. Ставки виртуальные.</span>
           </div>
           <button type="button" class="game-modal-card__reload-btn" id="gm-reload-btn">

@@ -28,7 +28,8 @@ export function claimDailyBonus(state, saveState, onUpdate) {
   state.hasClaimedDaily = true;
   try {
     localStorage.setItem('spinpulse_daily_claimed', new Date().toDateString());
-  } catch {
+  } catch (err) {
+    console.warn('Unable to persist daily claim date:', err);
   }
   if (saveState) saveState();
   if (onUpdate) onUpdate();

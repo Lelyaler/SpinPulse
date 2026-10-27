@@ -949,11 +949,11 @@ export const currentTournament = {
   endsInSeconds: 126420,
   participantsCount: 1482,
   leaderboard: [
-    { rank: 1, user: 'CyberKing_99', points: 184200, prize: '$18,000', avatar: '👑' },
-    { rank: 2, user: 'LuckyValkyrie', points: 142500, prize: '$11,000', avatar: '⚡' },
-    { rank: 3, user: 'MaxMultiplier', points: 98400, prize: '$6,500', avatar: '💎' },
-    { rank: 4, user: 'Alex_Spin', points: 71200, prize: '$4,000', avatar: '🔥' },
-    { rank: 5, user: 'GoldHighroller', points: 53800, prize: '$2,500', avatar: '🌟' },
+    { rank: 1, user: 'alex_k92', points: 184200, prize: '$18,000', avatar: 'AK' },
+    { rank: 2, user: 'misha_nord', points: 142500, prize: '$11,000', avatar: 'MN' },
+    { rank: 3, user: 'dmitry_v', points: 98400, prize: '$6,500', avatar: 'DV' },
+    { rank: 4, user: 'sergey_spin', points: 71200, prize: '$4,000', avatar: 'SS' },
+    { rank: 5, user: 'kate_spb', points: 53800, prize: '$2,500', avatar: 'KS' },
   ],
 };
 
@@ -964,7 +964,7 @@ export const promoOffers = [
     description: 'Boost your starting bankroll on all Pragmatic & Evolution titles.',
     reward: 'Up to $600 + 500 FS',
     tag: 'WELCOME PACK',
-    bonusCode: 'IZZIPULSE100',
+    bonusCode: 'WELCOME100',
     minDeposit: 20,
   },
   {
@@ -982,7 +982,7 @@ export const promoOffers = [
     description: 'Instant zero-wager cashback on all cryptocurrency demo transactions.',
     reward: '10% Unlimited Cashback',
     tag: 'CRYPTO EXCLUSIVE',
-    bonusCode: 'CRYPTOVIP',
+    bonusCode: 'CRYPTO10',
     minDeposit: 50,
   },
 ];

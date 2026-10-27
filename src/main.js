@@ -125,20 +125,6 @@ function openGameModal(game) {
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  state.history.unshift({
-    id: Date.now(),
-    gameId: game.id,
-    gameTitle: game.title,
-    gameImg: game.coverImage || '',
-    bet: 10,
-    win: 12.50,
-    net: 2.50,
-    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-  });
-  if (state.history.length > 50) state.history.pop();
-  saveState();
-  renderHistory(state);
-
   playButtonClick();
 }
 
@@ -208,7 +194,7 @@ function renderGames() {
   if (toShow.length === 0) {
     container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 48px 16px; color: #64748b;">
-        <div style="font-size: 32px; margin-bottom: 8px;">🔍</div>
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 10px; display: block; color: #94a3b8;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 4px;">
           ${state.lang === 'RU' ? 'Игры не найдены' : 'No games found'}
         </h3>
@@ -229,20 +215,20 @@ function renderGames() {
 
     let badgeHtml = '';
     if (game.demoUrl) {
-      badgeHtml += `<span class="game-card__badge game-card__badge--playable"><span class="badge-pulse-dot"></span>▶ PLAY</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--playable"><span class="badge-pulse-dot"></span>PLAY</span>`;
     }
     if (game.isHot) {
-      badgeHtml += `<span class="game-card__badge game-card__badge--hot">🔥 HOT</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--hot">HOT</span>`;
     } else if (game.isNew) {
-      badgeHtml += `<span class="game-card__badge game-card__badge--new">✨ NEW</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--new">NEW</span>`;
     } else if (game.category === 'crash') {
-      badgeHtml += `<span class="game-card__badge game-card__badge--crash">🚀 CRASH</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--crash">CRASH</span>`;
     } else if (game.category === 'live') {
-      badgeHtml += `<span class="game-card__badge game-card__badge--live">🔴 LIVE</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--live">LIVE</span>`;
     }
 
     if (game.isBonusBuy) {
-      badgeHtml += `<span class="game-card__badge game-card__badge--buy">⚡ BUY</span>`;
+      badgeHtml += `<span class="game-card__badge game-card__badge--buy">BONUS BUY</span>`;
     }
 
     return `
@@ -338,7 +324,7 @@ const slides = [
     descEn: 'Zeus unleashes thunderous multipliers up to 15,000x! Cascading reels, bonus buy and legendary tumbling action.',
     bg: './banners/banner-zeus-bright.webp',
     mobileBg: './banners/banner-zeus-mobile.webp',
-    accent: '⚡ 15,000x',
+    accent: '15,000x MAX',
     position: '70% 12%',
     mobilePosition: '68% 10%'
   },
@@ -349,7 +335,7 @@ const slides = [
     descEn: 'Enter the epic provider tournament! Earn leaderboard points with big multipliers and share the prize pool.',
     bg: './banners/banner-tournament-bright.webp',
     mobileBg: './banners/banner-tournament-mobile.webp',
-    accent: '🏆 $50,000',
+    accent: '$50,000 POOL',
     position: '68% 50%',
     mobilePosition: '65% 50%'
   },
@@ -360,7 +346,7 @@ const slides = [
     descEn: 'Cash out before the rocket crashes! Pure adrenaline rush, instant rounds and provably fair RNG.',
     bg: './banners/banner-crash-bright.webp',
     mobileBg: './banners/banner-crash-mobile.webp',
-    accent: '🚀 10,000x',
+    accent: '10,000x WIN',
     position: '68% 46%',
     mobilePosition: '65% 45%'
   },
@@ -371,7 +357,7 @@ const slides = [
     descEn: 'Double your initial deposit and grab 500 free spins in legendary video slots!',
     bg: './banners/banner-welcome-bright.webp',
     mobileBg: './banners/banner-welcome-mobile.webp',
-    accent: '🔥 500 FS',
+    accent: '+500 SPINS',
     position: '70% 50%',
     mobilePosition: '68% 50%'
   }
@@ -554,7 +540,7 @@ function initHeroCarousel() {
             <p class="hero-carousel__desc" data-hero-desc="${origIdx}">${isRu ? slide.descRu : slide.descEn}</p>
             <div class="hero-carousel__actions">
               <button type="button" class="hero-carousel__cta-btn">
-                <span>🎁</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
                 <span data-hero-btn="${origIdx}">${isRu ? 'ЗАБРАТЬ БОНУС' : 'CLAIM BONUS'}</span>
               </button>
             </div>
