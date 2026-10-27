@@ -57,39 +57,6 @@ export function createModalsMarkup() {
         </div>
 
         <div class="support-modal-card__body">
-          <div class="support-faq-section">
-            <div class="support-faq-section__label" data-i18n="supportFaqLabel">Частые вопросы:</div>
-            <div class="support-faq-section__chips">
-              <div class="support-faq-section__item">
-                <button type="button" class="support-faq-section__btn" data-faq-target="faq-ans-1">
-                  <span data-i18n="promptHowToTopup">Как пополнить баланс?</span>
-                  <span class="support-faq-section__arrow">▼</span>
-                </button>
-                <div id="faq-ans-1" class="support-faq-section__ans" data-i18n="supportReplyTopup" style="display:none;">
-                  Для пополнения демо-баланса нажмите кнопку «Депозит» в шапке сайта (+$500) или заберите ежедневный бонус +$250!
-                </div>
-              </div>
-              <div class="support-faq-section__item">
-                <button type="button" class="support-faq-section__btn" data-faq-target="faq-ans-2">
-                  <span data-i18n="promptWhereVip">VIP клуб и бонусы</span>
-                  <span class="support-faq-section__arrow">▼</span>
-                </button>
-                <div id="faq-ans-2" class="support-faq-section__ans" data-i18n="supportReplyVip" style="display:none;">
-                  Бонусы и промокоды доступны через кнопку в шапке (VIP аватар), а также в боковом меню! Активируйте эксклюзивные коды на демо-монеты прямо сейчас.
-                </div>
-              </div>
-              <div class="support-faq-section__item">
-                <button type="button" class="support-faq-section__btn" data-faq-target="faq-ans-3">
-                  <span data-i18n="promptTournaments">Турниры и таблица лидеров</span>
-                  <span class="support-faq-section__arrow">▼</span>
-                </button>
-                <div id="faq-ans-3" class="support-faq-section__ans" data-i18n="supportReplyTournaments" style="display:none;">
-                  Очки в турнире начисляются автоматически при выигрышных спинах в любых слотах! Чем выше множитель выигрыша, тем больше баллов вы получаете в таблице лидеров.
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div id="support-ticket-form-wrap" class="support-ticket-form-wrap">
             <div class="support-ticket-form-wrap__label" data-i18n="supportTicketFormLabel">Отправить обращение в поддержку:</div>
             <form id="support-ticket-form" class="support-ticket-form">

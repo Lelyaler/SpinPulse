@@ -7,8 +7,8 @@ const slides = [
     bg: './banners/banner-zeus-bright.webp',
     mobileBg: './banners/banner-zeus-mobile.webp',
     accent: '15,000x MAX',
-    position: '70% 12%',
-    mobilePosition: '68% 10%'
+    position: '70% 0%',
+    mobilePosition: '68% 0%'
   },
   {
     tagRu: 'ТУРНИР НЕДЕЛИ', tagEn: 'WEEKLY TOURNAMENT',
@@ -53,7 +53,7 @@ const HERO_ANIM_TIME = 450;
 function updateHeroDots(activeSlideIdx) {
   const dotsContainer = document.getElementById('hero-dots');
   if (dotsContainer) {
-    const dots = dotsContainer.querySelectorAll('.hero-carousel__dot, .hero-dot');
+    const dots = dotsContainer.querySelectorAll('.hero-carousel__dot');
     dots.forEach((dot, i) => {
       const isActive = i === activeSlideIdx;
       dot.classList.toggle('active', isActive);
@@ -243,7 +243,7 @@ export function initHeroCarousel(lang = 'RU', onOpenModal) {
       <button type="button" class="hero-carousel__dot ${i === 0 ? 'hero-carousel__dot--active active' : ''}" data-slide="${i}" aria-label="Слайд ${i + 1}"></button>
     `).join('');
 
-    dotsContainer.querySelectorAll('.hero-carousel__dot, .hero-dot').forEach((dot) => {
+    dotsContainer.querySelectorAll('.hero-carousel__dot').forEach((dot) => {
       dot.addEventListener('click', () => {
         const targetSlide = parseInt(dot.getAttribute('data-slide'), 10);
         goToHeroSlideIndex(targetSlide);
@@ -251,6 +251,14 @@ export function initHeroCarousel(lang = 'RU', onOpenModal) {
       });
     });
   }
+
+  window.addEventListener('resize', () => {
+    container.style.transition = 'none';
+    container.style.transform = `translate3d(-${heroTrackIndex * 100}%, 0, 0)`;
+    requestAnimationFrame(() => {
+      container.style.transition = '';
+    });
+  }, { passive: true });
 
   container.addEventListener('transitionend', (e) => {
     if (e.target !== container || e.propertyName !== 'transform') return;
