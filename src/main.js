@@ -1,4 +1,4 @@
-import { gamesCatalog, initialWinners, currentTournament } from './data.js';
+import { initialWinners, currentTournament } from './data.js';
 import { 
   isSoundEnabled, 
   setSoundEnabled, 
@@ -17,9 +17,14 @@ import {
 import { renderLiveWins } from './modules/ticker.js';
 import { recordGameLaunch, renderHistory } from './modules/history.js';
 import { initHeroCarousel, updateHeroTexts } from './modules/carousel.js';
-import { renderGames, initCatalog } from './modules/catalog.js';
+import { renderGames, renderSkeletons, initCatalog } from './modules/catalog.js';
 import { initTournament } from './modules/tournament.js';
 import { initFaqAccordion } from './modules/faq.js';
+import { 
+  fetchGamesCatalog, 
+  fetchRecentWinners, 
+  submitSupportTicket 
+} from './services/api.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -63,13 +68,9 @@ const state = {
   balance: parseFloat(safeGetStorage('spinpulse_balance', '2500')) || 2500,
   favorites: new Set(safeGetStorageJSON('spinpulse_favorites', [])),
   hasClaimedDaily: safeGetStorage('spinpulse_daily_claimed', '') === new Date().toDateString(),
-  history: safeGetStorageJSON('spinpulse_history', []).map((h) => {
-    if (!h.gameImg || h.gameImg === 'undefined' || h.gameImg === 'null') {
-      const found = gamesCatalog.find((g) => g.id === h.gameId || g.title === h.gameTitle);
-      return { ...h, gameImg: found ? found.coverImage : './casino/gates-of-olympus-1000.webp' };
-    }
-    return h;
-  }),
+  history: safeGetStorageJSON('spinpulse_history', []),
+  games: [],
+  gamesLoading: true,
   activeCategory: 'all',
   selectedProvider: 'All Providers',
   searchQuery: '',
@@ -157,12 +158,31 @@ function initApp() {
 
   initHeroCarousel(state.lang, openModal);
   initCatalog(state, saveState, openGameModal, updateFavoritesCounter, closeSidebar);
-  renderGames(state, saveState, openGameModal, updateFavoritesCounter);
-  updateFavoritesCounter(state.favorites);
+
+  // Render initial skeletons while API is loading
+  renderSkeletons(12);
 
   initTournament(state, saveState);
   initFaqAccordion();
   renderHistory(state, openGameModal);
+
+  // Asynchronous games catalog fetch from JSON API
+  fetchGamesCatalog().then((games) => {
+    state.games = games;
+    state.gamesLoading = false;
+    renderGames(state, saveState, openGameModal, updateFavoritesCounter);
+    updateFavoritesCounter(state.favorites);
+    renderHistory(state, openGameModal);
+  });
+
+  // Asynchronous live winners fetch
+  fetchRecentWinners().then((winners) => {
+    if (winners && winners.length) {
+      state.winners = winners;
+      const liveWinsEl = $('live-wins-list');
+      if (liveWinsEl) renderLiveWins(liveWinsEl, state.winners);
+    }
+  });
 
   // Sound toggle button
   const soundBtn = $('sound-toggle-btn');
@@ -440,25 +460,59 @@ function initApp() {
     });
   }
 
-  // Support ticket form
+  // Support ticket form with asynchronous submit to backend service
   const supportForm = $('support-ticket-form');
-  if (supportForm) {
-    supportForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const message = $('support-ticket-message')?.value.trim();
-      if (!message) return;
+  const submitBtn = $('support-submit-btn');
 
-      playWinCoinsSound();
-      const ticketId = 'SP-' + Math.floor(100000 + Math.random() * 900000);
-      const successCard = $('support-ticket-success');
-      const formCard = $('support-ticket-form-wrap');
-      if (successCard && formCard) {
-        const ticketNumEl = $('support-ticket-number');
-        if (ticketNumEl) ticketNumEl.textContent = ticketId;
-        formCard.style.display = 'none';
-        successCard.style.display = 'block';
+  if (supportForm) {
+    supportForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = $('support-ticket-email')?.value.trim();
+      const category = $('support-ticket-category')?.value;
+      const message = $('support-ticket-message')?.value.trim();
+
+      if (!email || !message) return;
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.originalHtml = submitBtn.innerHTML;
+        submitBtn.innerHTML = `
+          <span class="spinner-small" style="margin-right: 8px;"></span>
+          <span>${state.lang === 'RU' ? 'Отправка...' : 'Submitting...'}</span>
+        `;
       }
-      showToast(state.lang === 'RU' ? `Тикет #${ticketId} зарегистрирован!` : `Ticket #${ticketId} submitted!`, 'win');
+
+      try {
+        const res = await submitSupportTicket({ email, category, message });
+        playWinCoinsSound();
+
+        const successCard = $('support-ticket-success');
+        const formCard = $('support-ticket-form-wrap');
+        if (successCard && formCard) {
+          const ticketNumEl = $('support-ticket-number');
+          if (ticketNumEl) ticketNumEl.textContent = res.ticketId;
+          formCard.style.display = 'none';
+          successCard.style.display = 'block';
+        }
+        showToast(
+          state.lang === 'RU' 
+            ? `Тикет #${res.ticketId} отправлен в поддержку!` 
+            : `Ticket #${res.ticketId} submitted to support!`, 
+          'win'
+        );
+      } catch (err) {
+        showToast(
+          state.lang === 'RU' ? 'Ошибка отправки обращения' : 'Error submitting ticket', 
+          'loss'
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (submitBtn.dataset.originalHtml) {
+            submitBtn.innerHTML = submitBtn.dataset.originalHtml;
+          }
+        }
+      }
     });
   }
 

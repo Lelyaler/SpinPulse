@@ -1,0 +1,56 @@
+[
+  {
+    "id": "win-1",
+    "user": "Maxim_K",
+    "gameTitle": "Gates of Olympus 1000",
+    "amount": 1485.5,
+    "multiplier": 148.5,
+    "time": "2m ago",
+    "avatar": "MK"
+  },
+  {
+    "id": "win-2",
+    "user": "Sarah_VIP",
+    "gameTitle": "Sugar Rush 1000",
+    "amount": 1840,
+    "multiplier": 184,
+    "time": "5m ago",
+    "avatar": "SV"
+  },
+  {
+    "id": "win-3",
+    "user": "CyberSam",
+    "gameTitle": "Sweet Bonanza",
+    "amount": 3250,
+    "multiplier": 650,
+    "time": "11m ago",
+    "avatar": "CS"
+  },
+  {
+    "id": "win-4",
+    "user": "Dmitry_99",
+    "gameTitle": "The Dog House: Muttley Crew",
+    "amount": 980.2,
+    "multiplier": 98,
+    "time": "18m ago",
+    "avatar": "D9"
+  },
+  {
+    "id": "win-5",
+    "user": "Elena_Lucky",
+    "gameTitle": "Wild Shark",
+    "amount": 1720,
+    "multiplier": 172,
+    "time": "24m ago",
+    "avatar": "EL"
+  },
+  {
+    "id": "win-6",
+    "user": "Alex_Pro",
+    "gameTitle": "Valley of the Gods",
+    "amount": 2450,
+    "multiplier": 245,
+    "time": "31m ago",
+    "avatar": "AP"
+  }
+]

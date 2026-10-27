@@ -1,5 +1,3 @@
-import { gamesCatalog } from '../data.js';
-
 /**
  * Records a game launch in session history.
  */
@@ -87,7 +85,7 @@ export function renderHistory(state, openGameModal) {
   if (emptyNoteEl) emptyNoteEl.style.display = 'none';
 
   listEl.innerHTML = state.history.slice(0, 30).map((r) => {
-    const matched = gamesCatalog.find((g) => g.id === r.gameId || g.title === r.gameTitle);
+    const matched = (state.games || []).find((g) => g.id === r.gameId || g.title === r.gameTitle);
     const validImg = (r.gameImg && r.gameImg !== 'undefined' && r.gameImg !== 'null')
       ? r.gameImg
       : (matched ? matched.coverImage : './casino/gates-of-olympus-1000.webp');
@@ -118,7 +116,7 @@ export function renderHistory(state, openGameModal) {
   listEl.querySelectorAll('.drawer-card__history-item').forEach((item) => {
     item.addEventListener('click', () => {
       const gameId = item.getAttribute('data-game-id');
-      const game = gamesCatalog.find((g) => g.id === gameId);
+      const game = (state.games || []).find((g) => g.id === gameId);
       if (game && typeof openGameModal === 'function') {
         const drawer = document.getElementById('history-drawer');
         if (drawer) drawer.classList.remove('active');
