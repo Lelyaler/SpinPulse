@@ -46,15 +46,6 @@
     <link rel="preload" as="image" href="./banners/banner-zeus-bright.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
   </head>
   <body>
-    <div id="file-protocol-alert" class="file-warning" style="display: none;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Вы открыли страницу через локальный файл (file://). Браузеры блокируют JavaScript-модули и интерактивные функции в этом режиме. Запустите <code>npm run dev</code> или откройте проект онлайн: <a href="https://lelyaler.github.io/SpinPulse/" target="_blank" rel="noopener">https://lelyaler.github.io/SpinPulse/</a>
-    </div>
-    <script>
-      if (window.location.protocol === 'file:') {
-        var alertEl = document.getElementById('file-protocol-alert');
-        if (alertEl) alertEl.style.display = 'block';
-      }
-    </script>
     <div class="app app-container">
       <div id="sidebar-backdrop" class="app__sidebar-backdrop"></div>
       <aside id="site-sidebar" class="site-sidebar">
@@ -133,7 +124,9 @@
             </div>
             <div class="sidebar-tournament-name">Weekly Grand Prix</div>
             <div class="sidebar-tournament-meta">
-              <span>⏱ 34ч осталось</span>
+              <span class="st-timer-inline">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:3px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>34ч осталось
+              </span>
               <span>•</span>
               <span id="sidebar-tournament-players">1,482 чел.</span>
             </div>
@@ -141,7 +134,7 @@
               <span class="st-leader-avatar">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
               </span>
-              <span class="st-leader-name">CyberKing_99</span>
+              <span class="st-leader-name">alex_k92</span>
               <span class="st-leader-pts">184,200 pts</span>
             </div>
           </div>
@@ -757,7 +750,7 @@
                 <div class="tournament-leaderboard__row">
                   <div class="tournament-leaderboard__user-group">
                     <span class="tournament-leaderboard__rank-badge">1</span>
-                    <span class="tournament-leaderboard__name">CyberKing_99</span>
+                    <span class="tournament-leaderboard__name">alex_k92</span>
                   </div>
                   <div class="tournament-leaderboard__stats-group">
                     <span class="tournament-leaderboard__points" data-pts="184200">184,200 очков</span>
@@ -768,7 +761,7 @@
                 <div class="tournament-leaderboard__row">
                   <div class="tournament-leaderboard__user-group">
                     <span class="tournament-leaderboard__rank-badge">2</span>
-                    <span class="tournament-leaderboard__name">LuckyValkyrie</span>
+                    <span class="tournament-leaderboard__name">misha_nord</span>
                   </div>
                   <div class="tournament-leaderboard__stats-group">
                     <span class="tournament-leaderboard__points" data-pts="142500">142,500 очков</span>
@@ -779,7 +772,7 @@
                 <div class="tournament-leaderboard__row">
                   <div class="tournament-leaderboard__user-group">
                     <span class="tournament-leaderboard__rank-badge">3</span>
-                    <span class="tournament-leaderboard__name">MaxMultiplier</span>
+                    <span class="tournament-leaderboard__name">dmitry_v</span>
                   </div>
                   <div class="tournament-leaderboard__stats-group">
                     <span class="tournament-leaderboard__points" data-pts="98400">98,400 очков</span>

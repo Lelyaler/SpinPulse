@@ -7,7 +7,8 @@ try {
   if (saved !== null) {
     soundEnabled = saved === 'true';
   }
-} catch {
+} catch (err) {
+  console.warn('LocalStorage unavailable for sound settings:', err);
 }
 
 const baseUrl = (import.meta.env.BASE_URL || './').replace(/\/$/, '') + '/';
@@ -34,6 +35,7 @@ function getAudioFromPool(name) {
   try {
     available.currentTime = 0;
   } catch {
+    // Resetting currentTime may fail if audio is still decoding
   }
 
   return available;
@@ -43,7 +45,8 @@ export function setSoundEnabled(enabled) {
   soundEnabled = enabled;
   try {
     localStorage.setItem(SOUND_ENABLED_KEY, String(enabled));
-  } catch {
+  } catch (err) {
+    console.warn('Could not save sound preference:', err);
   }
 }
 
@@ -56,6 +59,7 @@ export function playButtonClick() {
   const audio = getAudioFromPool('click');
   if (audio) {
     audio.volume = 0.35;
+    // Catch autoplay policy restrictions
     audio.play().catch(() => {});
   }
 }

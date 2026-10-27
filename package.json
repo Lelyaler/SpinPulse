@@ -6,9 +6,8 @@
   "homepage": "https://Lelyaler.github.io/SpinPulse",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/postbuild.js",
+    "build": "vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {

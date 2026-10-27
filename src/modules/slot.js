@@ -8,6 +8,10 @@ import {
 import { launchConfetti, showToast } from './ui.js';
 import { updateBalanceDisplay } from './wallet.js';
 
+/**
+ * Simulates a single demo round for a slot machine.
+ * Generates an outcome with weighted multiplier tiers and records it to session history.
+ */
 export function playDemoGameRound(gameId, cardEl, state, saveState) {
   const game = gamesCatalog.find((g) => g.id === gameId);
   if (!game) return;
@@ -112,7 +116,8 @@ export function renderHistory(state) {
       state.history = [];
       try {
         localStorage.setItem('spinpulse_history', JSON.stringify([]));
-      } catch {
+      } catch (err) {
+        console.warn('Unable to persist cleared history:', err);
       }
       renderHistory(state);
     });
