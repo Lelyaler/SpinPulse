@@ -1,4 +1,5 @@
 import { playWinCoinsSound } from '../audio.js';
+import { launchConfetti } from './ui.js';
 
 export function updateBalanceDisplay(balance) {
   const formatted = '$' + balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -15,6 +16,7 @@ export function updateFavoritesCounter(favorites) {
 }
 
 export function topUpBalance(state, amount = 500, saveState, onUpdate) {
+  launchConfetti();
   playWinCoinsSound();
   state.balance = Math.round((state.balance + amount) * 100) / 100;
   if (saveState) saveState();
@@ -23,6 +25,7 @@ export function topUpBalance(state, amount = 500, saveState, onUpdate) {
 
 export function claimDailyBonus(state, saveState, onUpdate) {
   if (state.hasClaimedDaily) return false;
+  launchConfetti();
   playWinCoinsSound();
   state.balance = Math.round((state.balance + 250) * 100) / 100;
   state.hasClaimedDaily = true;

@@ -6,7 +6,7 @@ import {
   playWinCoinsSound 
 } from './audio.js';
 import { applyTranslations, getDictionary } from './i18n.js';
-import { showToast, openModal, closeModal } from './modules/ui.js';
+import { showToast, openModal, closeModal, launchConfetti } from './modules/ui.js';
 import { mountModals } from './modules/modals.js';
 import { 
   updateBalanceDisplay, 
@@ -567,6 +567,7 @@ function initApp() {
 
   document.querySelectorAll('.bonus-card-item__activate-btn, .activate-bonus-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
+      launchConfetti();
       playWinCoinsSound();
       const amt = parseInt(btn.getAttribute('data-amount') || '300', 10);
       state.balance += amt;
